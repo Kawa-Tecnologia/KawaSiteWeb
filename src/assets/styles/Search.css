@@ -1,0 +1,45 @@
+.container-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../images/fundo-abstrato-com-design-baixo-poli_1048-8478.avif'); /* Substitua 'imagem1.jpg' pelo caminho da imagem desejada */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* Garante que a altura do contêiner seja pelo menos igual à altura da tela */
+    padding: 20px; /* Adicione algum espaçamento interno */
+}
+
+.search-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-button {
+    background-color: #0066cc;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #0056a6;
+}
+
+/* Estilos de mídia para responsividade */
+@media only screen and (max-width: 767px) {
+    .container-search {
+        padding: 10px; /* Ajuste o espaçamento interno para telas menores */
+    }
+}

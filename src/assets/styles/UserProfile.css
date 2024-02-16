@@ -1,0 +1,98 @@
+
+  .profile {
+    flex: 2;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .profile h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .left-container > * {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .left-container > * h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para os títulos */
+  h1, h2 {
+    color: #080808;
+  }
+  
+  /* Estilos para os formulários */
+  form {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="file"] {
+    width: calc(100% - 20px); /* Ajuste para a largura do input */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos para o botão */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para a lista de tags */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  ul li:last-child {
+    margin-right: 0;
+  }
+  
+  /* Estilos para o container de tags */
+  .tags-container {
+    margin-top: 20px;
+  }
+  

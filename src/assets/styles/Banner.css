@@ -1,0 +1,57 @@
+.banner-center {
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Escolha uma fonte moderna */
+  }
+  
+  .banner-center h1 {
+    font-size: 3rem; /* Aumenta o tamanho da fonte para o título */
+    color: #ffffff; /* Define a cor do texto */
+    margin-bottom: 10px; /* Adiciona um espaçamento inferior */
+  }
+  
+  .banner-center h3 {
+    font-size: 2rem; /* Aumenta o tamanho da fonte para o subtítulo */
+    color: #ffffff; /* Define a cor do texto */
+    margin-bottom: 20px; /* Adiciona um espaçamento inferior */
+  }
+  
+  .banner-center p {
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte para o texto normal */
+    color: #ffffff; /* Define a cor do texto */
+    line-height: 1.5; /* Ajusta o espaçamento entre linhas */
+  }
+  
+  .cta-button {
+    background-color: #ffffff;
+    color: #0066cc;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 1.5rem; /* Ajusta o tamanho da fonte para o botão */
+  }
+
+  .banner {
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Escolha uma fonte moderna */
+  }
+  
+  .banner h1 {
+    font-size: 3rem; /* Aumenta o tamanho da fonte para o título */
+    color: #ffffff; /* Define a cor do texto */
+    margin-bottom: 10px; /* Adiciona um espaçamento inferior */
+  }
+  
+  .banner h3 {
+    font-size: 2rem; /* Aumenta o tamanho da fonte para o subtítulo */
+    color: #ffffff; /* Define a cor do texto */
+    margin-bottom: 20px; /* Adiciona um espaçamento inferior */
+  }
+  
+  .banner p {
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte para o texto normal */
+    color: #ffffff; /* Define a cor do texto */
+    line-height: 1.5; /* Ajusta o espaçamento entre linhas */
+  }

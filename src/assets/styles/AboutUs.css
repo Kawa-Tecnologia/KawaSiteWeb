@@ -1,0 +1,48 @@
+.sobre-nos {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('../images/fundo-abstrato-com-design-baixo-poli_1048-8478.avif'); 
+}
+
+header {
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px; 
+}
+
+h2 {
+  color: #007bff; 
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+footer {
+  background-color: #f8f9fa; 
+  color: #333; 
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilos específicos para as caixas de Missão, Visão e Valores */
+.section-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-image: url('../images/fundo-abstrato-com-design-baixo-poli_1048-8478.avif'); /* Substitua 'imagem1.jpg' pelo caminho da imagem desejada */
+
+}

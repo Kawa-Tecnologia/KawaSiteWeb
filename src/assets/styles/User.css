@@ -1,0 +1,20 @@
+.user-container{
+    width: 300px; /* Largura fixa */
+    height: 100%; /* Altura fixa ou conforme necessário */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo exceder a altura */
+    /* Adicione outras propriedades necessárias */
+    background-color: #fff; /* Cor de fundo */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.user-container h3{
+    color: #ffffff; /* Define a cor do texto */
+
+}
+
+.user-container h2{
+    color: #ffffff; /* Define a cor do texto */
+
+}

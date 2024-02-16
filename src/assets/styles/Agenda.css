@@ -1,0 +1,87 @@
+.agenda {
+  flex: 2;
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.agenda-content {
+  flex: 2;
+  padding: 20px;
+}
+
+.agenda h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+
+}
+
+.calendar {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 5px;
+}
+
+.calendar-header div {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+  text-align: center;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.calendar-day.today {
+  background-color: #ffefb3;
+}
+
+.calendar-day.training {
+  background-color: #b3e5fc;
+}
+
+.left-container {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  flex: 0.3;
+  padding: 10px;
+  max-width: 300px; /* Defina uma largura máxima para o lado esquerdo */
+}
+
+.left-container > * {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.left-container > * h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .left-container {
+    max-width: none; /* Remove a largura máxima */
+  }
+}

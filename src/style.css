@@ -1,0 +1,296 @@
+/* Estilos comuns a todas as seções */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #061f79;
+}
+
+header {
+  background-color: #041c77;
+  color: #ffffff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  transition: background-color 0.3s ease; /* Adicionando uma transição suave para mudanças de cor */
+}
+
+.logo-container img {
+  max-width: 20px
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+  transition: transform 0.3s ease; /* Adicionando uma transição suave para efeitos de hover */
+}
+
+nav ul li:hover {
+  transform: translateY(-3px); /* Efeito de levantamento sutil ao passar o mouse */
+}
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+
+.cta-button {
+  background-color: #ffffff;
+  color: #0066cc;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Adicionando transições suaves para mudanças de cor */
+}
+
+.cta-button:hover {
+  background-color: #0066cc;
+  color: #ffffff;
+  cursor: pointer; /* Mudança de cursor ao passar o mouse */
+}
+
+section {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+
+
+.banner-content {
+  width: 30%;
+
+}
+
+/* Estilo específico para outras seções */
+#sobre-nos {
+  background-image: url('../src/assets/images/bdaa078b959811fc5f56cd02512bb22c.jpg');
+  opacity: 0.9;
+}
+
+#projetos {
+  background-image: url('../src/assets/images/bdaa078b959811fc5f56cd02512bb22c.jpg');
+  opacity: 0.9;
+}
+
+#devs {
+  background-image: url('../src/assets/images/network-3357642_1280.webp');
+}
+
+#contato {
+  background-image: url('../src/assets/images/bdaa078b959811fc5f56cd02512bb22c.jpg');
+  opacity: 0.9;
+}
+
+#partners {
+  background-image: url('../src/assets/images/bdaa078b959811fc5f56cd02512bb22c.jpg');
+  opacity: 0.9;
+}
+#sobre-nos,
+#projetos,
+#devs,
+#contato,
+#partners {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  /* Adicione outros estilos específicos para cada seção conforme necessário */
+}
+/* Estilos de mídia para responsividade */
+@media only screen and (max-width: 767px) {
+  section.banner {
+    padding: 100px 20px;
+    /* Ajuste o padding conforme necessário para telas menores */
+    text-align: center;
+
+  }
+}
+
+/* Estilos de mídia para responsividade */
+@media only screen and (max-width: 767px) {
+  header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .logo-container {
+    margin-bottom: 20px;
+
+  }
+
+  .logo-container img {
+    max-width: 80px;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  /* Ajuste o padding conforme necessário para ocupar a tela inteira */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.banner-left,
+.banner-right {
+  width: 100%;
+  /* Ajuste o tamanho conforme necessário */
+}
+
+.banner-content {
+  text-align: center;
+}
+
+
+
+.banner-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+.container {
+  display: flex;
+  background-position: center;
+  min-width: 80%;
+  max-width: 90%;
+  background-color: #041c77;
+}
+
+.left,
+.right {
+  flex: 5;
+  border: 0px solid black;
+}
+
+.middle {
+  margin: 0 10px;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    /* Altera a direção do contêiner para empilhar os elementos verticalmente */
+    width: 100%;
+  }
+
+  .middle {
+    order: 2;
+    /* Move a seção "Bem-vindo à Kawa Tecnologia" para o segundo lugar no empilhamento */
+  }
+
+  .right {
+    order: 3;
+    /* Move a seção "Desenvolvedores Open to Work" para o terceiro lugar no empilhamento */
+  }
+}
+
+.star-container {
+  color: #777;
+  /* Cor das estrelas não preenchidas */
+}
+
+.star.filled {
+  color: yellow;
+  /* Cor das estrelas preenchidas */
+}
+
+.left-container {
+  background-color: #282c34;
+  /* Cor de fundo escura */
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* Sombra sutil */
+}
+
+/* Exemplo de ícone para o menu (usando FontAwesome como referência) */
+.icon-home::before {
+  content: "\f015";
+  /* Código do ícone do FontAwesome */
+}
+
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+  min-height: 100vh;}
+
+.white-theme {
+  background-color: #fff;
+  color: #333;
+  min-height: 100vh;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+.nav-link:hover {
+  color: #ff00ff; /* Mudar a cor ao passar o mouse */
+  transform: translateY(-3px); /* Efeito de elevação ao passar o mouse */
+}

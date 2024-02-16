@@ -1,0 +1,20 @@
+.under-container {
+    text-align: center;
+}
+
+.under-container h1 {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.under-container p {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.under-container img {
+    max-width: 100%;
+    height: auto;
+}

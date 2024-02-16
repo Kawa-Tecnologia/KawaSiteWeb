@@ -1,0 +1,203 @@
+  @media only screen and (max-width: 767px) {
+    .container {
+      flex-direction: column;
+    }
+ 
+  }
+  
+  
+  #planos {
+    background-image: url('../images/vecteezy_abstract-futuristic-connecting-dots-and-lines-on-blue_8300426.jpg');
+  
+  }
+  .plano-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .plano {
+    width: 30%;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .plano + .plano {
+    margin-left: 20px;
+  }
+  .plano-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .plano {
+    width: 30%;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
+  .plano h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .plano p {
+    margin-bottom: 15px;
+  }
+  
+  .plano button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .plano button:hover {
+    background-color: #0056b3;
+  }
+  
+  .icon-home::before {
+    content: "\f015";
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal.show {
+    display: block;
+  }
+  
+  .modal-content {
+    background-color: #fefefe; 
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer; 
+    position: relative;
+    z-index: 9999; 
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  #modal-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  #modal-details {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  
+  #modal-buy-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  #modal-buy-button:hover {
+    background-color: #0056b3;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .plano-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .plano {
+      width: 50%; /* Definir a largura dos planos para ocupar 90% da largura do contêiner pai */
+      margin-bottom: 10px; /* Adicionar espaçamento inferior entre os planos */
+    }
+  }

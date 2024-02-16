@@ -1,0 +1,107 @@
+.training-section,
+.latest-news {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.trainings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+
+/* Adicione regras de mídia para ajustar o layout em telas menores */
+@media only screen and (max-width: 767px) {
+  .trainings-grid {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+
+  .training-card {
+    width: 100%;
+  }
+}
+
+.training-section h2,
+.latest-news h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.training-history {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+}
+
+.training-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.training-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.training-card p {
+  font-size: 16px;
+  color: #666;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #f0f0f0;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  /* Centraliza o conteúdo horizontalmente */
+  margin-bottom: 20px;
+  /* Adiciona margem inferior para separar visualmente outros elementos */
+}
+
+.search-input {
+  width: 100%;
+  max-width: 300px;
+  /* Define a largura máxima para a entrada de busca */
+  padding: 10px;
+  /* Adiciona preenchimento para melhorar a aparência */
+  border-radius: 5px;
+  /* Adiciona borda arredondada */
+  border: 1px solid #ccc;
+  /* Adiciona uma borda para destacar a entrada */
+  box-sizing: border-box;
+  /* Garante que o preenchimento e a borda não aumentem a largura da entrada */
+}
+
+/* Adicione regras de mídia para ajustar o tamanho da entrada de busca em telas menores */
+@media only screen and (max-width: 767px) {
+  .search-input {
+    max-width: none;
+    /* Remove a largura máxima para permitir que a entrada se estenda por toda a largura */
+  }
+}

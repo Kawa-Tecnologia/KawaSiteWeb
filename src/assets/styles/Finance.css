@@ -1,0 +1,79 @@
+.left-container {
+  flex: 0 0 250px; /* Largura fixa para o container esquerdo */
+}
+
+.finance-page {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.saldo-section {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saldo-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.orders-section {
+  margin-bottom: 30px;
+}
+
+.orders-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+table th, table td {
+  text-align: left;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f2f2f2;
+}
+
+.saldo-section {
+  margin-bottom: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .finance-page {
+    padding-right: 280px; /* Ajuste para deixar espaço para a seção de saldo */
+  }
+
+  .saldo-section {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 10px;
+  }
+}
