@@ -24,4 +24,4 @@ jobs:
         host: ftp.empreendedorfina1.hospedagemdesites.ws
         user: empreendedorfina1
         password: R3&zPb9ZTu1>Z@
-        localDir: "dist"
+        localDir: "build"
