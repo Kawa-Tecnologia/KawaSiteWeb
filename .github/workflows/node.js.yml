@@ -23,6 +23,6 @@ jobs:
       with:
         host: ftp.empreendedorfina1.hospedagemdesites.ws
         user: empreendedorfina1
-        password: R3@zPb9ZTu1>Z@1
+        password: Locaweb@102030
         localDir: "build"
         remoteDir: "/home/empreendedorfina1/"
