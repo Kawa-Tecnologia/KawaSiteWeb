@@ -21,7 +21,8 @@ jobs:
     - name: FTP Deploy Locaweb
       uses: locaweb/ftp-deploy@1.0.0
       with:
-        host: ftp.empreendedorfinanceiro.com
+        host: ftp.empreendedorfina1.hospedagemdesites.ws
         user: empreendedorfina1
         password: R3@zPb9ZTu1>Z@1
         localDir: "build"
+        remoteDir: "/home/empreendedorfina1/"
