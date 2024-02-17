@@ -12,20 +12,17 @@ jobs:
 
     - name: Eslint
       run: npm run lint
+    - name: Prettier
+      run: npm run prettier
     - name: Run tests
       run: npm test
     - name: Build
       run: npm run build --if-present
-
-
-
-
-
     - name: FTP Deploy Locaweb
       uses: locaweb/ftp-deploy@1.0.0
       with:
         host: ftp.empreendedorfina1.hospedagemdesites.ws
         user: empreendedorfina1
         password: Locaweb@102030
-        localDir: "build"
+        localDir: "dist"
         remoteDir: "/home/empreendedorfina1/"

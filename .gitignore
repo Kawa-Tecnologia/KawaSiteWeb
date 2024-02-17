@@ -5,10 +5,12 @@
 /.pnp
 .pnp.js
 .env
+.vscode/
 # testing
 /coverage
 
 # production
+/dist
 /build
 
 # misc

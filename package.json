@@ -16,11 +16,17 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "tsc",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint ."
-
+    "lint": "eslint src/**/*.tsx",
+    "prettier": "npx prettier --write src/**/*.tsx",
+    "tsc": "tsc",
+    "start-ts": "npm run tsc -- --watch | react-scripts start",
+    "build-ts": "npm run tsc && react-scripts build",
+    "test-ts": "npm run tsc && react-scripts test",
+    "lint-ts": "npm run tsc && eslint src/**/*.tsx",
+    "prettier-ts": "npm run tsc && prettier --write src/**/*.tsx"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +50,11 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
     "eslint": "^8.56.0",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
   }
 }
