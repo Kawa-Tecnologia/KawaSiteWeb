@@ -11,10 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci --force && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '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'
-          firebaseServiceAccount: 'empreendedor@empreendedorfinanceiro.com'
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROJETO_KAWA }}'
           channelId: live
           projectId: projeto-kawa
