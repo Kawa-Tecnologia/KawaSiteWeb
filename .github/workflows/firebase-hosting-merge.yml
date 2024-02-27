@@ -15,6 +15,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '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'
-          firebaseServiceAccount: '82c0127381edb13cc218ffc39d949dae7c6e3941'
+          firebaseServiceAccount: 'projeto-kawa-firebase-adminsdk-2v4qi-e6b0ef25d6.json'
           channelId: live
           projectId: projeto-kawa
