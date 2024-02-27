@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../assets/styles/Login.css'
 import NavigationDev from './NavigationDevs'
+import axios from 'axios';
 
 interface UserData {
   name: string
@@ -25,28 +26,33 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     e.preventDefault()
     setLoading(true)
 
-    // const body = {
-    //   username: username,
-    //   password: password
-    // }
+    const body = {
+      username: username,
+      password: password
+    }
 
     try {
-      // const { data } = await axios.post<{ user: UserData; travelPackages: TravelPackageData[] }>(
-      //   `http://localhost:3001/api/login`,
-      //   body
-      // );
+      const response = await axios.post('http://localhost:3001/api/login', body);
+      const { token } = response.data;
+      const { fullname, email, points, id} = response.data.user;
 
-      //const { user } = data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+
+      localStorage.setItem('userId', id);
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userName', fullname);
+      localStorage.setItem('userPoints', points);
 
       const userData: UserData = {
-        name: '',
-        email: '',
-        points: 0,
+        name: fullname,
+        email: email,
+        points: points,
       }
       onLogin(userData)
 
       setLoading(false)
-      navigate('/under-construction')
+      navigate('/devs/dashboard')
     } catch (error) {
       setLoading(false)
       console.error('Error:', error)

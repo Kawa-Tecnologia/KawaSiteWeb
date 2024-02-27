@@ -21,16 +21,6 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage }) => {
                 Sobre Nós
               </a>
             </li>
-            <li className="nav-item">
-              <a href="#projetos" className="nav-link">
-                Projetos
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#devs" className="nav-link">
-                Devs Open to Work
-              </a>
-            </li>
             <ContactButton />
           </div>
         )}

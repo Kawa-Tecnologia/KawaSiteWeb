@@ -5,13 +5,17 @@
   "dependencies": {
     "@material-ui/icons": "^4.11.3",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.7",
     "eslint-plugin-react": "^7.33.2",
+    "firebase-functions": "^4.7.0",
     "react": "^18.2.0",
     "react-calendar": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^10.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -50,6 +54,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
+    "@types/react-modal": "^3.16.3",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
     "eslint": "^8.56.0",

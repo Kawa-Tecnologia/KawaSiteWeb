@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import '../assets/styles/Project.css'
 import UserContainer from './UserContainer'
 import Menu from './Menu'
+import axios from 'axios';
 
 interface Project {
   id: number
   title: string
   description: string
-  partners: { name: string }[]
 }
 
 const ProjectsPage: React.FC = () => {
@@ -16,25 +16,8 @@ const ProjectsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1) // Estado para controlar a página atual
   const [projectsPerPage] = useState<number>(8) // Quantidade de projetos por página
 
-  // Simulação de dados de projetos (substitua isso com sua lógica de obtenção de dados)
-  const mockProjects: Project[] = [
-    {
-      id: 1,
-      title: 'Projeto 1',
-      description: 'Descrição do Projeto 1',
-      partners: [{ name: 'User 2' }],
-    },
-    // Adicione mais projetos conforme necessário
-  ]
-
-  useEffect(() => {
-    // Simulando uma busca de projetos
-    setProjects(mockProjects)
-  }, [mockProjects])
-
-  // Filtrar os projetos com base no termo de busca
   const filteredProjects = projects.filter((project) =>
-    project.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    project?.title?.toLowerCase().includes(searchTerm?.toLowerCase()),
   )
 
   // Lógica para calcular o número total de páginas
@@ -54,7 +37,28 @@ const ProjectsPage: React.FC = () => {
   // Função para lidar com a alteração do termo de busca
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setSearchTerm(event.target.value)
+    useEffect(() => {
+      // Recupere o token JWT do armazenamento (por exemplo, localStorage)
+      const token = localStorage.getItem('token');
+      const userId = localStorage.getItem('userId');
 
+      // Faça a requisição para buscar os projetos
+      const fetchProjects = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3001/api/projects/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`, // Inclua o token JWT no cabeçalho de autorização
+            },
+          });
+          setProjects(response.data.projects);
+        } catch (error) {
+          console.error('Erro ao buscar projetos:', error);
+        }
+      };
+  
+      fetchProjects();
+    }, [searchTerm, currentPage]); // Atualize a lista de projetos quando o termo de busca ou a página atual mudar
+  
   return (
     <div className="dashboard">
       <div className="left-container">
@@ -76,7 +80,6 @@ const ProjectsPage: React.FC = () => {
               <div key={project.id} className="project-card">
                 <h2>Projeto: {project.title}</h2>
                 <p>Descrição: {project.description}</p>
-                <p>Parceiros: {project.partners[0]?.name}</p>
               </div>
             ))
           ) : (

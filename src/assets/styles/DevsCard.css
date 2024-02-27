@@ -16,6 +16,8 @@
   .dev-card img {
     max-width: 100%; /* Ajusta a largura da imagem para ocupar todo o espaço disponível */
     height: auto; /* Mantém a proporção da imagem */
+    cursor: pointer;
+
   }
   
   .devs-section {

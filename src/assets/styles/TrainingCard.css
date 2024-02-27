@@ -105,3 +105,8 @@
     /* Remove a largura máxima para permitir que a entrada se estenda por toda a largura */
   }
 }
+
+.disabled-button {
+  background-color: #dddddd; /* Cinza */
+  /* Adicione outros estilos conforme necessário */
+}

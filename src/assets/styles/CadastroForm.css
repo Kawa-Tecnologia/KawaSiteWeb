@@ -1,0 +1,45 @@
+.cadastro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajuste a altura conforme necessário */
+}
+
+/* Estilos para o formulário */
+form {
+    background-color: #f0f0f0; /* Cor de fundo do formulário */
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px; /* Largura do formulário */
+}
+
+form > div {
+    margin-bottom: 15px; /* Espaçamento entre os campos do formulário */
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #007bff; /* Cor do botão */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}

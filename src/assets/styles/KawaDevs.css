@@ -78,8 +78,14 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
+    color: #000; /* Cor do texto preto */
+
   }
-  
+
+  .modal h2{
+    color: #000; /* Cor do texto preto */
+  }
+
   .modal.show {
     display: block;
   }
@@ -130,6 +136,8 @@
     max-width: 600px;
     text-align: center;
     animation: slideIn 0.5s ease-in-out;
+    color: #000; /* Cor do texto preto */
+
   }
   
   .close {

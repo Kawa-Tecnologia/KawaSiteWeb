@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "projeto-kawa"
+  },
+  "targets": {},
+  "etags": {
+    "projeto-kawa": {
+      "extensionInstances": {}
+    }
+  }
+}

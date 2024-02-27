@@ -6,7 +6,6 @@ import {
   Star,
   Schedule,
   AttachMoney,
-  ShoppingCart,
   Forum,
   EmojiPeople,
 } from '@material-ui/icons'
@@ -45,12 +44,6 @@ const Menu: React.FC = () => {
           <Link to="/devs/agenda">
             <Schedule className="icon" />
             Agenda
-          </Link>
-        </li>
-        <li className="menu-item">
-          <Link to="/devs/checkouts">
-            <ShoppingCart className="icon" />
-            Checkouts
           </Link>
         </li>
         <li className="menu-item">

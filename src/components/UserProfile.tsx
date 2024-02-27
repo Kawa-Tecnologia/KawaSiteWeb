@@ -1,14 +1,14 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent, useEffect } from 'react'
 import UserContainer from './UserContainer'
 import Menu from './Menu'
 import '../assets/styles/UserProfile.css'
 
 interface UserData {
-  name: string
+  fullname: string
   email: string
   phone: string
-  cpf: string
-  address: string
+  document_number: string
+  address_id: number
 }
 
 interface ProfessionalData {
@@ -17,32 +17,39 @@ interface ProfessionalData {
   tags: string[]
   presentation: string
 }
-
 const UserProfile: React.FC = () => {
-  const [userData, setUserData] = useState<UserData>({
-    name: '',
-    email: '',
-    phone: '',
-    cpf: '',
-    address: '',
-  })
 
-  const [professionalData, setProfessionalData] = useState<ProfessionalData>({
-    cnpj: '',
-    curriculum: '',
-    tags: [],
-    presentation: '',
-  })
+const [userData, setUserData] = useState<UserData>({
+  fullname: '',
+  email: '',
+  phone: '',
+  document_number: '',
+  address_id: 0,
+})
+const [professionalData, setProfessionalData] = useState<ProfessionalData>({
+  cnpj: '',
+  curriculum: '',
+  tags: [],
+  presentation: '',
+})
 
-  const [isEditMode, setIsEditMode] = useState(false)
+const [isEditMode, setIsEditMode] = useState(false)
+const handleUserDataChange = (e: ChangeEvent<HTMLInputElement>) => {
+  
+  const { name, value } = e.target;
+  setUserData({
+    ...userData,
+    [name]: value,
+  });
+};
 
-  const handleUserDataChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setUserData({
-      ...userData,
-      [name]: value,
-    })
+useEffect(() => {
+  const storedUserString = localStorage.getItem('user');
+  if (storedUserString) {
+    const storedUser = JSON.parse(storedUserString);
+    setUserData(storedUser);
   }
+}, []);
 
   const handleProfessionalDataChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -71,7 +78,7 @@ const UserProfile: React.FC = () => {
             <input
               type="text"
               name="name"
-              value={userData.name}
+              value={userData.fullname}
               onChange={handleUserDataChange}
               disabled={!isEditMode}
             />
@@ -101,7 +108,7 @@ const UserProfile: React.FC = () => {
             <input
               type="text"
               name="cpf"
-              value={userData.cpf}
+              value={userData.document_number}
               onChange={handleUserDataChange}
               disabled={!isEditMode}
             />
@@ -111,7 +118,7 @@ const UserProfile: React.FC = () => {
             <input
               type="text"
               name="address"
-              value={userData.address}
+              value={userData.address_id}
               onChange={handleUserDataChange}
               disabled={!isEditMode}
             />

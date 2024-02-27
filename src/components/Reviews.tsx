@@ -2,45 +2,59 @@ import React, { useState, useEffect } from 'react'
 import '../assets/styles/Review.css'
 import UserContainer from './UserContainer'
 import Menu from './Menu'
-
+import axios from 'axios'
 interface Review {
-  user: string
+  user_id: string
   content: string
-  review: number
+  receive_user_id: number
+  avaliation: number
+  project_id: number
 }
 
 const Reviews: React.FC = () => {
   const [reviews, setReviews] = useState<Review[]>([]) // Estado para armazenar as avaliações
   const [searchTerm, setSearchTerm] = useState<string>('') // Estado para armazenar o termo de busca
   const [currentPage, setCurrentPage] = useState<number>(1) // Estado para controlar a página atual
-  const [projectsPerPage] = useState<number>(8) // Quantidade de avaliações por página
-
-  // Simulação de dados de avaliações (substitua isso com sua lógica de obtenção de dados)
-  const mockReviews: Review[] = [
-    { user: 'Usuario 1', content: 'Conteúdo do Card 1', review: 5 },
-    { user: 'Usuario 2', content: 'Conteúdo do Card 2', review: 4 },
-    // Adicione mais avaliações conforme necessário
-  ]
+  const [reviewsPerPage] = useState<number>(8) // Quantidade de avaliações por página
 
   useEffect(() => {
-    // Simulando uma busca de avaliações
-    setReviews(mockReviews)
-  }, [mockReviews])
+    // Recupere o token JWT do armazenamento (por exemplo, localStorage)
+    const token = localStorage.getItem('token')
+    const userId = localStorage.getItem('userId')
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/api/reviews/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}` // Inclua o token JWT no cabeçalho de autorização
+            }
+          }
+        )
+
+        setReviews(response.data.reviews)
+      } catch (error) {
+        console.error('Erro ao buscar reviews:', error)
+      }
+    }
+
+    fetchReviews()
+  }, [searchTerm, currentPage]) // Atualize a lista de reviews quando o termo de busca ou a página atual mudar
 
   // Filtrar as avaliações com base no termo de busca
-  const filteredReviews: Review[] = reviews.filter((review) =>
-    review.user.toLowerCase().includes(searchTerm.toLowerCase()),
+  const filteredReviews: Review[] = reviews.filter(
+    review => review.receive_user_id
   )
 
   // Lógica para calcular o número total de páginas
-  const totalPages: number = Math.ceil(filteredReviews.length / projectsPerPage)
+  const totalPages: number = Math.ceil(filteredReviews.length / reviewsPerPage)
 
   // Lógica para determinar as avaliações da página atual
-  const indexOfLastProject: number = currentPage * projectsPerPage
-  const indexOfFirstProject: number = indexOfLastProject - projectsPerPage
+  const indexOfLastReview: number = currentPage * reviewsPerPage
+  const indexOfFirstReview: number = indexOfLastReview - reviewsPerPage
   const currentReviews: Review[] = filteredReviews.slice(
-    indexOfFirstProject,
-    indexOfLastProject,
+    indexOfFirstReview,
+    indexOfLastReview
   )
 
   // Função para mudar de página
@@ -48,38 +62,38 @@ const Reviews: React.FC = () => {
 
   // Função para lidar com a alteração do termo de busca
   const handleSearchChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ): void => setSearchTerm(event.target.value)
 
   return (
-    <div className="dashboard">
-      <div className="left-container">
+    <div className='dashboard'>
+      <div className='left-container'>
         <UserContainer />
         <Menu />
       </div>
-      <div className="reviews-page">
+      <div className='reviews-page'>
         <h1>Avaliações</h1>
         <input
-          type="text"
-          placeholder="Buscar avaliações por usuário"
+          type='text'
+          placeholder='Buscar avaliações por usuário'
           value={searchTerm}
           onChange={handleSearchChange}
         />
 
-        <div className="review-cards">
+        <div className='review-cards'>
           {currentReviews.length > 0 ? (
             currentReviews.map((review, index) => (
-              <div key={index} className="review-card">
-                <h2>{review.user}</h2>
+              <div key={index} className='review-card'>
+                <h2>{review.user_id}</h2>
                 <p>{review.content}</p>
-                <p>{review.review}</p>
+                <p>{review.avaliation}</p>
               </div>
             ))
           ) : (
             <p>Nenhuma avaliação disponível.</p>
           )}
         </div>
-        <div className="pagination">
+        <div className='pagination'>
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}

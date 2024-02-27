@@ -2,26 +2,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('../images/fundo-abstrato-com-design-baixo-poli_1048-8478.avif'); /* Substitua 'imagem1.jpg' pelo caminho da imagem desejada */
+    background-image: url('../images/fundo-abstrato-com-design-baixo-poli_1048-8478.avif');
     background-size: cover;
     background-position: center;
-    min-height: 100vh; /* Garante que a altura do contêiner seja pelo menos igual à altura da tela */
-    padding: 20px; /* Adicione algum espaçamento interno */
-}
-
-.search-title {
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .search-title {
     font-size: 2rem;
     margin-bottom: 20px;
-}
-
-.search-input {
+  }
+  
+  .search-input {
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
-}
-
-.search-button {
+  }
+  
+  .search-button {
     background-color: #0066cc;
     color: #ffffff;
     padding: 10px 20px;
@@ -31,15 +31,23 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.search-button:hover {
+  }
+  
+  .search-button:hover {
     background-color: #0056a6;
-}
-
-/* Estilos de mídia para responsividade */
-@media only screen and (max-width: 767px) {
+  }
+  
+  /* Estilos para o container dos cards dos desenvolvedores */
+  .dev-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px; /* Adicione um espaçamento superior para separar os cards do container de busca */
+  }
+  
+  /* Estilos de mídia para responsividade */
+  @media only screen and (max-width: 767px) {
     .container-search {
-        padding: 10px; /* Ajuste o espaçamento interno para telas menores */
+      padding: 10px;
     }
-}
+  }
