@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import UnderConstruction from '../components/UnderConstruction';
+import UnderConstruction from '../pages/UnderConstruction';
 
 // eslint-disable-next-line no-undef
 test('renders under construction page', () => {

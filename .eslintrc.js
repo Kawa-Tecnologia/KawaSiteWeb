@@ -9,7 +9,7 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-      "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended"
     ],
     "overrides": [
         {
@@ -29,14 +29,14 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react","@typescript-eslint"
+        "react",
+        "@typescript-eslint"
     ],
-    "rules": {
-    },
+    "rules": {},
     "parser": "@typescript-eslint/parser",
     "settings": {
         "react": {
-          "version": "detect"
+            "version": "detect"
         }
-      }
+    }
 }
