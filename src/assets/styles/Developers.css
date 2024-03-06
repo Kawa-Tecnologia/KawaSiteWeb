@@ -1,0 +1,12 @@
+.developer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+    grid-gap: 20px; /* Espaçamento entre as cartas */
+    grid-auto-rows: auto; /* Altura automática para as linhas */
+  }
+  
+  .developer-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+  }

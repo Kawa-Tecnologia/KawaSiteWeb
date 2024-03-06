@@ -3,6 +3,7 @@
 
   }
   
+  .right-container,
   .left-container {
     flex: 1;
     padding: 20px;   
@@ -13,9 +14,10 @@
     flex: 2;
     padding: 20px;
     
+    
   }
   
- 
+  .right-container > *,
   .left-container > * {
     background-color:#041c77;
     padding: 20px;
@@ -23,9 +25,27 @@
     margin-bottom: 20px;
   }
   
+  .right-container > * h2,
   .left-container > * h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
   }
   
-  
+  .notification-bar {
+    background-color: #ffcccc;
+    color: #ff0000;
+    padding: 10px;
+    margin-bottom: 10px; 
+    width: calc(100% - 20px);
+  }
+
+  .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 12px;
+  }

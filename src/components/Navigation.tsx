@@ -1,16 +1,25 @@
 import React from 'react'
 import ContactButton from './Whatsapp'
 
-interface NavigationProps {
-  currentPage: string
-}
 
-const Navigation: React.FC<NavigationProps> = ({ currentPage }) => {
+
+const Navigation: React.FC = () => {
   return (
     <nav className="nav">
       <ul className="nav-list">
-        {currentPage === 'home' && (
+        {(
+          
           <div>
+            <li className="nav-item">
+              <a href="/" className="nav-link">
+                Pagina Principal
+              </a>
+            </li>
+               <li className="nav-item">
+              <a href="/request-devs" className="nav-link">
+                Solicite um Dev
+              </a>
+            </li>
             <li className="nav-item">
               <a href="/devs" className="nav-link">
                 Area Devs
@@ -24,20 +33,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage }) => {
             <ContactButton />
           </div>
         )}
-        {currentPage === 'about-us' && (
-          <div>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                Pagina Principal
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/devs" className="nav-link">
-                Area Devs
-              </a>
-            </li>
-          </div>
-        )}
+        
       </ul>
     </nav>
   )

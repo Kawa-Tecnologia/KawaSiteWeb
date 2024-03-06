@@ -10,7 +10,9 @@ form {
     background-color: #f0f0f0; /* Cor de fundo do formulário */
     padding: 20px;
     border-radius: 10px;
-    width: 400px; /* Largura do formulário */
+    width: 400px; 
+    align-items: center;
+    justify-content: center;
 }
 
 form > div {

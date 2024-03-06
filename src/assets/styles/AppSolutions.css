@@ -1,0 +1,33 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.main-content-solution {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* Três colunas com largura igual */
+    justify-content: center;
+    /* Centraliza os itens horizontalmente */
+    align-items: center;
+    /* Centraliza os itens verticalmente */
+    gap: 20px;
+    /* Espaçamento entre os containers */
+    margin-top: 20px;
+    /* Espaçamento superior */
+}
+
+section {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+  }
+
+  #services {
+    background-color: transparent;
+  }

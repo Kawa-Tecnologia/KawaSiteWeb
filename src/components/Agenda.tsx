@@ -3,90 +3,100 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import UserContainer from './UserContainer'
 import Menu from './Menu'
-import { Value } from 'react-calendar/dist/cjs/shared/types'
+import axios from 'axios'
+import '../assets/styles/Agenda.css'
 
-interface Training {
+interface Ticket {
   id: number
-  created_at: Date
-  title: string
-  trainer: string
-  time: string
-}
-
-interface Order {
-  producer_id: number
-  client_id: number
-  training: Training
-  value: number
+  project_id: number
+  user_id: number
+  date: Date
+  status: string
+  receipt_id: number
+  type: string
   points: number
-  discount: number
-  quantity: number
-  payment_id: number
 }
 
-const Agenda: React.FC<{ ordersData: Order[] }> = ({ ordersData }) => {
-  const [agenda, setAgenda] = useState<Order[]>([])
-  const [selectedDate, setSelectedDate] = useState<Value | null>(null)
-
-  const sendWhatsAppMessage = (training: Training) => {
-    console.log(
-      `Enviando mensagem de WhatsApp para ${training.trainer}: ${training.title}`,
-    )
-  }
-
-  const markTraining = (training: Order) => {
-    setAgenda([...agenda, training])
-  }
+const Agenda: React.FC = () => {
+  const [tickets, setTickets] = useState<Ticket[]>([])
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [projectsPerPage] = useState<number>(8)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date()
-      agenda.forEach((training) => {
-        const trainingTime = new Date(training.training.created_at)
-        const difference = trainingTime.getTime() - now.getTime()
-        const hoursDifference = difference / (1000 * 3600)
-        if (hoursDifference <= 1 && hoursDifference > 0) {
-          sendWhatsAppMessage(training.training)
-        }
-      })
-    }, 60000)
-    return () => clearInterval(interval)
-  }, [agenda])
+    const fetchTickets = async () => {
+      try {
+        const token = localStorage.getItem('token')
+        const userId = localStorage.getItem('userId')
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/tickets?user_id=${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        )
+        setTickets(response.data.tickets)
+      } catch (error) {
+        console.error('Erro ao buscar tickets:', error)
+      }
+    }
+
+    fetchTickets()
+  }, [])
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   return (
-    <div className="dashboard">
-      <div className="left-container">
+    <div className='dashboard'>
+      <div className='left-container'>
         <UserContainer />
         <Menu />
       </div>
-      <div className="main-content">
-        <div className="agenda">
+      <div className='main-content'>
+        <div className='agenda'>
           <h2>Agenda</h2>
-          <div className="calendar">
+          <div className='calendar'>
             <Calendar
-              onChange={(value) => setSelectedDate(value)}
-              value={selectedDate as Value}
               tileContent={({ date }) => {
-                const hasTraining = ordersData.some((order) => {
-                  const trainingDate = new Date(order.training.created_at)
-                  return trainingDate.toDateString() === date.toDateString()
+                const hasTraining = tickets.some(ticket => {
+                  const ticketDate = ticket.date
+                  return (
+                    new Date(ticketDate).toDateString() === date.toDateString()
+                  )
                 })
                 return (
-                  hasTraining && <p className="training-marker">Treinamento</p>
+                  hasTraining && <p className='training-marker'>Treinamento</p>
                 )
               }}
             />
           </div>
-          <div className="agenda-items">
-            {ordersData.map((order) => (
-              <div key={order.training.id} className="agenda-item">
-                <h3>{order.training.title}</h3>
-                <p>Treinador: {order.training.trainer}</p>
-                <p>Data: {order.training.created_at.toDateString()}</p>
-                <p>Hora: {order.training.time}</p>
-                <button onClick={() => markTraining(order)}>Marcar</button>
+          <div className='agenda-items'>
+            {tickets.map(ticket => (
+              <div key={ticket.id} className='agenda-item'>
+                <p>Status: {ticket.status}</p>
+                <p>Data: {ticket.date}</p>
               </div>
             ))}
+          </div>
+          <div className='pagination'>
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Anterior
+            </button>
+            <span>
+              Página {currentPage} de{' '}
+              {Math.ceil((tickets?.length || 0) / projectsPerPage)}
+            </span>
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={
+                currentPage === Math.ceil(tickets.length / projectsPerPage)
+              }
+            >
+              Próxima
+            </button>
           </div>
         </div>
       </div>

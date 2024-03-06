@@ -24,7 +24,7 @@ const Reviews: React.FC = () => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/reviews/${userId}`,
+          `${process.env.REACT_APP_API_URL}/api/reviews?receive_user_id=${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}` // Inclua o token JWT no cabeçalho de autorização
@@ -42,12 +42,14 @@ const Reviews: React.FC = () => {
   }, [searchTerm, currentPage]) // Atualize a lista de reviews quando o termo de busca ou a página atual mudar
 
   // Filtrar as avaliações com base no termo de busca
-  const filteredReviews: Review[] = reviews.filter(
+  const filteredReviews: Review[] = reviews?.filter(
     review => review.receive_user_id
   )
 
   // Lógica para calcular o número total de páginas
-  const totalPages: number = Math.ceil(filteredReviews.length / reviewsPerPage)
+  const totalPages: number = Math.ceil(
+    (filteredReviews?.length || 0) / reviewsPerPage
+  )
 
   // Lógica para determinar as avaliações da página atual
   const indexOfLastReview: number = currentPage * reviewsPerPage

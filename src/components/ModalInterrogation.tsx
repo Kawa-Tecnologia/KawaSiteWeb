@@ -1,0 +1,27 @@
+import React from 'react'
+
+interface ModalProps {
+  isOpen: boolean
+  onClose: () => void
+  children: React.ReactNode
+}
+
+const ModalInterrogation: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  return (
+    <div>
+      {isOpen && (
+        <div className='modal'>
+          <div className='modal-content'>
+            <span className='close' onClick={onClose}>
+              &times;
+            </span>
+            {children}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+
+export default ModalInterrogation

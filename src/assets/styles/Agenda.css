@@ -4,9 +4,10 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: #0066CC;
   border-radius: 10px;
   margin-bottom: 20px;
+  color: #ea3131;
 }
 
 .agenda-content {
@@ -18,19 +19,19 @@
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 10px;
-
 }
 
 .calendar {
-  border: 1px solid #ccc;
+  border: 1px solid #8a0e0e;
   border-radius: 5px;
   overflow: hidden;
+  background-color: #0066CC;
 }
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
-  background-color: #f0f0f0;
+  background-color: #a33939;
   padding: 5px;
 }
 
@@ -48,40 +49,56 @@
 .calendar-day {
   text-align: center;
   padding: 10px;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #541717;
+  border-bottom: 1px solid #462020;
 }
 
 .calendar-day.today {
-  background-color: #ffefb3;
+  background-color: #25200c;
 }
 
 .calendar-day.training {
-  background-color: #b3e5fc;
+  background-color: #28383f;
 }
 
-.left-container {
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 1px;
-  flex: 0.3;
-  padding: 10px;
-  max-width: 300px; /* Defina uma largura máxima para o lado esquerdo */
+.react-calendar__tile {
+  background-color: #8a0e0e;
+  color: #fff;
 }
 
-.left-container > * {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 20px;
-  border-radius: 20px;
-  margin-bottom: 10px;
+.react-calendar__tile--active {
+  background-color: #a33939;
 }
 
-.left-container > * h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.react-calendar__tile--now {
+  background-color: #25200c;
 }
 
-@media screen and (max-width: 768px) {
-  .left-container {
-    max-width: none; /* Remove a largura máxima */
-  }
+.react-calendar__tile--hasActive {
+  background-color: #28383f;
+}
+
+.calendar-header .react-calendar__navigation {
+  color: #25200c;
+}
+
+.react-calendar__navigation__arrow {
+  background: none;
+  border: none;
+  color: #25200c;
+}
+
+.react-calendar__navigation__arrow:enabled:hover,
+.react-calendar__navigation__arrow:enabled:focus,
+.react-calendar__navigation__label__labelText, 
+.react-calendar__navigation__label__labelText--from {
+  color: #000;
+}
+
+.react-calendar__navigation__arrow:disabled {
+  color: #ccc;
+}
+
+.calendar-month {
+  color: #25200c;
 }

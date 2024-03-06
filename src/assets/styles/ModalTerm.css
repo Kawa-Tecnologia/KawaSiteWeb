@@ -1,0 +1,8 @@
+
+
+.modal-content {
+
+  max-height: 400px; /* Altura máxima do conteúdo */
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo ultrapassa a altura máxima */
+}
+

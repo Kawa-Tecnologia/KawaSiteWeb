@@ -1,0 +1,158 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #00bcd4;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: #00bcd4;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  a {
+    color: #00bcd4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #0097a7;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 30px;
+    }
+  
+    h2 {
+      font-size: 22px;
+    }
+  
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .doubts-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .question {
+    margin-bottom: 30px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .back-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3;
+  }
+
+  .doubts-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif; /* Usar uma fonte semelhante à usada pela marca */
+  }
+  
+  .branding {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .logo {
+    width: 100px; /* Ajustar o tamanho conforme necessário */
+    margin-right: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #007bff; /* Cor primária da marca */
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333; /* Cor de texto padrão */
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .back-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3;
+  }

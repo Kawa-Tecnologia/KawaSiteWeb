@@ -4,6 +4,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Modal from 'react-modal'
+import Payment from './Payment'
 
 interface Project {
   id: number
@@ -15,14 +16,30 @@ interface Project {
   duration: number
   developer_review: number
   points_required: number
+  link: string
+  user_id: number
+}
+
+interface Payment {
+  title: string
+  image: string
+  link: string
+  price: number
 }
 
 const TrainingHistory: React.FC = () => {
   const [userPoints, setUserPoints] = useState<number>(
     Number(localStorage.getItem('userPoints')) || 0
-  );  const userId = Number(localStorage.getItem('userId'))
+  )
+  const userId = Number(localStorage.getItem('userId'))
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
-
+  const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false) // Estado para controlar a abertura do modal de pagamento
+  const [modalPayment, setModalPayment] = useState<Payment>({
+    title: '',
+    image: '',
+    link: '',
+    price: 0
+  })
   const [searchTerm, setSearchTerm] = useState('')
   const [projects, setProjects] = useState<Project[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
@@ -37,16 +54,18 @@ const TrainingHistory: React.FC = () => {
     date: new Date(),
     duration: 0,
     developer_review: 0,
-    points_required: 0
+    points_required: 0,
+    link: '',
+    user_id: 0
   })
   const filteredProjects = projects.filter(project =>
     project?.title?.toLowerCase().includes(searchTerm?.toLowerCase())
   )
-  const totalPages = Math.ceil(filteredProjects.length / 8)
+  const totalPages = Math.ceil((filteredProjects.length || 0) / 8)
 
   const paginate = (pageNumber: number): void => setCurrentPage(pageNumber)
   const token = localStorage.getItem('token')
-  const trainingHistory = filteredProjects.slice(
+  const trainingHistory = filteredProjects?.slice(
     (currentPage - 1) * 8,
     currentPage * 8
   )
@@ -56,7 +75,7 @@ const TrainingHistory: React.FC = () => {
   const fetchProjects = async () => {
     try {
       const token = localStorage.getItem('token')
-      const response = await axios.get(`http://localhost:3001/api/projects`, {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -78,23 +97,28 @@ const TrainingHistory: React.FC = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3001/api/orders?user=${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
+        const projectsIds = projects.map(project => project.id)
+        if (projectsIds.length) {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/receipts?project_id=${projectsIds.join(
+              ','
+            )}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
             }
+          )
+
+          if (response.data) {
+            const trainingParticipeIds = response.data.receipts
+              .filter((receipt: { project_id: number }) =>
+                projects.some(project => project.id === receipt.project_id)
+              )
+              .map((receipt: { project_id: number }) => receipt.project_id)
+
+            setParticipationsIds(trainingParticipeIds)
           }
-        )
-
-        if (response.data) {
-          const trainingParticipeIds = response.data.orders
-            .filter((order: { project_id: number }) =>
-              projects.some(project => project.id === order.project_id)
-            )
-            .map((order: { project_id: number }) => order.project_id)
-
-          setParticipationsIds(trainingParticipeIds)
         }
       } catch (error) {
         console.error('Erro ao buscar ordens:', error)
@@ -147,7 +171,6 @@ const TrainingHistory: React.FC = () => {
   }
 
   const handleCheckout = async (project: Project) => {
-    
     if (userPoints < project.points_required) {
       console.log('Botão de Adquirir Pontos clicado')
     } else if (participationsIds.includes(project.id)) {
@@ -157,26 +180,38 @@ const TrainingHistory: React.FC = () => {
     } else {
       const body = {
         project_id: project.id,
-        user_id: userId,
+        user_id: project.user_id,
         points: userPoints,
-        status: 'APPROVED'
+        status: 'APPROVED',
+        receive_user_id: userId
       }
 
-      const url = 'http://localhost:3001/api/receipts'
+      const url = `${process.env.REACT_APP_API_URL}/api/receipts`
       const { data } = await axios.post(url, body, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      const urlUser = `${process.env.REACT_APP_API_URL}/api/user/${userId}`
+
+      const bodyUser = {
+        points: project.points_required,
+        type: 'DEBIT'
+      }
+      await axios.put(urlUser, bodyUser, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
 
       if (data.message === 'Recebimento criado com sucesso') {
-        const updatedPoints = userPoints - project.points_required;
-        localStorage.setItem('userPoints', updatedPoints.toString());
+        const updatedPoints = userPoints - project.points_required
+        localStorage.setItem('userPoints', updatedPoints.toString())
         setUserPoints(updatedPoints)
-        setParticipationsIds([...participationsIds, project.id]);
+        setParticipationsIds([...participationsIds, project.id])
         toast.success('Participação Confirmada!', {
-          position: 'top-center',
-        });
+          position: 'top-center'
+        })
       }
     }
   }
@@ -185,11 +220,12 @@ const TrainingHistory: React.FC = () => {
     setSearchTerm(event.target.value)
     setCurrentPage(1)
   }
-  const handleCompra = (quantidade: number, preco: number) => {
-    // Lógica para processar a compra
-    console.log(
-      `Compra de ${quantidade} pontos realizada por R$${preco.toFixed(2)}`
-    )
+  const handleCompra = (payment: Payment) => {
+    openPaymentModal(payment)
+  }
+  const openPaymentModal = (payment: Payment) => {
+    setShowPaymentModal(true)
+    setModalPayment(payment)
   }
   return (
     <div className='training-history'>
@@ -219,6 +255,11 @@ const TrainingHistory: React.FC = () => {
               <div>
                 <strong>Título:</strong> {training.title}
               </div>
+              {training.link && participationsIds.includes(training.id) && (
+                <div>
+                  <strong>Link:</strong> {training.link}
+                </div>
+              )}
               <div>
                 <strong>Descrição:</strong> {training.description}
               </div>
@@ -253,25 +294,25 @@ const TrainingHistory: React.FC = () => {
                     <div className='pontos-options-container'>
                       <div className='pontos-option'>
                         <p>1000 Pontos por R$10,00</p>
-                        <button onClick={() => handleCompra(1000, 10)}>
+                        <button onClick={() => handleCompra(modalPayment)}>
                           Comprar
                         </button>
                       </div>
                       <div className='pontos-option'>
                         <p>2000 Pontos por R$20,00</p>
-                        <button onClick={() => handleCompra(2000, 20)}>
+                        <button onClick={() => handleCompra(modalPayment)}>
                           Comprar
                         </button>
                       </div>
                       <div className='pontos-option'>
                         <p>5000 Pontos por R$50,00</p>
-                        <button onClick={() => handleCompra(5000, 50)}>
+                        <button onClick={() => handleCompra(modalPayment)}>
                           Comprar
                         </button>
                       </div>
                       <div className='pontos-option'>
                         <p>10000 Pontos por R$98,00</p>
-                        <button onClick={() => handleCompra(10000, 98)}>
+                        <button onClick={() => handleCompra(modalPayment)}>
                           Comprar
                         </button>
                       </div>
@@ -324,6 +365,23 @@ const TrainingHistory: React.FC = () => {
         </div>
       </div>
       <ToastContainer />
+      {showPaymentModal && (
+        <div id='myModal' className={`modal ${showPaymentModal ? 'show' : ''}`}>
+          <div className='modal-content'>
+            <span className='close' onClick={() => setShowPaymentModal(false)}>
+              &times;
+            </span>
+            <h2 id='modal-title'>Pagamento</h2>
+            <Payment
+              title={'1'}
+              image={''}
+              link={''}
+              price={0}
+              closeModal={closeModal}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilos para o cabeçalho */
+  .header {
+    background-color: #4285f4; /* Azul vívido */
+    color: #fff; /* Texto branco */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 36px;
+  }
+  
+  /* Estilos para a seção de destaque */
+  .destaque {
+    background-color: #4caf50; /* Verde vívido */
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .destaque h2 {
+    font-size: 24px;
+  }
+  
+  .destaque p {
+    font-size: 18px;
+  }
+  
+  /* Estilos para os botões */
+  .button {
+    display: inline-block;
+    background-color: #ff5722; /* Laranja vívido */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .button:hover {
+    background-color: #e64a19; /* Laranja mais escuro ao passar o mouse */
+  }
+  .container-request {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  /* Estilos para a seção de serviços */
+  .servicos {
+    background-color: #03a9f4; /* Azul claro */
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .servicos h2 {
+    font-size: 24px;
+  }
+  
+  .servicos p {
+    font-size: 18px;
+  }
+  
+  /* Estilos para o rodapé */
+  .footer {
+    background-color: #333; /* Cinza escuro */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  
+  /* Estilos para links no rodapé */
+  .footer a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dashed #fff;
+  }
+  
+  .footer a:hover {
+    border-bottom: 1px solid #fff;
+  }

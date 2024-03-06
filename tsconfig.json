@@ -12,7 +12,7 @@
   "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx"
-  ],
+, "src/pages/KawaSolutions/RequestDevsPage.tsz", "src/pages/KawaSolutions/RequestDevsPage.tsz"  ],
   "exclude": [
     "node_modules"
   ]

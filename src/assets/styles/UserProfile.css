@@ -11,12 +11,17 @@
     font-size: 1.5rem;
     margin-bottom: 10px;
   }
+  .profile h3 {
+  color: #333;
+  }
+
+  .right-container > *,
   .left-container > * {
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
   }
-
+  .right-container > * h2,
   .left-container > * h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
@@ -79,8 +84,8 @@
   
   ul li {
     display: inline-block;
-    background-color: #007bff;
-    color: #fff;
+    /* background-color: #007bff;
+    color: #fff; */
     padding: 5px 10px;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -96,3 +101,10 @@
     margin-top: 20px;
   }
   
+  .form-container-user {
+    display: flex;
+  }
+  
+  .personal-info-form {
+    margin-right: 20px; /* Ajuste conforme necessário */
+  }

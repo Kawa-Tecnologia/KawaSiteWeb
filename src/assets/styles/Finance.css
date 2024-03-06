@@ -1,3 +1,4 @@
+.right-container,
 .left-container {
   flex: 0 0 250px; /* Largura fixa para o container esquerdo */
 }

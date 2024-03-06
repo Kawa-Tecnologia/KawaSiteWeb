@@ -1,16 +1,20 @@
 .training-details {
-  background-color: #5f73e7;
+  background-color: #f0f0f0;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px; /* Define uma largura máxima para evitar que o conteúdo se estenda muito */
   margin: 0 auto; /* Centraliza horizontalmente */
+  color: #000;
 }
-
+.training-details strong {
+  color: #0e0e0e;
+}
 .training-details h2 {
   font-size: 1.5rem;
   margin-bottom: 20px;
+  color: #0e0e0e;
 }
 
 .detail-item {

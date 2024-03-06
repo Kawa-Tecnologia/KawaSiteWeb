@@ -4,15 +4,27 @@ import Menu from './Menu'
 import '../assets/styles/MessageForForum.css'
 import axios from 'axios'
 const MessageForForum: React.FC = () => {
-  // Estados para armazenar os valores dos campos do formulário
+  const [title, setTitle] = useState<string>('')
   const [linguagem, setLinguagem] = useState<string>('')
   const [nivel, setNivel] = useState<string>('')
   const [ferramenta, setFerramenta] = useState<string>('')
   const [duracao, setDuracao] = useState<string>('')
   const [description, setDescription] = useState<string>('')
+  const [term, setTerm] = useState<number>(1)
 
+  interface UserData {
+    id: number
+    fullname: string
+    email: string
+    points: number
+    phone: number
+    plan_id: number
+  }
   // Função para lidar com o envio do formulário
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const user = localStorage.getItem("user")
+    const storedUser: UserData = user ? JSON.parse(user) : null
+
     event.preventDefault()
     const stringMessage = `Treinamento Solicitado\nUsuario:Renato\nLinguagem de Programação:${linguagem}\nNivel Tecnico do Solicitante:${nivel}\nFerramentas:${ferramenta}\nDuração:${duracao}\nDescrição:${description}`
     await axios.post(
@@ -22,6 +34,25 @@ const MessageForForum: React.FC = () => {
         content: stringMessage
       }
     )
+    const body = {
+      title: title,
+      name: storedUser?.fullname,
+      email: storedUser?.email,
+      phone: storedUser?.phone,
+      description: description,
+      value: 50,
+      term: term,
+      type: 'training',
+      cep: '',
+      local: 'online',
+      agreeTerms: true,
+      user_id: storedUser?.id
+    }
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/request-devs`,body,{
+      headers:{
+        Authorization: `Bearer 1234`
+      }
+    })
   }
 
   return (
@@ -32,8 +63,16 @@ const MessageForForum: React.FC = () => {
       </div>
       <div className='main-content'>
         <div className='message-forum-container'>
-          <h1>Enviar Mensagem para o Fórum</h1>
+          <h1>Solicitar treinamento para o Fórum/Prestadores</h1>
           <form onSubmit={handleSubmit}>
+          <label htmlFor='title'>Titulo:</label>
+            <input
+              type='text'
+              id='title'
+              value={title}
+              onChange={event => setTitle(event.target.value)}
+              required
+            />
             <label htmlFor='linguagem'>Linguagem de Programação:</label>
             <input
               type='text'
@@ -82,7 +121,14 @@ const MessageForForum: React.FC = () => {
               onChange={event => setDescription(event.target.value)}
               required
             />
-
+ <label htmlFor='term'>Prazo em dias:</label>
+            <input
+              type='number'
+              id='term'
+              value={term.toString()}
+              onChange={event => setTerm(parseInt(event.target.value))}
+              required
+            />
             <button type='submit'>Enviar Solicitação</button>
           </form>
         </div>

@@ -1,0 +1,68 @@
+#planos {
+    background-image: url('../images/vecteezy_abstract-futuristic-connecting-dots-and-lines-on-blue_8300426.jpg');
+  
+  }
+  .plano-container {
+    display: flex;
+  }
+  .plano-group {
+    display: flex;
+    
+  }
+  
+  .plano {
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+
+  }
+  
+  
+  .plano + .plano {
+    margin-left: 20px;
+  }
+ 
+  
+ 
+  
+  .plano h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .plano p {
+    margin-bottom: 15px;
+  }
+  
+  .plano button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+  
+  .plano button:hover {
+    background-color: #0056b3;
+  }
+
+   @media only screen and (max-width: 767px) {
+    .plano-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .plano {
+      width: 50%; /* Definir a largura dos planos para ocupar 90% da largura do contêiner pai */
+      margin-bottom: 10px; /* Adicionar espaçamento inferior entre os planos */
+    }
+  }
+
+  
+  .plano-item {
+    background-color: black; /* Definindo o fundo branco apenas para os quadrados dos planos */
+  }

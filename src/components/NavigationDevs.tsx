@@ -1,19 +1,20 @@
 import React from 'react'
 import EmailButton from './Mail'
 
-interface NavigationDevProps {
-  currentPage: string
-}
-
-const NavigationDev: React.FC<NavigationDevProps> = ({ currentPage }) => {
+const NavigationDev: React.FC = () => {
   return (
     <nav className="nav">
       <ul className="nav-list">
-        {currentPage === 'devs' && (
+        {(
           <div>
             <li className="nav-item">
               <a href="/" className="nav-link">
                 Pagina Principal
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/devs" className="nav-link">
+                Area Devs
               </a>
             </li>
             <li className="nav-item">
@@ -22,7 +23,7 @@ const NavigationDev: React.FC<NavigationDevProps> = ({ currentPage }) => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="#planos" className="nav-link">
+              <a href="/devs/join-the-team" className="nav-link">
                 Entre na Equipe
               </a>
             </li>
@@ -34,25 +35,7 @@ const NavigationDev: React.FC<NavigationDevProps> = ({ currentPage }) => {
             <EmailButton />
           </div>
         )}
-        {currentPage === 'login' && (
-          <div>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                Pagina Principal
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/devs/about-us" className="nav-link">
-                Sobre Nós Devs
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/devs" className="nav-link">
-                Area Devs
-              </a>
-            </li>
-          </div>
-        )}
+        
       </ul>
     </nav>
   )

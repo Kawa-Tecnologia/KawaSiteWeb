@@ -3,12 +3,14 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #203581;
+  background-color: #0066CC;
+  background-image: url('./assets//images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif');
+
 }
 
 header {
-  background-color: #041c77;
-  color: #ffffff;
+  background-color: #0066CC;
+  color: #5274be;
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -45,8 +47,8 @@ nav ul li a {
 
 
 .cta-button {
-  background-color: #ffffff;
-  color: #0066cc;
+  background-color: #0066CC;
+  color: #f0f0f0;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
@@ -72,7 +74,7 @@ section {
 
 section h2 {
   font-size: 2rem;
-  color: #ffffff;
+  color:#0066CC;
   margin-bottom: 20px;
 }
 
@@ -92,28 +94,16 @@ footer {
 
 /* Estilo específico para outras seções */
 #sobre-nos {
-  background-image: url('../src/assets/images/bdaa078b959811fc5f56cd02512bb22c.jpg');
+  background-color: #0e0e0e;
   opacity: 0.9;
 }
 
-#projetos {
-  background-image: url('../src/assets/images/bdaa078b959811fc5f56cd02512bb22c.jpg');
-  opacity: 0.9;
-}
+
 
 #devs {
-  background-image: url('../src/assets/images/network-3357642_1280.webp');
+  background-color: transparent;
 }
 
-#contato {
-  background-image: url('../src/assets/images/bdaa078b959811fc5f56cd02512bb22c.jpg');
-  opacity: 0.9;
-}
-
-#partners {
-  background-image: url('../src/assets/images/bdaa078b959811fc5f56cd02512bb22c.jpg');
-  opacity: 0.9;
-}
 #sobre-nos,
 #projetos,
 #devs,
@@ -172,6 +162,7 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
 }
 
 .banner-left,
@@ -185,10 +176,13 @@ footer {
 }
 
 
-
+.banner-left,
 .banner-right {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+
+
+  
 }
 
 
@@ -198,17 +192,18 @@ footer {
   background-position: center;
   min-width: 80%;
   max-width: 90%;
-  background-color: #041c77;
 }
 
 .left,
 .right {
   flex: 5;
   border: 0px solid black;
+
 }
 
 .middle {
   margin: 0 10px;
+
 }
 
 
@@ -224,6 +219,7 @@ footer {
     /* Move a seção "Bem-vindo à Kawa Tecnologia" para o segundo lugar no empilhamento */
   }
 
+  .left
   .right {
     order: 3;
     /* Move a seção "Desenvolvedores Open to Work" para o terceiro lugar no empilhamento */
@@ -240,14 +236,24 @@ footer {
   /* Cor das estrelas preenchidas */
 }
 
+.right-container,
 .left-container {
-  background-color: #282c34;
   /* Cor de fundo escura */
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  /* Sombra sutil */
 }
+
+
+.container-geral {
+  background-image: url('../src/assets/images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Garante que o container ocupe toda a altura da tela */
+}
+
+
 
 /* Exemplo de ícone para o menu (usando FontAwesome como referência) */
 .icon-home::before {
@@ -264,6 +270,7 @@ footer {
   background-color: #fff;
   color: #333;
   min-height: 100vh;
+
 }
 
 .nav-link {
@@ -281,7 +288,7 @@ footer {
   left: 50%;
   width: 0;
   height: 2px;
-  background-color: #ffffff;
+  background-color: #0066CC;
   transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -293,4 +300,179 @@ footer {
 .nav-link:hover {
   color: #ff00ff; /* Mudar a cor ao passar o mouse */
   transform: translateY(-3px); /* Efeito de elevação ao passar o mouse */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para o corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0e0e0e;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+/* Estilo para o cabeçalho */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.navigation a:hover {
+  color: #66fcf1;
+}
+
+.banner h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.banner h3 {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  color:#5274be;
+}
+
+.banner p {
+  font-size: 1rem;
+}
+
+.banner .cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color:#0066CC;
+  color: #f0f0f0;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.banner .cta-button:hover {
+  background-color: #45a29e;
+}
+
+/* Estilo para a seção de desenvolvedores */
+.devs-section {
+  padding: 50px;
+}
+
+.devs-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.dev-card {
+  background-color: #1a1a1a;
+  color: #ffffff;
+
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.dev-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.dev-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.dev-card p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+/* Estilo para o modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  color: #ffffff;
+
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: #1a1a1a;
+  color: #ffffff;
+
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.close {
+  color: #ffffff;
+  font-size: 2rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ff0000;
+}
+
+/* Estilo para o rodapé */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Estilo para a notificação de erro */
+.error-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0066CC;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 9999;
 }
