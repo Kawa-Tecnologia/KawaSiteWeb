@@ -68,7 +68,9 @@ const RoutesApp: React.FC = () => {
         location.pathname.startsWith('/devs/') &&
         location.pathname !== '/devs/login' &&
         location.pathname !== '/devs/join-the-team' &&
-        location.pathname !== '/devs/about-us'
+        location.pathname !== '/devs/about-us' &&
+        location.pathname !== '/devs/register' &&
+        location.pathname !== '/devs/register-devs'
       ) {
         const token = localStorage.getItem('token')
         if (token) {
