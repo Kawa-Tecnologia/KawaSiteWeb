@@ -306,7 +306,6 @@ const Register: React.FC = () => {
               name='recommendation'
               value={formData.recommendation}
               onChange={handleInputChange}
-              required
             />
           </div>
           <div>
