@@ -248,7 +248,7 @@ const App: React.FC = () => {
                   </h5>
 
                   <div className='dev-cards-container'>
-                    {developers.map((dev, index) => (
+                    {developers?.map((dev, index) => (
                       <DevCard
                         key={index}
                         ProfessionalInfo={dev.ProfessionalInfo}
