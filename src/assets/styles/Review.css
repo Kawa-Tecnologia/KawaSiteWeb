@@ -9,8 +9,8 @@
   
   .review-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
-    grid-gap: 20px; /* Espaçamento entre os cards */
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 20px;
   }
   
   .review-card {
@@ -30,12 +30,7 @@
     color: #666;
   }
   
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
+ 
   .page-link {
     padding: 8px 16px;
     margin: 0 5px;

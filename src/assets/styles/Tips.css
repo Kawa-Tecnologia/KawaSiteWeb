@@ -1,0 +1,27 @@
+.tips {
+    background-color: #222; /* Cor de fundo escura */
+    color: #fff; /* Cor do texto */
+  }
+  
+  .card {
+    background-color: #333; /* Cor de fundo das caixas */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra */
+  }
+  
+  .card h2 {
+    color: #0066CC; /* Cor do título */
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+    
+  tips h1 {
+    color: #0066CC; /* Cor do título principal */
+  }

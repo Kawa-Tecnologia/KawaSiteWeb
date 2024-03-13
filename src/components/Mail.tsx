@@ -6,9 +6,9 @@ const EmailButton: React.FC = () => {
   }
 
   return (
-    <li className="nav-item">
+    <li className='nav-item'>
       <span
-        className="nav-link"
+        className='nav-link'
         onClick={handleEmailClick}
         style={{ cursor: 'pointer' }}
       >

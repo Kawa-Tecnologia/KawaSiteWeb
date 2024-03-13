@@ -1,71 +1,109 @@
 .dev-cards-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+
+}
+
+.dev-cards-container h2 {
+  color: black;
+}
+
+.dev-card img {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+
+}
+
+.dev-card {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+    width: 20%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    text-align: center;
+}
+
+.dev-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.dev-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.dev-card p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 767px) {
+  .dev-card {
     width: 100%;
+  }
+}
+
+.dev-card {
+  width: 30%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 767px) {
+  .dev-cards-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    /* Espaçamento entre os cartões */
-    justify-content: center;
-    /* Centraliza os cartões horizontalmente */
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: auto;
-    grid-gap: 20px;
- 
-  }
-  
-  .dev-card img {
-    max-width: 100%; /* Ajusta a largura da imagem para ocupar todo o espaço disponível */
-    height: auto; /* Mantém a proporção da imagem */
-    cursor: pointer;
-
-  }
-  
-  .devs-section {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os elementos sejam distribuídos em várias linhas quando o espaço é insuficiente */
-    justify-content: space-around; /* Alinha os elementos ao redor com espaçamento igual */
-  }
-  
-  /* Estilos para a classe dev-card */
-  .dev-card {
-    width: 30%; /* Define a largura dos cartões de desenvolvedor para 30% da largura do contêiner pai */
-    margin-bottom: 20px; /* Adiciona espaço entre os cartões */
-  }
-  
-  /* Media query para telas menores */
-  @media only screen and (max-width: 767px) {
-    .dev-card {
-      width: 100%; /* Define a largura dos cartões de desenvolvedor para 100% da largura do contêiner pai em telas menores */
-    }
-  }
-  
-  .dev-card {
-    width: 30%; /* Define a largura inicial dos cartões */
-    margin: 0 auto; /* Centraliza os cartões na página */
-  }
-  
-  /* Media query para telas menores */
-  @media only screen and (max-width: 767px) {
-    .dev-cards-container {
-      display: flex;
-      flex-wrap: wrap; /* Permite que os cartões sejam distribuídos em várias linhas */
-      justify-content: space-around; /* Alinha os cartões ao redor com espaçamento igual */
-    }
-  
-    .dev-card {
-      width: 45%; /* Reduz a largura dos cartões para que eles sejam exibidos em telas menores */
-      margin-bottom: 20px; /* Adiciona espaço entre os cartões */
-    }
+    justify-content: space-around;
   }
 
-  .devs-section {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  .dev-card {
+    width: 45%;
+    margin-bottom: 20px;
   }
-  
-  .devs-section h2 {
-    font-size: 2.0rem;
-  }
+}
+
+.devs-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.devs-section h2 {
+  font-size: 2.0rem;
+}
+
+
+
+.dev-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.dev-name {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.dev-role {
+  color: #888888;
+}

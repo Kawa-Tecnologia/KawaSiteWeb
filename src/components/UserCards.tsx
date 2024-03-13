@@ -6,11 +6,9 @@ interface TrainingCard {
 }
 
 const UserCards: React.FC = () => {
-  // Aqui você pode obter os cards criados pelos treinadores
   const trainingCards: TrainingCard[] = [
     { trainer: 'Treinador 1', content: 'Conteúdo do Card 1' },
     { trainer: 'Treinador 2', content: 'Conteúdo do Card 2' },
-    // Adicione mais cards de treinamento, se necessário
   ]
 
   return (

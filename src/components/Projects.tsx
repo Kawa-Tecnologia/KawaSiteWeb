@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Project.css'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
 import axios from 'axios'
+import LeftContainer from './LeftContainer'
 
 interface Project {
   id: number
@@ -15,10 +14,10 @@ interface Project {
 }
 
 const ProjectsPage: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>([]) // Estado para armazenar os projetos
-  const [searchTerm, setSearchTerm] = useState<string>('') // Estado para armazenar o termo de busca
-  const [currentPage, setCurrentPage] = useState<number>(1) // Estado para controlar a página atual
-  const [projectsPerPage] = useState<number>(8) // Quantidade de projetos por página
+  const [projects, setProjects] = useState<Project[]>([])
+  const [searchTerm, setSearchTerm] = useState<string>('')
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [projectsPerPage] = useState<number>(8)
   const [showModal, setShowModal] = useState<boolean>(false)
   const [modalTitle, setModalTitle] = useState<string>('')
 
@@ -62,14 +61,18 @@ const ProjectsPage: React.FC = () => {
 
       const stringMessage = `${JSON.stringify(body)}`
       await axios.post(
-        'https://discord.com/api/webhooks/1212952643551498270/k4AtrDEBMrPOtxQ0QXBzgu-UR94gGkt1jB2cigvHAzvxOxZ71yPpQ9RKIL-yDWzDcdd4',
+        `${process.env.REACT_APP_FORUM_URL}/api/webhooks/${process.env.REACT_APP_WEBHOOK_ID2}/${process.env.REACT_APP_DISCORD_TOKEN2}`,
         {
           content: stringMessage,
-          embeds:[{image:{
-            url:"https://spaceplace.nasa.gov/gallery-sun/en/solar-flare.en.jpg",
-            height:100,
-            width:100
-          }}]
+          embeds: [
+            {
+              image: {
+                url: 'https://spaceplace.nasa.gov/gallery-sun/en/solar-flare.en.jpg',
+                height: 100,
+                width: 100
+              }
+            }
+          ]
         }
       )
       closeModal()
@@ -87,7 +90,9 @@ const ProjectsPage: React.FC = () => {
     project?.title?.toLowerCase().includes(searchTerm?.toLowerCase())
   )
 
-  const totalPages = Math.ceil((filteredProjects?.length || 0) / projectsPerPage)
+  const totalPages = Math.ceil(
+    (filteredProjects?.length || 0) / projectsPerPage
+  )
 
   const indexOfLastProject = currentPage * projectsPerPage
   const indexOfFirstProject = indexOfLastProject - projectsPerPage
@@ -125,8 +130,6 @@ const ProjectsPage: React.FC = () => {
 
   const handleCreateProject = () => {
     openModal()
-
-    console.log('Abrir formulário para criar projeto')
   }
 
   const handleEditProject = (projectId: number) => {
@@ -134,10 +137,7 @@ const ProjectsPage: React.FC = () => {
   }
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-      </div>
+      <LeftContainer/>
       <div className='projects-page'>
         <h1>Projetos de Treinamento</h1>
         <input
@@ -249,7 +249,6 @@ const ProjectsPage: React.FC = () => {
                 onChange={handleChange}
               />
             </div>
-            {/* Adicione mais campos do formulário conforme necessário */}
             <button type='submit'>Cadastrar</button>
           </form>
         </div>

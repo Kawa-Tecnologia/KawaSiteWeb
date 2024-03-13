@@ -1,6 +1,6 @@
  .right-container,
  .left-container {
-   flex: 0 0 25%;
+   flex: 0 0 20%;
  }
 
  .message-forum-container {
@@ -17,16 +17,9 @@
    color: #333;
  }
 
- form {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   grid-gap: 20px;
- }
 
- label {
-   font-size: 18px;
-   color: #555;
- }
+
+
 
  input[type="text"],
  select {

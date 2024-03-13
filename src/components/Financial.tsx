@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Finance.css'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
 import axios from 'axios'
 import {
   TableContainer,
@@ -14,6 +12,7 @@ import {
   Button
 } from '@mui/material'
 import ErrorNotification from './Error'
+import LeftContainer from './LeftContainer'
 
 interface Receipt {
   id: number
@@ -36,8 +35,8 @@ interface UserData {
   plan_id: number
 }
 const FinancePage = () => {
-  const [saldoDisponivel, setSaldoDisponivel] = useState(0)
-  const [saldoFuturo, setSaldoFuturo] = useState(0)
+  const [balance, setBalance] = useState(0)
+  const [future, setFuture] = useState(0)
   const [receipts, setReceipts] = useState([
     {
       id: 0,
@@ -51,16 +50,15 @@ const FinancePage = () => {
       rate: 0
     }
   ])
-  const [error, setError] = useState<string>('') // Novo estado para controlar erros
-  const [success, setSuccess] = useState<string>('') // Novo estado para controlar erros
+  const [error, setError] = useState<string>('')
+  const [success, setSuccess] = useState<string>('')
 
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('userId')
   const user = localStorage.getItem('user')
   const storedUser: UserData = user ? JSON.parse(user) : null
 
-  const pointsToExchange =
-    Math.ceil(saldoDisponivel + (saldoDisponivel * 10) / 100) * 100
+  const pointsToExchange = Math.ceil(balance + (balance * 10) / 100) * 100
   useEffect(() => {
     const fetchFinancial = async () => {
       try {
@@ -93,8 +91,8 @@ const FinancePage = () => {
           setReceipts(data.receipts)
         }
 
-        setSaldoDisponivel(receiptsBalance)
-        setSaldoFuturo(receiptsFuture)
+        setBalance(receiptsBalance)
+        setFuture(receiptsFuture)
       } catch (error) {
         if (axios.isAxiosError(error)) {
           setError(error.message)
@@ -102,9 +100,9 @@ const FinancePage = () => {
       }
     }
     fetchFinancial()
-  }, []) // Atualize a lista de projetos quando o termo de busca ou a página atual mudar)
+  }, [])
 
-  const handleTrocarSaldoPorPontos = async () => {
+  const handleExchangeBalanceForPoints = async () => {
     try {
       const body = {
         user_id: userId,
@@ -179,24 +177,24 @@ const FinancePage = () => {
 
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-      </div>
+      <LeftContainer/>
       <div className='finance-page'>
         <h1>Financeiro</h1>
         <div className='saldo-section'>
           <div>
-            <h2>Saldo Disponível: R${saldoDisponivel}</h2>
-            {saldoDisponivel > 1 && (
-              <Button variant='contained' onClick={handleTrocarSaldoPorPontos}>
+            <h2>Saldo Disponível: R${balance}</h2>
+            {balance > 1 && (
+              <Button
+                variant='contained'
+                onClick={handleExchangeBalanceForPoints}
+              >
                 Trocar saldo por {pointsToExchange} pontos
               </Button>
             )}
           </div>
 
           <div>
-            <h2>Saldo Futuro: R${saldoFuturo}</h2>
+            <h2>Saldo Futuro: R${future}</h2>
           </div>
         </div>
 

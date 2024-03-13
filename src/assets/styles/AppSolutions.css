@@ -1,33 +1,27 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
 
 .main-content-solution {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    /* Três colunas com largura igual */
-    justify-content: center;
-    /* Centraliza os itens horizontalmente */
-    align-items: center;
-    /* Centraliza os itens verticalmente */
-    gap: 20px;
-    /* Espaçamento entre os containers */
-    margin-top: 20px;
-    /* Espaçamento superior */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-section {
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: black;
-  }
+#services {
+  border-radius: 10px;
+  border: 4px solid #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  background-color: #f0f0f0;
+}
 
-  #services {
-    background-color: transparent;
-  }
+#services h3 {
+  color: #0066CC;
+}

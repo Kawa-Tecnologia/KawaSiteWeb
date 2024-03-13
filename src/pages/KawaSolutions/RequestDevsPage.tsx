@@ -4,13 +4,15 @@ import RequestDevs from './RequestDevs'
 import RightContainer from './RightContainer'
 import LeftContainer from './LeftContainer'
 import '../../assets/styles/RequestDevs.css'
-import DeveloperList from './Developers'
+import DeveloperList from '../../components/Developers'
 import axios from 'axios'
 
 interface ProfessionalData {
   presentation: string
   skills: string[]
   tools: string[]
+  imageSrc: string
+  job_title: string
 }
 
 interface DeveloperType {
@@ -29,7 +31,9 @@ const RequestDevsPage: React.FC = () => {
       ProfessionalInfo: {
         presentation: '',
         skills: [''],
-        tools: ['']
+        tools: [''],
+        imageSrc: '',
+        job_title: ''
       }
     }
   ])
@@ -40,7 +44,7 @@ const RequestDevsPage: React.FC = () => {
           `${process.env.REACT_APP_API_URL}/api/user?type=service&page=1`,
           {
             headers: {
-              Authorization: `Bearer 1234`
+              Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
             }
           }
         )

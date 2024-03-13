@@ -4,8 +4,8 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px; /* Define uma largura máxima para evitar que o conteúdo se estenda muito */
-  margin: 0 auto; /* Centraliza horizontalmente */
+  max-width: 600px; 
+  margin: 0 auto; 
   color: #000;
 }
 .training-details strong {
@@ -31,27 +31,26 @@
   margin-left: 20px;
 }
 
-/* Regras de mídia para ajustar o tamanho dos elementos conforme o tamanho da tela */
 @media only screen and (max-width: 767px) {
   .training-details {
-    padding: 5px; /* Reduz o preenchimento */
-    border-radius: 5px; /* Reduz o raio da borda */
-    max-width: 100%; /* Define a largura máxima como 100% */
-    margin: 0; /* Remove a margem */
+    padding: 5px;
+    border-radius: 5px; 
+    max-width: 100%; 
+    margin: 0; 
   }
 
   .training-details h2 {
-    font-size: 1.3rem; /* Reduz o tamanho da fonte */
-    margin-bottom: 15px; /* Ajusta a margem inferior */
+    font-size: 1.3rem; 
+    margin-bottom: 15px; 
   }
 
   .detail-item h3 {
-    font-size: 1rem; /* Reduz o tamanho da fonte */
-    margin-bottom: 3px; /* Ajusta a margem inferior */
+    font-size: 1rem; 
+    margin-bottom: 3px; 
   }
 
   .detail-item p {
-    font-size: 0.9rem; /* Reduz o tamanho da fonte */
-    margin-left: 10px; /* Ajusta a margem esquerda */
+    font-size: 0.9rem; 
+    margin-left: 10px; 
   }
 }

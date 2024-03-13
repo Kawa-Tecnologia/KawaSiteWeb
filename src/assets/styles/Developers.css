@@ -1,12 +1,86 @@
 .developer-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
-    grid-gap: 20px; /* Espaçamento entre as cartas */
-    grid-auto-rows: auto; /* Altura automática para as linhas */
-  }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: auto;
+  flex-wrap: wrap;
+
+}
+
+.developer-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.developer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.developer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0066CC, #0e0e0e);
+  opacity: 0.7;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.developer-card:hover::before {
+  opacity: 0.9;
+}
+
+.developer-card-content {
+  padding: 20px;
+  color: #fff;
+  z-index: 1;
   
-  .developer-card {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-  }
+}
+
+.developer-card-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.developer-card-content p {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.developer-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.developer-card p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.developer-card p:first-child {
+  font-weight: bold;
+}
+
+.developer-card p:nth-child(n+4) {
+  margin-top: 10px;
+}

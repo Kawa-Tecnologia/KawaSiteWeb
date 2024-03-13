@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
 import '../assets/styles/MessageForForum.css'
 import axios from 'axios'
+import LeftContainer from './LeftContainer'
 const MessageForForum: React.FC = () => {
   const [title, setTitle] = useState<string>('')
-  const [linguagem, setLinguagem] = useState<string>('')
-  const [nivel, setNivel] = useState<string>('')
-  const [ferramenta, setFerramenta] = useState<string>('')
-  const [duracao, setDuracao] = useState<string>('')
+  const [language, setLanguage] = useState<string>('')
+  const [level, setLevel] = useState<string>('')
+  const [tool, setTool] = useState<string>('')
+  const [duration, setDuration] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [term, setTerm] = useState<number>(1)
 
@@ -20,15 +19,14 @@ const MessageForForum: React.FC = () => {
     phone: number
     plan_id: number
   }
-  // Função para lidar com o envio do formulário
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    const user = localStorage.getItem("user")
+    const user = localStorage.getItem('user')
     const storedUser: UserData = user ? JSON.parse(user) : null
 
     event.preventDefault()
-    const stringMessage = `Treinamento Solicitado\nUsuario:Renato\nLinguagem de Programação:${linguagem}\nNivel Tecnico do Solicitante:${nivel}\nFerramentas:${ferramenta}\nDuração:${duracao}\nDescrição:${description}`
+    const stringMessage = `Treinamento Solicitado\nUsuario:Renato\nLinguagem de Programação:${language}\nNivel Tecnico do Solicitante:${level}\nFerramentas:${tool}\nDuração:${duration}\nDescrição:${description}`
     await axios.post(
-      'https://discord.com/api/webhooks/1210587866619715684/13hMQrBR6MT8Uga74ilD7Zp5xTNTIykHF2RZ6qaJOgSjq10SBliOY8Fvq0bakRscZda9',
+      `${process.env.REACT_APP_FORUM_URL}/api/webhooks/${process.env.REACT_APP_WEBHOOK_ID}/${process.env.REACT_APP_DISCORD_TOKEN}`,
       {
         channel: 'devs',
         content: stringMessage
@@ -48,24 +46,25 @@ const MessageForForum: React.FC = () => {
       agreeTerms: true,
       user_id: storedUser?.id
     }
-    await axios.post(`${process.env.REACT_APP_API_URL}/api/request-devs`,body,{
-      headers:{
-        Authorization: `Bearer 1234`
+    await axios.post(
+      `${process.env.REACT_APP_API_URL}/api/request-devs`,
+      body,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+        }
       }
-    })
+    )
   }
 
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-      </div>
+    <LeftContainer/>
       <div className='main-content'>
         <div className='message-forum-container'>
           <h1>Solicitar treinamento para o Fórum/Prestadores</h1>
           <form onSubmit={handleSubmit}>
-          <label htmlFor='title'>Titulo:</label>
+            <label htmlFor='title'>Titulo:</label>
             <input
               type='text'
               id='title'
@@ -73,20 +72,20 @@ const MessageForForum: React.FC = () => {
               onChange={event => setTitle(event.target.value)}
               required
             />
-            <label htmlFor='linguagem'>Linguagem de Programação:</label>
+            <label htmlFor='language'>Linguagem de Programação:</label>
             <input
               type='text'
-              id='linguagem'
-              value={linguagem}
-              onChange={event => setLinguagem(event.target.value)}
+              id='language'
+              value={language}
+              onChange={event => setLanguage(event.target.value)}
               required
             />
 
-            <label htmlFor='nivel'>Nível Técnico do Solicitante:</label>
+            <label htmlFor='level'>Nível Técnico do Solicitante:</label>
             <select
-              id='nivel'
-              value={nivel}
-              onChange={event => setNivel(event.target.value)}
+              id='level'
+              value={level}
+              onChange={event => setLevel(event.target.value)}
               required
             >
               <option value=''>Selecione o Nível</option>
@@ -95,21 +94,21 @@ const MessageForForum: React.FC = () => {
               <option value='avancado'>Avançado</option>
             </select>
 
-            <label htmlFor='ferramenta'>Ferramenta:</label>
+            <label htmlFor='tool'>Ferramenta:</label>
             <input
               type='text'
-              id='ferramenta'
-              value={ferramenta}
-              onChange={event => setFerramenta(event.target.value)}
+              id='tool'
+              value={tool}
+              onChange={event => setTool(event.target.value)}
               required
             />
 
-            <label htmlFor='duracao'>Duração:</label>
+            <label htmlFor='duration'>Duração:</label>
             <input
               type='text'
-              id='duracao'
-              value={duracao}
-              onChange={event => setDuracao(event.target.value)}
+              id='duration'
+              value={duration}
+              onChange={event => setDuration(event.target.value)}
               required
             />
 
@@ -121,7 +120,7 @@ const MessageForForum: React.FC = () => {
               onChange={event => setDescription(event.target.value)}
               required
             />
- <label htmlFor='term'>Prazo em dias:</label>
+            <label htmlFor='term'>Prazo em dias:</label>
             <input
               type='number'
               id='term'

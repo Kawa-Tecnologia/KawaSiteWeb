@@ -1,68 +1,46 @@
-#planos {
-    background-image: url('../images/vecteezy_abstract-futuristic-connecting-dots-and-lines-on-blue_8300426.jpg');
-  
-  }
-  .plano-container {
-    display: flex;
-  }
-  .plano-group {
-    display: flex;
-    
-  }
-  
-  .plano {
-    border: 1px solid #ccc;
-    width: 100%;
-    border-radius: 5px;
-    text-align: center;
-    padding: 10px;
+.plano-container {
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient(135deg, #001f4d, #0066cc);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
 
-  }
-  
-  
-  .plano + .plano {
-    margin-left: 20px;
-  }
- 
-  
- 
-  
-  .plano h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .plano p {
-    margin-bottom: 15px;
-  }
-  
-  .plano button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    
-  }
-  
-  .plano button:hover {
-    background-color: #0056b3;
-  }
+.plano {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  color: #333333;
+}
 
-   @media only screen and (max-width: 767px) {
-    .plano-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .plano {
-      width: 50%; /* Definir a largura dos planos para ocupar 90% da largura do contêiner pai */
-      margin-bottom: 10px; /* Adicionar espaçamento inferior entre os planos */
-    }
-  }
+.plano:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
-  
-  .plano-item {
-    background-color: black; /* Definindo o fundo branco apenas para os quadrados dos planos */
-  }
+.plano h3 {
+  font-size: 1.8rem;
+  color: #001f4d;
+  margin-bottom: 10px;
+}
+
+.plano p {
+  color: #333333;
+}
+
+.plano button {
+  background-color: #0066cc;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.plano button:hover {
+  background-color: #0055b3;
+}

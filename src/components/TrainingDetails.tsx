@@ -21,19 +21,17 @@ const TrainingDetails: React.FC = () => {
 
   const renderStars = (rating: number): JSX.Element[] => {
     const stars: JSX.Element[] = []
-    const roundedRating: number = Math.min(Math.round(rating), 5) // Limita o valor máximo de rating a 5
+    const roundedRating: number = Math.min(Math.round(rating), 5)
     for (let i = 1; i <= 5; i++) {
       stars.push(
         <span key={i} className={i <= roundedRating ? 'filled' : ''}>
           ★
-        </span>,
+        </span>
       )
     }
     return stars
   }
 
-  // Aqui você pode buscar os detalhes do treinamento com base no id
-  // Isso pode ser feito chamando uma API, acessando um banco de dados, ou usando um array pré-definido, como neste exemplo
   const trainingDetails: TrainingDetail[] = [
     {
       id: 1,
@@ -45,7 +43,7 @@ const TrainingDetails: React.FC = () => {
         'Este treinamento abordará os fundamentos do desenvolvimento frontend, incluindo HTML, CSS e JavaScript. Não é necessário conhecimento prévio.',
       duration: '2 horas',
       developer_review: 4,
-      title: '',
+      title: ''
     },
     {
       id: 2,
@@ -57,14 +55,12 @@ const TrainingDetails: React.FC = () => {
         'Este treinamento abordará os fundamentos do desenvolvimento backend, incluindo Node.js, Express e MongoDB. É recomendado algum conhecimento prévio em programação.',
       duration: '3 horas',
       developer_review: 3,
-      title: '',
-    },
-    // Adicione mais detalhes de treinamento, se necessário
+      title: ''
+    }
   ]
 
-  // Encontre o detalhe do treinamento com base no id
   const selectedTraining = trainingDetails.find(
-    (training) => String(training.id) === id,
+    training => String(training.id) === id
   )
 
   if (!selectedTraining) {
@@ -72,47 +68,51 @@ const TrainingDetails: React.FC = () => {
   }
 
   return (
-    <div className="dashboard">
-      <div className="left-container">
+    <div className='dashboard'>
+      <div className='left-container'>
         <UserContainer />
         <Menu />
+        <p>
+          *Indique um amigo e após a primeira compra de pontos dele, você ganha
+          10% de desconto na proxima compra
+        </p>{' '}
       </div>
-      <div className="training-details">
+      <div className='training-details'>
         <h2>Detalhes do Treinamento</h2>
-        <div className="detail-item">
+        <div className='detail-item'>
           <h3>Treinador:</h3>
           <p>{selectedTraining.trainer}</p>
         </div>
-        <div className="detail-item">
+        <div className='detail-item'>
           <h3>Tag de Dev:</h3>
           <p>{selectedTraining.devTag}</p>
         </div>
-        <div className="detail-item">
+        <div className='detail-item'>
           <h3>Titulo:</h3>
           <p>{selectedTraining.title}</p>
         </div>
-        <div className="detail-item">
+        <div className='detail-item'>
           <h3>Detalhes:</h3>
           <p>{selectedTraining.details}</p>
         </div>
-        <div className="detail-item">
+        <div className='detail-item'>
           <h3>Tempo de Duração:</h3>
           <p>{selectedTraining.duration}</p>
         </div>
-        <div className="detail-item">
+        <div className='detail-item'>
           <h3>Data:</h3>
           <p>{selectedTraining.date}</p>
         </div>
-        <div className="detail-item">
+        <div className='detail-item'>
           <h3>Hora:</h3>
           <p>{selectedTraining.time}</p>
         </div>
         <p>Avaliação do Dev: {selectedTraining.developer_review}</p>
-        <div className="stars">
+        <div className='stars'>
           {renderStars(selectedTraining.developer_review)}
         </div>
 
-        <button className="join-button">Participar</button>
+        <button className='join-button'>Participar</button>
       </div>
     </div>
   )

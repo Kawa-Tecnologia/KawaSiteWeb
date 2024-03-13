@@ -9,19 +9,18 @@ import ErrorNotification from './components/Error'
 
 interface Dev {
   fullname: string
-  avaliation: number
   ProfessionalInfo: Professional
 }
 
 interface Professional {
   job_title: string
-  skills: string
+  skills: string[]
   Tag: Tag
   cv_link: string
   presentation: string
   profile_linkedin: string
   profile_github: string
-  tools: string
+  tools: string[]
   url: string
   imageSrc: string
   experience_years: number
@@ -31,7 +30,7 @@ interface Tag {
   tag: string
 }
 
-const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname, avaliation }) => {
+const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const openModal = () => {
@@ -49,15 +48,38 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname, avaliation }) => {
   return (
     <div className='dev-card'>
       <img
-        src={ProfessionalInfo.imageSrc}
+        src={
+          ProfessionalInfo?.imageSrc ||
+          require('./assets/images/2206015-icone-de-trabalho-de-desenvolvedor-vetor.jpg')
+        }
         alt={fullname}
         onClick={handleCardClick}
+        style={{ width: '60%', height: '40%' }}
+        title='Clique aqui para mais detalhes do desenvolvedor!'
       />
-      <h3>Nome: {fullname}</h3>
-      <p>Apresentação: {ProfessionalInfo.presentation}</p>
-      <p>Nivel: {ProfessionalInfo.Tag.tag}</p>
+      <h3>{fullname}</h3>
+      <p>{ProfessionalInfo.job_title}</p>
+      {ProfessionalInfo.profile_linkedin ? (
+        <p>
+          <a
+            href={ProfessionalInfo.profile_linkedin}
+            target='_blank'
+            rel='noreferrer'
+          >
+            Perfil Linkedin
+          </a>
+        </p>
+      ) : ProfessionalInfo.cv_link ? (
+        <p>
+          <a href={ProfessionalInfo.cv_link} target='_blank' rel='noreferrer'>
+            Link do Curriculo
+          </a>
+        </p>
+      ) : (
+        ''
+      )}
+      <p>{ProfessionalInfo.Tag.tag}</p>
 
-      <p>Avaliação: {avaliation}</p>
       {showModal && (
         <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
           <div className='modal-content'>
@@ -76,14 +98,61 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname, avaliation }) => {
             <p>Cargo: {ProfessionalInfo.job_title}</p>
             <p>Nivel: {ProfessionalInfo.Tag.tag}</p>
             <p>Experiência: {ProfessionalInfo.experience_years} anos</p>
-            <p>Avaliação: {avaliation}</p>
-            <p>Curriculo: {ProfessionalInfo.cv_link}</p>
-            <p>Habilidades: {ProfessionalInfo.skills}</p>
-            <p>Ferramentas: {ProfessionalInfo.tools}</p>
+            {ProfessionalInfo.cv_link ? (
+              <p>
+                <a
+                  href={ProfessionalInfo.cv_link}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Link do Curriculo
+                </a>
+              </p>
+            ) : (
+              ''
+            )}
+            <p>Habilidades: {ProfessionalInfo.skills.join(', ')}</p>
+            <p>Ferramentas: {ProfessionalInfo.tools.join(', ')}</p>
             <p>Apresentação: {ProfessionalInfo.presentation}</p>
-            <p>Site: {ProfessionalInfo.url}</p>
-            <p>Perfil GitHub: {ProfessionalInfo.profile_github}</p>
-            <p>Perfil Linkedin: {ProfessionalInfo.profile_linkedin}</p>
+            {ProfessionalInfo.url ? (
+              <p>
+                <a href={ProfessionalInfo.url} target='_blank' rel='noreferrer'>
+                  Site
+                </a>
+              </p>
+            ) : (
+              ''
+            )}
+            {ProfessionalInfo.profile_github ? (
+              <p>
+                <a
+                  href={ProfessionalInfo.profile_github}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Perfil GitHub
+                </a>
+              </p>
+            ) : (
+              ''
+            )}
+            {ProfessionalInfo.profile_linkedin ? (
+              <p>
+                <a
+                  href={ProfessionalInfo.profile_linkedin}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Perfil Linkedin
+                </a>
+              </p>
+            ) : (
+              ''
+            )}
+            <p>
+              Projetos e Avaliações (Kawa Tecnologia):{' '}
+              {ProfessionalInfo.presentation}
+            </p>
           </div>
         </div>
       )}
@@ -94,7 +163,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname, avaliation }) => {
 const App: React.FC = () => {
   const navigate = useNavigate()
   const [developers, setDevelopers] = useState<Dev[]>([])
-  const [error, setError] = useState<string>('') // Novo estado para controlar erros
+  const [error, setError] = useState<string>('')
 
   useEffect(() => {
     const fetchDevelopers = async () => {
@@ -103,13 +172,13 @@ const App: React.FC = () => {
           `${process.env.REACT_APP_API_URL}/api/user?type=platform`,
           {
             headers: {
-              Authorization: `Bearer 1234`
+              Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
             }
           }
         )
         setDevelopers(data.users)
       } catch (error) {
-        setError('Ocorreu um erro ao buscar os desenvolvedores.') // Definindo o erro para mostrar na tela
+        setError('Ocorreu um erro ao buscar os desenvolvedores.')
       }
     }
     fetchDevelopers()
@@ -117,6 +186,10 @@ const App: React.FC = () => {
 
   const handleFindDevsClick = () => {
     navigate('/search-devs')
+  }
+
+  const handleRegisterDevsClick = () => {
+    navigate('/devs/register-devs')
   }
 
   return (
@@ -132,62 +205,73 @@ const App: React.FC = () => {
         <Navigation />
       </header>
       <div className='container-geral'>
-
-      <div className='container-home'>
-        <div className='left'>
-          <section className='banner'>
-            <div className='banner-left'>
-              <img
-                src={require('./assets/images/kawa.jpg')}
-                alt='Kawa Tecnologia'
-              />
-            </div>
-            <div className='banner-center'>
-              <h1>Bem-vindo à Kawa Tecnologia</h1>
-              <h3>
-                Transformando Ideias Criativas em Negócios Rentáveis e
-                Lucrativos
-              </h3>
-              Tire seu projeto do papel, bora ver do que somos capazes juntos!
-              <p>
-                <a href='#contato' className='cta-button'>
-                  Contate-nos
-                </a>
-              </p>
-            </div>
-          </section>
-        </div>
-
-        <div className='right'>
-          <div className='banner-right'>
-            <section id='devs' className='devs-section'>
-              <div className='devs-content'>
-                <h2>Desenvolvedores &gt;&gt; Open to Work &lt;&lt;</h2>
-                <div className='dev-cards-container'>
-                  {/* Iterar sobre os desenvolvedores e renderizar os cartões */}
-                  {developers.map((dev, index) => (
-                    <DevCard
-                      key={index}
-                      ProfessionalInfo={dev.ProfessionalInfo}
-                      fullname={dev.fullname}
-                      avaliation={dev.avaliation}
-                    />
-                  ))}
-                </div>
+        <div className='container-home'>
+          <div className='left'>
+            <section className='banner'>
+              <div className='banner-left'>
+                <img
+                  src={require('./assets/images/kawa.jpg')}
+                  alt='Kawa Tecnologia'
+                />
               </div>
-              <p>
-                <button
-                  className='find-dev-button'
-                  onClick={handleFindDevsClick}
-                >
-                  Clique aqui e encontre o DEV que estava procurando!
-                </button>
-              </p>
+              <div className='banner-center'>
+                <h1>Bem-vindo à Kawa Tecnologia</h1>
+                <h3>
+                  Transformando Ideias Criativas em Negócios Rentáveis e
+                  Lucrativos
+                </h3>
+                Tire seu projeto do papel, bora ver do que somos capazes juntos!
+                <p>
+                  <a href='#contato' className='cta-button'>
+                    Contate-nos
+                  </a>
+                </p>
+              </div>
             </section>
+          </div>
+
+          <div className='right'>
+            <div className='banner-right'>
+              <section id='devs' className='devs-section'>
+                <div className='devs-content'>
+                  <h2>Desenvolvedores &gt;&gt; Open to Work &lt;&lt;</h2>
+                  <p>
+                    <button
+                      className='find-dev-button'
+                      onClick={handleRegisterDevsClick}
+                    >
+                      Dev, quer aparecer na busca, cadastre seu perfil!
+                    </button>
+                  </p>
+                  <h5 style={{ color: 'black' }}>
+                    *Clique na imagem para mais detalhes do Desenvolvedor
+                  </h5>
+
+                  <div className='dev-cards-container'>
+                    {developers.map((dev, index) => (
+                      <DevCard
+                        key={index}
+                        ProfessionalInfo={dev.ProfessionalInfo}
+                        fullname={dev.fullname}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <p>
+                  <br />
+                  <button
+                    className='find-dev-button'
+                    onClick={handleFindDevsClick}
+                  >
+                    Recrutador, não encontrou quem estava procurando? Clique
+                    aqui!
+                  </button>
+                </p>
+              </section>
+            </div>
           </div>
         </div>
       </div>
-</div>
       <section id='sobre-nos'>
         <h2>Sobre Nós</h2>
         <p>
@@ -198,17 +282,15 @@ const App: React.FC = () => {
         <h2>Projetos</h2>
         <p>Aqui estão alguns dos nossos projetos recentes:</p>
         <p>
-          <a href={process.env.REACT_APP_URL +'/devs'}>Kawa Devs</a> |{' '}
+          <a href={process.env.REACT_APP_URL + '/devs'}>Kawa Devs</a> |{' '}
           <a href={process.env.REACT_APP_URL + '/solutions'}>Kawa Solutions</a>
         </p>
         <br />
         <h2>Contato</h2>
         <p>Entre em contato conosco Whatsapp: (11)91428-7025.</p>
-        {/* Formulário de contato */}
         <br />
         <h2>Nossos Parceiros</h2>
         <p>Entre em contato conosco para tornar-se um parceiro.</p>
-        {/* Logos dos parceiros */}
       </section>
 
       <footer>

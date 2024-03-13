@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
 import axios from 'axios'
 import '../assets/styles/Agenda.css'
+import LeftContainer from './LeftContainer'
 
 interface Ticket {
   id: number
@@ -48,10 +47,7 @@ const Agenda: React.FC = () => {
 
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-      </div>
+    <LeftContainer/>
       <div className='main-content'>
         <div className='agenda'>
           <h2>Agenda</h2>

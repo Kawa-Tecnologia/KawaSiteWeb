@@ -16,8 +16,6 @@
   grid-gap: 10px;
 }
 
-
-/* Adicione regras de mídia para ajustar o layout em telas menores */
 @media only screen and (max-width: 767px) {
   .trainings-grid {
     grid-template-columns: repeat(1, 1fr);
@@ -71,43 +69,36 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  
 }
 
 .button-container button:hover {
   background-color: #f0f0f0;
+  
 }
 
 .search {
   display: flex;
   justify-content: center;
-  /* Centraliza o conteúdo horizontalmente */
   margin-bottom: 20px;
-  /* Adiciona margem inferior para separar visualmente outros elementos */
 }
 
 .search-input {
   width: 100%;
   max-width: 300px;
-  /* Define a largura máxima para a entrada de busca */
   padding: 10px;
-  /* Adiciona preenchimento para melhorar a aparência */
   border-radius: 5px;
-  /* Adiciona borda arredondada */
   border: 1px solid #ccc;
-  /* Adiciona uma borda para destacar a entrada */
   box-sizing: border-box;
-  /* Garante que o preenchimento e a borda não aumentem a largura da entrada */
+  color: #000;
 }
 
-/* Adicione regras de mídia para ajustar o tamanho da entrada de busca em telas menores */
 @media only screen and (max-width: 767px) {
   .search-input {
     max-width: none;
-    /* Remove a largura máxima para permitir que a entrada se estenda por toda a largura */
   }
 }
 
 .disabled-button {
-  background-color: #dddddd; /* Cinza */
-  /* Adicione outros estilos conforme necessário */
+  background-color: #dddddd; 
 }

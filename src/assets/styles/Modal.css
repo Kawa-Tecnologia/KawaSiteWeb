@@ -1,126 +1,167 @@
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #000; /* Cor do texto preto */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
 
-  }
 
-  .modal h2{
-    color: #000; /* Cor do texto preto */
-  }
+.modal h2 {
+  color: #000;
+}
 
-  .modal.show {
-    display: block;
-  }
-  
-  .modal-content {
-    background-color: #fefefe; 
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer; 
-    position: relative;
-    z-index: 9999; 
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    text-align: center;
-    animation: slideIn 0.5s ease-in-out;
-    color: #000; /* Cor do texto preto */
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  
-  #modal-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  #modal-details {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-  
-  #modal-buy-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    margin-top: 20px;
-  }
-  
-  #modal-buy-button:hover {
-    background-color: #0056b3;
-  }
-  .modal-image {
-    float: left; /* Alinhe a imagem à esquerda */
-    margin-right: 10px; /* Adicione margem à direita da imagem */
-  }
-  
-  .modal-title {
-    margin-top: 0; /* Remova a margem superior do título */
-  }
-  
-  .modal-body {
-    padding-top: 20px; /* Adicione espaçamento acima do conteúdo */
-  }
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  color: #0e0e0e;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  margin: 15% auto;
+  text-align: center;
+  animation: slideIn 0.5s ease-in-out;
+  width: auto;
+  max-width: 70%;
+  height: auto;
+  max-height: 70%;
+}
+.modal-content-details {
+  display: flex;
+  position: absolute;
+  background-color: #fefefe;
+  border: 1px solid #888;
+  color: #0e0e0e;
+  border-radius: 10px;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  animation: slideIn 0.5s ease-in-out;
+  width: 50%;
+  max-width: 70%;
+  height: 50%;
+  max-height: 70%;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 9999;
+}
 
-  
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.close {
+  color: #ffffff;
+  font-size: 2rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ff0000;
+}
+
+
+
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#modal-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#modal-details {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000;
+}
+#modal-details-details {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000;
+  margin: 20px auto 0; /* Adicionando margem superior de 20px e mantendo as margens laterais automáticas */
+}
+
+
+#modal-details ul li {
+  color: #000;
+}
+
+#modal-buy-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+#modal-buy-button:hover {
+  background-color: #0056b3;
+}
+
+.modal-image {
+  float: left;
+  margin-right: 10px;
+}
+
+.modal-title {
+  margin-top: 0;
+}
+
+.modal-body {
+  padding-top: 20px;
+}

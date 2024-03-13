@@ -1,27 +1,26 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import '../assets/styles/Search.css'
 import axios from 'axios'
 import Navigation from '../components/Navigation'
 interface Dev {
   fullname: string
-  avaliation: number
   ProfessionalInfo: Professional
 }
 
 interface Professional {
   job_title: string
-  skills: string
+  skills: string[]
   tag_id: number
   cv_link: string
   presentation: string
   profile_linkedin: string
   profile_github: string
-  tools: string
+  tools: string[]
   url: string
   imageSrc: string
 }
 
-const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname, avaliation }) => {
+const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const openModal = () => {
@@ -35,17 +34,42 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname, avaliation }) => {
   const handleCardClick = () => {
     openModal()
   }
-
   return (
     <div className='dev-card'>
       <img
-        src={ProfessionalInfo.imageSrc}
+        src={
+          ProfessionalInfo?.imageSrc ||
+          require('../assets/images/2206015-icone-de-trabalho-de-desenvolvedor-vetor.jpg')
+        }
         alt={fullname}
         onClick={handleCardClick}
+        style={{ width: '60%', height: '40%' }}
+        title='Clique aqui para mais detalhes do desenvolvedor!'
       />
       <h3>Nome: {fullname}</h3>
       <p>Cargo: {ProfessionalInfo.job_title}</p>
-      <p>Avaliação: {avaliation}</p>
+      {ProfessionalInfo.profile_linkedin ? (
+        <p>
+          <a
+            href={ProfessionalInfo.profile_linkedin}
+            target='_blank'
+            rel='noreferrer'
+          >
+            Perfil do Linkedin
+          </a>
+        </p>
+      ) : (
+        ''
+      )}{' '}
+      {ProfessionalInfo.cv_link ? (
+        <p>
+          <a href={ProfessionalInfo.cv_link} target='_blank' rel='noreferrer'>
+            Link do Curriculo
+          </a>
+        </p>
+      ) : (
+        ''
+      )}{' '}
       {showModal && (
         <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
           <div className='modal-content'>
@@ -56,62 +80,119 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname, avaliation }) => {
             <p>Nome: {fullname}</p>
             <p>Cargo: {ProfessionalInfo.job_title}</p>
             <p>Nivel: {ProfessionalInfo.tag_id}</p>
-            <p>Avaliação: {avaliation}</p>
-            <p>Curriculo: {ProfessionalInfo.cv_link}</p>
-            <p>Habilidades: {ProfessionalInfo.skills}</p>
-            <p>Ferramentas: {ProfessionalInfo.tools}</p>
+            {ProfessionalInfo.cv_link ? (
+              <p>
+                <a
+                  href={ProfessionalInfo.cv_link}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Link do Curriculo
+                </a>
+              </p>
+            ) : (
+              ''
+            )}{' '}
+            <p>Habilidades: {ProfessionalInfo.skills.join(', ')}</p>
+            <p>Ferramentas: {ProfessionalInfo.tools.join(', ')}</p>
             <p>Apresentação: {ProfessionalInfo.presentation}</p>
-            <p>Site: {ProfessionalInfo.url}</p>
-            <p>Perfil GitHub: {ProfessionalInfo.profile_linkedin}</p>
-
-            <p>Perfil Linkedin: {ProfessionalInfo.profile_linkedin}</p>
+            {ProfessionalInfo.url ? (
+              <p>
+                <a href={ProfessionalInfo.url} target='_blank' rel='noreferrer'>
+                  Site
+                </a>
+              </p>
+            ) : (
+              ''
+            )}{' '}
+            {ProfessionalInfo.profile_github ? (
+              <p>
+                <a
+                  href={ProfessionalInfo.profile_github}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Perfil GitHub
+                </a>
+              </p>
+            ) : (
+              ''
+            )}{' '}
+            {ProfessionalInfo.profile_linkedin ? (
+              <p>
+                <a
+                  href={ProfessionalInfo.profile_linkedin}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Perfil Linkedin
+                </a>
+              </p>
+            ) : (
+              ''
+            )}{' '}
           </div>
         </div>
       )}
     </div>
   )
 }
-
+interface UserData {
+  skills: string[]
+  tools: string[]
+  keywords: string
+  tag_id: number
+  programmingLanguage: string
+  level: number
+}
 const SearchDevelopers: React.FC = () => {
-  // Estados para os filtros
-  const [programmingLanguage, setProgrammingLanguage] = useState<string>('')
-  const [tag, setTag] = useState<string>('')
-  const [tools, setTools] = useState<string>('')
-  const [skills, setSkills] = useState<string>('')
-  const [keywords, setKeywords] = useState<string>('')
+  const [userData, setUserData] = useState<UserData>({
+    skills: [''],
+    tools: [''],
+    keywords: '',
+    tag_id: 1,
+    programmingLanguage: '',
+    level: 3
+  })
   const [developers, setDevelopers] = useState<Dev[]>([])
-  const [level, setLevel] = useState<string>('3')
 
-  // Função para lidar com a busca
   const handleSearch = async (): Promise<void> => {
-    const searchData = {
-      programmingLanguage,
-      tag,
-      tools,
-      skills,
-      keywords,
-      level
-    }
-
-    const queryString = new URLSearchParams(searchData).toString()
+    const body = userData
     try {
-      const { data } = await axios.get(
-        `http://localhost:3001/api/user?${queryString}`,
+      const { data } = await axios.post(
+        `http://localhost:3001/api/professional/search`,
+        body,
         {
           headers: {
-            Authorization: `Bearer 1234` // Inclua o token JWT no cabeçalho de autorização
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
           }
         }
       )
       setDevelopers(data.users)
-
-      // Faça o que precisar com a resposta da busca
     } catch (error) {
       console.error('Erro ao realizar a busca:', error)
-      // Trate o erro de acordo com sua necessidade
     }
   }
 
+  const handleProfessionalDataChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target
+    if (name === 'skills' || name === 'tools') {
+      const arrayValue = value.split(',')
+      setUserData(prevState => ({
+        ...prevState,
+
+        [name]: arrayValue
+      }))
+    } else {
+      setUserData(prevState => ({
+        ...prevState,
+
+        [name]: value
+      }))
+    }
+  }
   return (
     <div>
       <header className='header'>
@@ -131,48 +212,61 @@ const SearchDevelopers: React.FC = () => {
             <label>Linguagem de Programação:</label>
             <input
               type='text'
-              value={programmingLanguage}
-              onChange={e => setProgrammingLanguage(e.target.value)}
+              name='programmingLanguage'
+              value={userData.programmingLanguage}
+              onChange={handleProfessionalDataChange}
             />
           </div>
           <div>
-            <label>Nivel:</label>
-            <input
-              type='text'
-              value={tag}
-              onChange={e => setTag(e.target.value)}
-            />
+            <label>
+              Nível Técnico:
+              <select
+                name='tag_id'
+                value={userData.tag_id}
+                onChange={handleProfessionalDataChange}
+              >
+                <option value='1'>Principiante</option>
+                <option value='2'>Junior</option>
+                <option value='3'>Pleno</option>
+                <option value='4'>Senior</option>
+                <option value='5'>Especialista</option>
+              </select>
+            </label>
           </div>
           <div>
             <label>Habilidades:</label>
             <input
               type='text'
-              value={tools}
-              onChange={e => setTools(e.target.value)}
+              name='skills'
+              value={userData.skills}
+              onChange={handleProfessionalDataChange}
             />
           </div>
           <div>
             <label>Ferramentas:</label>
             <input
               type='text'
-              value={skills}
-              onChange={e => setSkills(e.target.value)}
+              name='tools'
+              value={userData.tools}
+              onChange={handleProfessionalDataChange}
             />
           </div>
           <div>
             <label>Palavras-Chaves:</label>
             <input
               type='text'
-              value={keywords}
-              onChange={e => setKeywords(e.target.value)}
+              name='keywords'
+              value={userData.keywords}
+              onChange={handleProfessionalDataChange}
             />
           </div>
           <div>
-            <label htmlFor='nivelBusca'>Nível de Busca:</label>
+            <label htmlFor='level'>Nível de Busca:</label>
             <select
-              id='nivelBusca'
-              value={level}
-              onChange={e => setLevel(e.target.value)}
+              id='level'
+              name='level'
+              value={userData.level}
+              onChange={handleProfessionalDataChange}
             >
               <option value='1'>1 - Mais preciso</option>
               <option value='2'>2 - Intermediario</option>
@@ -184,14 +278,17 @@ const SearchDevelopers: React.FC = () => {
 
         <div className='dev-cards-container'>
           <br />
-          {developers.map((dev, index) => (
-            <DevCard
-              key={index}
-              ProfessionalInfo={dev.ProfessionalInfo}
-              fullname={dev.fullname}
-              avaliation={dev.avaliation}
-            />
-          ))}
+          {developers.length === 0 ? (
+            <h2>Nenhum desenvolvedor encontrado.</h2>
+          ) : (
+            developers.map((dev, index) => (
+              <DevCard
+                key={index}
+                ProfessionalInfo={dev.ProfessionalInfo}
+                fullname={dev.fullname}
+              />
+            ))
+          )}
         </div>
       </div>
     </div>

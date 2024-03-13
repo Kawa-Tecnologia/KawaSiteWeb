@@ -1,57 +1,59 @@
-.banner-center {
-    text-align: center;
-    font-family: 'Arial', sans-serif; /* Escolha uma fonte moderna */
-  }
-  
-  .banner-center h1 {
-    font-size: 3rem; /* Aumenta o tamanho da fonte para o título */
-    color: #ffffff; /* Define a cor do texto */
-    margin-bottom: 10px; /* Adiciona um espaçamento inferior */
-  }
-  
-  .banner-center h3 {
-    font-size: 2rem; /* Aumenta o tamanho da fonte para o subtítulo */
-    color: #ffffff; /* Define a cor do texto */
-    margin-bottom: 20px; /* Adiciona um espaçamento inferior */
-  }
-  
-  .banner-center p {
-    font-size: 1.5rem; /* Aumenta o tamanho da fonte para o texto normal */
-    color: #ffffff; /* Define a cor do texto */
-    line-height: 1.5; /* Ajusta o espaçamento entre linhas */
-  }
-  
-  .cta-button {
-    background-color: #0066CC;
-    color: #0066cc;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 20px;
-    font-size: 1.5rem; /* Ajusta o tamanho da fonte para o botão */
-  }
+.container-home {
+  display: flex; 
+  background-image: url("../images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif");
+}
 
-  .banner {
-    text-align: center;
-    font-family: 'Arial', sans-serif; /* Escolha uma fonte moderna */
-  }
-  
-  .banner h1 {
-    font-size: 3rem; /* Aumenta o tamanho da fonte para o título */
-    color: #ffffff; /* Define a cor do texto */
-    margin-bottom: 10px; /* Adiciona um espaçamento inferior */
-  }
-  
-  .banner h3 {
-    font-size: 2rem; /* Aumenta o tamanho da fonte para o subtítulo */
-    color: #ffffff; /* Define a cor do texto */
-    margin-bottom: 20px; /* Adiciona um espaçamento inferior */
-  }
-  
-  .banner p {
-    font-size: 1.5rem; /* Aumenta o tamanho da fonte para o texto normal */
-    color: #ffffff; /* Define a cor do texto */
-    line-height: 1.5; /* Ajusta o espaçamento entre linhas */
-  }
+.banner-left,
+.banner-center,
+.banner-right {
+  flex: 1; 
+}
+
+.banner {
+  padding: 50px 20px;
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  text-align: center;
+  color: #0066CC;
+  font-family: 'Arial', sans-serif;
+}
+
+.banner h1 {
+  font-size: 3rem;
+  margin-bottom: 10px; 
+}
+
+.banner h3 {
+  font-size: 2rem;
+  margin-bottom: 20px; 
+}
+
+.banner p {
+  font-size: 1.2rem; 
+  margin-bottom: 20px;
+  color: #0056b3;
+  line-height: 1.5;
+}
+
+.banner .cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0066CC;
+  color: #f0f0f0;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.banner .cta-button:hover {
+  background-color: #45a29e;
+}
+
+.banner-center {
+  text-align: center;
+}
+
+.banner-content {
+  width: 30%;
+  text-align: center;
+}

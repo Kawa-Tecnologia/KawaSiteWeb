@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Review.css'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
 import axios from 'axios'
+import LeftContainer from './LeftContainer'
 interface Review {
   user_id: string
   content: string
@@ -10,15 +9,29 @@ interface Review {
   avaliation: number
   project_id: number
 }
+interface StarProps {
+  filled: boolean;
+}
 
+const Star: React.FC<StarProps> = ({ filled }) => {
+  return (
+    <span style={{ color: filled ? 'gold' : 'lightgray' }}>
+      &#9733;
+    </span>
+  );
+};
 const Reviews: React.FC = () => {
-  const [reviews, setReviews] = useState<Review[]>([]) // Estado para armazenar as avaliações
-  const [searchTerm, setSearchTerm] = useState<string>('') // Estado para armazenar o termo de busca
-  const [currentPage, setCurrentPage] = useState<number>(1) // Estado para controlar a página atual
-  const [reviewsPerPage] = useState<number>(8) // Quantidade de avaliações por página
-
+  const [reviews, setReviews] = useState<Review[]>([])
+  const [searchTerm, setSearchTerm] = useState<string>('')
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [reviewsPerPage] = useState<number>(8)
   useEffect(() => {
-    // Recupere o token JWT do armazenamento (por exemplo, localStorage)
+    document.body.classList.add('dashboard-page'); // Adiciona a classe ao body
+    return () => {
+      document.body.classList.remove('dashboard-page'); // Remove a classe ao sair da página
+    };
+  }, []);
+  useEffect(() => {
     const token = localStorage.getItem('token')
     const userId = localStorage.getItem('userId')
     const fetchReviews = async () => {
@@ -27,7 +40,7 @@ const Reviews: React.FC = () => {
           `${process.env.REACT_APP_API_URL}/api/reviews?receive_user_id=${userId}`,
           {
             headers: {
-              Authorization: `Bearer ${token}` // Inclua o token JWT no cabeçalho de autorização
+              Authorization: `Bearer ${token}`
             }
           }
         )
@@ -39,40 +52,39 @@ const Reviews: React.FC = () => {
     }
 
     fetchReviews()
-  }, [searchTerm, currentPage]) // Atualize a lista de reviews quando o termo de busca ou a página atual mudar
+  }, [searchTerm, currentPage])
 
-  // Filtrar as avaliações com base no termo de busca
   const filteredReviews: Review[] = reviews?.filter(
     review => review.receive_user_id
   )
 
-  // Lógica para calcular o número total de páginas
   const totalPages: number = Math.ceil(
     (filteredReviews?.length || 0) / reviewsPerPage
   )
 
-  // Lógica para determinar as avaliações da página atual
   const indexOfLastReview: number = currentPage * reviewsPerPage
   const indexOfFirstReview: number = indexOfLastReview - reviewsPerPage
   const currentReviews: Review[] = filteredReviews.slice(
     indexOfFirstReview,
     indexOfLastReview
   )
+  const renderStars = (rating: number) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(<Star key={i} filled={i <= rating} />);
+    }
+    return stars;
+  };
 
-  // Função para mudar de página
   const paginate = (pageNumber: number): void => setCurrentPage(pageNumber)
 
-  // Função para lidar com a alteração do termo de busca
   const handleSearchChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => setSearchTerm(event.target.value)
 
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-      </div>
+      <LeftContainer/>
       <div className='reviews-page'>
         <h1>Avaliações</h1>
         <input
@@ -88,7 +100,7 @@ const Reviews: React.FC = () => {
               <div key={index} className='review-card'>
                 <h2>{review.user_id}</h2>
                 <p>{review.content}</p>
-                <p>{review.avaliation}</p>
+                <p>{renderStars(review.avaliation)}</p>
               </div>
             ))
           ) : (
@@ -113,6 +125,7 @@ const Reviews: React.FC = () => {
           </button>
         </div>
       </div>
+
     </div>
   )
 }

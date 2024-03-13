@@ -3,8 +3,8 @@ import '../assets/styles/TrainingCard.css'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Modal from 'react-modal'
-import Payment from './Payment'
+//import Modal from 'react-modal'
+import FuturisticModal from './FuturistModal'
 
 interface RequestDevs {
   id: number
@@ -19,28 +19,20 @@ interface RequestDevs {
   type: string
   cep: string
   local: string
+  user_id_requested: number
 }
-
-interface Payment {
-  title: string
-  image: string
-  link: string
-  price: number
+interface Recommendation {
+  status: string
+  user_id: number
+  recommendation: string
+  discount_percentage: number
 }
-
 const RequestHistory: React.FC = () => {
   const [userPoints, setUserPoints] = useState<number>(
     Number(localStorage.getItem('userPoints')) || 0
   )
   const userId = Number(localStorage.getItem('userId'))
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
-  const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false)
-  const [modalPayment, setModalPayment] = useState<Payment>({
-    title: '',
-    image: '',
-    link: '',
-    price: 0
-  })
   const [searchTerm, setSearchTerm] = useState('')
   const [requestDevs, setRequestDevs] = useState<RequestDevs[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
@@ -58,9 +50,27 @@ const RequestHistory: React.FC = () => {
     points_required: 0,
     type: '',
     local: '',
-    cep: ''
+    cep: '',
+    user_id_requested: 0
   })
+  const [recommendation, setRecommendation] = useState({
+    status: '',
+    user_id: 0,
+    recommendation: '',
+    discount_percentage: 0
+  });
 
+
+  // Carregar recomendações apenas uma vez ao montar o componente
+  useEffect(() => {
+    const storedRecommendationString = localStorage.getItem('recommendation')
+    if (storedRecommendationString) {
+      const storedRecommendation: Recommendation = JSON.parse(
+        storedRecommendationString
+      )
+      setRecommendation(storedRecommendation)
+    }
+  }, []);
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem('token')
@@ -115,7 +125,6 @@ const RequestHistory: React.FC = () => {
   const handleAdquirirPontos = () => {
     setModalIsOpen(true)
   }
-
   const closeModal = () => {
     setModalIsOpen(false)
     setShowModal(false)
@@ -128,9 +137,8 @@ const RequestHistory: React.FC = () => {
 
   const handleCheckout = async (requestDevs: RequestDevs) => {
     if (userPoints < requestDevs.points_required) {
-      console.log('Botão de Adquirir Pontos clicado')
+      return
     } else if (participationsIds.includes(requestDevs.id)) {
-      console.log('Usuário já participou deste treinamento')
       return
     } else {
       const body = {
@@ -167,20 +175,18 @@ const RequestHistory: React.FC = () => {
     setCurrentPage(1)
   }
 
-  const handleCompra = (payment: Payment) => {
-    openPaymentModal(payment)
-  }
+  // const handleCompra = (payment: Payment) => {
+  //   openPaymentModal(payment)
+  // }
 
-  const openPaymentModal = (payment: Payment) => {
-    setShowPaymentModal(true)
-    setModalPayment(payment)
-  }
+  // const openPaymentModal = (payment: Payment) => {
+  //   setShowPaymentModal(true)
+  //   setModalPayment(payment)
+  // }
 
-  const renderDetails = (requestDevs: RequestDevs) => (
-    <div className='modal-content'>
-      <span className='close' onClick={() => {}}>
-        &times;
-      </span>
+  const renderDetails = (requestDevs: RequestDevs) => {
+    return (
+    <div>
       <div>
         <strong>Nome:</strong> {requestDevs.name}
       </div>
@@ -188,7 +194,7 @@ const RequestHistory: React.FC = () => {
         requestDevs.phone &&
         participationsIds.includes(requestDevs.id) && (
           <div>
-            <strong>Telefone:</strong> {requestDevs.phone}
+            <strong>Telefone Celular:</strong> {requestDevs.phone}
           </div>
         )}
       {userPoints > 0 &&
@@ -226,23 +232,16 @@ const RequestHistory: React.FC = () => {
           <strong>CEP:</strong> {requestDevs.cep}
         </div>
       )}
-      {userPoints > 0 &&
-        requestDevs.email &&
-        participationsIds.includes(requestDevs.id) && (
-          <div>
-            <strong>Valor a Pagar:</strong> {requestDevs.value}
-          </div>
-        )}
-      {userPoints > 0 && (
-        <div>Pontos Necessários: {requestDevs.points_required}</div>
-      )}
+
+      <div>Pontos Necessários: {requestDevs.points_required}</div>
     </div>
-  )
+    )
+      }
   const filteredRequest = requestDevs?.filter(request =>
     request?.title?.toLowerCase().includes(searchTerm?.toLowerCase())
   )
 
-  const totalPages = Math.ceil((filteredRequest?.length || 0) / 8);
+  const totalPages = Math.ceil((filteredRequest?.length || 0) / 8)
   const trainingHistory = filteredRequest?.slice(
     (currentPage - 1) * 8,
     currentPage * 8
@@ -268,9 +267,16 @@ const RequestHistory: React.FC = () => {
       <div className='trainings-grid'>
         {trainingHistory?.map((training, index) => (
           <div key={index} className='training-card'>
+        
             <div className='training-details'>
+            {training.user_id_requested === userId && (
+              <div className='gold-medal'>🥇</div>
+            )}
               <div>
                 <strong>Nome:</strong> {training.name}
+              </div>
+              <div>
+                <strong>Titulo:</strong> {training.title}
               </div>
               <div>
                 {userPoints > 0 &&
@@ -284,7 +290,7 @@ const RequestHistory: React.FC = () => {
                   training.phone &&
                   participationsIds.includes(training.id) && (
                     <div>
-                      <strong>Telefone:</strong> {training.phone}
+                      <strong>Telefone Celular:</strong> {training.phone}
                     </div>
                   )}
               </div>
@@ -309,19 +315,11 @@ const RequestHistory: React.FC = () => {
               <div>
                 <strong>Tipo:</strong> {training.type}
               </div>
-              {userPoints > 0 &&
-                training.phone &&
-                participationsIds.includes(training.id) && (
-                  <div>
-                    <strong>Valor a Pagar:</strong> {training.value}
-                  </div>
-                )}
-              {userPoints > 0 && (
-                <div>
-                  <strong>Pontos Necessários: </strong>
-                  {training.points_required}
-                </div>
-              )}
+
+              <div>
+                <strong>Pontos Necessários: </strong>
+                {training.points_required}
+              </div>
             </div>
             <div className='button-container'>
               <button onClick={() => handleDetailsClick(training)}>
@@ -334,40 +332,11 @@ const RequestHistory: React.FC = () => {
                   <button onClick={handleAdquirirPontos}>
                     Adquirir Pontos
                   </button>
-                  <Modal
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}
-                    contentLabel='Modal de Adquirir Pontos'
-                  >
-                    <h2>Escolha a quantidade de pontos:</h2>
-                    <div className='pontos-options-container'>
-                      <div className='pontos-option'>
-                        <p>10000 Pontos por R$100,00</p>
-                        <button onClick={() => handleCompra(modalPayment)}>
-                          Comprar
-                        </button>
-                      </div>
-                      <div className='pontos-option'>
-                        <p>20000 Pontos por R$200,00</p>
-                        <button onClick={() => handleCompra(modalPayment)}>
-                          Comprar
-                        </button>
-                      </div>
-                      <div className='pontos-option'>
-                        <p>15000 Pontos por R$150,00</p>
-                        <button onClick={() => handleCompra(modalPayment)}>
-                          Comprar
-                        </button>
-                      </div>
-                      <div className='pontos-option'>
-                        <p>50000 Pontos por R$500,00</p>
-                        <button onClick={() => handleCompra(modalPayment)}>
-                          Comprar
-                        </button>
-                      </div>
-                    </div>
-                    <button onClick={closeModal}>Fechar</button>
-                  </Modal>
+                  <FuturisticModal
+                    modalIsOpen={modalIsOpen}
+                    closeModal={closeModal}
+                    recommendation={recommendation}
+                  />
                 </>
               ) : participationsIds.includes(training.id) ? (
                 <button
@@ -405,30 +374,13 @@ const RequestHistory: React.FC = () => {
         </div>
       </div>
       <ToastContainer />
-      {showPaymentModal && (
-        <div id='myModal' className={`modal ${showPaymentModal ? 'show' : ''}`}>
-          <div className='modal-content'>
-            <span className='close' onClick={() => setShowPaymentModal(false)}>
-              &times;
-            </span>
-            <h2 id='modal-title'>Pagamento</h2>
-            <Payment
-              title={'1'}
-              image={''}
-              link={''}
-              price={0}
-              closeModal={closeModal}
-            />
-          </div>
-        </div>
-      )}
+      
       <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
         <div className='modal-content'>
           <span className='close' onClick={closeModal}>
             &times;
           </span>
           <p id='modal-details'>{renderDetails(modalRequestDevs)}</p>
-          <button id='modal-buy-button'>Adquirir Pontos</button>
         </div>
       </div>
     </div>

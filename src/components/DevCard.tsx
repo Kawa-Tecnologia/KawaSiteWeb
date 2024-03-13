@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/DevCard.css';
+import '../assets/styles/DevsCard.css';
 
 interface Dev {
   imageSrc: string;

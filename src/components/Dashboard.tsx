@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
-import TrainingHistory from './TrainingHistory'
+//import TrainingHistory from './TrainingHistory'
 import '../assets/styles/Menu.css'
 import '../assets/styles/Dashboard.css'
 import RequestHistory from './RequestHistory'
 import { FaBell } from 'react-icons/fa'
+import LeftContainer from './LeftContainer'
 
 interface UserData {
   name: string
@@ -37,7 +36,6 @@ interface ProfessionalData {
 
 const Dashboard: React.FC = () => {
   const [user, setUser] = useState<UserData | null>(null)
-  const [showNotifications, setShowNotifications] = useState<boolean>(false) // Estado para controlar a exibição das notificações
   const [hasMissingInfo, setHasMissingInfo] = useState<boolean>(false)
   useEffect(() => {
     const storedUserString = localStorage.getItem('user')
@@ -53,13 +51,8 @@ const Dashboard: React.FC = () => {
             return !value
           })
       )
-      toggleNotifications()
     }
   }, [])
-
-  const toggleNotifications = () => {
-    setShowNotifications(prevState => !prevState)
-  }
 
   if (!user) return null
 
@@ -73,18 +66,21 @@ const Dashboard: React.FC = () => {
     case null:
       return (
         <div className='dashboard'>
-          <div className='left-container'>
-            <UserContainer />
-            <Menu />
-          </div>
+                 <LeftContainer/>
+
           <div className='main-content'>
             <div
               className='notification-icon-container'
-              onClick={() => toggleNotifications()}
+              onClick={event => {
+                if (
+                  event.currentTarget.classList.contains('notification-icon')
+                ) {
+                  return
+                }
+              }}
             >
               <FaBell className='notification-icon' />{' '}
-              {/* Ícone de notificação */}
-              {showNotifications && hasMissingInfo ? (
+              {hasMissingInfo ? (
                 <div className='notification-bar'>
                   Por favor, complete suas informações profissionais, são
                   necessarias para a divulgação do seu perfil.
@@ -97,60 +93,107 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       )
-    case 1:
-    case 2:
-    case 3:
+    // case 1:
+    // case 2:
+    // case 3:
+    //   return (
+    //     <div className='dashboard'>
+    //       <div className='left-container'>
+    //         <UserContainer />
+    //         <Menu />
+    //         <p>
+    //           *Indique um amigo e após a primeira compra de pontos dele, você
+    //           ganha 10% de desconto na proxima compra
+    //         </p>
+    //       </div>
+    //       <div className='main-content'>
+    //         <div
+    //           className='notification-icon-container'
+    //           onClick={event => {
+    //             if (
+    //               event.currentTarget.classList.contains('notification-icon')
+    //             ) {
+    //               return
+    //             }
+    //           }}
+    //         >
+    //           <FaBell className='notification-icon' />{' '}
+    //           {hasMissingInfo ? (
+    //             <div className='notification-bar'>
+    //               Por favor, complete suas informações profissionais, são
+    //               necessarias para a divulgação do seu perfil.
+    //             </div>
+    //           ) : null}
+    //           <div className='training-section'>
+    //             <TrainingHistory />
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   )
+    default:
       return (
         <div className='dashboard'>
-          <div className='left-container'>
-            <UserContainer />
-            <Menu />
-          </div>
+          <LeftContainer/>
           <div className='main-content'>
             <div
               className='notification-icon-container'
-              onClick={() => toggleNotifications()}
+              onClick={event => {
+                if (
+                  event.currentTarget.classList.contains('notification-icon')
+                ) {
+                  return
+                }
+              }}
             >
               <FaBell className='notification-icon' />{' '}
-              {/* Ícone de notificação */}
-              {showNotifications && hasMissingInfo ? (
+              {hasMissingInfo ? (
                 <div className='notification-bar'>
                   Por favor, complete suas informações profissionais, são
                   necessarias para a divulgação do seu perfil.
                 </div>
               ) : null}
-              <div className='training-section'>
-                <TrainingHistory />
               </div>
-            </div>
-          </div>
-        </div>
-      )
-    default:
-      return (
-        <div className='dashboard'>
-          <div className='left-container'>
-            <UserContainer />
-            <Menu />
-          </div>
-          <div className='main-content'>
-            <FaBell className='notification-icon' />{' '}
-            {/* Ícone de notificação */}
-            {showNotifications && hasMissingInfo ? (
-              <div className='notification-bar'>
-                Por favor, complete suas informações profissionais, são
-                necessarias para a divulgação do seu perfil.
-              </div>
-            ): null}
-            <div className='request-devs-section'>
-              <RequestHistory />
-            </div>
-            <div className='training-section'>
-              <TrainingHistory />
-            </div>
-          </div>
-        </div>
-      )
+        </div></div>
+              )
+      // return (
+      //   <div className='dashboard'>
+      //     <div className='left-container'>
+      //       <UserContainer />
+      //       <Menu />
+      //       <p>
+      //         *Indique um amigo e após a primeira compra de pontos dele, você
+      //         ganha 10% de desconto na proxima compra
+      //       </p>
+      //     </div>
+      //     <div className='main-content'>
+      //       <div
+      //         className='notification-icon-container'
+      //         onClick={event => {
+      //           if (
+      //             event.currentTarget.classList.contains('notification-icon')
+      //           ) {
+      //             return
+      //           }
+      //         }}
+      //       >
+      //         <FaBell className='notification-icon' />{' '}
+      //         {hasMissingInfo ? (
+      //           <div className='notification-bar'>
+      //             Por favor, complete suas informações profissionais, são
+      //             necessarias para a divulgação do seu perfil.
+      //           </div>
+      //         ) : null}
+      //         <div className='request-devs-section'>
+      //           <RequestHistory />
+      //         </div>
+      //         <div className='training-section'>
+      //           <TrainingHistory />
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+      // )
   }
 }
 

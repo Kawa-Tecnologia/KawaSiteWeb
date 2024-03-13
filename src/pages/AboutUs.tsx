@@ -1,11 +1,11 @@
 import React from 'react'
-import '../assets/styles/AboutUs.css' // Importa o arquivo de estilos
+import '../assets/styles/AboutUs.css'
 import Navigation from '../components/Navigation'
 
 const AboutUs: React.FC = () => {
   return (
     <div>
-     <header className='header'>
+      <header className='header'>
         <div className='logo-container'>
           <img
             className='logo'
@@ -13,12 +13,12 @@ const AboutUs: React.FC = () => {
             alt='Kawa Tecnologia'
           />
         </div>
-        <Navigation  />
+        <Navigation />
       </header>
-      <div className="sobre-nos">
+      <div className='sobre-nos'>
         <header></header>
         <main>
-          <section className="section-box">
+          <section className='section-box'>
             <h2>Missão</h2>
             <p>
               Auxiliar pessoas criativas a utilizarem a tecnologia de maneira
@@ -26,7 +26,7 @@ const AboutUs: React.FC = () => {
               projetos e apoio para alcançarem seus objetivos profissionais.
             </p>
           </section>
-          <section className="section-box">
+          <section className='section-box'>
             <h2>Visão</h2>
             <p>
               Ser reconhecido como um ponto de referência para qualquer pessoa
@@ -36,7 +36,7 @@ const AboutUs: React.FC = () => {
               para o próximo nível.
             </p>
           </section>
-          <section className="section-box">
+          <section className='section-box'>
             <h2>Valores</h2>
             <ul>
               <li>

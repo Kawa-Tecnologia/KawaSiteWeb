@@ -6,7 +6,11 @@ interface ModalProps {
   children: React.ReactNode
 }
 
-const ModalInterrogation: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const ModalInterrogation: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  children
+}) => {
   return (
     <div>
       {isOpen && (
@@ -22,6 +26,5 @@ const ModalInterrogation: React.FC<ModalProps> = ({ isOpen, onClose, children })
     </div>
   )
 }
-
 
 export default ModalInterrogation

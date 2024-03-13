@@ -9,10 +9,6 @@ main {
   padding: 20px;
 }
 
-section {
-  margin-bottom: 30px; 
-}
-
 h2 {
   color: #007bff; 
 }
@@ -22,22 +18,17 @@ ul {
   padding: 0;
 }
 
-footer {
-  background-color: #0066CC; 
-  color: #333; 
-  padding: 20px;
-  text-align: center;
-}
-
-/* Estilos específicos para as caixas de Missão, Visão e Valores */
 .section-box {
-  background-color: #0066CC;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
-
+  display: flex;
+  justify-content: space-between;
+  background-color: #0e0e0e;
+  opacity: 0.9;
 }
+
 .section-box  p {
   border: 1px solid #ccc;
   border-radius: 5px;

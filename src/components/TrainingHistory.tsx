@@ -4,7 +4,6 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Modal from 'react-modal'
-import Payment from './Payment'
 
 interface Project {
   id: number
@@ -20,26 +19,12 @@ interface Project {
   user_id: number
 }
 
-interface Payment {
-  title: string
-  image: string
-  link: string
-  price: number
-}
-
 const TrainingHistory: React.FC = () => {
   const [userPoints, setUserPoints] = useState<number>(
     Number(localStorage.getItem('userPoints')) || 0
   )
   const userId = Number(localStorage.getItem('userId'))
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
-  const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false) // Estado para controlar a abertura do modal de pagamento
-  const [modalPayment, setModalPayment] = useState<Payment>({
-    title: '',
-    image: '',
-    link: '',
-    price: 0
-  })
   const [searchTerm, setSearchTerm] = useState('')
   const [projects, setProjects] = useState<Project[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
@@ -172,10 +157,8 @@ const TrainingHistory: React.FC = () => {
 
   const handleCheckout = async (project: Project) => {
     if (userPoints < project.points_required) {
-      console.log('Botão de Adquirir Pontos clicado')
+      return
     } else if (participationsIds.includes(project.id)) {
-      // Se o usuário já participou do treinamento, não permita que ele clique novamente
-      console.log('Usuário já participou deste treinamento')
       return
     } else {
       const body = {
@@ -220,13 +203,9 @@ const TrainingHistory: React.FC = () => {
     setSearchTerm(event.target.value)
     setCurrentPage(1)
   }
-  const handleCompra = (payment: Payment) => {
-    openPaymentModal(payment)
+  const handleCompra = () => {
   }
-  const openPaymentModal = (payment: Payment) => {
-    setShowPaymentModal(true)
-    setModalPayment(payment)
-  }
+
   return (
     <div className='training-history'>
       <h2>Treinamentos Disponíveis</h2>
@@ -294,25 +273,25 @@ const TrainingHistory: React.FC = () => {
                     <div className='pontos-options-container'>
                       <div className='pontos-option'>
                         <p>1000 Pontos por R$10,00</p>
-                        <button onClick={() => handleCompra(modalPayment)}>
+                        <button onClick={() => handleCompra()}>
                           Comprar
                         </button>
                       </div>
                       <div className='pontos-option'>
                         <p>2000 Pontos por R$20,00</p>
-                        <button onClick={() => handleCompra(modalPayment)}>
+                        <button onClick={() => handleCompra()}>
                           Comprar
                         </button>
                       </div>
                       <div className='pontos-option'>
                         <p>5000 Pontos por R$50,00</p>
-                        <button onClick={() => handleCompra(modalPayment)}>
+                        <button onClick={() => handleCompra()}>
                           Comprar
                         </button>
                       </div>
                       <div className='pontos-option'>
                         <p>10000 Pontos por R$98,00</p>
-                        <button onClick={() => handleCompra(modalPayment)}>
+                        <button onClick={() => handleCompra()}>
                           Comprar
                         </button>
                       </div>
@@ -365,23 +344,6 @@ const TrainingHistory: React.FC = () => {
         </div>
       </div>
       <ToastContainer />
-      {showPaymentModal && (
-        <div id='myModal' className={`modal ${showPaymentModal ? 'show' : ''}`}>
-          <div className='modal-content'>
-            <span className='close' onClick={() => setShowPaymentModal(false)}>
-              &times;
-            </span>
-            <h2 id='modal-title'>Pagamento</h2>
-            <Payment
-              title={'1'}
-              image={''}
-              link={''}
-              price={0}
-              closeModal={closeModal}
-            />
-          </div>
-        </div>
-      )}
     </div>
   )
 }

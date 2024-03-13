@@ -9,8 +9,8 @@
   
   .service-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
-    grid-gap: 20px; /* Espaçamento entre os cards */
+    grid-template-columns: repeat(2, 1fr);  
+    grid-gap: 20px; 
   }
   
   .service-card {
@@ -30,12 +30,6 @@
     color: #666;
   }
   
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
   .page-link {
     padding: 8px 16px;
     margin: 0 5px;
@@ -49,3 +43,11 @@
   .page-link:hover {
     background-color: #f0f0f0;
   }
+
+  .black-button {
+    background-color: black;
+    text-decoration: none; 
+    display: inline-block; 
+    color: white; 
+  }
+  

@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { ChangeEvent, useState, useEffect } from 'react'
 import Tooltip from '@mui/material/Tooltip'
-import '../../assets/styles/ModalTerm.css'
+import '../../assets/styles/Modal.css'
+import InputMask from 'react-input-mask'
 
 const RequestDevs = () => {
   const [formData, setFormData] = useState(() => {
-    const cachedFormData = localStorage.getItem('formData')
+    const cachedFormData = localStorage.getItem('formDataRequest')
     return cachedFormData
       ? JSON.parse(cachedFormData)
       : {
@@ -20,7 +21,7 @@ const RequestDevs = () => {
           cep: '',
           local: 'online',
           agreeTerms: false,
-          user_id: 0
+          user_id_requested: 0
         }
   })
 
@@ -42,11 +43,13 @@ const RequestDevs = () => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
+
     setFormData({
       ...formData,
       [name]: value
     })
-    resetTimer() // Reinicie o temporizador sempre que houver uma alteração nos dados do formulário
+
+    resetTimer()
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -59,11 +62,15 @@ const RequestDevs = () => {
     const body = formData
 
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/request-devs`, body, {
-        headers: {
-          Authorization: `Bearer 1234`
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/request-devs`,
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+          }
         }
-      })
+      )
       setFormData({
         title: '',
         name: '',
@@ -76,7 +83,7 @@ const RequestDevs = () => {
         cep: '',
         local: 'online',
         agreeTerms: false,
-        user_id: 0
+        user_id_requested: 0
       })
       alert('Solicitação criada, aguarde contato dos nossos desenvolvedores!')
     } catch (error) {
@@ -187,34 +194,43 @@ const RequestDevs = () => {
     if (timer) {
       clearTimeout(timer)
     }
-    setTimer(setTimeout(handleFormAbandoned, 30000)) // Defina um temporizador para 5 minutos (300000 milissegundos)
+
+    setTimer(setTimeout(handleFormAbandoned, 60000))
   }
 
   const handleFormAbandoned = async () => {
-    alert('Preencha seus dados, email, telefone')
+    alert('Preencha seus dados, email, telefone celular')
 
     const body = formData
 
-    if (body.email || body.phone) {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/abandoned-requests`, body, {
-        headers: {
-          Authorization: `Bearer 1234`
+    if (
+      body.email.includes('.com') ||
+      body.phone.replace(/\D/g, '').length === 11
+    ) {
+      body.type = 'Requester'
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/abandoned-requests`,
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+          }
         }
-      })
+      )
     }
   }
 
   const [timer, setTimer] = useState<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(formData))
+    localStorage.setItem('formDataRequest', JSON.stringify(formData))
   }, [formData])
 
   useEffect(() => {
-    resetTimer() // Inicie o temporizador quando o componente for montado
+    resetTimer()
     return () => {
       if (timer) {
-        clearTimeout(timer) // Limpe o temporizador quando o componente for desmontado
+        clearTimeout(timer)
       }
     }
   }, [])
@@ -222,7 +238,7 @@ const RequestDevs = () => {
   return (
     <div className='container-request'>
       <section id='services'>
-        <h2>Faça sua solicitação e aguarde contato.</h2>
+        <h3>Faça sua solicitação e aguarde contato.</h3>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor='title'>Titulo:</label>
@@ -258,11 +274,14 @@ const RequestDevs = () => {
             />
           </div>
           <div>
-            <label htmlFor='phone'>Telefone:</label>
-            <input
-              type='number'
+            <label htmlFor='phone'>Telefone Celular:</label>
+            <InputMask
+              mask='(99)99999-9999'
+              maskChar='-'
+              type='tel'
               id='phone'
               name='phone'
+              placeholder='XX-XXXXX-XXXX'
               value={formData.phone}
               onChange={handleChange}
               required
@@ -358,7 +377,7 @@ const RequestDevs = () => {
           </select>
           {renderCepField()}
           <div>
-            <label htmlFor='user_id'>
+            <label htmlFor='user_id_requested'>
               ID do Prestador:{' '}
               <Tooltip title='Informe o ID do Prestador, caso tenha preferencia, consulte-os abaixo.'>
                 <span>(?)</span>
@@ -366,9 +385,9 @@ const RequestDevs = () => {
             </label>
             <input
               type='number'
-              id='user_id'
-              name='user_id'
-              value={formData.user_id}
+              id='user_id_requested'
+              name='user_id_requested'
+              value={formData.user_id_requested}
               onChange={handleChange}
               required
             />
@@ -390,12 +409,20 @@ const RequestDevs = () => {
               </div>
             </label>
           </div>
-          <button type='submit'>Enviar</button>
-          <a href={process.env.REACT_APP_URL + '/doubts'}>Duvidas?</a>
 
-          <div style={{ textAlign: 'center' }}>
-            *Caso não receba nenhum atendimento, entre em contato por whatsapp
-            (11914287025)
+          <button type='submit'>Enviar</button>
+          <div style={{ color: 'black' }}>
+            {' '}
+            * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
+          </div>
+
+          <a href={process.env.REACT_APP_URL + '/solutions/doubts'}>Duvidas?</a>
+
+          <div style={{ textAlign: 'center', color: 'black' }}>
+            <h6>
+              *Caso não receba nenhum atendimento, entre em contato por whatsapp
+              (11914287025)
+            </h6>
           </div>
         </form>
 

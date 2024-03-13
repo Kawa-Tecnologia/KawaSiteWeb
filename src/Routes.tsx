@@ -6,7 +6,7 @@ import {
   Navigate
 } from 'react-router-dom'
 import App from './App'
-import Login from './pages/Login'
+import Login from './pages/KawaDevs/Login'
 import Dashboard from './components/Dashboard'
 import SearchDevelopers from './pages/SearchDevelopers'
 import TrainingDetails from './components/TrainingDetails'
@@ -17,20 +17,26 @@ import MessageForForum from './components/MessageForForum'
 import FinancePage from './components/Financial'
 import { useTheme } from './components/ThemeProvider'
 import AboutUs from './pages/AboutUs'
-import AreaDevs from './pages/KawaDevs'
+import AreaDevs from './pages/KawaDevs/KawaDevs'
 import UserProfile from './components/UserProfile'
-import AboutUsDevs from './pages/AboutUsDevs'
+import AboutUsDevs from './pages/KawaDevs/AboutUsDevs'
 import UnderConstruction from './pages/UnderConstruction'
 import axios from 'axios'
-import ResetPasswordPage from './pages/RecoveryPassword'
+import ResetPasswordPage from './pages/KawaDevs/RecoveryPassword'
 import AppSolutions from './pages/KawaSolutions/App'
 import Services from './components/Services'
-import Register from './pages/Register'
 import RequestDevsPage from './pages/KawaSolutions/RequestDevsPage'
-import JoinTheTeam from './pages/JoinTheTeam'
+import JoinTheTeam from './pages/KawaDevs/JoinTheTeam'
 import './assets/styles/Modal.css'
 import SurveyPage from './pages/SurveyPage'
 import Doubts from './pages/Doubts'
+import RegisterPage from './pages/KawaDevs/RegisterPage'
+import CheckoutPage from './pages/KawaDevs/CheckoutPage'
+import RegisterDevPage from './pages/KawaDevs/RegisterDevPage'
+import Donations from './pages/DonationsPage'
+import DonationsForm from './components/DonationsForm'
+import TipsPage from './pages/TipsPage'
+import TipsPageSolutions from './pages/KawaSolutions/TipsPageSolutions'
 const RoutesApp: React.FC = () => {
   const [authenticated, setAuthenticated] = useState(false)
   const [authenticationChecked, setAuthenticationChecked] = useState(false)
@@ -49,7 +55,7 @@ const RoutesApp: React.FC = () => {
       if (error.response && error.response.status === 403) {
         setAuthenticated(false)
         setAuthenticationChecked(true)
-        window.location.href = '/devs/login' // ou utilize o Navigate do React Router, se preferir
+        window.location.href = '/devs/login'
       }
       return Promise.reject(error)
     }
@@ -72,7 +78,7 @@ const RoutesApp: React.FC = () => {
               {},
               {
                 headers: {
-                  Authorization: `Bearer ${token}` // Inclua o token JWT no cabeçalho de autorização
+                  Authorization: `Bearer ${token}` 
                 }
               }
             )
@@ -112,12 +118,20 @@ const RoutesApp: React.FC = () => {
       <Router>
         <Routes>
           <Route path='/' element={<App />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/devs/register' element={<RegisterPage />} />
+          <Route path='/devs/register-devs' element={<RegisterDevPage />} />
+
           <Route
             path='/recovery-password/:email'
             element={<ResetPasswordPage />}
           />
-          <Route path='/doubts' element={<Doubts />} />
+          <Route path='/solutions/doubts' element={<Doubts />} />
+          <Route path='/donations' element={<Donations />} />
+          <Route path='/tips' element={<TipsPage />} /> 
+          <Route path='/solutions/tips' element={<TipsPageSolutions />} /> 
+
+          <Route path='/register-donations' element={<DonationsForm/>} />
+          <Route path='/checkout/:preferenceId' element={<CheckoutPage />} />
 
           <Route path='/request-devs' element={<RequestDevsPage />} />
           <Route path='/devs/join-the-team' element={<JoinTheTeam />} />
@@ -192,7 +206,6 @@ const RoutesApp: React.FC = () => {
           <Route path='/solutions' element={<AppSolutions />} />
         </Routes>
         {!authenticated && !home ? <Navigate to='/devs/login' /> : null}
-
       </Router>
     </div>
   )

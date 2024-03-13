@@ -1,10 +1,10 @@
 .pontos-options-container {
-    display: flex; /* Faz com que os elementos filhos sejam exibidos em linha */
-    justify-content: space-between; /* Distribui os elementos igualmente ao longo do eixo principal (horizontal) */
+    display: flex; 
+    justify-content: space-between; 
 }
 
 .pontos-option {
-    width: calc(25% - 10px); /* Define a largura de cada opção para ocupar 25% do espaço, com margem entre eles */
+    width: calc(25% - 10px); 
     padding: 10px;
     background-color: #f0f0f0;
     border-radius: 5px;

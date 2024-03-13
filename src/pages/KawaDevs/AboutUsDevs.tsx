@@ -1,24 +1,24 @@
 import React from 'react'
-import '../assets/styles/AboutUs.css' // Importa o arquivo de estilos
-import NavigationDev from '../components/NavigationDevs'
+import '../../assets/styles/AboutUs.css'
+import NavigationDev from '../../components/NavigationDevs'
 
 const AboutUsDevs: React.FC = () => {
   return (
     <div>
       <header className='header'>
-      <div className='logo-container'>
-        <img
-          className='logo'
-          src={require('../assets/images/kawa.jpg')}
-          alt='Kawa Devs'
-        />
-      </div>
-      <NavigationDev  />
-    </header>
-      <div className="sobre-nos">
+        <div className='logo-container'>
+          <img
+            className='logo'
+            src={require('../../assets/images/kawa.jpg')}
+            alt='Kawa Devs'
+          />
+        </div>
+        <NavigationDev />
+      </header>
+      <div className='sobre-nos'>
         <header></header>
         <main>
-          <section className="section-box">
+          <section className='section-box'>
             <h2>Missão</h2>
             <p>
               Auxiliar desenvolvedores a construirem uma carreira solida e
@@ -27,7 +27,7 @@ const AboutUsDevs: React.FC = () => {
               profissionais.
             </p>
           </section>
-          <section className="section-box">
+          <section className='section-box'>
             <h2>Visão</h2>
             <p>
               Ser reconhecido como um ponto de referência para desenvolvedores
@@ -37,7 +37,7 @@ const AboutUsDevs: React.FC = () => {
               próximo nível.
             </p>
           </section>
-          <section className="section-box">
+          <section className='section-box'>
             <h2>Valores</h2>
             <ul>
               <li>

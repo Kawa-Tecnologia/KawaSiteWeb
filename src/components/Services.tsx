@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Services.css'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
 import axios from 'axios'
+import LeftContainer from './LeftContainer'
 
 interface Service {
   id: number
@@ -46,17 +45,14 @@ const Services: React.FC = () => {
 
     fetchService()
   }, [searchTerm, currentPage])
-  // Filtrar as avaliações com base no termo de busca
   const filteredServices: Service[] = services?.filter(
     service => service.receive_user_id
   )
 
-  
-  // Lógica para calcular o número total de páginas
-  const totalPages: number = Math.ceil((filteredServices?.length || 0) / servicesPerPage);
-  
+  const totalPages: number = Math.ceil(
+    (filteredServices?.length || 0) / servicesPerPage
+  )
 
-  // Lógica para determinar as avaliações da página atual
   const indexOfLastService: number = currentPage * servicesPerPage
   const indexOfFirstService: number = indexOfLastService - servicesPerPage
   const currentServices: Service[] = filteredServices?.slice(
@@ -64,9 +60,7 @@ const Services: React.FC = () => {
     indexOfLastService
   )
 
-  // Função para mudar de página
   const paginate = (pageNumber: number): void => setCurrentPage(pageNumber)
-  // Função para lidar com a alteração do termo de busca
   const handleSearchChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => setSearchTerm(event.target.value)
@@ -104,14 +98,9 @@ const Services: React.FC = () => {
     }
   }
 
-  // Restante do código permanece o mesmo
-
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-      </div>
+  <LeftContainer/>
       <div className='services-page'>
         <h1>Serviços</h1>
         <input
@@ -129,23 +118,38 @@ const Services: React.FC = () => {
                 <p>Status:{service.status}</p>
                 <p>Data:{service.date}</p>
                 <p>Realizado:{service.accomplished}</p>
-
                 <p>Avaliação:{service.avaliation}</p>
                 <p>Comentario:{service.request_comment}</p>
                 <button
-  onClick={() => handleServiceStatusChange(service.id, 'CANCELED')}
-  disabled={service.status === "CANCELED" || service.status === "PAID"}
-  style={{ backgroundColor: (service.status === "CANCELED" || service.status === "PAID") ? "gray" : "" }}
->
-  Marcar como Não Realizado
-</button>
-<button
-  onClick={() => handleServiceStatusChange(service.id, 'PAID')}
-  disabled={service.status === "CANCELED" || service.status === "PAID"}
-  style={{ backgroundColor: (service.status === "CANCELED" || service.status === "PAID") ? "gray" : "" }}
->
-  Marcar como Realizado
-</button>
+                  onClick={() =>
+                    handleServiceStatusChange(service.id, 'CANCELED')
+                  }
+                  disabled={
+                    service.status === 'CANCELED' || service.status === 'PAID'
+                  }
+                  style={{
+                    backgroundColor:
+                      service.status === 'CANCELED' || service.status === 'PAID'
+                        ? 'gray'
+                        : ''
+                  }}
+                >
+                  Marcar como Não Realizado
+                </button>
+                <button
+                  onClick={() => handleServiceStatusChange(service.id, 'PAID')}
+                  disabled={
+                    service.status === 'CANCELED' || service.status === 'PAID'
+                  }
+                  style={{
+                    backgroundColor:
+                      service.status === 'CANCELED' || service.status === 'PAID'
+                        ? 'gray'
+                        : ''
+                  }}
+                >
+                  Marcar como Realizado
+                </button>
               </div>
             ))
           ) : (

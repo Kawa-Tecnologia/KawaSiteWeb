@@ -1,11 +1,10 @@
-/* Estilos comuns a todas as seções */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #0066CC;
-  background-image: url('./assets//images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif');
-
+  background-color: #f0f0f0;
+  line-height: 1.6;
+  color: #000;
 }
 
 header {
@@ -15,30 +14,41 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  justify-content: center; /* Centraliza os itens horizontalmente */
-  transition: background-color 0.3s ease; /* Adicionando uma transição suave para mudanças de cor */
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 .logo-container img {
-  max-width: 20px
+  max-width: 20px;
+  width: 100px;
 }
 
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-
 }
 
 nav ul li {
   display: inline;
   margin-right: 20px;
-  transition: transform 0.3s ease; /* Adicionando uma transição suave para efeitos de hover */
+  transition: transform 0.3s ease;
 }
 
 nav ul li:hover {
-  transform: translateY(-3px); /* Efeito de levantamento sutil ao passar o mouse */
+  transform: translateY(-3px);
 }
+
 nav ul li a {
   color: #ffffff;
   text-decoration: none;
@@ -55,13 +65,14 @@ nav ul li a {
   text-decoration: none;
   font-weight: bold;
   margin-top: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Adicionando transições suaves para mudanças de cor */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1.5rem;
 }
 
 .cta-button:hover {
   background-color: #0066cc;
   color: #ffffff;
-  cursor: pointer; /* Mudança de cursor ao passar o mouse */
+  cursor: pointer;
 }
 
 section {
@@ -70,11 +81,16 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-bottom: 30px;
+  padding: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: black;
 }
 
 section h2 {
   font-size: 2rem;
-  color:#0066CC;
+  color: #0066CC;
   margin-bottom: 20px;
 }
 
@@ -87,12 +103,8 @@ footer {
 
 
 
-.banner-content {
-  width: 30%;
 
-}
 
-/* Estilo específico para outras seções */
 #sobre-nos {
   background-color: #0e0e0e;
   opacity: 0.9;
@@ -102,6 +114,7 @@ footer {
 
 #devs {
   background-color: transparent;
+  padding: 0px;
 }
 
 #sobre-nos,
@@ -113,19 +126,27 @@ footer {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.9;
-  /* Adicione outros estilos específicos para cada seção conforme necessário */
 }
-/* Estilos de mídia para responsividade */
+
+section.banner {
+  padding: 0px 0px;
+  text-align: center;
+
+}
+
 @media only screen and (max-width: 767px) {
   section.banner {
     padding: 100px 20px;
-    /* Ajuste o padding conforme necessário para telas menores */
     text-align: center;
 
   }
 }
 
-/* Estilos de mídia para responsividade */
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 767px) {
   header {
     flex-direction: column;
@@ -153,51 +174,17 @@ footer {
   }
 }
 
-.banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  /* Ajuste o padding conforme necessário para ocupar a tela inteira */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-
-.banner-left,
-.banner-right {
-  width: 100%;
-  /* Ajuste o tamanho conforme necessário */
-}
-
-.banner-content {
-  text-align: center;
-}
-
-
-.banner-left,
-.banner-right {
-  display: flex;
-  justify-content: center;
-
-
-  
-}
 
 
 
-.container {
-  display: flex;
-  background-position: center;
-  min-width: 80%;
-  max-width: 90%;
-}
+
 
 .left,
 .right {
-  flex: 5;
+  flex: 1;
   border: 0px solid black;
+  margin-right: 10px;
+  /* Adiciona margem direita para separar os elementos */
 
 }
 
@@ -208,69 +195,48 @@ footer {
 
 
 @media only screen and (max-width: 767px) {
-  .container {
-    flex-direction: column;
-    /* Altera a direção do contêiner para empilhar os elementos verticalmente */
-    width: 100%;
-  }
 
   .middle {
     order: 2;
-    /* Move a seção "Bem-vindo à Kawa Tecnologia" para o segundo lugar no empilhamento */
   }
 
-  .left
-  .right {
+  .left .right {
     order: 3;
-    /* Move a seção "Desenvolvedores Open to Work" para o terceiro lugar no empilhamento */
   }
 }
 
 .star-container {
   color: #777;
-  /* Cor das estrelas não preenchidas */
 }
 
 .star.filled {
   color: yellow;
-  /* Cor das estrelas preenchidas */
-}
-
-.right-container,
-.left-container {
-  /* Cor de fundo escura */
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 
-.container-geral {
-  background-image: url('../src/assets/images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh; /* Garante que o container ocupe toda a altura da tela */
-}
-
-
-
-/* Exemplo de ícone para o menu (usando FontAwesome como referência) */
 .icon-home::before {
   content: "\f015";
-  /* Código do ícone do FontAwesome */
 }
 
 .dark-theme {
   background-color: #333;
   color: #fff;
-  min-height: 100vh;}
+  min-height: 100vh;
+}
 
 .white-theme {
   background-color: #fff;
   color: #333;
   min-height: 100vh;
 
+}
+
+.dark-theme .pagination {
+  color: white;
+}
+
+.white-theme .pagination {
+  color: black;
 }
 
 .nav-link {
@@ -298,8 +264,8 @@ footer {
 }
 
 .nav-link:hover {
-  color: #ff00ff; /* Mudar a cor ao passar o mouse */
-  transform: translateY(-3px); /* Efeito de elevação ao passar o mouse */
+  color: #ff00ff;
+  transform: translateY(-3px);
 }
 
 * {
@@ -308,28 +274,12 @@ footer {
   padding: 0;
 }
 
-/* Estilo para o corpo da página */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #0e0e0e;
-  color: #ffffff;
-  line-height: 1.6;
-}
 
-/* Estilo para o cabeçalho */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #1a1a1a;
-  color: #ffffff;
-
-}
 
 .logo {
   width: 100px;
   height: auto;
+  margin-right: 20px;
 }
 
 .navigation {
@@ -347,125 +297,11 @@ body {
   color: #66fcf1;
 }
 
-.banner h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.banner h3 {
-  font-size: 1.5rem;
-  margin-bottom: 40px;
-  color:#5274be;
-}
-
-.banner p {
-  font-size: 1rem;
-}
-
-.banner .cta-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color:#0066CC;
-  color: #f0f0f0;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.banner .cta-button:hover {
-  background-color: #45a29e;
-}
-
-/* Estilo para a seção de desenvolvedores */
-.devs-section {
-  padding: 50px;
-}
-
 .devs-section h2 {
   font-size: 2rem;
   margin-bottom: 30px;
 }
 
-.dev-card {
-  background-color: #1a1a1a;
-  color: #ffffff;
-
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.dev-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.dev-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.dev-card p {
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-/* Estilo para o modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  color: #ffffff;
-
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.modal-content {
-  background-color: #1a1a1a;
-  color: #ffffff;
-
-  margin: 15% auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
-  position: relative;
-}
-
-.modal-content img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.close {
-  color: #ffffff;
-  font-size: 2rem;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: #ff0000;
-}
-
-/* Estilo para o rodapé */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #1a1a1a;
-  color: #ffffff;
-}
-
-/* Estilo para a notificação de erro */
 .error-notification {
   position: fixed;
   bottom: 20px;
@@ -475,4 +311,28 @@ footer {
   padding: 10px 20px;
   border-radius: 5px;
   z-index: 9999;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  color: yellow;
+  font-size: 100%;
+  display: flex;
+}
+
+.rating>span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.rating>span:hover:before,
+.rating>span:hover~span:before {
+  content: "\2605";
+  position: absolute;
+  color: gold;
+}
+
+.rating>span:hover:before {
+  z-index: 2;
 }

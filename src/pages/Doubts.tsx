@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import { Link } from 'react-router-dom' // Importando Link para criar o botão de voltar
 import '../assets/styles/Doubts.css'
+import Header from './KawaSolutions/Header'
 
 const Doubts: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -23,23 +24,17 @@ const Doubts: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const { name, phone, email, question } = formData
-    const emailContent = `Nome: ${name}\nTelefone (WhatsApp): ${phone}\nEmail: ${email}\nDúvida: ${question}`
+    const emailContent = `Nome: ${name}\nTelefone Celular (WhatsApp): ${phone}\nEmail: ${email}\nDúvida: ${question}`
     window.open(
       `mailto:suporte@kawatecnologia.com.br?subject=Dúvida&body=${encodeURIComponent(
         emailContent
       )}`
     )
   }
+  
   return (
     <div className='doubts-container'>
-      <div className='branding'>
-        <img
-          src={'../assets/images/kawa_tech.jpg'}
-          alt='Kawa Solutions Logo'
-          className='logo'
-        />
-        <h1>Kawa Solutions</h1>
-      </div>
+             <Header/>
       <h1>Perguntas Frequentes</h1>
       <div className='question'>
         <h2>Custos e Processos para Implementar uma Loja Virtual</h2>
@@ -126,7 +121,7 @@ const Doubts: React.FC = () => {
           <input
             type='tel'
             name='phone'
-            placeholder='Telefone (WhatsApp)'
+            placeholder='Telefone Celular (WhatsApp)'
             value={formData.phone}
             onChange={handleChange}
             required
@@ -153,7 +148,6 @@ const Doubts: React.FC = () => {
         </div>
         <button type='submit'>Enviar</button>
       </form>
-      {/* Botão de voltar */}
       <Link to='/solutions' className='back-button'>
         Voltar para Soluções
       </Link>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import ErrorNotification from '../components/Error'
-import NavigationDev from '../components/NavigationDevs'
-import '../assets/styles/Login.css'
+import ErrorNotification from '../../components/Error'
+import NavigationDev from '../../components/NavigationDevs'
+import '../../assets/styles/Login.css'
 
 interface UserData {
   name: string
@@ -28,8 +28,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [password, setPassword] = useState<string>('')
   const [isLoading, setLoading] = useState<boolean>(false)
   const navigate = useNavigate()
-  const [error, setError] = useState<string>('') // Novo estado para controlar erros
-  const [loginAttempts, setLoginAttempts] = useState<number>(0) // Contador de tentativas de login
+  const [error, setError] = useState<string>('')
+  const [loginAttempts, setLoginAttempts] = useState<number>(0) 
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -43,7 +43,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, body)
       const { token } = response.data
-      const { fullname, email, points, id, ProfessionalInfo } =
+      const { fullname, email, points, id, ProfessionalInfo, recommendation } =
         response.data.user
       setLoginAttempts(0)
 
@@ -55,6 +55,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       localStorage.setItem('userEmail', email)
       localStorage.setItem('userName', fullname)
       localStorage.setItem('userPoints', points)
+      if(recommendation){
+        localStorage.setItem('recommendation', JSON.stringify(recommendation))
+
+      }
 
       const userData: UserData = {
         name: fullname,
@@ -74,7 +78,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       console.log(error)
 
       if (axios.isAxiosError(error)) {
-        const errorMessage = error.response?.data.message || error.message
+        // eslint-disable-next-line no-debugger
+        debugger
+        const errorMessage = error.response?.data.message || error.response?.data.error || error.message
         setLoginAttempts(prevAttempts => prevAttempts + 1)
         if (loginAttempts >= 2) {
           setTimeout(() => setLoginAttempts(0), 3600000)
@@ -96,7 +102,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         },
         {
           headers: {
-            Authorization: 'Bearer 1234'
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
           }
         }
       )
@@ -104,14 +110,16 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       localStorage.setItem('tokenRecovery', data.token)
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const errorMessage = error.response?.data.message || error.message
+        // eslint-disable-next-line no-debugger
+        debugger
+        const errorMessage = error.response?.data.message || error.response?.data.error  || error.message
 
         setError(errorMessage)
       }
     }
   }
   const goToCadastro = () => {
-    navigate('/register')
+    navigate('/devs/register')
   }
   const showRecoveryForm = () => {
     setLoginForm(false)
@@ -134,7 +142,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <div className='logo-container'>
           <img
             className='logo'
-            src={require('../assets/images/kawa.jpg')}
+            src={require('../../assets/images/kawa.jpg')}
             alt='Kawa Devs'
           />
         </div>
@@ -209,7 +217,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     {error && <ErrorNotification message={error} severity='error' />}
   </div>
 </div>
-
     </div>
   )
 }

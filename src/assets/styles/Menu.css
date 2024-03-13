@@ -1,66 +1,50 @@
 .menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .menu-item {
-    margin-bottom: 15px;
-  }
-  
-  .menu-item a {
-    display: inline-block;
-    padding: 10px 10px;
-    border-radius: 30px; /* Bordas arredondadas */
-    font-size: 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: #fff;
-    background: linear-gradient(45deg, #1100ff, #3333ff); /* Gradiente de cores */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra */
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .menu-item a:hover {
-    transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
-  }
-  
-  .menu-item {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: #fff;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .menu-item:hover {
-    transform: translateX(5px);
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-  
-  .menu-item:last-child {
-    margin-bottom: 0;
-  }
-  
-  .menu-item a {
-    color: inherit;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu-item a:hover {
-    color: #00c6ff;
-  }
-  
-  .icon {
-    font-size: 1.5rem;
-    margin-right: 15px;
-    transition: transform 0.3s ease;
-  }
-  
-  .menu-item:hover .icon {
-    transform: scale(1.2);
-  }
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  
+.menu-item {
+  margin-bottom: 5px;
+}
+
+.menu-item a {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 30px; 
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background: transparent; 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-item a:hover {
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu-item a .icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: transform 0.3s;
+}
+
+.menu-item a:hover .icon {
+  transform: scale(1.2);
+}
+
+.menu-item a:hover .text {
+  transform: translateX(5px);
+}
+
+.menu-item a .text {
+  transition: transform 0.3s;
+}
+
+.menu-item:last-child {
+  margin-bottom: 0;
+}

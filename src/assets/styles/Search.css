@@ -7,12 +7,20 @@
   min-height: 100vh;
   padding: 20px;
   transition: all 0.5s ease;
-  background-color: #0066CC;
-  background-image: url('../images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif');
 
 }
-
-/* Título da busca */
+.container-search input[type='text'] {
+  margin-bottom: 10px;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #0e0e0e;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
 .search-title {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -20,7 +28,6 @@
   text-align: center;
 }
 
-/* Input da busca */
 .search-input {
   margin-bottom: 10px;
   padding: 15px;
@@ -36,14 +43,16 @@
 
 .search-input::placeholder {
   color: #0e0e0e;
+  
 }
 
 .search-input:focus {
   outline: none;
   border-color: #FFFFFF;
+  
+
 }
 
-/* Botão de busca */
 .search-button {
   background-color: #4FB99F;
   color: #FFFFFF;
@@ -54,13 +63,14 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  
 }
 
 .search-button:hover {
   background-color: #3E8B7D;
+  
 }
 
-/* Container dos cards dos desenvolvedores */
 .dev-cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -68,7 +78,6 @@
   margin-top: 40px;
 }
 
-/* Estilos de mídia para responsividade */
 @media only screen and (max-width: 767px) {
   .container-search {
       padding: 10px;
