@@ -160,7 +160,7 @@ const SearchDevelopers: React.FC = () => {
     const body = userData
     try {
       const { data } = await axios.post(
-        `http://localhost:3001/api/professional/search`,
+        `${process.env.REACT_APP_API_URL}/api/professional/search`,
         body,
         {
           headers: {
