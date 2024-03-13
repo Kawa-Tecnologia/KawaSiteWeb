@@ -169,7 +169,7 @@ const App: React.FC = () => {
     const fetchDevelopers = async () => {
       try {
         const { data } = await axios.get(
-          `https://kawa-site-web-ten.vercel.app/api/user?type=platform`,
+          `https://kawa-site-web-back.vercel.app/api/user?type=platform`,
           {
             headers: {
               Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
