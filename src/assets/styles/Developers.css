@@ -87,22 +87,22 @@
 
 @media only screen and (max-width: 767px) {
   .developer-container {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajusta a quantidade de colunas para telas menores */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
     grid-gap: 10px;
   }
   
   .developer-card {
-    padding: 15px; /* Ajusta o padding para telas menores */
+    padding: 15px;
   }
 }
 
 @media only screen and (mix-width: 768px) {
   .developer-container {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajusta a quantidade de colunas para telas menores */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
     grid-gap: 10px;
   }
   
   .developer-card {
-    padding: 15px; /* Ajusta o padding para telas menores */
+    padding: 15px; 
   }
 }
