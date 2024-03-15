@@ -16,8 +16,8 @@ import Doubts from './pages/Doubts'
 import RegisterPage from './pages/KawaDevs/RegisterPage'
 import CheckoutPage from './pages/KawaDevs/CheckoutPage'
 import RegisterDevPage from './pages/KawaDevs/RegisterDevPage'
-import Donations from './pages/DonationsPage'
-import DonationsForm from './components/DonationsForm'
+// import Donations from './pages/DonationsPage'
+// import DonationsForm from './components/DonationsForm'
 import TipsPage from './pages/TipsPage'
 import TipsPageSolutions from './pages/KawaSolutions/TipsPageSolutions'
 import { CSSTransition } from 'react-transition-group'
@@ -42,11 +42,11 @@ const RoutesApp: React.FC = () => {
           element={<ResetPasswordPage />}
         />
         <Route path='/solutions/doubts' element={<Doubts />} />
-        <Route path='/donations' element={<Donations />} />
+        {/* <Route path='/donations' element={<Donations />} /> */}
         <Route path='/tips' element={<TipsPage />} />
         <Route path='/solutions/tips' element={<TipsPageSolutions />} />
 
-        <Route path='/register-donations' element={<DonationsForm />} />
+        {/* <Route path='/register-donations' element={<DonationsForm />} /> */}
         <Route path='/checkout/:preferenceId' element={<CheckoutPage />} />
 
         <Route path='/request-devs' element={<RequestDevsPage />} />

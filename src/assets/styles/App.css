@@ -39,50 +39,43 @@ nav ul li a {
   margin-bottom: 20px;
 }
 
-/* Estilos para dispositivos com largura máxima de 767px */
 @media only screen and (max-width: 767px) {
-  /* Reorganiza a ordem dos elementos na seção .middle */
   .middle {
     order: 2;
   }
 
-  /* Reorganiza a ordem dos elementos .left e .right */
   .left,
   .right {
     order: 3;
   }
 
-  /* Estilos para os itens de navegação */
   nav ul li {
-    display: block; /* Altera para display block para tornar os itens de navegação empilhados */
-    margin-right: 0; /* Remove a margem direita para evitar espaçamento extra */
-    margin-bottom: 10px; /* Adiciona margem inferior para separar os itens */
+    display: block; 
+    margin-right: 0; 
+    margin-bottom: 10px; 
   }
 
   nav ul li:last-child {
-    margin-bottom: 0; /* Remove a margem inferior do último item de navegação */
+    margin-bottom: 0; 
   }
 
   nav ul li a {
-    display: block; /* Altera para display block para preencher a largura disponível */
+    display: block; 
     color: #fff;
     text-decoration: none;
     font-weight: bold;
   }
 
-  /* Estilos para o botão de call-to-action ao passar o mouse */
   .cta-button:hover {
     background-color: #0056b3;
     cursor: pointer;
   }
 
-  /* Estilos para os títulos das seções */
   .section h2 {
     font-size: 2rem;
     margin-bottom: 20px;
   }
 
-  /* Estilos para os parágrafos das seções */
   .section p {
     font-size: 1.2rem;
     margin-bottom: 20px;

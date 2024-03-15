@@ -1,18 +1,18 @@
 .tips {
-    background-color: #222; /* Cor de fundo escura */
-    color: #fff; /* Cor do texto */
+    background-color: #222; 
+    color: #fff; 
   }
   
   .card {
-    background-color: #333; /* Cor de fundo das caixas */
+    background-color: #333; 
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
   
   .card h2 {
-    color: #0066CC; /* Cor do título */
+    color: #0066CC; 
     font-size: 1.5em;
     margin-bottom: 10px;
   }
@@ -23,5 +23,5 @@
   }
     
   tips h1 {
-    color: #0066CC; /* Cor do título principal */
+    color: #0066CC; 
   }

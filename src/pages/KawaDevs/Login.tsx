@@ -29,7 +29,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [isLoading, setLoading] = useState<boolean>(false)
   const navigate = useNavigate()
   const [error, setError] = useState<string>('')
-  const [loginAttempts, setLoginAttempts] = useState<number>(0) 
+  const [loginAttempts, setLoginAttempts] = useState<number>(0)
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,7 +41,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, body)
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/login`,
+        body
+      )
       const { token } = response.data
       const { fullname, email, points, id, ProfessionalInfo, recommendation } =
         response.data.user
@@ -55,9 +58,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       localStorage.setItem('userEmail', email)
       localStorage.setItem('userName', fullname)
       localStorage.setItem('userPoints', points)
-      if(recommendation){
+      if (recommendation) {
         localStorage.setItem('recommendation', JSON.stringify(recommendation))
-
       }
 
       const userData: UserData = {
@@ -78,7 +80,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       console.log(error)
 
       if (axios.isAxiosError(error)) {
-        const errorMessage = error.response?.data.message || error.response?.data.error || error.message
+        const errorMessage =
+          error.response?.data.message ||
+          error.response?.data.error ||
+          error.message
         setLoginAttempts(prevAttempts => prevAttempts + 1)
         if (loginAttempts >= 2) {
           setTimeout(() => setLoginAttempts(0), 3600000)
@@ -108,7 +113,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       localStorage.setItem('tokenRecovery', data.token)
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const errorMessage = error.response?.data.message || error.response?.data.error  || error.message
+        const errorMessage =
+          error.response?.data.message ||
+          error.response?.data.error ||
+          error.message
 
         setError(errorMessage)
       }
@@ -145,74 +153,78 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <NavigationDev />
       </header>
       <div className='login'>
-  <div className='login-container' style={{ textAlign: 'center' }}>
-    <h1>Kawa Devs</h1>
-    <form
-      className='form'
-      onSubmit={loginForm ? handleLogin : handleRecoverPassword}
-    >
-      <h2>{loginForm ? 'Login' : 'Recuperação de Senha'}</h2>
-      {loginForm ? (
-        <>
-          <label htmlFor='username'>Usuário:</label>
-          <input
-            type='text'
-            id='username'
-            name='username'
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-            required
-          />
-          <br />
-          <label htmlFor='password'>Senha:</label>
-          <input
-            type='password'
-            id='password'
-            name='password'
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-          />
-        </>
-      ) : (
-        <>
-          <label htmlFor='email'>E-mail:</label>
-          <input
-            type='email'
-            id='email'
-            name='email'
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
-        </>
-      )}
-      {loginAttempts > 0 && loginAttempts <= 3 && (
-        <p>{remainingAttemptsMessage}</p>
-      )}
-      <button type='submit' disabled={isLoading}>
-        {isLoading ? 'Entrando...' : loginForm ? 'Entrar' : 'Recuperar Senha'}
-      </button>
-      {loginForm ? (
-        <p>
-          <button type='button' onClick={showRecoveryForm}>
-            Esqueci minha senha
-          </button>
-          <button id='modal-pay-button' onClick={goToCadastro}>
-            Cadastrar
-          </button>
-        </p>
-      ) : (
-        <p>
-          <button type='button' onClick={showLoginForm}>
-            Voltar para o login
-          </button>
-        </p>
-      )}
-    </form>
-    {error && <ErrorNotification message={error} severity='error' />}
-  </div>
-</div>
+        <div className='login-container' style={{ textAlign: 'center' }}>
+          <h1>Kawa Devs</h1>
+          <form
+            className='form'
+            onSubmit={loginForm ? handleLogin : handleRecoverPassword}
+          >
+            <h2>{loginForm ? 'Login' : 'Recuperação de Senha'}</h2>
+            {loginForm ? (
+              <>
+                <label htmlFor='username'>Usuário:</label>
+                <input
+                  type='text'
+                  id='username'
+                  name='username'
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  required
+                />
+                <br />
+                <label htmlFor='password'>Senha:</label>
+                <input
+                  type='password'
+                  id='password'
+                  name='password'
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                />
+              </>
+            ) : (
+              <>
+                <label htmlFor='email'>E-mail:</label>
+                <input
+                  type='email'
+                  id='email'
+                  name='email'
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                />
+              </>
+            )}
+            {loginAttempts > 0 && loginAttempts <= 3 && (
+              <p>{remainingAttemptsMessage}</p>
+            )}
+            <button type='submit' disabled={isLoading}>
+              {isLoading
+                ? 'Entrando...'
+                : loginForm
+                ? 'Entrar'
+                : 'Recuperar Senha'}
+            </button>
+            {loginForm ? (
+              <p>
+                <button type='button' onClick={showRecoveryForm}>
+                  Esqueci minha senha
+                </button>
+                <button id='modal-pay-button' onClick={goToCadastro}>
+                  Cadastrar
+                </button>
+              </p>
+            ) : (
+              <p>
+                <button type='button' onClick={showLoginForm}>
+                  Voltar para o login
+                </button>
+              </p>
+            )}
+          </form>
+          {error && <ErrorNotification message={error} severity='error' />}
+        </div>
+      </div>
     </div>
   )
 }

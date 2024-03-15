@@ -207,7 +207,7 @@ const SearchDevelopers: React.FC = () => {
       </header>
       <div className='login'>
         <div className='container-search'>
-          <h1>Pagina de Busca</h1>
+          <h1>Desenvolvedores &gt;&gt;Open to Work&lt;&lt;</h1>
           <div>
             <label>Linguagem de Programação:</label>
             <input
@@ -275,8 +275,9 @@ const SearchDevelopers: React.FC = () => {
           </div>
           <button onClick={handleSearch}>Buscar</button>
         </div>
-
-        <div className='dev-cards-container'>
+      </div>
+      <div className='result-container'>
+        <div className='dev-cards-container-search'>
           <br />
           {developers.length === 0 ? (
             <h2>Nenhum desenvolvedor encontrado.</h2>

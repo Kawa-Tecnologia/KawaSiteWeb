@@ -44,3 +44,41 @@ color: #f0f0f0;
     padding: 5px;
     font-size: 12px;
   }
+
+  @media only screen and (max-width: 768px) {
+    .dashboard {
+      flex-direction: column;
+    }
+    
+    .main-content {
+      padding: 10px; 
+    }
+    
+    .notification-bar {
+      width: calc(100% - 10px); 
+    }
+  
+    .notification-badge {
+      top: 5px;
+      right: 5px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .dashboard {
+      flex-direction: column; 
+    }
+    
+    .main-content {
+      padding: 10px; 
+    }
+    
+    .notification-bar {
+      width: calc(100% - 10px); 
+    }
+  
+    .notification-badge {
+      top: 5px;
+      right: 5px;
+    }
+  }

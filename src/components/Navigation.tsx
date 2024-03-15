@@ -7,11 +7,11 @@ const Navigation: React.FC = () => {
       <ul className='nav-list'>
         {
           <div>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <a href='/donations' className='nav-link'>
                 Ajude Quem Precisa
               </a>
-            </li>
+            </li> */}
             <li className='nav-item'>
               <a href='/tips' className='nav-link'>
                 Dicas

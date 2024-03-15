@@ -184,8 +184,6 @@ section.banner {
   flex: 1;
   border: 0px solid black;
   margin-right: 10px;
-  /* Adiciona margem direita para separar os elementos */
-
 }
 
 .middle {
@@ -355,7 +353,6 @@ section.banner {
   transition: opacity 300ms ease-in-out;
 }
 
-/* Estilos para o body e header */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -376,7 +373,6 @@ header {
   transition: background-color 0.3s ease;
 }
 
-/* Estilos para a barra de navegação */
 .navigation {
   display: flex;
   justify-content: center;
@@ -393,20 +389,17 @@ header {
   color: #66fcf1;
 }
 
-/* Estilos para o logo */
 .logo {
   width: 100px;
   height: auto;
   margin-right: 20px;
 }
 
-/* Estilos para a seção de desenvolvedores */
 .devs-section h2 {
   font-size: 2rem;
   margin-bottom: 30px;
 }
 
-/* Estilos para a mensagem de erro */
 .error-notification {
   position: fixed;
   bottom: 20px;
@@ -418,7 +411,6 @@ header {
   z-index: 9999;
 }
 
-/* Estilos para as estrelas de avaliação */
 .rating {
   unicode-bidi: bidi-override;
   color: yellow;
@@ -443,7 +435,6 @@ header {
   z-index: 2;
 }
 
-/* Estilos para as seções de conteúdo */
 section {
   color: #ffffff;
   display: flex;
@@ -467,7 +458,6 @@ footer {
   padding: 20px;
 }
 
-/* Media queries para tornar o layout responsivo */
 @media only screen and (max-width: 767px) {
   header {
     flex-direction: column;

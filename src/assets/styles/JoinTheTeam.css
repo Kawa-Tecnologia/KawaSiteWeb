@@ -14,3 +14,9 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 300px; 
   }
+
+  @media only screen and (min-width: 768px) {
+    .join-the-team-container {
+      width: 400px; 
+    }
+  }

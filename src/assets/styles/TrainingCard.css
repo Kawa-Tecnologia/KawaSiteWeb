@@ -9,8 +9,8 @@
 
 .trainings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Use auto-fit para que os itens se ajustem automaticamente ao tamanho do contêiner */
-  grid-gap: 20px; /* Aumentei o espaçamento entre os cards */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  grid-gap: 20px; 
 }
 
 .training-card {
@@ -21,19 +21,19 @@
 }
 
 .training-card h2 {
-  font-size: 1.2rem; /* Reduzi o tamanho da fonte do título */
+  font-size: 1.2rem; 
   margin-bottom: 10px;
 }
 
 .training-card p {
-  font-size: 1rem; /* Reduzi o tamanho da fonte do texto */
+  font-size: 1rem; 
   color: #666;
 }
 
 .button-container {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Alinhei os botões verticalmente */
+  align-items: center; 
 }
 
 .button-container button {

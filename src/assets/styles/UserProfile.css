@@ -59,3 +59,53 @@
   .personal-info-form {
     margin-right: 20px;
   }
+
+  @media only screen and (max-width: 767px) {
+    .profile {
+      padding: 10px; 
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="file"] {
+      width: calc(100% - 20px); 
+      margin-bottom: 10px; 
+    }
+  
+    ul li {
+      margin-bottom: 5px; 
+    }
+  
+    .form-container-user {
+      flex-direction: column; 
+    }
+  
+    .personal-info-form {
+      margin-right: 0; 
+    }
+  }
+
+  @media only screen and (min-width: 767px) {
+    .profile {
+      padding: 10px; 
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="file"] {
+      width: calc(100% - 20px); 
+      margin-bottom: 10px; 
+    }
+  
+    ul li {
+      margin-bottom: 5px; 
+    }
+  
+    .form-container-user {
+      flex-direction: column; 
+    }
+  
+    .personal-info-form {
+      margin-right: 0; 
+    }
+  }
