@@ -15,11 +15,17 @@ interface ProfessionalData {
   job_title: string
 }
 
+interface Avaliation {
+  content: string
+  avaliation: number
+}
+
 interface DeveloperType {
   id: number
   fullname: string
   avaliation: number
   ProfessionalInfo: ProfessionalData
+  Avaliation: Avaliation
 }
 
 const RequestDevsPage: React.FC = () => {
@@ -34,6 +40,10 @@ const RequestDevsPage: React.FC = () => {
         tools: [''],
         imageSrc: '',
         job_title: ''
+      },
+      Avaliation: {
+        avaliation: 0,
+        content: ''
       }
     }
   ])

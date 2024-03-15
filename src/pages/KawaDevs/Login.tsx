@@ -78,8 +78,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       console.log(error)
 
       if (axios.isAxiosError(error)) {
-        // eslint-disable-next-line no-debugger
-        debugger
         const errorMessage = error.response?.data.message || error.response?.data.error || error.message
         setLoginAttempts(prevAttempts => prevAttempts + 1)
         if (loginAttempts >= 2) {
@@ -110,8 +108,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       localStorage.setItem('tokenRecovery', data.token)
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        // eslint-disable-next-line no-debugger
-        debugger
         const errorMessage = error.response?.data.message || error.response?.data.error  || error.message
 
         setError(errorMessage)

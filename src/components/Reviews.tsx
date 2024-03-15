@@ -10,42 +10,45 @@ interface Review {
   project_id: number
 }
 interface StarProps {
-  filled: boolean;
+  filled: boolean
 }
 
 const Star: React.FC<StarProps> = ({ filled }) => {
-  return (
-    <span style={{ color: filled ? 'gold' : 'lightgray' }}>
-      &#9733;
-    </span>
-  );
-};
+  return <span style={{ color: filled ? 'gold' : 'lightgray' }}>&#9733;</span>
+}
 const Reviews: React.FC = () => {
   const [reviews, setReviews] = useState<Review[]>([])
   const [searchTerm, setSearchTerm] = useState<string>('')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [reviewsPerPage] = useState<number>(8)
   useEffect(() => {
-    document.body.classList.add('dashboard-page'); // Adiciona a classe ao body
+    document.body.classList.add('dashboard-page') // Adiciona a classe ao body
     return () => {
-      document.body.classList.remove('dashboard-page'); // Remove a classe ao sair da página
-    };
-  }, []);
+      document.body.classList.remove('dashboard-page') // Remove a classe ao sair da página
+    }
+  }, [])
   useEffect(() => {
     const token = localStorage.getItem('token')
     const userId = localStorage.getItem('userId')
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/reviews?receive_user_id=${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
+        const storedReviewsString = localStorage.getItem('reviews')
+        if (storedReviewsString) {
+          const storedReview: Review[] = JSON.parse(storedReviewsString)
+          setReviews(storedReview)
+        } else {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/reviews?receive_user_id=${userId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
             }
-          }
-        )
+          )
+          localStorage.setItem('reviews', JSON.stringify(response.data.reviews))
 
-        setReviews(response.data.reviews)
+          setReviews(response.data.reviews)
+        }
       } catch (error) {
         console.error('Erro ao buscar reviews:', error)
       }
@@ -69,12 +72,12 @@ const Reviews: React.FC = () => {
     indexOfLastReview
   )
   const renderStars = (rating: number) => {
-    const stars = [];
+    const stars = []
     for (let i = 1; i <= 5; i++) {
-      stars.push(<Star key={i} filled={i <= rating} />);
+      stars.push(<Star key={i} filled={i <= rating} />)
     }
-    return stars;
-  };
+    return stars
+  }
 
   const paginate = (pageNumber: number): void => setCurrentPage(pageNumber)
 
@@ -84,7 +87,7 @@ const Reviews: React.FC = () => {
 
   return (
     <div className='dashboard'>
-      <LeftContainer/>
+      <LeftContainer />
       <div className='reviews-page'>
         <h1>Avaliações</h1>
         <input
@@ -125,7 +128,6 @@ const Reviews: React.FC = () => {
           </button>
         </div>
       </div>
-
     </div>
   )
 }

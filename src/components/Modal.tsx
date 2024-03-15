@@ -15,8 +15,6 @@ const Modal: React.FC<ModalProps> = ({ closeModal, title, html }) => {
   };
 
   const renderDetails = (html: string | TrustedHTML) => {
-    // eslint-disable-next-line no-debugger
-    debugger
     return { __html: html };
   };
 

@@ -29,15 +29,21 @@ const Services: React.FC = () => {
 
     const fetchService = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/request-devs-records?receive_user_id=${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
+        const storedServicesString = localStorage.getItem('services')
+        if (storedServicesString) {
+          const storedService: Service[] = JSON.parse(storedServicesString)
+          setServices(storedService)
+        } else {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/request-devs-records?receive_user_id=${userId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
             }
-          }
-        )
-        setServices(response.data.records)
+          )
+          setServices(response.data.records)
+        }
       } catch (error) {
         console.error('Erro ao buscar services:', error)
       }
@@ -100,7 +106,7 @@ const Services: React.FC = () => {
 
   return (
     <div className='dashboard'>
-  <LeftContainer/>
+      <LeftContainer />
       <div className='services-page'>
         <h1>Serviços</h1>
         <input
@@ -108,6 +114,7 @@ const Services: React.FC = () => {
           placeholder='Buscar serviços por usuário'
           value={searchTerm}
           onChange={handleSearchChange}
+          className='services-page-input custom-placeholder'
         />
 
         <div className='service-cards'>

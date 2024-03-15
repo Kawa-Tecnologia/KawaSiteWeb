@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/styles/TrainingCard.css'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 //import Modal from 'react-modal'
 import FuturisticModal from './FuturistModal'
+import ErrorNotification from './Error'
 
 interface RequestDevs {
   id: number
@@ -21,12 +20,7 @@ interface RequestDevs {
   local: string
   user_id_requested: number
 }
-interface Recommendation {
-  status: string
-  user_id: number
-  recommendation: string
-  discount_percentage: number
-}
+
 const RequestHistory: React.FC = () => {
   const [userPoints, setUserPoints] = useState<number>(
     Number(localStorage.getItem('userPoints')) || 0
@@ -53,24 +47,9 @@ const RequestHistory: React.FC = () => {
     cep: '',
     user_id_requested: 0
   })
-  const [recommendation, setRecommendation] = useState({
-    status: '',
-    user_id: 0,
-    recommendation: '',
-    discount_percentage: 0
-  });
+  const [error, setError] = useState<string>('')
+  const [success, setSuccess] = useState<string>('')
 
-
-  // Carregar recomendações apenas uma vez ao montar o componente
-  useEffect(() => {
-    const storedRecommendationString = localStorage.getItem('recommendation')
-    if (storedRecommendationString) {
-      const storedRecommendation: Recommendation = JSON.parse(
-        storedRecommendationString
-      )
-      setRecommendation(storedRecommendation)
-    }
-  }, []);
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem('token')
@@ -144,7 +123,8 @@ const RequestHistory: React.FC = () => {
       const body = {
         request_dev_id: requestDevs.id,
         receive_user_id: userId,
-        status: 'REQUESTED'
+        status: 'REQUESTED',
+        points_required: requestDevs.points_required
       }
 
       const url = `${process.env.REACT_APP_API_URL}/api/request-devs-records`
@@ -155,16 +135,22 @@ const RequestHistory: React.FC = () => {
           }
         })
 
-        if (data.message === 'Recebimento criado com sucesso') {
+        if (data.message === 'Solicitação criada com sucesso') {
           const updatedPoints = userPoints - requestDevs.points_required
           localStorage.setItem('userPoints', updatedPoints.toString())
           setUserPoints(updatedPoints)
           setParticipationsIds([...participationsIds, requestDevs.id])
-          toast.success('Participação Confirmada!', {
-            position: 'top-center'
-          })
+          setSuccess('Serviço Adquirido!')
         }
-      } catch (error) {
+      } catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+          const errorMessage = error.response?.data?.message || error.message
+          setError(errorMessage)
+        } else {
+          const errorStack =
+            error instanceof Error ? error.stack : String(error)
+          if (errorStack) setError(errorStack)
+        }
         console.error('Erro ao confirmar participação:', error)
       }
     }
@@ -186,57 +172,58 @@ const RequestHistory: React.FC = () => {
 
   const renderDetails = (requestDevs: RequestDevs) => {
     return (
-    <div>
       <div>
-        <strong>Nome:</strong> {requestDevs.name}
-      </div>
-      {userPoints > 0 &&
-        requestDevs.phone &&
-        participationsIds.includes(requestDevs.id) && (
+        <div>
+          <strong>Nome:</strong> {requestDevs.name}
+        </div>
+        {userPoints > 0 &&
+          requestDevs.phone &&
+          participationsIds.includes(requestDevs.id) && (
+            <div>
+              <strong>Telefone Celular:</strong> {requestDevs.phone}
+            </div>
+          )}
+        {userPoints > 0 &&
+          requestDevs.email &&
+          participationsIds.includes(requestDevs.id) && (
+            <div>
+              <strong>Email:</strong> {requestDevs.email}
+            </div>
+          )}
+        <div>
+          <strong>Título:</strong> {requestDevs.title}
+        </div>
+        {userPoints === 0 && (
           <div>
-            <strong>Telefone Celular:</strong> {requestDevs.phone}
+            <strong>Descrição:</strong>{' '}
+            {requestDevs.description.substring(0, 20)}
+            ...
           </div>
         )}
-      {userPoints > 0 &&
-        requestDevs.email &&
-        participationsIds.includes(requestDevs.id) && (
+        {userPoints > 0 && (
           <div>
-            <strong>Email:</strong> {requestDevs.email}
+            <strong>Descrição:</strong> {requestDevs.description}
           </div>
         )}
-      <div>
-        <strong>Título:</strong> {requestDevs.title}
-      </div>
-      {userPoints === 0 && (
         <div>
-          <strong>Descrição:</strong> {requestDevs.description.substring(0, 20)}
-          ...
+          <strong>Período:</strong> {requestDevs.term} dias
         </div>
-      )}
-      {userPoints > 0 && (
         <div>
-          <strong>Descrição:</strong> {requestDevs.description}
+          <strong>Tipo:</strong> {requestDevs.type}
         </div>
-      )}
-      <div>
-        <strong>Período:</strong> {requestDevs.term} dias
-      </div>
-      <div>
-        <strong>Tipo:</strong> {requestDevs.type}
-      </div>
-      <div>
-        <strong>Local:</strong> {requestDevs.local}
-      </div>
-      {requestDevs.local === 'in person' && (
         <div>
-          <strong>CEP:</strong> {requestDevs.cep}
+          <strong>Local:</strong> {requestDevs.local}
         </div>
-      )}
+        {requestDevs.local === 'in person' && (
+          <div>
+            <strong>CEP:</strong> {requestDevs.cep}
+          </div>
+        )}
 
-      <div>Pontos Necessários: {requestDevs.points_required}</div>
-    </div>
+        <div>Pontos Necessários: {requestDevs.points_required}</div>
+      </div>
     )
-      }
+  }
   const filteredRequest = requestDevs?.filter(request =>
     request?.title?.toLowerCase().includes(searchTerm?.toLowerCase())
   )
@@ -267,11 +254,10 @@ const RequestHistory: React.FC = () => {
       <div className='trainings-grid'>
         {trainingHistory?.map((training, index) => (
           <div key={index} className='training-card'>
-        
             <div className='training-details'>
-            {training.user_id_requested === userId && (
-              <div className='gold-medal'>🥇</div>
-            )}
+              {training.user_id_requested === userId && (
+                <div className='gold-medal'>🥇</div>
+              )}
               <div>
                 <strong>Nome:</strong> {training.name}
               </div>
@@ -335,7 +321,6 @@ const RequestHistory: React.FC = () => {
                   <FuturisticModal
                     modalIsOpen={modalIsOpen}
                     closeModal={closeModal}
-                    recommendation={recommendation}
                   />
                 </>
               ) : participationsIds.includes(training.id) ? (
@@ -373,8 +358,6 @@ const RequestHistory: React.FC = () => {
           </button>
         </div>
       </div>
-      <ToastContainer />
-      
       <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
         <div className='modal-content'>
           <span className='close' onClick={closeModal}>
@@ -383,6 +366,8 @@ const RequestHistory: React.FC = () => {
           <p id='modal-details'>{renderDetails(modalRequestDevs)}</p>
         </div>
       </div>
+      {error && <ErrorNotification message={error} severity='error' />}
+      {success && <ErrorNotification message={success} severity='success' />}
     </div>
   )
 }

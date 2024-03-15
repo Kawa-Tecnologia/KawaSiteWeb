@@ -336,3 +336,159 @@ section.banner {
 .rating>span:hover:before {
   z-index: 2;
 }
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* Estilos para o body e header */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  line-height: 1.6;
+  color: #000;
+}
+
+header {
+  background-color: #0066CC;
+  color: #5274be;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilos para a barra de navegação */
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.navigation a:hover {
+  color: #66fcf1;
+}
+
+/* Estilos para o logo */
+.logo {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+/* Estilos para a seção de desenvolvedores */
+.devs-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* Estilos para a mensagem de erro */
+.error-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0066CC;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+/* Estilos para as estrelas de avaliação */
+.rating {
+  unicode-bidi: bidi-override;
+  color: yellow;
+  font-size: 100%;
+  display: flex;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+  color: gold;
+}
+
+.rating > span:hover:before {
+  z-index: 2;
+}
+
+/* Estilos para as seções de conteúdo */
+section {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px;
+  background-color: black;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: #0066CC;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Media queries para tornar o layout responsivo */
+@media only screen and (max-width: 767px) {
+  header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .logo-container {
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    max-width: 80px;
+  }
+
+  .navigation {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .navigation a {
+    margin: 10px 0;
+  }
+}

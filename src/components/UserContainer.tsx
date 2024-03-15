@@ -16,42 +16,28 @@ interface UserData {
     }
   }
 }
-interface Recommendation {
-  status: string
-  user_id: number
-  recommendation: string
-  discount_percentage: number
-}
+
 const UserContainer: React.FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [user, setUser] = useState<UserData | null>(null)
-  const [recommendation, setRecommendation] = useState<Recommendation>({
-    status: '',
-    user_id: 0,
-    recommendation: '',
-    discount_percentage: 0
-  })
   const [rating, setRating] = useState<number>(0); // Supondo que a avaliação seja sempre 5
 
   const navigate = useNavigate()
   const userName = localStorage.getItem('userName') || ''
   const devTag = localStorage.getItem('tagName') || ''
   const points = localStorage.getItem('userPoints') || ''
-
+  useEffect(() => {
+    const pointsElement = document.getElementById('user-points');
+    if (pointsElement) {
+      pointsElement.textContent = points.toString();
+    }
+  }, [points]);
   useEffect(() => {
     const storedUserString = localStorage.getItem('user')
     if (storedUserString) {
       const storedUser: UserData = JSON.parse(storedUserString)
       setUser(storedUser)
       setRating(storedUser.avaliation)
-    }
-
-    const storedRecommendationString = localStorage.getItem('recommendation')
-    if (storedRecommendationString) {
-      const storedRecommendation: Recommendation = JSON.parse(
-        storedRecommendationString
-      )
-      setRecommendation(storedRecommendation)
     }
     document.body.style.backgroundColor = '#000';
 
@@ -73,6 +59,7 @@ const UserContainer: React.FC = () => {
   }
 
   const handleLogout = () => {
+    localStorage.clear();
     navigate('/devs/login')
   }
 
@@ -85,7 +72,7 @@ const UserContainer: React.FC = () => {
           <Star key={index} style={{ color: index < rating ? 'yellow' : 'gray' }} />
         ))}</p>
       <p>Tag de Dev: {devTag}</p>
-      <p>Pontos: {points}</p>
+      <p>Pontos: <span id="user-points">{points}</span></p>
       <button onClick={handleAdquirirPontos}>Adquirir Pontos</button>
       <button onClick={handleLogout}>Logout</button>
 
@@ -93,7 +80,6 @@ const UserContainer: React.FC = () => {
         <FuturisticModal
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
-          recommendation={recommendation}
         />
       ) : (
         <Modal

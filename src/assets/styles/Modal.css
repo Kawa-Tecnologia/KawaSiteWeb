@@ -23,13 +23,12 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   color: #0e0e0e;
   border-radius: 10px;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   overflow-y: auto;
@@ -40,6 +39,7 @@
   max-width: 70%;
   height: auto;
   max-height: 70%;
+  z-index: 999;
 }
 .modal-content-details {
   display: flex;

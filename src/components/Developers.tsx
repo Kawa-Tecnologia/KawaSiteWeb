@@ -11,11 +11,17 @@ interface ProfessionalData {
   job_title: string
 }
 
+interface Avaliation {
+  content: string
+  avaliation: number
+}
+
 interface DeveloperType {
   id: number
   fullname: string
   avaliation: number
   ProfessionalInfo: ProfessionalData
+  Avaliation: Avaliation
 }
 
 interface DeveloperListProps {
@@ -95,6 +101,28 @@ const DeveloperList: React.FC<DeveloperListProps> = ({ developers }) => {
               <p><strong>Habilidades:</strong> ${selectedDeveloper.ProfessionalInfo.skills.join(
                 ', '
               )}</p>
+              
+              ${
+                selectedDeveloper.Avaliation ? 
+                  `<p>
+                    <strong>Ultima Avaliação:</strong> 
+                    ${selectedDeveloper.Avaliation?.avaliation}
+                  </p>`
+                 : 
+                  ''
+                
+              }
+              ${
+                selectedDeveloper.Avaliation ? 
+                  `<p>
+                    <strong>Ultimo Comentario:</strong> 
+                    ${selectedDeveloper.Avaliation?.content}
+                  </p>`
+                 : 
+                  ''
+                
+              }
+
               <!-- Adicionar outras avaliações, pegar as avaliações dos serviços anteriores dele -->`}
           closeModal={closeModal}
         />

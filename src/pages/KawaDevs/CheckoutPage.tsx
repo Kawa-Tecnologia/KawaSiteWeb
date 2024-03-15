@@ -10,6 +10,8 @@ const CheckoutPage = () => {
   return (
     <div>
       <h1>Checkout</h1>
+      <p>* Por favor, informe os mesmos dados do titular da conta da plataforma</p>
+      <p>Clique abaixo</p>
       <MercadoPagoPayment preferenceId={ preferenceId } />
     </div>
   )

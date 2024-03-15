@@ -5,39 +5,12 @@
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
 }
 
 .trainings-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-}
-
-@media only screen and (max-width: 767px) {
-  .trainings-grid {
-    grid-template-columns: repeat(1, 1fr);
-    width: 100%;
-  }
-
-  .training-card {
-    width: 100%;
-  }
-}
-
-.training-section h2,
-.latest-news h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.training-history {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: auto;
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Use auto-fit para que os itens se ajustem automaticamente ao tamanho do contêiner */
+  grid-gap: 20px; /* Aumentei o espaçamento entre os cards */
 }
 
 .training-card {
@@ -45,22 +18,22 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
 }
 
 .training-card h2 {
-  font-size: 18px;
+  font-size: 1.2rem; /* Reduzi o tamanho da fonte do título */
   margin-bottom: 10px;
 }
 
 .training-card p {
-  font-size: 16px;
+  font-size: 1rem; /* Reduzi o tamanho da fonte do texto */
   color: #666;
 }
 
 .button-container {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Alinhei os botões verticalmente */
 }
 
 .button-container button {
@@ -69,12 +42,10 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  
 }
 
 .button-container button:hover {
   background-color: #f0f0f0;
-  
 }
 
 .search {
@@ -93,12 +64,6 @@
   color: #000;
 }
 
-@media only screen and (max-width: 767px) {
-  .search-input {
-    max-width: none;
-  }
-}
-
 .disabled-button {
-  background-color: #dddddd; 
+  background-color: #dddddd;
 }

@@ -17,11 +17,17 @@ interface ProfessionalData {
   job_title: string
 }
 
+interface Avaliation {
+  content: string
+  avaliation: number
+}
+
 interface DeveloperType {
   id: number
   fullname: string
   avaliation: number
   ProfessionalInfo: ProfessionalData
+  Avaliation: Avaliation
 }
 const AppSolutions = () => {
   const [developers, setDevelopers] = useState<DeveloperType[]>([
@@ -35,6 +41,10 @@ const AppSolutions = () => {
         tools: [''],
         imageSrc: '',
         job_title: ''
+      },
+      Avaliation: {
+        avaliation: 0,
+        content: ''
       }
     }
   ])
@@ -60,35 +70,34 @@ const AppSolutions = () => {
     fetchData()
   }, [])
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate()
 
   const handleCadastroClick = () => {
-    navigate('/devs/register'); 
-  };
-
+    navigate('/devs/register')
+  }
 
   return (
     <div className='App'>
       <Header />
       <ServicesSection />
       <button onClick={handleCadastroClick}>
-        Prestador, quer aparecer abaixo para ser contactado pelo Solicitante? Clique aqui
+        Prestador, quer aparecer abaixo para ser contactado pelo Solicitante?
+        Clique aqui
       </button>
       <section className='section-box'>
-            <div className='container-wrapper'>
-              <div className='right-container-request-dev'>
-                <RightContainer />
-              </div>
-              <div className='center-container-request-dev'>
-                <RequestDevs />
-              </div>
-              <div className='left-container-request-dev'>
-                <LeftContainer />
-              </div>
-            </div>
-
-          </section>
-          <DeveloperList developers={developers} />
+        <div className='container-wrapper'>
+          <div className='right-container-request-dev'>
+            <RightContainer />
+          </div>
+          <div className='center-container-request-dev'>
+            <RequestDevs />
+          </div>
+          <div className='left-container-request-dev'>
+            <LeftContainer />
+          </div>
+        </div>
+      </section>
+      <DeveloperList developers={developers} />
       <Footer />
     </div>
   )

@@ -39,7 +39,7 @@ const Plans: React.FC = () => {
     setModalTitle(title)
     setModalDetails(plan)
   }
- 
+
   const closeModal = () => {
     setShowModal(false)
   }
@@ -71,23 +71,30 @@ const Plans: React.FC = () => {
   useEffect(() => {
     const fetchDevelopers = async () => {
       try {
-        const { data } = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/plans`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+        const planString = localStorage.getItem('plans')
+        if (planString) {
+          const storedPlan: Plan[] = JSON.parse(planString)
+          setPlansService(storedPlan)
+        } else {
+          const { data } = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/plans`,
+            {
+              headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+              }
             }
-          }
-        )
-        if (data.plans) {
-          // const platform = data.plans.filter(
-          //   (plan: Plan) => plan.type === 'platform'
-          // )
-          const service = data.plans.filter(
-            (plan: Plan) => plan.type === 'service'
           )
-          //setPlans(platform)
-          setPlansService(service)
+          if (data.plans) {
+            // const platform = data.plans.filter(
+            //   (plan: Plan) => plan.type === 'platform'
+            // )
+            const service = data.plans.filter(
+              (plan: Plan) => plan.type === 'service'
+            )
+            //setPlans(platform)
+            setPlansService(service)
+            localStorage.setItem('plans', JSON.stringify(service))
+          }
         }
       } catch (error) {
         console.error('Error fetching developers:', error)
@@ -138,7 +145,8 @@ const Plans: React.FC = () => {
           <div className='plano plataforma'>
             <h3>Pacotes de Serviço</h3>
             * Cadastre-se com o Tipo Serviço e adquira pontos para prestar
-                serviços e conquistar clientes.<br/>
+            serviços e conquistar clientes.
+            <br />
             * Caso tenha prestado serviços em outras plataformas, poderá
             exportar as avaliações.
             <br />
@@ -179,10 +187,11 @@ const Plans: React.FC = () => {
             id='modal-details'
             dangerouslySetInnerHTML={renderDetails(modalDetails)}
           ></p>
-          <button id='modal-buy-button'>Adquirir Pacote</button>
+          <button id='modal-pay-button' onClick={goToCadastro}>
+            Cadastrar
+          </button>{' '}
         </div>
       </div>
-
     </div>
   )
 }
