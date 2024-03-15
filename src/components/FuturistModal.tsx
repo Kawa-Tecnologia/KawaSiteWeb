@@ -169,7 +169,7 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
                 )
               }
             >
-              Adquirir
+              Adquirir por R${plan.amount}
             </button>
           </div>
         ))}

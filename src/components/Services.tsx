@@ -163,6 +163,7 @@ const Services: React.FC = () => {
             <p>Nenhum serviço disponível.</p>
           )}
         </div>
+        <br/>
         <div className='pagination'>
           <button
             onClick={() => paginate(currentPage - 1)}

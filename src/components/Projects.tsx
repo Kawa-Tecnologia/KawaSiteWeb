@@ -164,6 +164,7 @@ const ProjectsPage: React.FC = () => {
             <p>Nenhum projeto disponível.</p>
           )}
         </div>
+        <br/>
         <div className='pagination'>
           <button
             onClick={() => paginate(currentPage - 1)}

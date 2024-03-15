@@ -339,7 +339,8 @@ const RequestHistory: React.FC = () => {
             </div>
           </div>
         ))}
-        <br />
+        </div>
+        <br/>
         <div className='pagination'>
           <button
             onClick={() => paginate(currentPage - 1)}
@@ -357,7 +358,6 @@ const RequestHistory: React.FC = () => {
             Próxima
           </button>
         </div>
-      </div>
       <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
         <div className='modal-content'>
           <span className='close' onClick={closeModal}>

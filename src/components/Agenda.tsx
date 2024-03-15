@@ -74,6 +74,7 @@ const Agenda: React.FC = () => {
               </div>
             ))}
           </div>
+          <br/>
           <div className='pagination'>
             <button
               onClick={() => paginate(currentPage - 1)}

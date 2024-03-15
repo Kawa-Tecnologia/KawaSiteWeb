@@ -110,6 +110,7 @@ const Reviews: React.FC = () => {
             <p>Nenhuma avaliação disponível.</p>
           )}
         </div>
+        <br/>
         <div className='pagination'>
           <button
             onClick={() => paginate(currentPage - 1)}
