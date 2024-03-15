@@ -142,10 +142,10 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       <div className='pontos-options-container'>
         {plans.map(plan => (
           <div key={plan.id} className='agenda-item'>
-            <p>Descrição: {plan.description}</p>
-            <p>Pontos: {plan.points}</p>
+            <p><strong>Descrição:</strong> {plan.description}</p>
+            <p><strong>Pontos:</strong> {plan.points}</p>
             {recommendation && plan.discounted_percentage > 0 ? (
-              <p>Desconto: {plan.discounted_percentage}%</p>
+              <p><strong>Desconto:</strong> {plan.discounted_percentage}%</p>
             ) : (
               ''
             )}
@@ -153,10 +153,10 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             plan.discounted_percentage > 0 &&
             plan.previous_amount > plan.amount ? (
               <p>
-                Preço: De R${plan.previous_amount} por apenas R${plan.amount}
+                <strong>Preço:</strong> De R${plan.previous_amount} por apenas R${plan.amount}
               </p>
             ) : (
-              <p>Preço: Apenas R${plan.amount}</p>
+              <p><strong>Preço:</strong> Apenas R${plan.amount}</p>
             )}
             <button
               onClick={() =>

@@ -54,7 +54,7 @@ const JoinTheTeam: React.FC = () => {
               }
             }
           )
-      
+
           if (data.plans) {
             // const platform = data.plans.filter(
             //   (plan: Plan) => plan.type === 'platform'
@@ -210,15 +210,13 @@ const JoinTheTeam: React.FC = () => {
               <span className='close' onClick={closeModal}>
                 &times;
               </span>
-
               <button id='modal-pay-button' onClick={goToCadastro}>
                 Cadastrar
               </button>
               <p>
                 Após o pagamento e o cadastro, aguarde email de confirmação,
                 receberá em até 24h.
-              </p>
-              <p></p>
+              </p>{' '}
             </div>
           </div>
         </div>
