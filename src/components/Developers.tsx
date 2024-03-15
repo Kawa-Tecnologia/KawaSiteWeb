@@ -68,18 +68,9 @@ const DeveloperList: React.FC<DeveloperListProps> = ({ developers }) => {
 
           <h3>ID: {developer.id}</h3>
           <h3>{developer.fullname}</h3>
-          <p>
-            Avaliação Média: <StarRating rating={developer.avaliation} />
-          </p>
-          <p className='presentation'>
-            {developer.ProfessionalInfo.presentation}
-          </p>
-          <p className='skills'>
-            Habilidades: {developer.ProfessionalInfo.skills.join(', ')}
-          </p>
-          <p className='tools'>
-            Ferramentas: {developer.ProfessionalInfo.tools.join(', ')}
-          </p>
+       
+            <h3><StarRating rating={developer.avaliation} /></h3>
+     
         </div>
       ))}
       {selectedDeveloper && (
@@ -95,35 +86,35 @@ const DeveloperList: React.FC<DeveloperListProps> = ({ developers }) => {
           style="width: 20%; height: 20%;"
           className='developer-image'
         
-          /><p><strong>Apresentação:</strong> ${
+          /> <br/><strong>Apresentação:</strong> ${
             selectedDeveloper.ProfessionalInfo.presentation
-          }</p>
-              <p><strong>Habilidades:</strong> ${selectedDeveloper.ProfessionalInfo.skills.join(
+          }
+          <br/>
+              <strong>Habilidades:</strong> ${selectedDeveloper.ProfessionalInfo.skills.join(
                 ', '
-              )}</p>
-              
+              )}
+              <br/>
               ${
                 selectedDeveloper.Avaliation ? 
-                  `<p>
+                  `
                     <strong>Ultima Avaliação:</strong> 
                     ${selectedDeveloper.Avaliation?.avaliation}
-                  </p>`
+                 `
                  : 
                   ''
                 
               }
+              <br/>
               ${
                 selectedDeveloper.Avaliation ? 
-                  `<p>
+                  `
                     <strong>Ultimo Comentario:</strong> 
                     ${selectedDeveloper.Avaliation?.content}
                   </p>`
                  : 
                   ''
                 
-              }
-
-              <!-- Adicionar outras avaliações, pegar as avaliações dos serviços anteriores dele -->`}
+              }`}
           closeModal={closeModal}
         />
       )}

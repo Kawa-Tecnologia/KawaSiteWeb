@@ -1,74 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Header from './Header'
 import ServicesSection from './Services'
 import Footer from './Footer'
 import RequestDevs from './RequestDevs'
-import DeveloperList from '../../components/Developers'
 import '../../assets/styles/AppSolutions.css'
 import LeftContainer from './LeftContainer'
 import RightContainer from './RightContainer'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-interface ProfessionalData {
-  presentation: string
-  skills: string[]
-  tools: string[]
-  imageSrc: string
-  job_title: string
-}
 
-interface Avaliation {
-  content: string
-  avaliation: number
-}
-
-interface DeveloperType {
-  id: number
-  fullname: string
-  avaliation: number
-  ProfessionalInfo: ProfessionalData
-  Avaliation: Avaliation
-}
 const AppSolutions = () => {
-  const [developers, setDevelopers] = useState<DeveloperType[]>([
-    {
-      id: 0,
-      fullname: '',
-      avaliation: 0,
-      ProfessionalInfo: {
-        presentation: '',
-        skills: [''],
-        tools: [''],
-        imageSrc: '',
-        job_title: ''
-      },
-      Avaliation: {
-        avaliation: 0,
-        content: ''
-      }
-    }
-  ])
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/user?type=service&page=1`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
-            }
-          }
-        )
-        if (data.users) {
-          setDevelopers(data.users)
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
+  
 
   const navigate = useNavigate()
 
@@ -97,7 +38,6 @@ const AppSolutions = () => {
           </div>
         </div>
       </section>
-      <DeveloperList developers={developers} />
       <Footer />
     </div>
   )

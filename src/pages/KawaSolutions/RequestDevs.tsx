@@ -3,8 +3,68 @@ import React, { ChangeEvent, useState, useEffect } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import '../../assets/styles/Modal.css'
 import InputMask from 'react-input-mask'
+import DeveloperList from '../../components/Developers'
+interface ProfessionalData {
+  presentation: string
+  skills: string[]
+  tools: string[]
+  imageSrc: string
+  job_title: string
+}
 
+interface Avaliation {
+  content: string
+  avaliation: number
+}
+
+interface DeveloperType {
+  id: number
+  fullname: string
+  avaliation: number
+  ProfessionalInfo: ProfessionalData
+  Avaliation: Avaliation
+}
 const RequestDevs = () => {
+  const [developers, setDevelopers] = useState<DeveloperType[]>([
+    {
+      id: 0,
+      fullname: '',
+      avaliation: 0,
+      ProfessionalInfo: {
+        presentation: '',
+        skills: [''],
+        tools: [''],
+        imageSrc: '',
+        job_title: ''
+      },
+      Avaliation: {
+        avaliation: 0,
+        content: ''
+      }
+    }
+  ])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/user?type=service&page=1`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+            }
+          }
+        )
+        if (data.users) {
+          setDevelopers(data.users)
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
   const [formData, setFormData] = useState(() => {
     const cachedFormData = localStorage.getItem('formDataRequest')
     return cachedFormData
@@ -434,6 +494,9 @@ const RequestDevs = () => {
             <p id='modal-details' dangerouslySetInnerHTML={renderDetails()}></p>
           </div>
         </div>
+        <h5 style={{ color: 'black' }}>*Clique no card para mais detalhes</h5>
+
+        <DeveloperList developers={developers} />
       </section>
     </div>
   )

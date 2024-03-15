@@ -1,10 +1,11 @@
 .developer-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-auto-rows: auto;
   flex-wrap: wrap;
-
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .developer-card {
@@ -13,9 +14,11 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-
+  padding: 10px;
+  background-color: #0e0e0e;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .developer-card:hover {
@@ -44,7 +47,7 @@
   padding: 20px;
   color: #fff;
   z-index: 1;
-  
+
 }
 
 .developer-card-content h2 {
@@ -87,22 +90,36 @@
 
 @media only screen and (max-width: 767px) {
   .developer-container {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-gap: 10px;
   }
-  
+
   .developer-card {
     padding: 15px;
+    width: 100%;
+    max-width: none;
   }
 }
 
-@media only screen and (mix-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
   .developer-container {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
-    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
   }
-  
+
   .developer-card {
-    padding: 15px; 
+    padding: 10px;
+    width: auto;
+    max-width: none;
+  }
+
+  .developer-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+
+  .star-container {
+    font-size: 24px;
+    margin-top: 10px;
   }
 }
