@@ -40,6 +40,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 10px;
   text-align: center;
+  height: 80%;
+  max-height: 80%;
 }
 
 .dev-card img {
@@ -65,6 +67,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
     min-height: auto;
+    gap: 5px;
+    overflow-x: hidden
   }
 
   .dev-cards-container-search {
@@ -78,6 +82,7 @@
 
   .dev-card {
     width: 45%;
+    max-width: 45%;
     height: 80%;
     margin-bottom: 10px;
     margin: 10px auto;
@@ -86,7 +91,7 @@
 
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
   .dev-cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -108,7 +113,7 @@
     height: 80%;
     margin-bottom: 10px;
     margin: 10px auto;
-
+    max-height: 80%;
     min-height: auto;
 
   }

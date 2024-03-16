@@ -207,7 +207,7 @@ const SearchDevelopers: React.FC = () => {
       </header>
       <div className='login'>
         <div className='container-search'>
-          <h1>Desenvolvedores &gt;&gt;Open to Work&lt;&lt;</h1>
+          <h2>Desenvolvedores &gt;&gt;Open to Work&lt;&lt;</h2>
           <div>
             <label>Linguagem de Programação:</label>
             <input

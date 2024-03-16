@@ -61,6 +61,7 @@
 @media only screen and (max-width: 767px) {
   .container-home {
     flex-direction: column; 
+    overflow-x: hidden;
   }
 
   .banner {
