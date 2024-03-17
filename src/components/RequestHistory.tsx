@@ -4,6 +4,7 @@ import axios from 'axios'
 //import Modal from 'react-modal'
 import FuturisticModal from './FuturistModal'
 import ErrorNotification from './Error'
+import Pagination from './PaginationProps'
 
 interface RequestDevs {
   id: number
@@ -20,11 +21,39 @@ interface RequestDevs {
   local: string
   user_id_requested: number
 }
+interface UserData {
+  name: string
+  email: string
+  points: number
+  plan_id: number
+  ProfessionalInfo: ProfessionalData
+}
 
+interface ProfessionalData {
+  fantasy_name: string
+  user_id: number
+  name: string
+  job_title: string
+  company: string
+  document_number: string
+  experience_years: number
+  skills: string[]
+  tools: string[]
+  cv_link: string
+  profile_linkedin: string
+  profile_github: string
+  url: string
+  presentation: string
+  tag_id: number
+  imageSrc: string
+  [key: string]: string | number | string[]
+}
 const RequestHistory: React.FC = () => {
   const [userPoints, setUserPoints] = useState<number>(
     Number(localStorage.getItem('userPoints')) || 0
   )
+  const [user, setUser] = useState<UserData | null>(null)
+
   const userId = Number(localStorage.getItem('userId'))
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [searchTerm, setSearchTerm] = useState('')
@@ -49,7 +78,13 @@ const RequestHistory: React.FC = () => {
   })
   const [error, setError] = useState<string>('')
   const [success, setSuccess] = useState<string>('')
-
+  useEffect(() => {
+    const storedUserString = localStorage.getItem('user')
+    if (storedUserString) {
+      const storedUser: UserData = JSON.parse(storedUserString)
+      setUser(storedUser)
+    }
+  }, [])
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem('token')
@@ -256,7 +291,22 @@ const RequestHistory: React.FC = () => {
           <div key={index} className='training-card'>
             <div className='training-details'>
               {training.user_id_requested === userId && (
-                <div className='gold-medal'>🥇</div>
+                <div
+                  className='gold-medal'
+                  title='Você foi indicado pelo Solicitante, Aproveite!'
+                >
+                  🥇
+                </div>
+              )}
+              {user?.ProfessionalInfo.skills.some(skill =>
+                training.description.toLowerCase().includes(skill.toLowerCase())
+              ) && (
+                <div
+                  className='silver-medal'
+                  title='Suas habilidades combinam a solicitação, Aproveite!'
+                >
+                  🥈
+                </div>
               )}
               <div>
                 <strong>Nome:</strong> {training.name}
@@ -346,23 +396,11 @@ const RequestHistory: React.FC = () => {
         ))}
       </div>
       <br />
-      <div className='pagination'>
-        <button
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Anterior
-        </button>
-        <span>
-          Página {currentPage} de {totalPages}
-        </span>
-        <button
-          onClick={() => paginate(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          Próxima
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        paginate={paginate}
+      />
       <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
         <div className='modal-content'>
           <span className='close' onClick={closeModal}>
