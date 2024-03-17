@@ -8,7 +8,6 @@ interface ModalProps {
   modalIsOpen: boolean
   closeModal: () => void
 }
-
 interface Recommendation {
   status: string
   user_id: number
@@ -118,17 +117,36 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   const handleCompra = async (
     preferenceId: string,
     discounted: boolean,
-    preferenceIdWithoutDiscounted: string
+    preferenceIdWithoutDiscounted: string,
+    points: string,
+    amount: number
   ) => {
-    if (discounted) {
-      if (recommendation) {
-        const url = `/checkout/${preferenceId}`
-        window.open(url, '_blank')
-        return
+    const token = localStorage.getItem('token')
+    const userId = localStorage.getItem('userId')
+    if (userId) {
+      const body = {
+        user_id: userId,
+        status: BackendStatus.REQUESTED,
+        type: 'points_adquired',
+        points_required: points,
+        amount: amount,
+        date: new Date()
       }
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/buy`, body, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      if (discounted) {
+        if (recommendation) {
+          const url = `/checkout/${preferenceId}`
+          window.open(url, '_blank')
+          return
+        }
+      }
+      const url = `/checkout/${preferenceIdWithoutDiscounted}`
+      window.open(url, '_blank')
     }
-    const url = `/checkout/${preferenceIdWithoutDiscounted}`
-    window.open(url, '_blank')
   }
 
   return (
@@ -140,14 +158,21 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       overlayClassName='futuristic-modal-overlay'
     >
       <h2 className='modal-title'>Escolha a quantidade de pontos:</h2>
-      <br/>
+      * Checkout será aberto em outra janela, ative os pop-ups por favor
+      <br />
       <div className='pontos-options-container'>
         {plans.map(plan => (
           <div key={plan.id} className='pontos-option'>
-            <p><strong>Descrição:</strong> {plan.description}</p>
-            <p><strong>Pontos:</strong> {plan.points}</p>
+            <p>
+              <strong>Descrição:</strong> {plan.description}
+            </p>
+            <p>
+              <strong>Pontos:</strong> {plan.points}
+            </p>
             {recommendation && plan.discounted_percentage > 0 ? (
-              <p><strong>Desconto:</strong> {plan.discounted_percentage}%</p>
+              <p>
+                <strong>Desconto:</strong> {plan.discounted_percentage}%
+              </p>
             ) : (
               ''
             )}
@@ -155,10 +180,13 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             plan.discounted_percentage > 0 &&
             plan.previous_amount > plan.amount ? (
               <p>
-                <strong>Preço:</strong> De R${plan.previous_amount} por apenas R${plan.amount}
+                <strong>Preço:</strong> De R${plan.previous_amount} por apenas
+                R${plan.amount}
               </p>
             ) : (
-              <p><strong>Preço:</strong> Apenas R${plan.amount}</p>
+              <p>
+                <strong>Preço:</strong> Apenas R${plan.amount}
+              </p>
             )}
             <button
               onClick={() =>
@@ -167,7 +195,9 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
                   plan.discounted_percentage > 0 && recommendation
                     ? true
                     : false,
-                  plan.origin_preference_id
+                  plan.origin_preference_id,
+                  plan.points,
+                  plan.amount
                 )
               }
             >

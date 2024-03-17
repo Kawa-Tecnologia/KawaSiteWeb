@@ -88,6 +88,7 @@ const UserContainer: React.FC = () => {
           contentLabel='Modal de Adquirir Pontos'
         >
           <h2>Escolha a quantidade de pontos:</h2>
+          * Checkout será aberto em outra janela, ative os pop-ups por favor
           <div className='pontos-options-container'>
             <div className='pontos-option'>
               <p>1000 Pontos por R$10,00</p>

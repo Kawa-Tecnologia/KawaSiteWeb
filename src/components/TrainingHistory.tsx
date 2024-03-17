@@ -61,11 +61,14 @@ const TrainingHistory: React.FC = () => {
   const fetchProjects = async () => {
     try {
       const token = localStorage.getItem('token')
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects`, {
-        headers: {
-          Authorization: `Bearer ${token}`
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/projects`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
-      })
+      )
       setProjects(response.data.projects)
     } catch (error) {
       console.error('Erro ao buscar projetos:', error)
@@ -86,9 +89,9 @@ const TrainingHistory: React.FC = () => {
         const projectsIds = projects.map(project => project.id)
         if (projectsIds.length) {
           const response = await axios.get(
-            `${process.env.REACT_APP_API_URL}/api/receipts?project_id=${projectsIds.join(
-              ','
-            )}`,
+            `${
+              process.env.REACT_APP_API_URL
+            }/api/receipts?project_id=${projectsIds.join(',')}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`
@@ -204,8 +207,7 @@ const TrainingHistory: React.FC = () => {
     setSearchTerm(event.target.value)
     setCurrentPage(1)
   }
-  const handleCompra = () => {
-  }
+  const handleCompra = () => {}
 
   return (
     <div className='training-history'>
@@ -270,31 +272,24 @@ const TrainingHistory: React.FC = () => {
                     onRequestClose={closeModal}
                     contentLabel='Modal de Adquirir Pontos'
                   >
-                    <h2>Escolha a quantidade de pontos:</h2>
+                    <h2>Escolha a quantidade de pontos:</h2>* Checkout será
+                    aberto em outra janela, ative os pop-ups por favor
                     <div className='pontos-options-container'>
                       <div className='pontos-option'>
                         <p>1000 Pontos por R$10,00</p>
-                        <button onClick={() => handleCompra()}>
-                          Comprar
-                        </button>
+                        <button onClick={() => handleCompra()}>Comprar</button>
                       </div>
                       <div className='pontos-option'>
                         <p>2000 Pontos por R$20,00</p>
-                        <button onClick={() => handleCompra()}>
-                          Comprar
-                        </button>
+                        <button onClick={() => handleCompra()}>Comprar</button>
                       </div>
                       <div className='pontos-option'>
                         <p>5000 Pontos por R$50,00</p>
-                        <button onClick={() => handleCompra()}>
-                          Comprar
-                        </button>
+                        <button onClick={() => handleCompra()}>Comprar</button>
                       </div>
                       <div className='pontos-option'>
                         <p>10000 Pontos por R$98,00</p>
-                        <button onClick={() => handleCompra()}>
-                          Comprar
-                        </button>
+                        <button onClick={() => handleCompra()}>Comprar</button>
                       </div>
                     </div>
                     <button onClick={closeModal}>Fechar</button>
