@@ -85,7 +85,10 @@ const RequestHistory: React.FC = () => {
         )
 
         if (response.data) {
-          localStorage.setItem('services', JSON.stringify(response.data.records))
+          localStorage.setItem(
+            'services',
+            JSON.stringify(response.data.records)
+          )
           const trainingParticipateIds = response.data.records
             .filter((record: { request_dev_id: number }) =>
               requestDevs.some(request => request.id === record.request_dev_id)
@@ -162,15 +165,6 @@ const RequestHistory: React.FC = () => {
     setCurrentPage(1)
   }
 
-  // const handleCompra = (payment: Payment) => {
-  //   openPaymentModal(payment)
-  // }
-
-  // const openPaymentModal = (payment: Payment) => {
-  //   setShowPaymentModal(true)
-  //   setModalPayment(payment)
-  // }
-
   const renderDetails = (requestDevs: RequestDevs) => {
     return (
       <div>
@@ -220,7 +214,12 @@ const RequestHistory: React.FC = () => {
             <strong>CEP:</strong> {requestDevs.cep}
           </div>
         )}
-
+        {requestDevs.value > 100 && (
+          <div>
+            <strong>Valor a pagar: </strong>
+            {requestDevs.value}
+          </div>
+        )}
         <div>Pontos Necessários: {requestDevs.points_required}</div>
       </div>
     )
@@ -302,7 +301,12 @@ const RequestHistory: React.FC = () => {
               <div>
                 <strong>Tipo:</strong> {training.type}
               </div>
-
+              {training.value > 100 && (
+                <div>
+                  <strong>Valor a pagar: </strong>
+                  R${training.value}
+                </div>
+              )}
               <div>
                 <strong>Pontos Necessários: </strong>
                 {training.points_required}
@@ -340,25 +344,25 @@ const RequestHistory: React.FC = () => {
             </div>
           </div>
         ))}
-        </div>
-        <br/>
-        <div className='pagination'>
-          <button
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Anterior
-          </button>
-          <span>
-            Página {currentPage} de {totalPages}
-          </span>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Próxima
-          </button>
-        </div>
+      </div>
+      <br />
+      <div className='pagination'>
+        <button
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Anterior
+        </button>
+        <span>
+          Página {currentPage} de {totalPages}
+        </span>
+        <button
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Próxima
+        </button>
+      </div>
       <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
         <div className='modal-content'>
           <span className='close' onClick={closeModal}>

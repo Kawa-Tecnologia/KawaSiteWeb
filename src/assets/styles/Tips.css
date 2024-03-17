@@ -2,7 +2,10 @@
     background-color: #222; 
     color: #fff; 
   }
-  
+  .tips h1{
+    background-color: #222; 
+    color: #0066CC; 
+  }
   .card {
     background-color: #333; 
     padding: 20px;

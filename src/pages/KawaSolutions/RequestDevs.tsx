@@ -399,7 +399,7 @@ const RequestDevs = () => {
                   borderRadius: '30%',
                   padding: 0,
                   backgroundColor: '#00adb5',
-                  border: 'none',
+                  border: 'none'
                 }}
               >
                 <MicIcon style={{ fontSize: 20 }} />{' '}
@@ -414,7 +414,6 @@ const RequestDevs = () => {
               rows={5}
             />
           </div>{' '}
-          <div></div>
           <div>
             <label htmlFor='value'>
               Valor Disponivel:
@@ -457,17 +456,19 @@ const RequestDevs = () => {
               required
             />
           </div>
-          <label htmlFor='local'>Local de Serviço:</label>
-          <select
-            id='local'
-            name='local'
-            value={formData.local}
-            onChange={handleChange}
-            required
-          >
-            <option value='online'>Remoto/Online</option>
-            <option value='in person'>Presencial</option>
-          </select>
+          <div>
+            <label htmlFor='local'>Local:</label>
+            <select
+              id='local'
+              name='local'
+              value={formData.local}
+              onChange={handleChange}
+              required
+            >
+              <option value='online'>Remoto/Online</option>
+              <option value='in person'>Presencial</option>
+            </select>
+          </div>
           {renderCepField()}
           <div>
             <label htmlFor='user_id_requested'>

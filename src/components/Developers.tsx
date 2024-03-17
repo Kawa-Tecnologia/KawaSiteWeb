@@ -68,9 +68,10 @@ const DeveloperList: React.FC<DeveloperListProps> = ({ developers }) => {
 
           <h3>ID: {developer.id}</h3>
           <h3>{developer.fullname}</h3>
-       
-            <h3><StarRating rating={developer.avaliation} /></h3>
-     
+
+          <h3>
+            <StarRating rating={developer.avaliation} />
+          </h3>
         </div>
       ))}
       {selectedDeveloper && (
@@ -95,25 +96,21 @@ const DeveloperList: React.FC<DeveloperListProps> = ({ developers }) => {
               )}
               <br/>
               ${
-                selectedDeveloper.Avaliation ? 
-                  `
+                selectedDeveloper.Avaliation
+                  ? `
                     <strong>Ultima Avaliação:</strong> 
                     ${selectedDeveloper.Avaliation?.avaliation}
                  `
-                 : 
-                  ''
-                
+                  : ''
               }
               <br/>
               ${
-                selectedDeveloper.Avaliation ? 
-                  `
+                selectedDeveloper.Avaliation
+                  ? `
                     <strong>Ultimo Comentario:</strong> 
                     ${selectedDeveloper.Avaliation?.content}
-                  </p>`
-                 : 
-                  ''
-                
+                  `
+                  : ''
               }`}
           closeModal={closeModal}
         />

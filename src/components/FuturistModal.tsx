@@ -140,9 +140,10 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       overlayClassName='futuristic-modal-overlay'
     >
       <h2 className='modal-title'>Escolha a quantidade de pontos:</h2>
+      <br/>
       <div className='pontos-options-container'>
         {plans.map(plan => (
-          <div key={plan.id} className='agenda-item'>
+          <div key={plan.id} className='pontos-option'>
             <p><strong>Descrição:</strong> {plan.description}</p>
             <p><strong>Pontos:</strong> {plan.points}</p>
             {recommendation && plan.discounted_percentage > 0 ? (

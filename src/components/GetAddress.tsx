@@ -24,14 +24,11 @@ const getAddressFromCEP = async (cep: string): Promise<AddressData | null> => {
         zip_code: response.data.cep
       };
 
-      // Retorne os dados de endereço encontrados
       return addressData;
     } else {
-      // Se não forem encontrados dados de endereço, retorne null
       return null;
     }
   } catch (error) {
-    // Se ocorrer algum erro durante a solicitação, retorne null
     console.error('Erro ao consultar o CEP:', error);
     return null;
   }
