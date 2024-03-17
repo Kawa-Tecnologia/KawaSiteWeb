@@ -4,6 +4,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Modal from 'react-modal'
+import { BackendStatus } from '../utils/statusType'
 
 interface Project {
   id: number
@@ -165,7 +166,7 @@ const TrainingHistory: React.FC = () => {
         project_id: project.id,
         user_id: project.user_id,
         points: userPoints,
-        status: 'APPROVED',
+        status: BackendStatus.APPROVED,
         receive_user_id: userId
       }
 

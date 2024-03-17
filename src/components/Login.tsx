@@ -11,6 +11,8 @@ import FinancePage from './Financial'
 import axios from 'axios'
 import Login from '../pages/KawaDevs/Login'
 import UserProfile from './UserProfile'
+//import TransactionHistoryPage from '../pages/KawaDevs/HistoryPoints'
+import ServicesHistoryPage from '../pages/KawaDevs/HistoryServices'
 
 const LoginRoutes = () => {
   const [authenticated, setAuthenticated] = useState(false)
@@ -131,6 +133,18 @@ const LoginRoutes = () => {
           authenticated ? <FinancePage /> : <Navigate to='/login' />
         }
       />
+       <Route
+        path='/history-services'
+        element={
+          authenticated ? <ServicesHistoryPage /> : <Navigate to='/login' />
+        }
+      />
+      {/* <Route
+        path='/history-points'
+        element={
+          authenticated ? <TransactionHistoryPage /> : <Navigate to='/login' />
+        }
+      /> */}
        <Route
           path='/profile'
           element={

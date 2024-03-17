@@ -61,6 +61,6 @@
   
   @media only screen and (max-width: 576px) {
     .service-cards {
-      grid-template-columns: 1fr; /* Uma coluna em telas menores */
+      grid-template-columns: 1fr; 
     }
   }

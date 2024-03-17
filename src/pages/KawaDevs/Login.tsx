@@ -4,6 +4,8 @@ import axios from 'axios'
 import ErrorNotification from '../../components/Error'
 import NavigationDev from '../../components/NavigationDevs'
 import '../../assets/styles/Login.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 interface UserData {
   name: string
@@ -30,7 +32,11 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const navigate = useNavigate()
   const [error, setError] = useState<string>('')
   const [loginAttempts, setLoginAttempts] = useState<number>(0)
+  const [showPassword, setShowPassword] = useState(false)
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState)
+  }
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -173,14 +179,22 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 />
                 <br />
                 <label htmlFor='password'>Senha:</label>
-                <input
-                  type='password'
-                  id='password'
-                  name='password'
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  required
-                />
+                <div className='password-input'>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    id='password'
+                    name='password'
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <button type='button' onClick={togglePasswordVisibility}>
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    style={{ fontSize: '16px' }}
+                  />
+                </button>
               </>
             ) : (
               <>

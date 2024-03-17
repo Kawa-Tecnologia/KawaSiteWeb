@@ -4,13 +4,14 @@ import 'react-calendar/dist/Calendar.css'
 import axios from 'axios'
 import '../assets/styles/Agenda.css'
 import LeftContainer from './LeftContainer'
+import { BackendStatus,mapBackendToFrontendStatus } from '../utils/statusType'
 
 interface Ticket {
   id: number
   project_id: number
   user_id: number
   date: Date
-  status: string
+  status: BackendStatus
   receipt_id: number
   type: string
   points: number
@@ -69,7 +70,7 @@ const Agenda: React.FC = () => {
           <div className='agenda-items'>
             {tickets.map(ticket => (
               <div key={ticket.id} className='agenda-item'>
-                <p>Status: {ticket.status}</p>
+                <p>Status: {mapBackendToFrontendStatus(ticket.status)}</p>
                 <p>Data: {ticket.date}</p>
               </div>
             ))}

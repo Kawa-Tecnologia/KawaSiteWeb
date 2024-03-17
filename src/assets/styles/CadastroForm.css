@@ -97,3 +97,28 @@ label {
 .checkbox-container a:hover {
   text-decoration: underline;
 }
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 2.5em; 
+}
+
+.password-input button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px; 
+  width: auto;
+  height: auto; 
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0; 
+}
+
+.password-input button svg {
+  font-size: 16px; 
+}

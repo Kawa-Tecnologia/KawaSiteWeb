@@ -85,6 +85,7 @@ const RequestHistory: React.FC = () => {
         )
 
         if (response.data) {
+          localStorage.setItem('services', JSON.stringify(response.data.records))
           const trainingParticipateIds = response.data.records
             .filter((record: { request_dev_id: number }) =>
               requestDevs.some(request => request.id === record.request_dev_id)

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Modal from 'react-modal'
 import '../assets/styles/FuturistModal.css'
 import axios from 'axios'
+import { BackendStatus } from '../utils/statusType'
 interface ModalProps {
   modalIsOpen: boolean
   closeModal: () => void
@@ -85,7 +86,7 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         } else {
           const recommendationValue = recommendation.status
           const url =
-            recommendationValue === 'APPROVED'
+            recommendationValue === BackendStatus.APPROVED
               ? `${process.env.REACT_APP_API_URL}/api/plans?type=service&recommendation=${recommendationValue}`
               : `${process.env.REACT_APP_API_URL}/api/plans?type=service`
 

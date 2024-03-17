@@ -53,6 +53,6 @@
   
   @media only screen and (max-width: 576px) {
     .review-cards {
-      grid-template-columns: 1fr; /* Uma coluna em telas menores */
+      grid-template-columns: 1fr; 
     }
   }

@@ -13,10 +13,11 @@ import {
 } from '@mui/material'
 import ErrorNotification from './Error'
 import LeftContainer from './LeftContainer'
+import { BackendStatus } from '../utils/statusType'
 
 interface Receipt {
   id: number
-  status: string
+  status: BackendStatus
   user_id: number
   project_id: number
   amount: number
@@ -78,14 +79,14 @@ const FinancePage = () => {
             .filter(
               (receipt: Receipt) =>
                 new Date(receipt.date_pay) <= new Date() &&
-                receipt.status === 'PAID'
+                receipt.status === BackendStatus.PAID
             )
             .reduce((acc: number, item: Receipt) => acc + item?.amount || 0, 0)
           receiptsFuture = data.receipts
             .filter(
               (receipt: Receipt) =>
                 new Date(receipt.date_pay) > new Date() &&
-                receipt.status === 'APPROVED'
+                receipt.status === BackendStatus.APPROVED
             )
             .reduce((acc: number, item: Receipt) => acc + item?.amount || 0, 0)
           setReceipts(data.receipts)
@@ -107,7 +108,7 @@ const FinancePage = () => {
       const body = {
         user_id: userId,
         date: new Date(),
-        status: 'APPROVED',
+        status: BackendStatus.APPROVED,
         payment_id: 0,
         type: 'points_adquired'
       }

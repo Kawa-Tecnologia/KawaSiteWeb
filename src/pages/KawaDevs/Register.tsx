@@ -4,6 +4,8 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import InputMask from 'react-input-mask'
 import ErrorNotification from '../../components/Error'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 const Register: React.FC = () => {
   const [error, setError] = useState<string>('')
@@ -281,8 +283,10 @@ const Register: React.FC = () => {
               required
             />
             <button type='button' onClick={togglePasswordVisibility}>
-              {showPassword ? 'Ocultar' : 'Mostrar'}
-            </button>
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                  />
+                </button>
           </div>
           <div>
             <label htmlFor='type'>Tipo de Cadastro:</label>

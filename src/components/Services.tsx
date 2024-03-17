@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../assets/styles/Services.css'
 import axios from 'axios'
 import LeftContainer from './LeftContainer'
+import { BackendStatus, mapBackendToFrontendStatus } from '../utils/statusType'
 
 interface Service {
   id: number
@@ -14,7 +15,7 @@ interface Service {
   value: number
   avaliation: number
   request_comment: string
-  status: string
+  status: BackendStatus
 }
 
 const Services: React.FC = () => {
@@ -76,11 +77,27 @@ const Services: React.FC = () => {
     newStatus: string
   ) => {
     const token = localStorage.getItem('token')
+    let receivedValueNumber: number = 0
+    if (newStatus === BackendStatus.PAID) {
+      const confirmValueReceived = window.confirm(
+        'Deseja informar o valor recebido?'
+      )
+      if (confirmValueReceived) {
+        const receivedValue = prompt('Informe o valor recebido:', '0')
 
+        if (receivedValue === null) {
+          receivedValueNumber = 0
+        } else if (parseInt(receivedValue) > 0 || receivedValue !== null) {
+          const parsedValue = receivedValue.replace(',', '.')
+
+          receivedValueNumber = parseFloat(parsedValue)
+        }
+      }
+    }
     try {
       await axios.put(
         `${process.env.REACT_APP_API_URL}/api/request-devs-records/${serviceId}`,
-        { status: newStatus },
+        { status: newStatus, value: receivedValueNumber, date: new Date(), accomplished:true },
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -92,7 +109,7 @@ const Services: React.FC = () => {
         if (service.id === serviceId) {
           return {
             ...service,
-            status: newStatus
+            status: newStatus as BackendStatus
           }
         }
         return service
@@ -121,22 +138,22 @@ const Services: React.FC = () => {
           {currentServices?.length > 0 ? (
             currentServices.map((service, index) => (
               <div key={index} className='service-card'>
-                <h2>Solicitante:{service.request_dev_id}</h2>
-                <p>Status:{service.status}</p>
+                <h2>Id do Serviço:{service.request_dev_id}</h2>
+                <p>Status:{mapBackendToFrontendStatus(service.status)}</p>
                 <p>Data:{service.date}</p>
                 <p>Realizado:{service.accomplished}</p>
                 <p>Avaliação:{service.avaliation}</p>
                 <p>Comentario:{service.request_comment}</p>
                 <button
                   onClick={() =>
-                    handleServiceStatusChange(service.id, 'CANCELED')
+                    handleServiceStatusChange(service.id, BackendStatus.CANCELED)
                   }
                   disabled={
-                    service.status === 'CANCELED' || service.status === 'PAID'
+                    service.status === BackendStatus.CANCELED || service.status === BackendStatus.PAID
                   }
                   style={{
                     backgroundColor:
-                      service.status === 'CANCELED' || service.status === 'PAID'
+                      service.status === BackendStatus.CANCELED || service.status === BackendStatus.PAID
                         ? 'gray'
                         : ''
                   }}
@@ -144,13 +161,13 @@ const Services: React.FC = () => {
                   Marcar como Não Realizado
                 </button>
                 <button
-                  onClick={() => handleServiceStatusChange(service.id, 'PAID')}
+                  onClick={() => handleServiceStatusChange(service.id, BackendStatus.PAID)}
                   disabled={
-                    service.status === 'CANCELED' || service.status === 'PAID'
+                    service.status === BackendStatus.CANCELED || service.status === BackendStatus.PAID
                   }
                   style={{
                     backgroundColor:
-                      service.status === 'CANCELED' || service.status === 'PAID'
+                      service.status === BackendStatus.CANCELED || service.status === BackendStatus.PAID
                         ? 'gray'
                         : ''
                   }}
@@ -163,7 +180,7 @@ const Services: React.FC = () => {
             <p>Nenhum serviço disponível.</p>
           )}
         </div>
-        <br/>
+        <br />
         <div className='pagination'>
           <button
             onClick={() => paginate(currentPage - 1)}

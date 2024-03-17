@@ -4,6 +4,11 @@ import Tooltip from '@mui/material/Tooltip'
 import '../../assets/styles/Modal.css'
 import InputMask from 'react-input-mask'
 import DeveloperList from '../../components/Developers'
+import SpeechRecognition, {
+  useSpeechRecognition
+} from 'react-speech-recognition'
+import MicIcon from '@mui/icons-material/Mic'
+
 interface ProfessionalData {
   presentation: string
   skills: string[]
@@ -25,6 +30,8 @@ interface DeveloperType {
   Avaliation: Avaliation
 }
 const RequestDevs = () => {
+  const { transcript } = useSpeechRecognition()
+
   const [developers, setDevelopers] = useState<DeveloperType[]>([
     {
       id: 0,
@@ -98,7 +105,16 @@ const RequestDevs = () => {
   const handleButtonClick = () => {
     openModal()
   }
+  useEffect(() => {
+    setFormData((prevFormData: FormData) => ({
+      ...prevFormData,
+      description: transcript
+    }))
+  }, [transcript])
 
+  const handleButtonClickSpeech = () => {
+    SpeechRecognition.startListening({ continuous: true, language: 'pt-BR' })
+  }
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -372,7 +388,23 @@ const RequestDevs = () => {
             </select>
           </div>
           <div>
-            <label htmlFor='description'>Descrição da Solicitação:</label>
+            <label htmlFor='description'>
+              Descrição da Solicitação:
+              <button
+                type='button'
+                onClick={handleButtonClickSpeech}
+                style={{
+                  width: 20,
+                  height: 20,
+                  borderRadius: '30%',
+                  padding: 0,
+                  backgroundColor: '#00adb5',
+                  border: 'none',
+                }}
+              >
+                <MicIcon style={{ fontSize: 20 }} />{' '}
+              </button>
+            </label>
             <textarea
               id='description'
               name='description'
@@ -381,7 +413,8 @@ const RequestDevs = () => {
               required
               rows={5}
             />
-          </div>
+          </div>{' '}
+          <div></div>
           <div>
             <label htmlFor='value'>
               Valor Disponivel:
@@ -469,15 +502,12 @@ const RequestDevs = () => {
               </div>
             </label>
           </div>
-
           <button type='submit'>Enviar</button>
           <div style={{ color: 'black' }}>
             {' '}
             * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
           </div>
-
           <a href={process.env.REACT_APP_URL + '/solutions/doubts'}>Duvidas?</a>
-
           <div style={{ textAlign: 'center', color: 'black' }}>
             <h6>
               *Caso não receba nenhum atendimento, entre em contato por whatsapp
