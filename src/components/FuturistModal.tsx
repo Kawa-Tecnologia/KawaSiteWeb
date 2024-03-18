@@ -22,7 +22,7 @@ interface Plan {
   points: string
   previous_amount: number
   type: string
-  qr_code: string
+  endpoint: string
   period: string
   active: boolean
   text: string
@@ -53,7 +53,7 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       points: '',
       previous_amount: 0,
       type: '',
-      qr_code: '',
+      endpoint: '',
       period: '',
       active: true,
       text: '',

@@ -38,15 +38,15 @@ const TrainingPage = () => {
   const [success, setSuccess] = useState<string>('')
   const [error, setError] = useState<string>('')
   const [user, setUser] = useState<UserData | null>(null)
-  const [isUserTraining, setIsUserTraining] = useState<boolean>(false)
+  const [isUserTraining, setIsUserTraining] = useState<TrainingDevs[]>([])
 
   // Dentro do useEffect, verifique se o treinamento pertence ao usuário
   useEffect(() => {
     if (user && searchedVideos.length > 0) {
-      const userTraining = searchedVideos.find(
+      const userTraining = searchedVideos.filter(
         training => training.user_id === user.id
       )
-      setIsUserTraining(!!userTraining)
+      setIsUserTraining(userTraining)
     }
   }, [user, searchedVideos])
 
@@ -78,7 +78,7 @@ const TrainingPage = () => {
     try {
       const response = await axios.put(
         `${process.env.REACT_APP_API_URL}/api/training-dev/${trainingId}`,
-        { active: !isUserTraining },
+        { active: false },
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -257,12 +257,15 @@ const TrainingPage = () => {
                     <img
                       src={training.url_thumbnail}
                       alt={`Thumbnail ${index}`}
+                      style={{ width: '150px', height: '150px' }}
                     />
                   </a>
                   <div className='training-details'>
                     <h2>{training.title}</h2>
                     <p>{training.description}</p>
-                    {isUserTraining && (
+                    {isUserTraining.find(
+                      trainingUser => trainingUser.id === training.id
+                    ) && (
                       <button onClick={() => toggleUserTraining(training.id)}>
                         Desativar Treinamento
                       </button>

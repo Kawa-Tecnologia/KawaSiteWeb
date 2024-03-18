@@ -5,6 +5,24 @@ import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'react-bootstrap'
 import InputMask from 'react-input-mask'
 import ErrorNotification from '../../components/Error'
+import { BackendStatus } from '../../utils/statusType'
+
+interface Plan {
+  id: number
+  name: string
+  description: string
+  amount: number
+  points: string
+  previous_amount: number
+  type: string
+  endpoint: string
+  period: string
+  active: boolean
+  text: string
+  preference_id: string
+  origin_preference_id: string
+  discounted_percentage: number
+}
 
 const RegisterDev: React.FC = () => {
   const [error, setError] = useState<string>('')
@@ -18,10 +36,11 @@ const RegisterDev: React.FC = () => {
     password: '',
     agreeTerms: false,
     plan_id: 9,
+    active: false,
     ProfessionalInfo: {
       job_title: '',
       skills: [''],
-      tag_id: '',
+      tag_id: '1',
       cv_link: '',
       presentation: '',
       profile_linkedin: '',
@@ -30,13 +49,26 @@ const RegisterDev: React.FC = () => {
       url: '',
       imageSrc: '',
       experience_years: 0,
-      active: false
     },
     type: ''
   })
   const [showPassword, setShowPassword] = useState(false)
   const [showModal, setShowModal] = useState<boolean>(false)
   const [showModalDetails, setShowModalDetails] = useState<boolean>(false)
+  const [planSubscriptions, setPlanSubscriptions] = useState<Plan[]>([{  id: 0,
+    name: '',
+    description: '',
+    amount: 0,
+    points: '',
+    previous_amount: 0,
+    type: '',
+    endpoint: '',
+    period: '',
+    active: true,
+    text: '',
+    preference_id: '',
+    origin_preference_id: '',
+    discounted_percentage: 0}])
   const openModal = () => {
     setShowModal(true)
   }
@@ -65,8 +97,6 @@ const RegisterDev: React.FC = () => {
   }
   const navigate = useNavigate()
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    const preferenceId = '20360613-4285ffea-5b45-4ae4-a1af-0727fbe4f14e'
-    navigate(`/checkout/${preferenceId}`)
     e.preventDefault()
     if (
       formData.document_number.replace(/\D/g, '').length !== 11 &&
@@ -77,11 +107,25 @@ const RegisterDev: React.FC = () => {
     }
 
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/user`, formData, {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+      const body = {
+        ...formData,
+        status: BackendStatus.REQUESTED,
+        type: 'subscription',
+        points_required: 0,
+        amount: planSubscriptions[0].amount,
+        date: new Date()
+      }
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/buy/subscription`,
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+          }
         }
-      })
+      )
+      const url = `${planSubscriptions[0].endpoint}`
+      window.open(url, '_blank')
     } catch (error) {
       setError('Erro ao realizar o cadastro')
     }
@@ -89,6 +133,21 @@ const RegisterDev: React.FC = () => {
     navigate('/devs/login')
   }
 
+  useEffect(() => {
+    const fetchData = async ()=>{
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/plans?type=open`,
+        {
+          headers: { Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}` }
+        }
+      )
+      if(data.plans){
+        setPlanSubscriptions(data.plans)
+      }
+
+    }
+    fetchData()
+  },[])
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {

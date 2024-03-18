@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import '../../assets/styles/RequestDevs.css'
 
 import RegisterDev from './RegisterDev'
@@ -10,14 +10,6 @@ import NavigationDev from '../../components/NavigationDevs'
 
 
 const RegisterDevPage: React.FC = () => {
-
-  useEffect(() => {
-    const fetchData = async () => {
- 
-    }
-
-    fetchData()
-  }, [])
 
   return (
     <div>
