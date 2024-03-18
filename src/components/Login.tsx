@@ -13,6 +13,7 @@ import Login from '../pages/KawaDevs/Login'
 import UserProfile from './UserProfile'
 //import TransactionHistoryPage from '../pages/KawaDevs/HistoryPoints'
 import ServicesHistoryPage from '../pages/KawaDevs/HistoryServices'
+import TrainingPage from '../pages/KawaDevs/TrainingDevs'
 
 const LoginRoutes = () => {
   const [authenticated, setAuthenticated] = useState(false)
@@ -99,9 +100,11 @@ const LoginRoutes = () => {
       />
       <Route
         path='/training/:id'
-        element={
-          authenticated ? <TrainingDetails /> : <Navigate to='/login' />
-        }
+        element={authenticated ? <TrainingDetails /> : <Navigate to='/login' />}
+      />
+      <Route
+        path='/training-dev'
+        element={authenticated ? <TrainingPage /> : <Navigate to='/login' />}
       />
       <Route
         path='/agenda'
@@ -113,9 +116,7 @@ const LoginRoutes = () => {
       />
       <Route
         path='/projects'
-        element={
-          authenticated ? <ProjectsPage /> : <Navigate to='/login' />
-        }
+        element={authenticated ? <ProjectsPage /> : <Navigate to='/login' />}
       />
       <Route
         path='/reviews'
@@ -123,17 +124,13 @@ const LoginRoutes = () => {
       />
       <Route
         path='/message-for-forum'
-        element={
-          authenticated ? <MessageForForum /> : <Navigate to='/login' />
-        }
+        element={authenticated ? <MessageForForum /> : <Navigate to='/login' />}
       />
       <Route
         path='/financial'
-        element={
-          authenticated ? <FinancePage /> : <Navigate to='/login' />
-        }
+        element={authenticated ? <FinancePage /> : <Navigate to='/login' />}
       />
-       <Route
+      <Route
         path='/history-services'
         element={
           authenticated ? <ServicesHistoryPage /> : <Navigate to='/login' />
@@ -145,12 +142,12 @@ const LoginRoutes = () => {
           authenticated ? <TransactionHistoryPage /> : <Navigate to='/login' />
         }
       /> */}
-       <Route
-          path='/profile'
-          element={
-            authenticated ? <UserProfile /> : <Navigate to='/devs/login' />
-          }
-        />
+      <Route
+        path='/profile'
+        element={
+          authenticated ? <UserProfile /> : <Navigate to='/devs/login' />
+        }
+      />
       {!authenticated && !home ? <Navigate to='/login' /> : null}
     </Routes>
   )

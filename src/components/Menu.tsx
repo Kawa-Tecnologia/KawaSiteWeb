@@ -5,6 +5,7 @@ import {
   Folder,
   Star,
   History,
+  School
   // Schedule,
   // AttachMoney,
   // Forum,
@@ -67,7 +68,13 @@ const Menu: React.FC = () => {
             <li className='menu-item'>
               <Link to='/devs/history-services'>
                 <History className='icon' />
-                Historico de Serviço Prestado
+                Histórico de Serviço Prestado
+              </Link>
+            </li>
+            <li className='menu-item'>
+              <Link to='/devs/training-dev'>
+                <School className='icon' />
+                Treinamentos
               </Link>
             </li>
             {/* <li className='menu-item'>
@@ -132,6 +139,12 @@ const Menu: React.FC = () => {
     //             Solicitar Treinamento
     //           </Link>
     //         </li>
+    // <li className='menu-item'>
+    //           <Link to='/devs/training-dev'>
+    //             <School className='icon' />
+    //             Treinamentos
+    //           </Link>
+    //         </li>
     // ;<li className='menu-item'>
     //{' '}
     //<Link to='/devs/history-points'>
@@ -178,6 +191,12 @@ const Menu: React.FC = () => {
               <Link to='/devs/history-services'>
                 <History className='icon' />
                 Historico de Serviço Prestado
+              </Link>
+            </li>
+            <li className='menu-item'>
+              <Link to='/devs/training-dev'>
+                <School className='icon' />
+                Treinamentos
               </Link>
             </li>
             {/* <li className='menu-item'>
@@ -257,6 +276,12 @@ const Menu: React.FC = () => {
     //     Historico de Serviço Prestado
     //   </Link>
     // </li>
+    // <li className='menu-item'>
+    //           <Link to='/devs/training-dev'>
+    //             <School className='icon' />
+    //             Treinamentos
+    //           </Link>
+    //         </li>
     //       <li className='menu-item'>
     //         <ThemeToggle />
     //       </li>
