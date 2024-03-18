@@ -46,7 +46,7 @@ const UserContainer: React.FC = () => {
     };
   }, [])
 
-  const handleAdquirirPontos = () => {
+  const handleAcquirePoints = () => {
     setModalIsOpen(true)
   }
 
@@ -73,7 +73,7 @@ const UserContainer: React.FC = () => {
         ))}</p>
       <p>Tag de Dev: {devTag}</p>
       <p>Pontos: <span id="user-points">{points}</span></p>
-      <button onClick={handleAdquirirPontos}>Adquirir Pontos</button>
+      <button onClick={handleAcquirePoints}>Adquirir Pontos</button>
       <button onClick={handleLogout}>Logout</button>
 
       {user && [5, 6, 7, 8, null].includes(user.plan_id) ? (

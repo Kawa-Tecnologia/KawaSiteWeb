@@ -55,7 +55,7 @@ const TrainingHistory: React.FC = () => {
     (currentPage - 1) * 8,
     currentPage * 8
   )
-  const handleAdquirirPontos = () => {
+  const handleAcquirePoints = () => {
     setModalIsOpen(true)
   }
   const fetchProjects = async () => {
@@ -264,7 +264,7 @@ const TrainingHistory: React.FC = () => {
             <div className='button-container'>
               {userPoints < training.points_required ? (
                 <>
-                  <button onClick={handleAdquirirPontos}>
+                  <button onClick={handleAcquirePoints}>
                     Adquirir Pontos
                   </button>
                   <Modal

@@ -140,7 +140,7 @@
 //     </div>
 //   )
 
-//   const handleAdquirirPontos = () => {
+//   const handleAcquirePoints = () => {
 //     setModalIsOpen(true)
 //   }
 
@@ -204,7 +204,7 @@
 //       <div className='button-container'>
 //         {userPoints < training.points_required ? (
 //           <>
-//             <button onClick={handleAdquirirPontos}>Adquirir Pontos</button>
+//             <button onClick={handleAcquirePoints}>Adquirir Pontos</button>
 //             <FuturisticModal
 //               modalIsOpen={modalIsOpen}
 //               closeModal={closeModal}

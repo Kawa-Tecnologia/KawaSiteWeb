@@ -140,7 +140,7 @@ const RequestHistory: React.FC = () => {
     fetchOrders()
   }, [requestDevs])
 
-  const handleAdquirirPontos = () => {
+  const handleAcquirePoints = () => {
     setModalIsOpen(true)
   }
   const closeModal = () => {
@@ -368,9 +368,9 @@ const RequestHistory: React.FC = () => {
               </button>
             </div>
             <div className='button-container'>
-              {userPoints < training.points_required ? (
+              {userPoints < training.points_required && !participationsIds.includes(training.id) ? (
                 <>
-                  <button onClick={handleAdquirirPontos}>
+                  <button onClick={handleAcquirePoints}>
                     Adquirir Pontos
                   </button>
                   <FuturisticModal
