@@ -10,6 +10,8 @@ import MicIcon from '@mui/icons-material/Mic'
 
 const RequestDevs = () => {
   const { transcript } = useSpeechRecognition()
+  const [showTooltipModal, setShowTooltipModal] = useState(false)
+  const [tooltipMessage, setTooltipMessage] = useState('')
 
   const [formData, setFormData] = useState(() => {
     const cachedFormData = localStorage.getItem('formDataRequest')
@@ -247,7 +249,11 @@ const RequestDevs = () => {
       }
     }
   }, [])
+  const handleTooltipClick = (message: string) => () => {
+    setTooltipMessage(message)
 
+    setShowTooltipModal(true)
+  }
   return (
     <div className='container-request'>
       <section id='services'>
@@ -293,7 +299,14 @@ const RequestDevs = () => {
             <label htmlFor='type'>
               Tipo de Serviço:
               <Tooltip title='Selecione o tipo de serviço que vai solicitar.'>
-                <span>(?)</span>
+                <span
+                  onClick={handleTooltipClick(
+                    'Selecione o tipo de serviço que vai solicitar.'
+                  )}
+                  style={{ cursor: 'pointer' }}
+                >
+                  (?)
+                </span>
               </Tooltip>{' '}
             </label>
             <select
@@ -344,7 +357,14 @@ const RequestDevs = () => {
             <label htmlFor='value'>
               Valor Disponivel:
               <Tooltip title='Valor aproximado que está disposto a pagar pelo serviço'>
-                <span>(?)</span>
+                <span
+                  onClick={handleTooltipClick(
+                    'Valor aproximado que está disposto a pagar pelo serviço'
+                  )}
+                  style={{ cursor: 'pointer' }}
+                >
+                  (?)
+                </span>
               </Tooltip>{' '}
             </label>
             <select
@@ -426,6 +446,14 @@ const RequestDevs = () => {
               &times;
             </span>
             <p id='modal-details' dangerouslySetInnerHTML={renderDetails()}></p>
+          </div>
+        </div>
+        <div id='myModal' className={`modal ${showTooltipModal ? 'show' : ''}`}>
+          <div className='modal-content'>
+            <span className='close' onClick={() => setShowTooltipModal(false)}>
+              &times;
+            </span>
+            <p style={{ color: 'black' }}>{tooltipMessage}</p>
           </div>
         </div>
       </section>

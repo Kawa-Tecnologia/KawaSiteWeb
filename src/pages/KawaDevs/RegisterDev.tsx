@@ -48,27 +48,33 @@ const RegisterDev: React.FC = () => {
       tools: [''],
       url: '',
       imageSrc: '',
-      experience_years: 0,
+      experience_years: 0
     },
     type: ''
   })
   const [showPassword, setShowPassword] = useState(false)
   const [showModal, setShowModal] = useState<boolean>(false)
   const [showModalDetails, setShowModalDetails] = useState<boolean>(false)
-  const [planSubscriptions, setPlanSubscriptions] = useState<Plan[]>([{  id: 0,
-    name: '',
-    description: '',
-    amount: 0,
-    points: '',
-    previous_amount: 0,
-    type: '',
-    endpoint: '',
-    period: '',
-    active: true,
-    text: '',
-    preference_id: '',
-    origin_preference_id: '',
-    discounted_percentage: 0}])
+  const [showTooltipModal, setShowTooltipModal] = useState(false)
+  const [tooltipMessage, setTooltipMessage] = useState('')
+  const [planSubscriptions, setPlanSubscriptions] = useState<Plan[]>([
+    {
+      id: 0,
+      name: '',
+      description: '',
+      amount: 0,
+      points: '',
+      previous_amount: 0,
+      type: '',
+      endpoint: '',
+      period: '',
+      active: true,
+      text: '',
+      preference_id: '',
+      origin_preference_id: '',
+      discounted_percentage: 0
+    }
+  ])
   const openModal = () => {
     setShowModal(true)
   }
@@ -134,20 +140,21 @@ const RegisterDev: React.FC = () => {
   }
 
   useEffect(() => {
-    const fetchData = async ()=>{
+    const fetchData = async () => {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/plans?type=open`,
         {
-          headers: { Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}` }
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+          }
         }
       )
-      if(data.plans){
+      if (data.plans) {
         setPlanSubscriptions(data.plans)
       }
-
     }
     fetchData()
-  },[])
+  }, [])
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -293,7 +300,11 @@ const RegisterDev: React.FC = () => {
     }
     setTimer(setTimeout(handleFormAbandoned, 60000))
   }
+  const handleTooltipClick = (message: string) => () => {
+    setTooltipMessage(message)
 
+    setShowTooltipModal(true)
+  }
   const handleFormAbandoned = async () => {
     alert('Preencha seus dados, email, telefone celular')
 
@@ -476,7 +487,14 @@ const RegisterDev: React.FC = () => {
             <label htmlFor='skills'>
               Habilidades:{' '}
               <Tooltip title='Informe as habilidades separadas por (,).'>
-                <span>(?)</span>
+                <span
+                  onClick={handleTooltipClick(
+                    'Informe as ferramentas separadas por (,).'
+                  )}
+                  style={{ cursor: 'pointer' }}
+                >
+                  (?)
+                </span>
               </Tooltip>{' '}
             </label>
             <input
@@ -492,7 +510,14 @@ const RegisterDev: React.FC = () => {
             <label htmlFor='tools'>
               Ferramentas:
               <Tooltip title='Informe as ferramentas separadas por (,).'>
-                <span>(?)</span>
+                <span
+                  onClick={handleTooltipClick(
+                    'Informe as ferramentas separadas por (,).'
+                  )}
+                  style={{ cursor: 'pointer' }}
+                >
+                  (?)
+                </span>
               </Tooltip>{' '}
             </label>
             <input
@@ -609,6 +634,14 @@ const RegisterDev: React.FC = () => {
         </div>
       </div>
       {error && <ErrorNotification message={error} severity='error' />}
+      <div id='myModal' className={`modal ${showTooltipModal ? 'show' : ''}`}>
+        <div className='modal-content'>
+          <span className='close' onClick={() => setShowTooltipModal(false)}>
+            &times;
+          </span>
+          <p style={{ color: 'black' }}>{tooltipMessage}</p>
+        </div>
+      </div>
     </div>
   )
 }

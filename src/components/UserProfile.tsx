@@ -55,6 +55,8 @@ interface Tag {
   [key: string]: string
 }
 const UserProfile: React.FC = () => {
+  const [showTooltipModal, setShowTooltipModal] = useState(false)
+  const [tooltipMessage, setTooltipMessage] = useState('')
   const storedUserString = localStorage.getItem('user')
   const storedUser: UserData | null = storedUserString
     ? JSON.parse(storedUserString)
@@ -98,7 +100,11 @@ const UserProfile: React.FC = () => {
     }
   })
   const [addressData, setAddressData] = useState<AddressData | null>(null)
+  const handleTooltipClick = (message: string) => () => {
+    setTooltipMessage(message)
 
+    setShowTooltipModal(true)
+  }
   const handleUserDataChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setUserData(prevState => ({
@@ -511,7 +517,14 @@ const UserProfile: React.FC = () => {
               <label>
                 Apresentação:
                 <Tooltip title='Escreva um texto com sua apresentação profissional (Maximo 255 caracteres).'>
-                  <span>(?)</span>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Escreva um texto com sua apresentação profissional (Maximo 255 caracteres).'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
                 </Tooltip>{' '}
                 <input
                   type='text'
@@ -535,7 +548,14 @@ const UserProfile: React.FC = () => {
               <label>
                 Habilidades:
                 <Tooltip title='Informe as habilidades separadas por (,).'>
-                  <span>(?)</span>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Informe as habilidades separadas por (,).'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
                 </Tooltip>{' '}
                 <input
                   type='text'
@@ -549,7 +569,14 @@ const UserProfile: React.FC = () => {
               <label>
                 Ferramentas:
                 <Tooltip title='Informe as ferramentas separadas por (,).'>
-                  <span>(?)</span>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Informe as ferramentas separadas por (,).'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
                 </Tooltip>{' '}
                 <input
                   type='text'
@@ -605,6 +632,14 @@ const UserProfile: React.FC = () => {
         </button>
       </div>
       {error && <ErrorNotification message={error} severity='error' />}
+      <div id='myModal' className={`modal ${showTooltipModal ? 'show' : ''}`}>
+        <div className='modal-content'>
+          <span className='close' onClick={() => setShowTooltipModal(false)}>
+            &times;
+          </span>
+          <p style={{ color: 'black' }}>{tooltipMessage}</p>
+        </div>
+      </div>
     </div>
   )
 }
