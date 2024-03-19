@@ -3,81 +3,19 @@ import React, { ChangeEvent, useState, useEffect } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import '../../assets/styles/Modal.css'
 import InputMask from 'react-input-mask'
-import DeveloperList from '../../components/Developers'
 import SpeechRecognition, {
   useSpeechRecognition
 } from 'react-speech-recognition'
 import MicIcon from '@mui/icons-material/Mic'
 
-interface ProfessionalData {
-  presentation: string
-  skills: string[]
-  tools: string[]
-  imageSrc: string
-  job_title: string
-}
-
-interface Avaliation {
-  content: string
-  avaliation: number
-}
-
-interface DeveloperType {
-  id: number
-  fullname: string
-  avaliation: number
-  ProfessionalInfo: ProfessionalData
-  Avaliation: Avaliation
-}
 const RequestDevs = () => {
   const { transcript } = useSpeechRecognition()
-
-  const [developers, setDevelopers] = useState<DeveloperType[]>([
-    {
-      id: 0,
-      fullname: '',
-      avaliation: 0,
-      ProfessionalInfo: {
-        presentation: '',
-        skills: [''],
-        tools: [''],
-        imageSrc: '',
-        job_title: ''
-      },
-      Avaliation: {
-        avaliation: 0,
-        content: ''
-      }
-    }
-  ])
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/user?type=service&page=1`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
-            }
-          }
-        )
-        if (data.users) {
-          setDevelopers(data.users)
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
 
   const [formData, setFormData] = useState(() => {
     const cachedFormData = localStorage.getItem('formDataRequest')
     return cachedFormData
       ? JSON.parse(cachedFormData)
       : {
-          title: '',
           name: '',
           email: '',
           phone: '',
@@ -148,7 +86,6 @@ const RequestDevs = () => {
         }
       )
       setFormData({
-        title: '',
         name: '',
         email: '',
         phone: '',
@@ -317,17 +254,6 @@ const RequestDevs = () => {
         <h3>Faça sua solicitação e aguarde contato.</h3>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor='title'>Titulo:</label>
-            <input
-              type='text'
-              id='title'
-              name='title'
-              value={formData.title}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
             <label htmlFor='name'>Nome:</label>
             <input
               type='text'
@@ -471,22 +397,6 @@ const RequestDevs = () => {
           </div>
           {renderCepField()}
           <div>
-            <label htmlFor='user_id_requested'>
-              ID do Prestador:{' '}
-              <Tooltip title='Informe o ID do Prestador, caso tenha preferencia, consulte-os abaixo.'>
-                <span>(?)</span>
-              </Tooltip>{' '}
-            </label>
-            <input
-              type='number'
-              id='user_id_requested'
-              name='user_id_requested'
-              value={formData.user_id_requested}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
             <label>
               <input
                 type='checkbox'
@@ -508,13 +418,6 @@ const RequestDevs = () => {
             {' '}
             * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
           </div>
-          <a href={process.env.REACT_APP_URL + '/solutions/doubts'}>Duvidas?</a>
-          <div style={{ textAlign: 'center', color: 'black' }}>
-            <h6>
-              *Caso não receba nenhum atendimento, entre em contato por whatsapp
-              (11914287025)
-            </h6>
-          </div>
         </form>
 
         <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
@@ -525,9 +428,6 @@ const RequestDevs = () => {
             <p id='modal-details' dangerouslySetInnerHTML={renderDetails()}></p>
           </div>
         </div>
-        <h5 style={{ color: 'black' }}>*Clique no card para mais detalhes</h5>
-
-        <DeveloperList developers={developers} />
       </section>
     </div>
   )

@@ -22,6 +22,7 @@ import TipsPage from './pages/TipsPage'
 import TipsPageSolutions from './pages/KawaSolutions/TipsPageSolutions'
 import { CSSTransition } from 'react-transition-group'
 import LoginRoutes from './components/Login'
+import DevelopersPage from './pages/KawaSolutions/DevelopersPage'
 
 interface LocationState {
   key: string
@@ -36,6 +37,7 @@ const RoutesApp: React.FC = () => {
 
         <Route path='/devs/register' element={<RegisterPage />} />
         <Route path='/devs/register-devs' element={<RegisterDevPage />} />
+        <Route path='/request-devs/:id' element={<DevelopersPage />} />
 
         <Route
           path='/recovery-password/:email'

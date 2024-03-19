@@ -9,7 +9,6 @@ import Pagination from './PaginationProps'
 interface RequestDevs {
   id: number
   name: string
-  title: string
   description: string
   email: string
   phone: string
@@ -64,7 +63,6 @@ const RequestHistory: React.FC = () => {
   const [modalRequestDevs, setModalRequestDevs] = useState<RequestDevs>({
     id: 0,
     name: '',
-    title: '',
     description: '',
     email: '',
     phone: '',
@@ -220,9 +218,6 @@ const RequestHistory: React.FC = () => {
               <strong>Email:</strong> {requestDevs.email}
             </div>
           )}
-        <div>
-          <strong>Título:</strong> {requestDevs.title}
-        </div>
         {userPoints === 0 && (
           <div>
             <strong>Descrição:</strong>{' '}
@@ -260,7 +255,7 @@ const RequestHistory: React.FC = () => {
     )
   }
   const filteredRequest = requestDevs?.filter(request =>
-    request?.title?.toLowerCase().includes(searchTerm?.toLowerCase())
+    request?.description?.toLowerCase().includes(searchTerm?.toLowerCase())
   )
 
   const totalPages = Math.ceil((filteredRequest?.length || 0) / 8)
@@ -310,9 +305,6 @@ const RequestHistory: React.FC = () => {
               )}
               <div>
                 <strong>Nome:</strong> {training.name}
-              </div>
-              <div>
-                <strong>Titulo:</strong> {training.title}
               </div>
               <div>
                 {userPoints > 0 &&

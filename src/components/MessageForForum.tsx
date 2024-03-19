@@ -3,7 +3,6 @@ import '../assets/styles/MessageForForum.css'
 import axios from 'axios'
 import LeftContainer from './LeftContainer'
 const MessageForForum: React.FC = () => {
-  const [title, setTitle] = useState<string>('')
   const [language, setLanguage] = useState<string>('')
   const [level, setLevel] = useState<string>('')
   const [tool, setTool] = useState<string>('')
@@ -33,7 +32,6 @@ const MessageForForum: React.FC = () => {
       }
     )
     const body = {
-      title: title,
       name: storedUser?.fullname,
       email: storedUser?.email,
       phone: storedUser?.phone,
@@ -64,14 +62,6 @@ const MessageForForum: React.FC = () => {
         <div className='message-forum-container'>
           <h1>Solicitar treinamento para o Fórum/Prestadores</h1>
           <form onSubmit={handleSubmit}>
-            <label htmlFor='title'>Titulo:</label>
-            <input
-              type='text'
-              id='title'
-              value={title}
-              onChange={event => setTitle(event.target.value)}
-              required
-            />
             <label htmlFor='language'>Linguagem de Programação:</label>
             <input
               type='text'
