@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink  } from 'react-router-dom'
 import {
   Dashboard,
   Folder,
@@ -48,34 +48,34 @@ const Menu: React.FC = () => {
         <div className='container-menu'>
           <div className='menu'>
             <li className='menu-item'>
-              <Link to='/devs/dashboard'>
+              <NavLink  to='/devs/dashboard'>
                 <Dashboard className='icon' />
                 Dashboard
-              </Link>
+              </NavLink >
             </li>
             <li className='menu-item'>
-              <Link to='/devs/services'>
+              <NavLink  to='/devs/services'>
                 <Folder className='icon' />
                 Serviços
-              </Link>
+              </NavLink >
             </li>
             <li className='menu-item'>
-              <Link to='/devs/reviews'>
+              <NavLink  to='/devs/reviews'>
                 <Star className='icon' />
                 Avaliações
-              </Link>
+              </NavLink >
             </li>
             <li className='menu-item'>
-              <Link to='/devs/history-services'>
+              <NavLink  to='/devs/history-services'>
                 <History className='icon' />
                 Histórico de Serviço Prestado
-              </Link>
+              </NavLink >
             </li>
             <li className='menu-item'>
-              <Link to='/devs/training-dev'>
+              <NavLink  to='/devs/training-dev'>
                 <School className='icon' />
                 Treinamentos
-              </Link>
+              </NavLink >
             </li>
             {/* <li className='menu-item'>
               <Link to='/devs/history-points'>
@@ -170,34 +170,34 @@ const Menu: React.FC = () => {
         <div className='container-menu'>
           <div className='menu'>
             <li className='menu-item'>
-              <Link to='/devs/dashboard'>
+              <NavLink  to='/devs/dashboard'>
                 <Dashboard className='icon' />
                 Dashboard
-              </Link>
+              </NavLink >
             </li>
             <li className='menu-item'>
-              <Link to='/devs/services'>
+              <NavLink  to='/devs/services'>
                 <Folder className='icon' />
                 Serviços
-              </Link>
+              </NavLink >
             </li>
             <li className='menu-item'>
-              <Link to='/devs/reviews'>
+              <NavLink  to='/devs/reviews'>
                 <Star className='icon' />
                 Avaliações
-              </Link>
+              </NavLink >
             </li>
             <li className='menu-item'>
-              <Link to='/devs/history-services'>
+              <NavLink  to='/devs/history-services'>
                 <History className='icon' />
                 Historico de Serviço Prestado
-              </Link>
+              </NavLink >
             </li>
             <li className='menu-item'>
-              <Link to='/devs/training-dev'>
+              <NavLink  to='/devs/training-dev'>
                 <School className='icon' />
                 Treinamentos
-              </Link>
+              </NavLink >
             </li>
             {/* <li className='menu-item'>
               <Link to='/devs/history-points'>
