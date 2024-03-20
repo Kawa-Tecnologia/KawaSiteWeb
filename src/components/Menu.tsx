@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink  } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import {
   Dashboard,
   Folder,
@@ -48,40 +48,40 @@ const Menu: React.FC = () => {
         <div className='container-menu'>
           <div className='menu'>
             <li className='menu-item'>
-              <NavLink  to='/devs/dashboard'>
+              <NavLink to='/devs/dashboard'>
                 <Dashboard className='icon' />
                 Dashboard
-              </NavLink >
+              </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink  to='/devs/services'>
+              <NavLink to='/devs/services'>
                 <Folder className='icon' />
                 Serviços
-              </NavLink >
+              </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink  to='/devs/reviews'>
+              <NavLink to='/devs/reviews'>
                 <Star className='icon' />
                 Avaliações
-              </NavLink >
+              </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink  to='/devs/history-services'>
+              <NavLink to='/devs/history-services'>
                 <History className='icon' />
                 Histórico de Serviço Prestado
-              </NavLink >
+              </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink  to='/devs/training-dev'>
+              <NavLink to='/devs/training-dev'>
                 <School className='icon' />
                 Treinamentos
-              </NavLink >
+              </NavLink>
             </li>
             {/* <li className='menu-item'>
-              <Link to='/devs/history-points'>
+              <NavLink to='/devs/history-points'>
                 <Star className='icon' />
                 Historico
-              </Link>
+              </NavLink>
             </li> */}
             <li className='menu-item'>{/* <ThemeToggle /> */}</li>
           </div>
@@ -94,34 +94,34 @@ const Menu: React.FC = () => {
     //     <div className='container-menu'>
     //       <div className='menu'>
     //         <li className='menu-item'>
-    //           <Link to='/devs/dashboard'>
+    //           <NavLink to='/devs/dashboard'>
     //             <Dashboard className='icon' />
     //             Dashboard
-    //           </Link>
+    //           </NavLink>
     //         </li>
     //         <li className='menu-item'>
-    //           <Link to='/devs/projects'>
+    //           <NavLink to='/devs/projects'>
     //             <Folder className='icon' />
     //             Projetos
-    //           </Link>
+    //           </NavLink>
     //         </li>
     //         <li className='menu-item'>
-    //           <Link to='/devs/reviews'>
+    //           <NavLink to='/devs/reviews'>
     //             <Star className='icon' />
     //             Avaliações
-    //           </Link>
+    //           </NavLink>
     //         </li>
     //         <li className='menu-item'>
-    //           <Link to='/devs/financial'>
+    //           <NavLink to='/devs/financial'>
     //             <AttachMoney className='icon' />
     //             Financeiro
-    //           </Link>
+    //           </NavLink>
     //         </li>
     //         <li className='menu-item'>
-    //           <Link to='/devs/agenda'>
+    //           <NavLink to='/devs/agenda'>
     //             <Schedule className='icon' />
     //             Agenda
-    //           </Link>
+    //           </NavLink>
     //         </li>
     //         <li className='menu-item'>
     //           <a
@@ -134,30 +134,30 @@ const Menu: React.FC = () => {
     //           </a>
     //         </li>
     //         <li className='menu-item'>
-    //           <Link to='/devs/message-for-forum'>
+    //           <NavLink to='/devs/message-for-forum'>
     //             <EmojiPeople className='icon' />
     //             Solicitar Treinamento
-    //           </Link>
+    //           </NavLink>
     //         </li>
     // <li className='menu-item'>
-    //           <Link to='/devs/training-dev'>
+    //           <NavLink to='/devs/training-dev'>
     //             <School className='icon' />
     //             Treinamentos
-    //           </Link>
+    //           </NavLink>
     //         </li>
     // ;<li className='menu-item'>
     //{' '}
-    //<Link to='/devs/history-points'>
+    //<NavLink to='/devs/history-points'>
     // <History className='icon' />
     // Historico //{' '}
-    //</Link>
+    //</NavLink>
     //{' '}
     //</li>
     //   <li className='menu-item'>
-    //   <Link to='/devs/history-services'>
+    //   <NavLink to='/devs/history-services'>
     //     <Star className='icon' />
     //     Historico de Serviço Prestado
-    //   </Link>
+    //   </NavLink>
     // </li>
     //         <li className='menu-item'>
     //           <ThemeToggle />
@@ -170,40 +170,40 @@ const Menu: React.FC = () => {
         <div className='container-menu'>
           <div className='menu'>
             <li className='menu-item'>
-              <NavLink  to='/devs/dashboard'>
+              <NavLink to='/devs/dashboard'>
                 <Dashboard className='icon' />
                 Dashboard
-              </NavLink >
+              </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink  to='/devs/services'>
+              <NavLink to='/devs/services'>
                 <Folder className='icon' />
                 Serviços
-              </NavLink >
+              </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink  to='/devs/reviews'>
+              <NavLink to='/devs/reviews'>
                 <Star className='icon' />
                 Avaliações
-              </NavLink >
+              </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink  to='/devs/history-services'>
+              <NavLink to='/devs/history-services'>
                 <History className='icon' />
                 Historico de Serviço Prestado
-              </NavLink >
+              </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink  to='/devs/training-dev'>
+              <NavLink to='/devs/training-dev'>
                 <School className='icon' />
                 Treinamentos
-              </NavLink >
+              </NavLink>
             </li>
             {/* <li className='menu-item'>
-              <Link to='/devs/history-points'>
+              <NavLink to='/devs/history-points'>
                 <Star className='icon' />
                 Historico
-              </Link>
+              </NavLink>
             </li> */}
             <li className='menu-item'>{/* <ThemeToggle /> */}</li>
           </div>
@@ -213,40 +213,40 @@ const Menu: React.FC = () => {
     //   <div className='container-menu'>
     //     <div className='menu'>
     //       <li className='menu-item'>
-    //         <Link to='/devs/dashboard'>
+    //         <NavLink to='/devs/dashboard'>
     //           <Dashboard className='icon' />
     //           Dashboard
-    //         </Link>
+    //         </NavLink>
     //       </li>
     //       <li className='menu-item'>
-    //         <Link to='/devs/projects'>
+    //         <NavLink to='/devs/projects'>
     //           <Folder className='icon' />
     //           Projetos
-    //         </Link>
+    //         </NavLink>
     //       </li>
     //       <li className='menu-item'>
-    //         <Link to='/devs/services'>
+    //         <NavLink to='/devs/services'>
     //           <Folder className='icon' />
     //           Serviços
-    //         </Link>
+    //         </NavLink>
     //       </li>
     //       <li className='menu-item'>
-    //         <Link to='/devs/reviews'>
+    //         <NavLink to='/devs/reviews'>
     //           <Star className='icon' />
     //           Avaliações
-    //         </Link>
+    //         </NavLink>
     //       </li>
     //       <li className='menu-item'>
-    //         <Link to='/devs/financial'>
+    //         <NavLink to='/devs/financial'>
     //           <AttachMoney className='icon' />
     //           Financeiro
-    //         </Link>
+    //         </NavLink>
     //       </li>
     //       <li className='menu-item'>
-    //         <Link to='/devs/agenda'>
+    //         <NavLink to='/devs/agenda'>
     //           <Schedule className='icon' />
     //           Agenda
-    //         </Link>
+    //         </NavLink>
     //       </li>
     //       <li className='menu-item'>
     //         <a
@@ -259,28 +259,28 @@ const Menu: React.FC = () => {
     //         </a>
     //       </li>
     //       <li className='menu-item'>
-    //         <Link to='/devs/message-for-forum'>
+    //         <NavLink to='/devs/message-for-forum'>
     //           <EmojiPeople className='icon' />
     //           Solicitar Treinamento
-    //         </Link>
+    //         </NavLink>
     //       </li>
     // <li className='menu-item'>
-    //   <Link to='/devs/history-points'>
+    //   <NavLink to='/devs/history-points'>
     //     <History className='icon' />
     //     Historico
-    //   </Link>
+    //   </NavLink>
     // </li>
     //   <li className='menu-item'>
-    //   <Link to='/devs/history-services'>
+    //   <NavLink to='/devs/history-services'>
     //     <History className='icon' />
     //     Historico de Serviço Prestado
-    //   </Link>
+    //   </NavLink>
     // </li>
     // <li className='menu-item'>
-    //           <Link to='/devs/training-dev'>
+    //           <NavLink to='/devs/training-dev'>
     //             <School className='icon' />
     //             Treinamentos
-    //           </Link>
+    //           </NavLink>
     //         </li>
     //       <li className='menu-item'>
     //         <ThemeToggle />

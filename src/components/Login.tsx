@@ -17,7 +17,6 @@ import TrainingPage from '../pages/KawaDevs/TrainingDevs'
 
 const LoginRoutes = () => {
   const [authenticated, setAuthenticated] = useState(false)
-  const [authenticationChecked, setAuthenticationChecked] = useState(false)
   const [home, setHome] = useState(true)
 
   const handleLogin = async (): Promise<void> => {
@@ -30,7 +29,6 @@ const LoginRoutes = () => {
     error => {
       if (error.response && error.response.status === 403) {
         setAuthenticated(false)
-        setAuthenticationChecked(true)
         window.location.href = '/devs/login'
       }
       return Promise.reject(error)
@@ -62,7 +60,6 @@ const LoginRoutes = () => {
             )
             if (response.data.valid) {
               setAuthenticated(true)
-              setAuthenticationChecked(true)
               setHome(false)
               return
             }
@@ -70,26 +67,17 @@ const LoginRoutes = () => {
             if (axios.isAxiosError(error)) {
               if (error.response?.status === 403) {
                 setAuthenticated(false)
-                setAuthenticationChecked(true)
                 return
               }
             }
           }
         }
         setAuthenticated(false)
-      } else {
-        setAuthenticationChecked(true)
-      }
+      } 
     }
     checkAuthentication()
   }, [])
 
-  if (!authenticationChecked && !authenticated) {
-    return <div>Logout...</div>
-  }
-  if (!authenticationChecked) {
-    return <div>Atualizando...</div>
-  }
 
   return (
     <Routes>
