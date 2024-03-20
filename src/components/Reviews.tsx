@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Review.css'
 import axios from 'axios'
-import LeftContainer from './LeftContainer'
 interface Review {
   user_id: string
   content: string
@@ -87,7 +86,6 @@ const Reviews: React.FC = () => {
 
   return (
     <div className='dashboard'>
-      <LeftContainer />
       <div className='reviews-page'>
         <h1>Avaliações</h1>
         <input

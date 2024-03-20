@@ -4,7 +4,6 @@ import '../assets/styles/Menu.css'
 import '../assets/styles/Dashboard.css'
 import RequestHistory from './RequestHistory'
 import { FaBell } from 'react-icons/fa'
-import LeftContainer from './LeftContainer'
 
 interface UserData {
   name: string
@@ -66,7 +65,6 @@ const Dashboard: React.FC = () => {
     case null:
       return (
         <div className='dashboard'>
-                 <LeftContainer/>
 
           <div className='main-content'>
             <div
@@ -134,7 +132,6 @@ const Dashboard: React.FC = () => {
     default:
       return (
         <div className='dashboard'>
-          <LeftContainer/>
           <div className='main-content'>
             <div
               className='notification-icon-container'

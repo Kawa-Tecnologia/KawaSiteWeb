@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import LeftContainer from '../../components/LeftContainer'
 import Pagination from '../../components/PaginationProps'
 import '../../assets/styles/TrainingDev.css'
 import axios from 'axios'
@@ -173,7 +172,6 @@ const TrainingPage = () => {
 
   return (
     <div className='dashboard'>
-      <LeftContainer />
       <div className='training-dev'>
         <h1>Treinamentos e Cursos</h1>
 

@@ -3,7 +3,6 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import axios from 'axios'
 import '../assets/styles/Agenda.css'
-import LeftContainer from './LeftContainer'
 import { BackendStatus,mapBackendToFrontendStatus } from '../utils/statusType'
 
 interface Ticket {
@@ -48,7 +47,6 @@ const Agenda: React.FC = () => {
 
   return (
     <div className='dashboard'>
-    <LeftContainer/>
       <div className='main-content'>
         <div className='agenda'>
           <h2>Agenda</h2>

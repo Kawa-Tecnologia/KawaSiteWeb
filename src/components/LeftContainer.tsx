@@ -1,11 +1,13 @@
 import React from 'react'
 import Menu from './Menu'
 import UserContainer from './UserContainer'
-
-const LeftContainer: React.FC = () => {
+interface UserContainerProps {
+  handleLogout: React.MouseEventHandler<HTMLButtonElement>
+}
+const LeftContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   return (
     <div className='left-container'>
-      <UserContainer />
+      <UserContainer handleLogout={handleLogout} />
       <Menu />
 
       <h5>

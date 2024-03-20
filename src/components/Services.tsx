@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Services.css'
 import axios from 'axios'
-import LeftContainer from './LeftContainer'
 import { BackendStatus, mapBackendToFrontendStatus } from '../utils/statusType'
 
 interface Service {
@@ -123,7 +122,6 @@ const Services: React.FC = () => {
 
   return (
     <div className='dashboard'>
-      <LeftContainer />
       <div className='services-page'>
         <h1>Serviços</h1>
         <input

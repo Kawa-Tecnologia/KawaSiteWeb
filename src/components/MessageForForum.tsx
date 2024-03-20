@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../assets/styles/MessageForForum.css'
 import axios from 'axios'
-import LeftContainer from './LeftContainer'
 const MessageForForum: React.FC = () => {
   const [language, setLanguage] = useState<string>('')
   const [level, setLevel] = useState<string>('')
@@ -57,7 +56,6 @@ const MessageForForum: React.FC = () => {
 
   return (
     <div className='dashboard'>
-    <LeftContainer/>
       <div className='main-content'>
         <div className='message-forum-container'>
           <h1>Solicitar treinamento para o Fórum/Prestadores</h1>

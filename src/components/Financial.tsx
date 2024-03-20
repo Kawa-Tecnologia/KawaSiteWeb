@@ -12,7 +12,6 @@ import {
   Button
 } from '@mui/material'
 import ErrorNotification from './Error'
-import LeftContainer from './LeftContainer'
 import { BackendStatus } from '../utils/statusType'
 
 interface Receipt {
@@ -178,7 +177,6 @@ const FinancePage = () => {
 
   return (
     <div className='dashboard'>
-      <LeftContainer/>
       <div className='finance-page'>
         <h1>Financeiro</h1>
         <div className='saldo-section'>

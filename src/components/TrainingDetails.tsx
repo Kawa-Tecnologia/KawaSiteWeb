@@ -1,8 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import '../assets/styles/TrainingDetails.css'
-import Menu from './Menu'
-import UserContainer from './UserContainer'
 
 interface TrainingDetail {
   id: number
@@ -69,14 +67,6 @@ const TrainingDetails: React.FC = () => {
 
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-        <p>
-          *Indique um amigo e após a primeira compra de pontos dele, você ganha
-          10% de desconto na proxima compra
-        </p>{' '}
-      </div>
       <div className='training-details'>
         <h2>Detalhes do Treinamento</h2>
         <div className='detail-item'>

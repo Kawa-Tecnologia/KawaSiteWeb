@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Project.css'
 import axios from 'axios'
-import LeftContainer from './LeftContainer'
 
 interface Project {
   id: number
@@ -137,7 +136,6 @@ const ProjectsPage: React.FC = () => {
   }
   return (
     <div className='dashboard'>
-      <LeftContainer/>
       <div className='projects-page'>
         <h1>Projetos de Treinamento</h1>
         <input

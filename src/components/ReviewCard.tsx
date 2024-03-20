@@ -1,6 +1,4 @@
 import React from 'react'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
 
 interface ReviewCard {
   user: string
@@ -16,15 +14,7 @@ const ReviewCards: React.FC = () => {
 
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-        <p>
-          *Indique um amigo e após a primeira compra de pontos dele, você ganha
-          10% de desconto na proxima compra
-        </p>{' '}
-      </div>
-      <div className='review-cards'>
+       <div className='review-cards'>
         <h2>Avaliações dos parceiros</h2>
         {reviewCards.map((card, index) => (
           <div className='card' key={index}>

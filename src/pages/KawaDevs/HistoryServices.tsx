@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ServiceItem from '../../components/ServiceItem'
-import LeftContainer from '../../components/LeftContainer'
 import '../../assets/styles/History.css'
 import { BackendStatus } from '../../utils/statusType'
 
@@ -86,7 +85,6 @@ const ServicesHistoryPage = () => {
 
   return (
     <div className='dashboard'>
-      <LeftContainer />
       <div className='transaction-history'>
         <h1>Histórico de Serviço Prestado</h1>
         <div>Total Recebido: R${totalReceived.toFixed(2)}</div>

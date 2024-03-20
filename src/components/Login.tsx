@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import TrainingDetails from './TrainingDetails'
 import Agenda from './Agenda'
@@ -11,17 +11,24 @@ import FinancePage from './Financial'
 import axios from 'axios'
 import Login from '../pages/KawaDevs/Login'
 import UserProfile from './UserProfile'
-//import TransactionHistoryPage from '../pages/KawaDevs/HistoryPoints'
 import ServicesHistoryPage from '../pages/KawaDevs/HistoryServices'
 import TrainingPage from '../pages/KawaDevs/TrainingDevs'
+import LeftContainer from './LeftContainer'
 
 const LoginRoutes = () => {
   const [authenticated, setAuthenticated] = useState(false)
   const [home, setHome] = useState(true)
 
-  const handleLogin = async (): Promise<void> => {
+  const navigate = useNavigate()
+  const handleLogin = async () => {
     setAuthenticated(true)
     setHome(false)
+  }
+
+  const handleLogout = () => {
+    setAuthenticated(false)
+    localStorage.clear()
+    navigate('/devs/login')
   }
 
   axios.interceptors.response.use(
@@ -29,7 +36,7 @@ const LoginRoutes = () => {
     error => {
       if (error.response && error.response.status === 403) {
         setAuthenticated(false)
-        window.location.href = '/devs/login'
+        navigate('/devs/login')
       }
       return Promise.reject(error)
     }
@@ -73,71 +80,89 @@ const LoginRoutes = () => {
           }
         }
         setAuthenticated(false)
-      } 
+      }
     }
     checkAuthentication()
   }, [])
 
-
   return (
-    <Routes>
-      <Route path='/login' element={<Login onLogin={handleLogin} />} />
-      <Route
-        path='/dashboard'
-        element={authenticated ? <Dashboard /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/training/:id'
-        element={authenticated ? <TrainingDetails /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/training-dev'
-        element={authenticated ? <TrainingPage /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/agenda'
-        element={authenticated ? <Agenda /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/services'
-        element={authenticated ? <Services /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/projects'
-        element={authenticated ? <ProjectsPage /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/reviews'
-        element={authenticated ? <Reviews /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/message-for-forum'
-        element={authenticated ? <MessageForForum /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/financial'
-        element={authenticated ? <FinancePage /> : <Navigate to='/login' />}
-      />
-      <Route
-        path='/history-services'
-        element={
-          authenticated ? <ServicesHistoryPage /> : <Navigate to='/login' />
-        }
-      />
-      {/* <Route
-        path='/history-points'
-        element={
-          authenticated ? <TransactionHistoryPage /> : <Navigate to='/login' />
-        }
-      /> */}
-      <Route
-        path='/profile'
-        element={
-          authenticated ? <UserProfile /> : <Navigate to='/devs/login' />
-        }
-      />
-      {!authenticated && !home ? <Navigate to='/login' /> : null}
-    </Routes>
+    <>
+      <div>
+        {' '}
+        {authenticated && !home ? (
+          <LeftContainer handleLogout={handleLogout} />
+        ) : (
+          ''
+        )}
+      </div>
+      <Routes>
+        <Route path='/login' element={<Login onLogin={handleLogin} />} />
+        <Route
+          path='/dashboard'
+          element={
+            authenticated ? <Dashboard /> : <Navigate to='/devs/login' />
+          }
+        />
+        <Route
+          path='/training/:id'
+          element={
+            authenticated ? <TrainingDetails /> : <Navigate to='/devs/login' />
+          }
+        />
+        <Route
+          path='/training-dev'
+          element={
+            authenticated ? <TrainingPage /> : <Navigate to='/devs/login' />
+          }
+        />
+        <Route
+          path='/agenda'
+          element={authenticated ? <Agenda /> : <Navigate to='/devs/login' />}
+        />
+        <Route
+          path='/services'
+          element={authenticated ? <Services /> : <Navigate to='/devs/login' />}
+        />
+        <Route
+          path='/projects'
+          element={
+            authenticated ? <ProjectsPage /> : <Navigate to='/devs/login' />
+          }
+        />
+        <Route
+          path='/reviews'
+          element={authenticated ? <Reviews /> : <Navigate to='/devs/login' />}
+        />
+        <Route
+          path='/message-for-forum'
+          element={
+            authenticated ? <MessageForForum /> : <Navigate to='/devs/login' />
+          }
+        />
+        <Route
+          path='/financial'
+          element={
+            authenticated ? <FinancePage /> : <Navigate to='/devs/login' />
+          }
+        />
+        <Route
+          path='/history-services'
+          element={
+            authenticated ? (
+              <ServicesHistoryPage />
+            ) : (
+              <Navigate to='/devs/login' />
+            )
+          }
+        />
+        <Route
+          path='/profile'
+          element={
+            authenticated ? <UserProfile /> : <Navigate to='/devs/login' />
+          }
+        />
+      </Routes>
+    </>
   )
 }
 

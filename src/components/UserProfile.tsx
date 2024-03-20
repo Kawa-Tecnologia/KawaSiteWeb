@@ -1,6 +1,4 @@
 import React, { useState, ChangeEvent, useEffect } from 'react'
-import UserContainer from './UserContainer'
-import Menu from './Menu'
 import '../assets/styles/UserProfile.css'
 import axios from 'axios'
 import Tooltip from '@mui/material/Tooltip'
@@ -295,14 +293,6 @@ const UserProfile: React.FC = () => {
   }
   return (
     <div className='dashboard'>
-      <div className='left-container'>
-        <UserContainer />
-        <Menu />
-        <p>
-          *Indique um amigo e após a primeira compra de pontos dele, você ganha
-          10% de desconto na proxima compra
-        </p>
-      </div>
       <div className='profile'>
         <h1>Perfil do Usuario</h1>
 

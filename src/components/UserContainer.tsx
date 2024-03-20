@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Modal from 'react-modal'
 import '../assets/styles/PointsModal.css'
 import FuturisticModal from './FuturistModal'
-import { Star } from '@material-ui/icons'; // Importa o ícone de estrela
+import { Star } from '@material-ui/icons' // Importa o ícone de estrela
 interface UserData {
   name: string
   email: string
@@ -16,22 +16,24 @@ interface UserData {
     }
   }
 }
-
-const UserContainer: React.FC = () => {
+interface UserContainerProps {
+  handleLogout: React.MouseEventHandler<HTMLButtonElement>
+}
+const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [user, setUser] = useState<UserData | null>(null)
-  const [rating, setRating] = useState<number>(0); // Supondo que a avaliação seja sempre 5
+  const [rating, setRating] = useState<number>(0) // Supondo que a avaliação seja sempre 5
 
   const navigate = useNavigate()
   const userName = localStorage.getItem('userName') || ''
   const devTag = localStorage.getItem('tagName') || ''
   const points = localStorage.getItem('userPoints') || ''
   useEffect(() => {
-    const pointsElement = document.getElementById('user-points');
+    const pointsElement = document.getElementById('user-points')
     if (pointsElement) {
-      pointsElement.textContent = points.toString();
+      pointsElement.textContent = points.toString()
     }
-  }, [points]);
+  }, [points])
   useEffect(() => {
     const storedUserString = localStorage.getItem('user')
     if (storedUserString) {
@@ -39,11 +41,11 @@ const UserContainer: React.FC = () => {
       setUser(storedUser)
       setRating(storedUser.avaliation)
     }
-    document.body.style.backgroundColor = '#000';
+    document.body.style.backgroundColor = '#000'
 
     return () => {
-      document.body.style.backgroundColor = '';
-    };
+      document.body.style.backgroundColor = ''
+    }
   }, [])
 
   const handleAcquirePoints = () => {
@@ -58,37 +60,37 @@ const UserContainer: React.FC = () => {
     setModalIsOpen(false)
   }
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate('/devs/login')
-  }
-
   return (
     <div className='user-container'>
       <h3>{userName}</h3>
       <button onClick={handleProfile}>Perfil do Usuario</button>
 
-      <p>Avaliação: {[...Array(5)].map((_, index) => (
-          <Star key={index} style={{ color: index < rating ? 'yellow' : 'gray' }} />
-        ))}</p>
+      <p>
+        Avaliação:{' '}
+        {[...Array(5)].map((_, index) => (
+          <Star
+            key={index}
+            style={{ color: index < rating ? 'yellow' : 'gray' }}
+          />
+        ))}
+      </p>
       <p>Tag de Dev: {devTag}</p>
-      <p>Pontos: <span id="user-points">{points}</span></p>
+      <p>
+        Pontos: <span id='user-points'>{points}</span>
+      </p>
       <button onClick={handleAcquirePoints}>Adquirir Pontos</button>
       <button onClick={handleLogout}>Logout</button>
 
       {user && [5, 6, 7, 8, null].includes(user.plan_id) ? (
-        <FuturisticModal
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
-        />
+        <FuturisticModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
       ) : (
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           contentLabel='Modal de Adquirir Pontos'
         >
-          <h2>Escolha a quantidade de pontos:</h2>
-          * Checkout será aberto em outra janela, ative os pop-ups por favor
+          <h2>Escolha a quantidade de pontos:</h2>* Checkout será aberto em
+          outra janela, ative os pop-ups por favor
           <div className='pontos-options-container'>
             <div className='pontos-option'>
               <p>1000 Pontos por R$10,00</p>
