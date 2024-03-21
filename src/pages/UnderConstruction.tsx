@@ -1,20 +1,11 @@
 import React from 'react'
 import '../assets/styles/UnderConstruction.css'
-import Navigation from '../components/Navigation'
+import HeaderPrincipal from '../components/HeaderPrincipal'
 
 const UnderConstruction: React.FC = () => {
   return (
     <div>
-       <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../assets/images/kawa.jpg')}
-            alt='Kawa Tecnologia'
-          />
-        </div>
-        <Navigation />
-      </header>
+       <HeaderPrincipal/>
     <div className='under-container'>
       <h1>Em Construção</h1>
       <p>

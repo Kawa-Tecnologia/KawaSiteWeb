@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import './assets/styles/DevsCard.css'
 import './assets/styles/Banner.css'
 import './assets/styles/App.css'
-import Navigation from './components/Navigation'
 import axios from 'axios'
 import ErrorNotification from './components/Error'
+import HeaderPrincipal from './components/HeaderPrincipal'
 
 interface Dev {
   fullname: string
@@ -194,16 +194,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('./assets/images/kawa.jpg')}
-            alt='Kawa Tecnologia'
-          />
-        </div>
-        <Navigation />
-      </header>
+   <HeaderPrincipal/>
       <div className='container-geral'>
         <div className='container-home'>
           <div className='left'>

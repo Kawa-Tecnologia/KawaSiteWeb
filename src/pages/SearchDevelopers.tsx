@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import '../assets/styles/Search.css'
 import axios from 'axios'
-import Navigation from '../components/Navigation'
+import HeaderPrincipal from '../components/HeaderPrincipal'
 interface Dev {
   fullname: string
   ProfessionalInfo: Professional
@@ -195,16 +195,7 @@ const SearchDevelopers: React.FC = () => {
   }
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../assets/images/kawa.jpg')}
-            alt='Kawa Tecnologia'
-          />
-        </div>
-        <Navigation />
-      </header>
+      <HeaderPrincipal/>
       <div className='login'>
         <div className='container-search'>
           <h2>Desenvolvedores &gt;&gt;Open to Work&lt;&lt;</h2>

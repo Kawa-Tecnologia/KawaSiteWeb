@@ -1,0 +1,75 @@
+.nav-header {
+  display: none; /* Oculta o cabeçalho do menu em telas grandes */
+}
+
+.nav-toggle {
+  display: none; /* Oculta o ícone do menu em telas maiores */
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  padding: 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Estilos para telas menores */
+@media screen and (max-width: 768px) {
+  .nav-header {
+    display: block; /* Exibe o cabeçalho do menu em telas menores */
+    cursor: pointer;
+  }
+
+  .nav-list {
+    display: none; /* Oculta a lista de navegação por padrão em telas menores */
+  }
+
+  .nav-open .nav-list {
+    display: block; /* Exibe a lista de navegação quando o menu está aberto */
+  }
+
+  .nav-toggle {
+    display: block; /* Exibe o ícone do menu em telas menores */
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    position: relative;
+  }
+
+  .nav-toggle:before,
+  .nav-toggle:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    position: absolute;
+    left: 0;
+    transition: top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  }
+
+  .nav-toggle:before {
+    top: -8px; /* Ajuste para a primeira linha */
+  }
+
+  .nav-toggle:after {
+    bottom: -8px; /* Ajuste para a terceira linha */
+  }
+
+  .nav-open .nav-toggle:before {
+    top: 0;
+  }
+
+  .nav-open .nav-toggle:after {
+    bottom: 0;
+  }
+}

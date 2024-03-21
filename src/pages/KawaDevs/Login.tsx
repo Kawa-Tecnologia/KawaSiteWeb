@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ErrorNotification from '../../components/Error'
-import NavigationDev from '../../components/NavigationDevs'
 import '../../assets/styles/Login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import HeaderDevs from '../../components/HeaderDevs'
 
 interface UserData {
   name: string
@@ -148,16 +148,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     loginAttempts > 0 ? `Tentativas restantes: ${3 - loginAttempts}` : ''
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../../assets/images/kawa.jpg')}
-            alt='Kawa Devs'
-          />
-        </div>
-        <NavigationDev />
-      </header>
+      <HeaderDevs/>
       <div className='login'>
         <div className='login-container' style={{ textAlign: 'center' }}>
           <h1>Kawa Devs</h1>

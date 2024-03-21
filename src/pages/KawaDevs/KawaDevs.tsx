@@ -1,21 +1,12 @@
 import React from 'react'
 import '../../assets/styles/KawaDevs.css'
-import NavigationDev from '../../components/NavigationDevs'
 import Plans from './Plans'
+import HeaderDevs from '../../components/HeaderDevs'
 
 const AreaDevs: React.FC = () => {
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../../assets/images/kawa.jpg')}
-            alt='Kawa Devs'
-          />
-        </div>
-        <NavigationDev />
-      </header>
+      <HeaderDevs/>
 
       <div className='container-devs'>
         <div className='left' style={{ textAlign: 'center' }}>

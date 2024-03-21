@@ -4,7 +4,7 @@ import '../../assets/styles/RequestDevs.css'
 import RegisterDev from './RegisterDev'
 import RightContainerDevsOpen from '../../components/RightContainerDevsOpen'
 import LeftContainerDevsOpen from '../../components/LeftContainerDevsOpen'
-import NavigationDev from '../../components/NavigationDevs'
+import HeaderDevs from '../../components/HeaderDevs'
 
 
 
@@ -13,16 +13,7 @@ const RegisterDevPage: React.FC = () => {
 
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../../assets/images/kawa.jpg')}
-            alt='Kawa Tecnologia'
-          />
-        </div>
-        <NavigationDev />
-      </header>
+      <HeaderDevs/>
       <div className='sobre-nos'>
           <section className='section-box'>
             <div className='container-wrapper'>

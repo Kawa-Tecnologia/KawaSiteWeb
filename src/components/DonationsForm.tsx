@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import '../assets/styles/DonationsForm.css' // Arquivo de estilos
 import axios from 'axios'
-import Navigation from './Navigation'
+import HeaderPrincipal from './HeaderPrincipal'
 
 function DonationsForm () {
   const [dados, setDados] = useState({
@@ -38,17 +38,7 @@ function DonationsForm () {
 
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../assets/images/kawa.jpg')}
-            alt='Kawa Tecnologia'
-          />
-        </div>
-        <Navigation />
-      </header>
-      <header></header>
+      <HeaderPrincipal/>
       <main>
         <h2>Cadastre sua instituição!</h2>
 

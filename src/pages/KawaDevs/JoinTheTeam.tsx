@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import '../../assets/styles/Plans.css'
-import NavigationDev from '../../components/NavigationDevs'
 import '../../assets/styles/JoinTheTeam.css'
+import HeaderDevs from '../../components/HeaderDevs'
 interface Plan {
   name: string
   description: string
@@ -107,16 +107,7 @@ const JoinTheTeam: React.FC = () => {
 
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../../assets/images/kawa.jpg')}
-            alt='Kawa Devs'
-          />
-        </div>
-        <NavigationDev />
-      </header>
+      <HeaderDevs/>
       <div className='join'>
         <div className='join-the-team'>
           <section id='planos'>

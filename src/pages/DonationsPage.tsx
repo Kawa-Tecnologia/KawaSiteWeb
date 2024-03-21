@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Image, Button } from 'react-bootstrap'
 import DonationsCard from '../components/DonationsCard'
-import Navigation from '../components/Navigation'
 import '../assets/styles/Donations.css'
 import { Link } from 'react-router-dom'
+import HeaderPrincipal from '../components/HeaderPrincipal'
 
 function Donations () {
   const [employments, setEmployments] = useState([
@@ -41,16 +41,7 @@ function Donations () {
 
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../assets/images/kawa.jpg')}
-            alt='Kawa Tecnologia'
-          />
-        </div>
-        <Navigation />
-      </header>
+      <HeaderPrincipal/>
       <div className='content-container'>
         <div className='intro-section'>
           <h1>Doe a quem precisa</h1>

@@ -1,20 +1,11 @@
 import React from 'react'
 import '../assets/styles/AboutUs.css'
-import Navigation from '../components/Navigation'
+import HeaderPrincipal from '../components/HeaderPrincipal'
 
 const AboutUs: React.FC = () => {
   return (
     <div>
-      <header className='header'>
-        <div className='logo-container'>
-          <img
-            className='logo'
-            src={require('../assets/images/kawa.jpg')}
-            alt='Kawa Tecnologia'
-          />
-        </div>
-        <Navigation />
-      </header>
+      <HeaderPrincipal/>
       <div className='sobre-nos'>
         <header></header>
         <main>

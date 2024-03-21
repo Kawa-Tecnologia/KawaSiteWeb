@@ -1,20 +1,11 @@
 import React from 'react';
 import '../assets/styles/Tips.css'; // Arquivo CSS para estilização
-import Navigation from '../components/Navigation';
+import HeaderPrincipal from '../components/HeaderPrincipal';
 
 function TipsPage() {
   return (
     <div className="App">
-      <header className="header">
-        <div className="logo-container">
-          <img
-            className="logo"
-            src={require('../assets/images/kawa.jpg')}
-            alt="Kawa Tecnologia"
-          />
-        </div>
-        <Navigation />
-      </header>
+      <HeaderPrincipal/>
       <div className="tips">
         <h1>Antes de solicitar o serviço, saiba disso:</h1>
         <div className="card">
