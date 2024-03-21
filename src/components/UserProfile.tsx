@@ -6,15 +6,22 @@ import getAddressFromCEP, { AddressData } from './GetAddress'
 import ErrorNotification from './Error'
 
 interface UserData {
+  id: number
   fullname: string
   email: string
   phone: string
   document_number: string
+  plan_id: number
   Address: Address
   ProfessionalInfo: ProfessionalData
   [key: string]: string | number | Address | ProfessionalData
 }
 
+interface Subscription {
+  id: number
+  status: string
+  next_date_payment: string
+}
 interface Address {
   street: string
   number: number
@@ -61,10 +68,12 @@ const UserProfile: React.FC = () => {
     : null
   const [error, setError] = useState<string>('')
   const [userData, setUserData] = useState<UserData>({
+    id: storedUser?.id || 0,
     fullname: storedUser?.fullname || '',
     email: storedUser?.email || '',
     phone: storedUser?.phone || '',
     document_number: storedUser?.document_number || '',
+    plan_id: storedUser?.plan_id || 0,
     Address: {
       street: storedUser?.Address?.street || '',
       number: storedUser?.Address?.number || 0,
@@ -153,6 +162,13 @@ const UserProfile: React.FC = () => {
   const [originalUserData, setOriginalUserData] = useState<UserData | null>(
     null
   )
+  const [subscription, setSubscription] = useState<Subscription>({
+    id: 0,
+    status: '',
+    next_date_payment: ''
+  })
+  const token = localStorage.getItem('token')
+
   const [originalProfessionalData, setOriginalProfessionalData] =
     useState<ProfessionalData | null>(null)
   const [originalAddressData, setOriginalAddressData] =
@@ -272,6 +288,26 @@ const UserProfile: React.FC = () => {
     setIsEditMode(false)
   }
 
+  const handleSubscription = async (status: string) => {
+    try {
+      const body = {
+        status: status,
+        user_id: userData.id,
+        email: userData.email
+      }
+      await axios.put(
+        `${process.env.REACT_APP_API_URL}/api/subscriptions/${subscription.id}`,
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+    } catch (error) {
+      setError('Erro ao atualizar o status da assinatura')
+    }
+  }
   const handleSearchCEP = async (cep: string, street: string) => {
     if (!street) {
       const data = await getAddressFromCEP(cep)
@@ -291,6 +327,28 @@ const UserProfile: React.FC = () => {
       }
     }
   }
+  useEffect(() => {
+    const fetchSubscription = async () => {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/subscriptions/${userData.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        )
+
+        if (data.subscriptions?.length) {
+          setSubscription(data.subscriptions[0])
+        }
+      } catch (error) {
+        setError('Erro ao buscar o status da assinatura')
+      }
+    }
+    fetchSubscription()
+  }, [])
+
   return (
     <div className='dashboard'>
       <div className='profile'>
@@ -614,6 +672,23 @@ const UserProfile: React.FC = () => {
                   disabled={!isEditMode}
                 />
               </label>
+              {userData.plan_id === 9 &&
+              subscription &&
+              subscription.next_date_payment &&
+              subscription.status === 'ACTIVE' ? (
+                <a onClick={() => handleSubscription('PAUSED')}>
+                  Pausar Assinatura
+                </a>
+              ) : userData.plan_id === 9 &&
+                subscription &&
+                (!subscription.next_date_payment ||
+                  subscription.status === 'PAUSED') ? (
+                <a onClick={() => handleSubscription('ACTIVE')}>
+                  Retomar Assinatura
+                </a>
+              ) : (
+                ''
+              )}
             </form>
           </div>
         </div>
