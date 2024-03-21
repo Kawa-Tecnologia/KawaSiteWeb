@@ -159,7 +159,9 @@ const Register: React.FC = () => {
     if (timer) {
       clearTimeout(timer)
     }
-    setTimer(setTimeout(handleFormAbandoned, 60000))
+    if (location.pathname === '/devs/register') {
+      setTimer(setTimeout(handleFormAbandoned, 60000))
+    }
   }
 
   const handleFormAbandoned = async () => {
@@ -283,10 +285,8 @@ const Register: React.FC = () => {
               required
             />
             <button type='button' onClick={togglePasswordVisibility}>
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                  />
-                </button>
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </button>
           </div>
           <div>
             <label htmlFor='type'>Tipo de Cadastro:</label>

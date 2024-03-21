@@ -298,7 +298,9 @@ const RegisterDev: React.FC = () => {
     if (timer) {
       clearTimeout(timer)
     }
-    setTimer(setTimeout(handleFormAbandoned, 60000))
+    if (location.pathname === '/devs/register-devs') {
+      setTimer(setTimeout(handleFormAbandoned, 60000))
+    }
   }
   const handleTooltipClick = (message: string) => () => {
     setTooltipMessage(message)

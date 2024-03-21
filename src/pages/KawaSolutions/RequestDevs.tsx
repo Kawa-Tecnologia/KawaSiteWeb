@@ -210,7 +210,12 @@ const RequestDevs = () => {
       clearTimeout(timer)
     }
 
-    setTimer(setTimeout(handleFormAbandoned, 60000))
+    if (
+      location.pathname === '/request-devs' ||
+      location.pathname === '/solutions'
+    ) {
+      setTimer(setTimeout(handleFormAbandoned, 60000))
+    }
   }
 
   const handleFormAbandoned = async () => {
