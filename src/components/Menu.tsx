@@ -23,6 +23,11 @@ interface UserData {
 
 const Menu: React.FC = () => {
   const [user, setUser] = useState<UserData | null>(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   useEffect(() => {
     const storedUserString = localStorage.getItem('user')
@@ -45,45 +50,52 @@ const Menu: React.FC = () => {
     case 8:
     case null:
       return (
-        <div className='container-menu'>
-          <div className='menu'>
-            <li className='menu-item'>
-              <NavLink to='/devs/dashboard'>
-                <Dashboard className='icon' />
-                Dashboard
-              </NavLink>
-            </li>
-            <li className='menu-item'>
-              <NavLink to='/devs/services'>
-                <Folder className='icon' />
-                Serviços
-              </NavLink>
-            </li>
-            <li className='menu-item'>
-              <NavLink to='/devs/reviews'>
-                <Star className='icon' />
-                Avaliações
-              </NavLink>
-            </li>
-            <li className='menu-item'>
-              <NavLink to='/devs/history-services'>
-                <History className='icon' />
-                Histórico de Serviço Prestado
-              </NavLink>
-            </li>
-            <li className='menu-item'>
-              <NavLink to='/devs/training-dev'>
-                <School className='icon' />
-                Treinamentos
-              </NavLink>
-            </li>
-            {/* <li className='menu-item'>
+        <div className='menu-container'>
+          <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
+            <div className='menu-toggle' onClick={toggleMenu}>
+              <div className='bar'></div>
+              <div className='bar'></div>
+              <div className='bar'></div>
+            </div>
+            <ul className='menu-list'>
+              <li className='menu-item'>
+                <NavLink to='/devs/dashboard'>
+                  <Dashboard className='icon' />
+                  Dashboard
+                </NavLink>
+              </li>
+              <li className='menu-item'>
+                <NavLink to='/devs/services'>
+                  <Folder className='icon' />
+                  Serviços
+                </NavLink>
+              </li>
+              <li className='menu-item'>
+                <NavLink to='/devs/reviews'>
+                  <Star className='icon' />
+                  Avaliações
+                </NavLink>
+              </li>
+              <li className='menu-item'>
+                <NavLink to='/devs/history-services'>
+                  <History className='icon' />
+                  Histórico de Serviço Prestado
+                </NavLink>
+              </li>
+              <li className='menu-item'>
+                <NavLink to='/devs/training-dev'>
+                  <School className='icon' />
+                  Treinamentos
+                </NavLink>
+              </li>
+              {/* <li className='menu-item'>
               <NavLink to='/devs/history-points'>
                 <Star className='icon' />
                 Historico
               </NavLink>
             </li> */}
-            <li className='menu-item'>{/* <ThemeToggle /> */}</li>
+              <li className='menu-item'>{/* <ThemeToggle /> */}</li>
+            </ul>
           </div>
         </div>
       )

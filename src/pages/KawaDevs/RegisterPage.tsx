@@ -39,7 +39,7 @@ const RegisterPage: React.FC = () => {
 
 
         <footer>
-          <p>&copy; © 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
+          <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
         </footer>
       </div>
     </div>

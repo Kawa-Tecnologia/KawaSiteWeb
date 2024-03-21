@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import TrainingDetails from './TrainingDetails'
 import Agenda from './Agenda'
@@ -9,21 +9,16 @@ import Reviews from './Reviews'
 import MessageForForum from './MessageForForum'
 import FinancePage from './Financial'
 import axios from 'axios'
-import Login from '../pages/KawaDevs/Login'
 import UserProfile from './UserProfile'
 import ServicesHistoryPage from '../pages/KawaDevs/HistoryServices'
 import TrainingPage from '../pages/KawaDevs/TrainingDevs'
 import LeftContainer from './LeftContainer'
 
-const LoginRoutes = () => {
-  const [authenticated, setAuthenticated] = useState(false)
+const MainRoutes = () => {
+  const [authenticated, setAuthenticated] = useState(true)
   const [home, setHome] = useState(true)
 
   const navigate = useNavigate()
-  const handleLogin = async () => {
-    setAuthenticated(true)
-    setHome(false)
-  }
 
   const handleLogout = () => {
     setAuthenticated(false)
@@ -45,6 +40,7 @@ const LoginRoutes = () => {
   useEffect(() => {
     const checkAuthentication = async () => {
       setAuthenticated(true)
+
       if (
         location.pathname.startsWith('/devs/') &&
         location.pathname !== '/devs/login' &&
@@ -96,33 +92,73 @@ const LoginRoutes = () => {
         )}
       </div>
       <Routes>
-        <Route path='/login' element={<Login onLogin={handleLogin} />} />
-        <Route path='/dashboard' element={authenticated && <Dashboard />} />
+        <Route
+          path='/dashboard'
+          element={
+            authenticated ? <Dashboard /> : <Navigate to='/devs/login' />
+          }
+        />
         <Route
           path='/training/:id'
-          element={authenticated && <TrainingDetails />}
+          element={
+            authenticated ? <TrainingDetails /> : <Navigate to='/devs/login' />
+          }
         />
         <Route
           path='/training-dev'
-          element={authenticated && <TrainingPage />}
+          element={
+            authenticated ? <TrainingPage /> : <Navigate to='/devs/login' />
+          }
         />
-        <Route path='/agenda' element={authenticated && <Agenda />} />
-        <Route path='/services' element={authenticated && <Services />} />
-        <Route path='/projects' element={authenticated && <ProjectsPage />} />
-        <Route path='/reviews' element={authenticated && <Reviews />} />
+        <Route
+          path='/agenda'
+          element={authenticated ? <Agenda /> : <Navigate to='/devs/login' />}
+        />
+        <Route
+          path='/services'
+          element={authenticated ? <Services /> : <Navigate to='/devs/login' />}
+        />
+        <Route
+          path='/projects'
+          element={
+            authenticated ? <ProjectsPage /> : <Navigate to='/devs/login' />
+          }
+        />
+        <Route
+          path='/reviews'
+          element={authenticated ? <Reviews /> : <Navigate to='/devs/login' />}
+        />
         <Route
           path='/message-for-forum'
-          element={authenticated && <MessageForForum />}
+          element={
+            authenticated ? <MessageForForum /> : <Navigate to='/devs/login' />
+          }
         />
-        <Route path='/financial' element={authenticated && <FinancePage />} />
+        <Route
+          path='/financial'
+          element={
+            authenticated ? <FinancePage /> : <Navigate to='/devs/login' />
+          }
+        />
         <Route
           path='/history-services'
-          element={authenticated && <ServicesHistoryPage />}
+          element={
+            authenticated ? (
+              <ServicesHistoryPage />
+            ) : (
+              <Navigate to='/devs/login' />
+            )
+          }
         />
-        <Route path='/profile' element={authenticated && <UserProfile />} />
+        <Route
+          path='/profile'
+          element={
+            authenticated ? <UserProfile /> : <Navigate to='/devs/login' />
+          }
+        />
       </Routes>
     </>
   )
 }
 
-export default LoginRoutes
+export default MainRoutes
