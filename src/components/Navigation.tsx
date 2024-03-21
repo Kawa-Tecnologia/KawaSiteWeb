@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ContactButton from './Whatsapp'
-import '../assets/styles/Navigation.css' // Arquivo CSS para estilos
+import '../assets/styles/Navigation.css' 
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

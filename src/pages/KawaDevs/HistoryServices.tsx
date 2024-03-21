@@ -68,7 +68,6 @@ const ServicesHistoryPage = () => {
     )
     setTotalReceived(total)
   }, [servicesPerformed])
-  // Paginação
   const indexOfLastService = currentPage * servicesPerPage
   const indexOfFirstService = indexOfLastService - servicesPerPage
   const currentServices = servicesPerformed.slice(
@@ -76,7 +75,6 @@ const ServicesHistoryPage = () => {
     indexOfLastService
   )
 
-  // Altera a página
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   if (loading) {

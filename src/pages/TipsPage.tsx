@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/Tips.css'; // Arquivo CSS para estilização
+import '../assets/styles/Tips.css'; 
 import HeaderPrincipal from '../components/HeaderPrincipal';
 
 function TipsPage() {

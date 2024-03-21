@@ -23,6 +23,7 @@ import TipsPageSolutions from './pages/KawaSolutions/TipsPageSolutions'
 import { CSSTransition } from 'react-transition-group'
 import LoginRoutes from './components/Login'
 import DevelopersPage from './pages/KawaSolutions/DevelopersPage'
+import ThankYouPage from './pages/KawaSolutions/ThankyouPage'
 
 interface LocationState {
   key: string
@@ -61,6 +62,8 @@ const RoutesApp: React.FC = () => {
         <Route path='/devs/about-us' element={<AboutUsDevs />} />
         <Route path='/devs' element={<AreaDevs />} />
         <Route path='/solutions' element={<AppSolutions />} />
+        <Route path='/solutions/thankyou' element={<ThankYouPage />} />
+
         <Route path='/*'>
           {(location: LocationState) => (
             <CSSTransition key={location.key} classNames='fade' timeout={300}>

@@ -57,7 +57,7 @@ function Donations () {
           <Image
             src='https://img.freepik.com/vetores-gratis/logotipo-da-caridade-com-a-mao_23-2147503001.jpg?size=626&ext=jpg&ga=GA1.1.1311184811.1709733450&semt=sph'
             alt='Imagem de Apelo à Doação'
-            style={{ width: '100%', height: '20vh', objectFit: 'cover' }} // Define a largura como 100% e a altura como 20% da altura da viewport (vh)
+            style={{ width: '100%', height: '20vh', objectFit: 'cover' }} 
           />
         </div>
         <div className='bank-details-section'>

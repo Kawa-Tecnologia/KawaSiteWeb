@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../assets/styles/Review.css'
 import axios from 'axios'
 interface Review {
+  name: string
   user_id: string
   content: string
   receive_user_id: number
@@ -21,9 +22,9 @@ const Reviews: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [reviewsPerPage] = useState<number>(8)
   useEffect(() => {
-    document.body.classList.add('dashboard-page') // Adiciona a classe ao body
+    document.body.classList.add('dashboard-page')
     return () => {
-      document.body.classList.remove('dashboard-page') // Remove a classe ao sair da página
+      document.body.classList.remove('dashboard-page') 
     }
   }, [])
   useEffect(() => {
@@ -99,8 +100,10 @@ const Reviews: React.FC = () => {
           {currentReviews.length > 0 ? (
             currentReviews.map((review, index) => (
               <div key={index} className='review-card'>
-                <h2>{review.user_id}</h2>
+                <h2>{review.name}</h2>
                 <p>{review.content}</p>
+                <p>{review.avaliation}</p>
+
                 <p>{renderStars(review.avaliation)}</p>
               </div>
             ))

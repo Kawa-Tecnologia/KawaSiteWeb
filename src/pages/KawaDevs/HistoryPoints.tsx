@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import TransactionItem from '../../components/TransactionPoints' // Componente para exibir cada transação
+import TransactionItem from '../../components/TransactionPoints' 
 interface Transaction {
   id: number
   user_id: number

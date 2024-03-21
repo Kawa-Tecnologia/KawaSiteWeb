@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import StarIcon from '@mui/icons-material/Star'
 import '../assets/styles/Survey.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import ErrorNotification from './Error'
 interface SurveyFormData {
   email: string
   providerName: string
+  name: string
   service: number
   technical_knowledge: number
   practicality: number
@@ -19,18 +22,21 @@ interface SurveyFormData {
 }
 interface SurveyFormProps {
   email: string
+  name: string
   providerName: string
   serviceId: string
 }
 
 const SurveyForm: React.FC<SurveyFormProps> = ({
   email,
+  name,
   providerName,
   serviceId
 }) => {
   const [formData, setFormData] = useState<SurveyFormData>({
     email: email,
     providerName: providerName,
+    name: name,
     service: 0,
     technical_knowledge: 0,
     practicality: 0,
@@ -42,7 +48,8 @@ const SurveyForm: React.FC<SurveyFormProps> = ({
     receive_user_id: 0,
     project_id: parseInt(serviceId)
   })
-
+  const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
@@ -55,12 +62,19 @@ const SurveyForm: React.FC<SurveyFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const body = formData
-    await axios.post(`${process.env.REACT_APP_API_URL}/api/reviews`, body, {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
-      }
-    })
+    try {
+      const body = formData
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/reviews`, body, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+        }
+      })
+      navigate('/solutions/thankyou')
+    } catch (error) {
+      setErrorMessage(
+        'Não foi possivel gravar sua avaliação. Entre em contato com o suporte'
+      )
+    }
   }
 
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -81,7 +95,15 @@ const SurveyForm: React.FC<SurveyFormProps> = ({
           onChange={handleInputChange}
           required
         />
-
+        <label htmlFor='name'>Nome do Cliente:</label>
+        <input
+          type='text'
+          id='name'
+          name='name'
+          value={formData.name}
+          onChange={handleInputChange}
+          required
+        />
         <label htmlFor='providerName'>Nome do Prestador de Serviço:</label>
         <input
           type='text'
@@ -211,6 +233,9 @@ const SurveyForm: React.FC<SurveyFormProps> = ({
           Enviar
         </button>
       </form>
+      {errorMessage && (
+        <ErrorNotification message={errorMessage} severity={'error'} />
+      )}
     </div>
   )
 }

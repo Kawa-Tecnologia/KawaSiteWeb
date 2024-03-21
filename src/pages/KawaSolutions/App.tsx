@@ -22,7 +22,7 @@ const AppSolutions = () => {
       <Header />
       <ServicesSection />
       <button onClick={handleCadastroClick}>
-        Prestador, quer aparecer abaixo para ser contactado pelo Solicitante?
+        Prestador, realize seu cadastro.
         Clique aqui
       </button>
       <section className='section-box'>

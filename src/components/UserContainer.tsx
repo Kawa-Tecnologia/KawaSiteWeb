@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-modal'
 import '../assets/styles/PointsModal.css'
+import '../assets/styles/UserContainer.css'
 import FuturisticModal from './FuturistModal'
-import { Star } from '@material-ui/icons' // Importa o ícone de estrela
+import { Star } from '@material-ui/icons' 
 interface UserData {
   name: string
   email: string
@@ -22,7 +23,7 @@ interface UserContainerProps {
 const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [user, setUser] = useState<UserData | null>(null)
-  const [rating, setRating] = useState<number>(0) // Supondo que a avaliação seja sempre 5
+  const [rating, setRating] = useState<number>(0) 
 
   const navigate = useNavigate()
   const userName = localStorage.getItem('userName') || ''

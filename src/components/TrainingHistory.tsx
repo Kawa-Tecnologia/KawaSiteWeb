@@ -299,7 +299,7 @@ const TrainingHistory: React.FC = () => {
                 <button
                   onClick={() => {}}
                   disabled={true}
-                  className='disabled-button' // Adicione a classe CSS aqui
+                  className='disabled-button' 
                 >
                   Confirmado
                 </button>

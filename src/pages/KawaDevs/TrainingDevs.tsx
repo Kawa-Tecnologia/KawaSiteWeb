@@ -39,7 +39,6 @@ const TrainingPage = () => {
   const [user, setUser] = useState<UserData | null>(null)
   const [isUserTraining, setIsUserTraining] = useState<TrainingDevs[]>([])
 
-  // Dentro do useEffect, verifique se o treinamento pertence ao usuário
   useEffect(() => {
     if (user && searchedVideos.length > 0) {
       const userTraining = searchedVideos.filter(
@@ -85,7 +84,6 @@ const TrainingPage = () => {
         }
       )
 
-      // Atualize os treinamentos após a alteração
       if (response.status === 200) {
         handleSearch()
       }
