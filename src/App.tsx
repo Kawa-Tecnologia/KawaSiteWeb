@@ -94,10 +94,19 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
               />
             </div>
             <h2>Detalhes do Desenvolvedor</h2>
-            <p>Nome: {fullname}</p>
-            <p>Cargo: {ProfessionalInfo.job_title}</p>
-            <p>Nivel: {ProfessionalInfo.Tag.tag}</p>
-            <p>Experiência: {ProfessionalInfo.experience_years} anos</p>
+            <p>
+              <strong>Nome:</strong> {fullname}
+            </p>
+            <p>
+              <strong>Cargo:</strong> {ProfessionalInfo.job_title}
+            </p>
+            <p>
+              <strong>Nivel:</strong> {ProfessionalInfo.Tag.tag}
+            </p>
+            <p>
+              <strong>Experiência:</strong> {ProfessionalInfo.experience_years}{' '}
+              anos
+            </p>
             {ProfessionalInfo.cv_link ? (
               <p>
                 <a
@@ -105,19 +114,25 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Link do Curriculo
+                  <strong>Link do Curriculo</strong>
                 </a>
               </p>
             ) : (
               ''
             )}
-            <p>Habilidades: {ProfessionalInfo.skills.join(', ')}</p>
-            <p>Ferramentas: {ProfessionalInfo.tools.join(', ')}</p>
-            <p>Apresentação: {ProfessionalInfo.presentation}</p>
+            <p>
+              <strong>Habilidades:</strong> {ProfessionalInfo.skills.join(', ')}
+            </p>
+            <p>
+              <strong>Ferramentas:</strong> {ProfessionalInfo.tools.join(', ')}
+            </p>
+            <p>
+              <strong>Apresentação:</strong> {ProfessionalInfo.presentation}
+            </p>
             {ProfessionalInfo.url ? (
               <p>
                 <a href={ProfessionalInfo.url} target='_blank' rel='noreferrer'>
-                  Site
+                  <strong>Site</strong>
                 </a>
               </p>
             ) : (
@@ -130,7 +145,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Perfil GitHub
+                  <strong>Perfil GitHub</strong>
                 </a>
               </p>
             ) : (
@@ -143,14 +158,14 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Perfil Linkedin
+                  <strong>Perfil Linkedin</strong>
                 </a>
               </p>
             ) : (
               ''
             )}
             <p>
-              Projetos e Avaliações (Kawa Tecnologia):{' '}
+              <strong>Projetos e Avaliações (Kawa Tecnologia):</strong>
               {ProfessionalInfo.presentation}
             </p>
           </div>
@@ -194,7 +209,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-   <HeaderPrincipal/>
+      <HeaderPrincipal />
       <div className='container-geral'>
         <div className='container-home'>
           <div className='left'>

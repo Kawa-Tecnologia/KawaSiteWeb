@@ -19,7 +19,9 @@ interface Professional {
   url: string
   imageSrc: string
 }
-
+interface NivelTexts {
+  [key: number]: string;
+}
 const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
@@ -34,6 +36,16 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
   const handleCardClick = () => {
     openModal()
   }
+
+  const nivelTexts: NivelTexts = {
+    1: 'Principiante',
+    2: 'Junior',
+    3: 'Pleno',
+    4: 'Senior',
+    5: 'Especialista'
+  };
+
+  
   return (
     <div className='dev-card'>
       <img
@@ -79,7 +91,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
             <h2>Detalhes do Desenvolvedor</h2>
             <p>Nome: {fullname}</p>
             <p>Cargo: {ProfessionalInfo.job_title}</p>
-            <p>Nivel: {ProfessionalInfo.tag_id}</p>
+            <p>Nivel: {nivelTexts[ProfessionalInfo.tag_id] || 'Nível não especificado'}</p>
             {ProfessionalInfo.cv_link ? (
               <p>
                 <a
@@ -143,7 +155,7 @@ interface UserData {
   keywords: string
   tag_id: number
   programmingLanguage: string
-  level: number
+  level: string
 }
 const SearchDevelopers: React.FC = () => {
   const [userData, setUserData] = useState<UserData>({
@@ -152,7 +164,7 @@ const SearchDevelopers: React.FC = () => {
     keywords: '',
     tag_id: 1,
     programmingLanguage: '',
-    level: 3
+    level: '3'
   })
   const [developers, setDevelopers] = useState<Dev[]>([])
 
