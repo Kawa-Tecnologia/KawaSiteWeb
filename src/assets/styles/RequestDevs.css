@@ -61,7 +61,10 @@
   .container-wrapper {
     flex-direction: column;
   }
-
+  .left-container-client {
+   display: none;
+  }
+  
   .left-container-request-dev,
   .center-container-request-dev,
   .right-container-request-dev {

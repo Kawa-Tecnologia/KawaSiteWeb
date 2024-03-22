@@ -7,12 +7,13 @@ import SpeechRecognition, {
   useSpeechRecognition
 } from 'react-speech-recognition'
 import MicIcon from '@mui/icons-material/Mic'
+import { useMediaQuery } from 'react-responsive'
 
 const RequestDevs = () => {
   const { transcript } = useSpeechRecognition()
   const [showTooltipModal, setShowTooltipModal] = useState(false)
   const [tooltipMessage, setTooltipMessage] = useState('')
-
+  const [formStep, setFormStep] = useState(1)
   const [formData, setFormData] = useState(() => {
     const cachedFormData = localStorage.getItem('formDataRequest')
     return cachedFormData
@@ -259,190 +260,423 @@ const RequestDevs = () => {
 
     setShowTooltipModal(true)
   }
+  const goToNextStep = () => {
+    setFormStep(prevStep => prevStep + 1)
+  }
+
+  const goToPreviousStep = () => {
+    setFormStep(prevStep => prevStep - 1)
+  }
+  const isMobile = useMediaQuery({ maxWidth: 768 })
+
   return (
     <div className='container-request'>
       <section id='services'>
         <h3>Faça sua solicitação e aguarde contato.</h3>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='name'>Nome:</label>
-            <input
-              type='text'
-              id='name'
-              name='name'
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='phone'>Telefone Celular:</label>
-            <InputMask
-              mask='(99)99999-9999'
-              maskChar='-'
-              type='tel'
-              id='phone'
-              name='phone'
-              placeholder='XX-XXXXX-XXXX'
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='type'>
-              Tipo de Serviço:
-              <Tooltip title='Selecione o tipo de serviço que vai solicitar.'>
-                <span
-                  onClick={handleTooltipClick(
-                    'Selecione o tipo de serviço que vai solicitar.'
-                  )}
-                  style={{ cursor: 'pointer' }}
-                >
-                  (?)
-                </span>
-              </Tooltip>{' '}
-            </label>
-            <select
-              id='type'
-              name='type'
-              value={formData.type}
-              onChange={handleChange}
-              required
-            >
-              <option value='training'>Treinamento</option>
-              <option value='implementation'>Implementação</option>
-              <option value='course'>Curso</option>
-              <option value='technical_support'>Suporte Técnico</option>
-              <option value='operational_support'>Suporte Operacional</option>
-              <option value='maintenance'>Manutenção</option>
-              <option value='other'>Outro</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor='description'>
-              Descrição da Solicitação:
-              <button
-                type='button'
-                onClick={handleButtonClickSpeech}
-                style={{
-                  width: 20,
-                  height: 20,
-                  borderRadius: '30%',
-                  padding: 0,
-                  backgroundColor: '#00adb5',
-                  border: 'none'
-                }}
-              >
-                <MicIcon style={{ fontSize: 20 }} />{' '}
-              </button>
-            </label>
-            <textarea
-              id='description'
-              name='description'
-              value={formData.description}
-              onChange={handleChange}
-              required
-              rows={5}
-            />
-          </div>{' '}
-          <div>
-            <label htmlFor='value'>
-              Valor Disponivel:
-              <Tooltip title='Valor aproximado que está disposto a pagar pelo serviço'>
-                <span
-                  onClick={handleTooltipClick(
-                    'Valor aproximado que está disposto a pagar pelo serviço'
-                  )}
-                  style={{ cursor: 'pointer' }}
-                >
-                  (?)
-                </span>
-              </Tooltip>{' '}
-            </label>
-            <select
-              id='value'
-              name='value'
-              value={formData.value}
-              onChange={handleChange}
-              required
-            >
-              <option value='0'>Selecione um valor</option>
-              <option value='50'>Até R$ 50,00</option>
-              <option value='100'>Até R$ 100,00</option>
-              <option value='150'>Até R$ 150,00</option>
-              <option value='200'>Até R$ 200,00</option>
-              <option value='0.0'>Não Definido</option>
-            </select>
-            <input
-              type='number'
-              id='value-customized'
-              name='value'
-              value={formData.value}
-              onChange={handleChange}
-              placeholder='ou informe um valor personalizado'
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='term'>Prazo em dias:</label>
-            <input
-              type='number'
-              id='term'
-              name='term'
-              value={formData.term}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='local'>Local:</label>
-            <select
-              id='local'
-              name='local'
-              value={formData.local}
-              onChange={handleChange}
-              required
-            >
-              <option value='online'>Remoto/Online</option>
-              <option value='in person'>Presencial</option>
-            </select>
-          </div>
-          {renderCepField()}
-          <div>
-            <label>
+
+        {isMobile && formStep === 1 && (
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: 'center'
+            }}
+          >
+            <div>
+              <label htmlFor='name'>Nome:</label>
               <input
-                type='checkbox'
-                name='agreeTerms'
-                checked={formData.agreeTerms}
+                type='text'
+                id='name'
+                name='name'
+                value={formData.name}
                 onChange={handleChange}
                 required
-              />{' '}
-              Concordo com os termos de uso
-              <div>
-                <a href='#' onClick={handleButtonClick}>
-                  Ver Termos de Uso
-                </a>
-              </div>
-            </label>
-          </div>
-          <button type='submit'>Enviar</button>
-          <div style={{ color: 'black' }}>
-            {' '}
-            * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
-          </div>
-        </form>
+                style={{width: '300px'}}
+
+              />
+            </div>
+            <div>
+              <label htmlFor='email'>Email:</label>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                value={formData.email}
+                onChange={handleChange}
+                required
+                style={{width: '300px'}}
+
+              />
+            </div>
+
+            <div>
+              <label htmlFor='phone'>Telefone Celular:</label>
+              <InputMask
+                mask='(99)99999-9999'
+                maskChar='-'
+                type='tel'
+                id='phone'
+                name='phone'
+                placeholder='XX-XXXXX-XXXX'
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                style={{width: '300px'}}
+
+              />
+            </div>
+            <button type='button' onClick={goToNextStep}>
+              Continuar
+            </button>
+          </form>
+        )}
+        {isMobile && formStep === 2 && (
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: 'center'
+            }}
+          >
+            <div>
+              <label htmlFor='type'>
+                Tipo de Serviço:
+                <Tooltip title='Selecione o tipo de serviço que vai solicitar.'>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Selecione o tipo de serviço que vai solicitar.'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
+                </Tooltip>{' '}
+              </label>
+              <select
+                id='type'
+                name='type'
+                value={formData.type}
+                onChange={handleChange}
+                required
+                style={{ width: '300px' }}
+              >
+                <option value='training'>Treinamento</option>
+                <option value='implementation'>Implementação</option>
+                <option value='course'>Curso</option>
+                <option value='technical_support'>Suporte Técnico</option>
+                <option value='operational_support'>Suporte Operacional</option>
+                <option value='maintenance'>Manutenção</option>
+                <option value='other'>Outro</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor='description'>
+                Descrição da Solicitação:
+                <button
+                  type='button'
+                  onClick={handleButtonClickSpeech}
+                  style={{
+                    width: 20,
+                    height: 20,
+                    borderRadius: '30%',
+                    padding: 0,
+                    backgroundColor: '#00adb5',
+                    border: 'none'
+                  }}
+                >
+                  <MicIcon style={{ fontSize: 20 }} />{' '}
+                </button>
+              </label>
+              <textarea
+                id='description'
+                name='description'
+                value={formData.description}
+                onChange={handleChange}
+                required
+                rows={5}
+                style={{ width: '300px' }}
+              />
+            </div>{' '}
+            <div>
+              <label htmlFor='value'>
+                Valor Disponivel:
+                <Tooltip title='Valor aproximado que está disposto a pagar pelo serviço'>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Valor aproximado que está disposto a pagar pelo serviço'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
+                </Tooltip>{' '}
+              </label>
+              <select
+                id='value'
+                name='value'
+                value={formData.value}
+                onChange={handleChange}
+                required
+                style={{ width: '300px' }}
+              >
+                <option value='0'>Selecione um valor</option>
+                <option value='50'>Até R$ 50,00</option>
+                <option value='100'>Até R$ 100,00</option>
+                <option value='150'>Até R$ 150,00</option>
+                <option value='200'>Até R$ 200,00</option>
+                <option value='0.0'>Não Definido</option>
+              </select>
+              <input
+                type='number'
+                id='value-customized'
+                name='value'
+                value={formData.value}
+                onChange={handleChange}
+                placeholder='ou informe um valor personalizado'
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='term'>Prazo em dias:</label>
+              <input
+                type='number'
+                id='term'
+                name='term'
+                value={formData.term}
+                onChange={handleChange}
+                required
+                style={{width: '300px'}}
+
+              />
+            </div>
+            <div>
+              <label htmlFor='local'>Local:</label>
+              <select
+                id='local'
+                name='local'
+                value={formData.local}
+                onChange={handleChange}
+                required
+                style={{width: '300px'}}
+
+              >
+                <option value='online'>Remoto/Online</option>
+                <option value='in person'>Presencial</option>
+              </select>
+            </div>
+            {renderCepField()}
+            <div>
+              <label>
+                <input
+                  type='checkbox'
+                  name='agreeTerms'
+                  checked={formData.agreeTerms}
+                  onChange={handleChange}
+                  required
+                />{' '}
+                Concordo com os termos de uso
+                <div>
+                  <a href='#' onClick={handleButtonClick}>
+                    Ver Termos de Uso
+                  </a>
+                </div>
+              </label>
+            </div>
+            <button type='button' onClick={goToPreviousStep}>
+              Voltar
+            </button>
+            <button type='submit'>Enviar</button>
+            <div style={{ color: 'black' }}>
+              {' '}
+              * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
+            </div>
+          </form>
+        )}
+        {!isMobile && (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor='name'>Nome:</label>
+              <input
+                type='text'
+                id='name'
+                name='name'
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='email'>Email:</label>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='phone'>Telefone Celular:</label>
+              <InputMask
+                mask='(99)99999-9999'
+                maskChar='-'
+                type='tel'
+                id='phone'
+                name='phone'
+                placeholder='XX-XXXXX-XXXX'
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='type'>
+                Tipo de Serviço:
+                <Tooltip title='Selecione o tipo de serviço que vai solicitar.'>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Selecione o tipo de serviço que vai solicitar.'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
+                </Tooltip>{' '}
+              </label>
+              <select
+                id='type'
+                name='type'
+                value={formData.type}
+                onChange={handleChange}
+                required
+              >
+                <option value='training'>Treinamento</option>
+                <option value='implementation'>Implementação</option>
+                <option value='course'>Curso</option>
+                <option value='technical_support'>Suporte Técnico</option>
+                <option value='operational_support'>Suporte Operacional</option>
+                <option value='maintenance'>Manutenção</option>
+                <option value='other'>Outro</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor='description'>
+                Descrição da Solicitação:
+                <button
+                  type='button'
+                  onClick={handleButtonClickSpeech}
+                  style={{
+                    width: 20,
+                    height: 20,
+                    borderRadius: '30%',
+                    padding: 0,
+                    backgroundColor: '#00adb5',
+                    border: 'none'
+                  }}
+                >
+                  <MicIcon style={{ fontSize: 20 }} />{' '}
+                </button>
+              </label>
+              <textarea
+                id='description'
+                name='description'
+                value={formData.description}
+                onChange={handleChange}
+                required
+                rows={5}
+              />
+            </div>{' '}
+            <div>
+              <label htmlFor='value'>
+                Valor Disponivel:
+                <Tooltip title='Valor aproximado que está disposto a pagar pelo serviço'>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Valor aproximado que está disposto a pagar pelo serviço'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
+                </Tooltip>{' '}
+              </label>
+              <select
+                id='value'
+                name='value'
+                value={formData.value}
+                onChange={handleChange}
+                required
+              >
+                <option value='0'>Selecione um valor</option>
+                <option value='50'>Até R$ 50,00</option>
+                <option value='100'>Até R$ 100,00</option>
+                <option value='150'>Até R$ 150,00</option>
+                <option value='200'>Até R$ 200,00</option>
+                <option value='0.0'>Não Definido</option>
+              </select>
+              <input
+                type='number'
+                id='value-customized'
+                name='value'
+                value={formData.value}
+                onChange={handleChange}
+                placeholder='ou informe um valor personalizado'
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='term'>Prazo em dias:</label>
+              <input
+                type='number'
+                id='term'
+                name='term'
+                value={formData.term}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='local'>Local:</label>
+              <select
+                id='local'
+                name='local'
+                value={formData.local}
+                onChange={handleChange}
+                required
+              >
+                <option value='online'>Remoto/Online</option>
+                <option value='in person'>Presencial</option>
+              </select>
+            </div>
+            {renderCepField()}
+            <div>
+              <label>
+                <input
+                  type='checkbox'
+                  name='agreeTerms'
+                  checked={formData.agreeTerms}
+                  onChange={handleChange}
+                  required
+                />{' '}
+                Concordo com os termos de uso
+                <div>
+                  <a href='#' onClick={handleButtonClick}>
+                    Ver Termos de Uso
+                  </a>
+                </div>
+              </label>
+            </div>
+            <button type='submit'>Enviar</button>
+            <div style={{ color: 'black' }}>
+              {' '}
+              * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
+            </div>
+          </form>
+        )}
 
         <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
           <div className='modal-content'>
