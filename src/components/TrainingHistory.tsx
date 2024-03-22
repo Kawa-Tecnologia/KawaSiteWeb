@@ -71,7 +71,7 @@ const TrainingHistory: React.FC = () => {
       )
       setProjects(response.data.projects)
     } catch (error) {
-      console.error('Erro ao buscar projetos:', error)
+      console.error('Erro ao buscar treinamentos:', error)
     }
   }
   const closeModal = () => {

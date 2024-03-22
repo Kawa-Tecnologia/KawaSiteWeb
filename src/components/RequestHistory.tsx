@@ -47,6 +47,10 @@ interface ProfessionalData {
   imageSrc: string
   [key: string]: string | number | string[]
 }
+
+interface TypeRequests {
+  [key: string]: string
+}
 const RequestHistory: React.FC = () => {
   const [userPoints, setUserPoints] = useState<number>(
     Number(localStorage.getItem('userPoints')) || 0
@@ -97,7 +101,14 @@ const RequestHistory: React.FC = () => {
       )
       setRequestDevs(response.data.requestDevs)
     } catch (error) {
-      console.error('Erro ao buscar projetos:', error)
+      if (axios.isAxiosError(error)) {
+        const errorMessage = error.response?.data?.message || error.message
+        setError(errorMessage)
+      } else {
+        const errorStack = error instanceof Error ? error.stack : String(error)
+        if (errorStack) setError(errorStack)
+      }
+      console.error('Erro ao buscar solicitações:', error)
     }
   }
 
@@ -131,6 +142,15 @@ const RequestHistory: React.FC = () => {
           setParticipationsIds(trainingParticipateIds)
         }
       } catch (error) {
+        if (axios.isAxiosError(error)) {
+          const errorMessage = error.response?.data?.message || error.message
+          setError(errorMessage)
+        } else {
+          const errorStack =
+            error instanceof Error ? error.stack : String(error)
+          if (errorStack) setError(errorStack)
+        }
+
         console.error('Erro ao buscar ordens:', error)
       }
     }
@@ -234,7 +254,7 @@ const RequestHistory: React.FC = () => {
           <strong>Período:</strong> {requestDevs.term} dias
         </div>
         <div>
-          <strong>Tipo:</strong> {requestDevs.type}
+          <strong>Tipo:</strong> {typeRequest[requestDevs.type]}
         </div>
         <div>
           <strong>Local:</strong> {requestDevs.local}
@@ -265,7 +285,15 @@ const RequestHistory: React.FC = () => {
   )
 
   const paginate = (pageNumber: number): void => setCurrentPage(pageNumber)
-
+  const typeRequest: TypeRequests = {
+    training: 'Treinamento',
+    implementation: 'Implementação',
+    course: 'Curso',
+    technical_support: 'Suporte Tecnico',
+    operational_support: 'Suporte Operacional',
+    maintenance: 'Manutenção',
+    other: 'Outro'
+  }
   return (
     <div className='training-history'>
       <h2>Solicitações de Serviço Disponíveis</h2>
@@ -293,7 +321,7 @@ const RequestHistory: React.FC = () => {
                   🥇
                 </div>
               )}
-              {user?.ProfessionalInfo.skills.some(skill =>
+              {user?.ProfessionalInfo?.skills.some(skill =>
                 training.description.toLowerCase().includes(skill.toLowerCase())
               ) && (
                 <div
@@ -341,7 +369,8 @@ const RequestHistory: React.FC = () => {
                 <strong>Local:</strong> {training.local}
               </div>
               <div>
-                <strong>Tipo:</strong> {training.type}
+                <strong>Tipo:</strong>{' '}
+                {typeRequest[training.type] || 'Tipo  não especificado'}
               </div>
               {training.value > 100 && (
                 <div>
@@ -360,11 +389,10 @@ const RequestHistory: React.FC = () => {
               </button>
             </div>
             <div className='button-container'>
-              {userPoints < training.points_required && !participationsIds.includes(training.id) ? (
+              {userPoints < training.points_required &&
+              !participationsIds.includes(training.id) ? (
                 <>
-                  <button onClick={handleAcquirePoints}>
-                    Adquirir Pontos
-                  </button>
+                  <button onClick={handleAcquirePoints}>Adquirir Pontos</button>
                   <FuturisticModal
                     modalIsOpen={modalIsOpen}
                     closeModal={closeModal}

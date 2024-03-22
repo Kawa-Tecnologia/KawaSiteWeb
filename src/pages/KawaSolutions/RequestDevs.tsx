@@ -324,7 +324,6 @@ const RequestDevs = () => {
               <option value='training'>Treinamento</option>
               <option value='implementation'>Implementação</option>
               <option value='course'>Curso</option>
-              <option value='classroom'>Sala de aula</option>
               <option value='technical_support'>Suporte Técnico</option>
               <option value='operational_support'>Suporte Operacional</option>
               <option value='maintenance'>Manutenção</option>

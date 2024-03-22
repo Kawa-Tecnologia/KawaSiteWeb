@@ -99,7 +99,7 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         }
       }
     } catch (error) {
-      console.error('Erro ao buscar projetos:', error)
+      console.error('Erro ao buscar planos:', error)
     }
   }
 
