@@ -260,7 +260,7 @@ const UserProfile: React.FC = () => {
         }
       }
     }
-
+    delete modifiedUserData.recommendation
     const body = {
       userData: modifiedUserData,
       ProfessionalInfo: modifiedProfessionalData,
@@ -280,6 +280,7 @@ const UserProfile: React.FC = () => {
     } catch (error) {
       setError('Não foi possivel atualizar seu perfil')
     }
+    localStorage.setItem('user', JSON.stringify(userData));
 
     setOriginalUserData(userData)
     setOriginalProfessionalData(userData.ProfessionalInfo)
@@ -339,8 +340,8 @@ const UserProfile: React.FC = () => {
           }
         )
 
-        if (data.subscriptions?.length) {
-          setSubscription(data.subscriptions[0])
+        if (data.subscription) {
+          setSubscription(data.subscription)
         }
       } catch (error) {
         setError('Erro ao buscar o status da assinatura')
