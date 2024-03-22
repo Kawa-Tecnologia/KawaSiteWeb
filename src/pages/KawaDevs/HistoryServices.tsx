@@ -3,6 +3,7 @@ import axios from 'axios'
 import ServiceItem from '../../components/ServiceItem'
 import '../../assets/styles/History.css'
 import { BackendStatus } from '../../utils/statusType'
+import Pagination from '../../components/PaginationProps'
 
 interface Services {
   id: number
@@ -80,7 +81,9 @@ const ServicesHistoryPage = () => {
   if (loading) {
     return <div>Loading...</div>
   }
-
+  const totalPages: number = Math.ceil(
+    (servicesPerformed?.length || 0) / servicesPerPage
+  )
   return (
     <div className='dashboard'>
       <div className='transaction-history'>
@@ -114,24 +117,11 @@ const ServicesHistoryPage = () => {
             )}
           </tbody>
         </table>
-        <div className='pagination'>
-          <button
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Anterior
-          </button>
-          <span>
-            Página {currentPage} de{' '}
-            {Math.ceil(servicesPerformed.length / servicesPerPage)}
-          </span>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={indexOfLastService >= servicesPerformed.length}
-          >
-            Próxima
-          </button>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          paginate={paginate}
+        />
       </div>
     </div>
   )
