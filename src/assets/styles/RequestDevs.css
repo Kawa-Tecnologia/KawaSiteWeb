@@ -81,7 +81,7 @@
   }
 
   .right-container-request-dev {
-    order: 3;
+    display: none;
   }
 }
 

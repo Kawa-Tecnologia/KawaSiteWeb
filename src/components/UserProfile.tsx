@@ -121,7 +121,10 @@ const UserProfile: React.FC = () => {
   }
 
   const handleProfessionalDataChange = (
-    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+    e:
+      | ChangeEvent<HTMLInputElement>
+      | ChangeEvent<HTMLSelectElement>
+      | ChangeEvent<HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target
     if (name === 'skills' || name === 'tools') {
@@ -280,7 +283,7 @@ const UserProfile: React.FC = () => {
     } catch (error) {
       setError('Não foi possivel atualizar seu perfil')
     }
-    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('user', JSON.stringify(userData))
 
     setOriginalUserData(userData)
     setOriginalProfessionalData(userData.ProfessionalInfo)
@@ -606,13 +609,13 @@ const UserProfile: React.FC = () => {
                     (?)
                   </span>
                 </Tooltip>{' '}
-                <input
-                  type='text'
+                <textarea
                   name='skills'
                   value={userData.ProfessionalInfo?.skills}
                   onChange={handleProfessionalDataChange}
                   disabled={!isEditMode}
                   maxLength={255}
+                  rows={5}
                 />
               </label>
               <label>
@@ -627,13 +630,13 @@ const UserProfile: React.FC = () => {
                     (?)
                   </span>
                 </Tooltip>{' '}
-                <input
-                  type='text'
+                <textarea
                   name='tools'
                   value={userData.ProfessionalInfo?.tools}
                   onChange={handleProfessionalDataChange}
                   disabled={!isEditMode}
                   maxLength={255}
+                  rows={5}
                 />
               </label>
               <label>

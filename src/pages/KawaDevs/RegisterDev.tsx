@@ -6,6 +6,7 @@ import { Tooltip } from 'react-bootstrap'
 import InputMask from 'react-input-mask'
 import ErrorNotification from '../../components/Error'
 import { BackendStatus } from '../../utils/statusType'
+import { useMediaQuery } from 'react-responsive'
 
 interface Plan {
   id: number
@@ -26,7 +27,7 @@ interface Plan {
 
 const RegisterDev: React.FC = () => {
   const [error, setError] = useState<string>('')
-
+  const [formStep, setFormStep] = useState(1)
   const [formData, setFormData] = useState({
     fullname: '',
     email: '',
@@ -156,7 +157,9 @@ const RegisterDev: React.FC = () => {
     fetchData()
   }, [])
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target
 
@@ -346,272 +349,587 @@ const RegisterDev: React.FC = () => {
       }
     }
   }, [])
+  const isMobile = useMediaQuery({ maxWidth: 768 })
+  const goToNextStep = () => {
+    setFormStep(prevStep => prevStep + 1)
+  }
 
+  const goToPreviousStep = () => {
+    setFormStep(prevStep => prevStep - 1)
+  }
   return (
     <div className='register'>
       <div className='cadastro-container'>
-        <form onSubmit={handleSubmit}>
-          <h1>Cadastre-se</h1>
-          <div>
-            <label htmlFor='fullname'>Nome Completo:</label>
-            <input
-              type='text'
-              id='fullname'
-              name='fullname'
-              value={formData.fullname}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+        <h1>Cadastre-se</h1>
 
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor='phone'>Telefone Celular (WhatsApp):</label>
-            <InputMask
-              mask='(99)99999-9999'
-              maskChar=''
-              type='tel'
-              id='phone'
-              name='phone'
-              placeholder='XX-XXXXX-XXXX'
-              value={formData.phone}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor='document_number'>CPF/CNPJ:</label>
-            <input
-              type='text'
-              id='document_number'
-              name='document_number'
-              value={formData.document_number}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          <div>
-            <label>Endereço</label>
-            <label htmlFor='cep'>CEP:</label>
-            <input
-              type='text'
-              id='cep'
-              name='cep'
-              value={formData.cep}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='job_title'>Cargo:</label>
-            <input
-              type='text'
-              id='job_title'
-              name='job_title'
-              value={formData.ProfessionalInfo?.job_title}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='presentation'>Apresentação:</label>
-            <input
-              type='text'
-              id='presentation'
-              name='presentation'
-              value={formData.ProfessionalInfo?.presentation}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='tag_id'> Nível Técnico:</label>
-
-            <select
-              name='tag_id'
-              value={formData.ProfessionalInfo?.tag_id}
-              onChange={handleSelectChange}
-            >
-              <option value='1'>Principiante</option>
-              <option value='2'>Junior</option>
-              <option value='3'>Pleno</option>
-              <option value='4'>Senior</option>
-              <option value='5'>Especialista</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor='profile_linkedin'>Perfil do Linkedin:</label>
-            <input
-              type='text'
-              id='profile_linkedin'
-              name='profile_linkedin'
-              value={formData.ProfessionalInfo?.profile_linkedin}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='profile_github'>Perfil do Github:</label>
-            <input
-              type='text'
-              id='profile_github'
-              name='profile_github'
-              value={formData.ProfessionalInfo?.profile_github || ''}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='cv_link'>Link do Curriculo:</label>
-            <input
-              type='text'
-              id='cv_link'
-              name='cv_link'
-              value={formData.ProfessionalInfo?.cv_link}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='skills'>
-              Habilidades:{' '}
-              <Tooltip title='Informe as habilidades separadas por (,).'>
-                <span
-                  onClick={handleTooltipClick(
-                    'Informe as ferramentas separadas por (,).'
-                  )}
-                  style={{ cursor: 'pointer' }}
-                >
-                  (?)
-                </span>
-              </Tooltip>{' '}
-            </label>
-            <input
-              type='text'
-              id='skills'
-              name='skills'
-              value={formData.ProfessionalInfo.skills}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='tools'>
-              Ferramentas:
-              <Tooltip title='Informe as ferramentas separadas por (,).'>
-                <span
-                  onClick={handleTooltipClick(
-                    'Informe as ferramentas separadas por (,).'
-                  )}
-                  style={{ cursor: 'pointer' }}
-                >
-                  (?)
-                </span>
-              </Tooltip>{' '}
-            </label>
-            <input
-              type='text'
-              id='tools'
-              name='tools'
-              value={formData.ProfessionalInfo.tools}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='url'>Site:</label>
-            <input
-              type='text'
-              id='url'
-              name='url'
-              value={formData.ProfessionalInfo.url}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='experience_years'>Anos de Experiência:</label>
-            <input
-              type='number'
-              id='experience_years'
-              name='experience_years'
-              value={formData.ProfessionalInfo.experience_years}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='password'>Senha:</label>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              id='password'
-              name='password'
-              value={formData.password}
-              onChange={handleInputChange}
-              required
-            />
-            <button type='button' onClick={togglePasswordVisibility}>
-              {showPassword ? 'Ocultar' : 'Mostrar'}
-            </button>
-          </div>
-          <div>
-            <label htmlFor='type'>Tipo de Cadastro:</label>
-            <select
-              id='type'
-              name='type'
-              value={formData.type}
-              onChange={handleInputChange}
-              required
-            >
-              <option value=''>Selecione o Tipo de Cadastro</option>
-              <option value='openToWork'>Open To Work</option>
-            </select>
-          </div>
-          <div>
-            <label>
+        {isMobile && formStep === 1 && (
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: 'center'
+            }}
+          >
+            <div>
+              <label htmlFor='fullname'>Nome Completo:</label>
               <input
-                type='checkbox'
-                name='agreeTerms'
-                checked={formData.agreeTerms}
+                type='text'
+                id='fullname'
+                name='fullname'
+                value={formData.fullname}
                 onChange={handleInputChange}
                 required
-              />{' '}
-              Concordo com os termos de uso
-              <div>
-                <a href='#' onClick={handleButtonClick}>
-                  Ver Termos de Uso
-                </a>
-              </div>
-            </label>
-          </div>
-          <div>
-            <button
-              type='button'
-              className='modal-button'
-              onClick={() => handleButtonClickDetails()}
-            >
-              Mais Detalhes
+                style={{ width: '300px' }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor='email'>Email:</label>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor='phone'>Telefone Celular (WhatsApp):</label>
+              <InputMask
+                mask='(99)99999-9999'
+                maskChar=''
+                type='tel'
+                id='phone'
+                name='phone'
+                placeholder='XX-XXXXX-XXXX'
+                value={formData.phone}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor='document_number'>CPF/CNPJ:</label>
+              <input
+                type='text'
+                id='document_number'
+                name='document_number'
+                value={formData.document_number}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+
+            <div>
+              <label>Endereço</label>
+              <label htmlFor='cep'>CEP:</label>
+              <input
+                type='text'
+                id='cep'
+                name='cep'
+                value={formData.cep}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <button type='button' onClick={goToNextStep}>
+              Continuar
             </button>
-          </div>
-          <div>
-            <button type='submit'>
-              Adquirir Plano Mensal por apenas R$19,99/mes
+          </form>
+        )}
+        {isMobile && formStep === 2 && (
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: 'center'
+            }}
+          >
+            <div>
+              <label htmlFor='job_title'>Cargo:</label>
+              <input
+                type='text'
+                id='job_title'
+                name='job_title'
+                value={formData.ProfessionalInfo?.job_title}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='presentation'>Apresentação:</label>
+              <input
+                type='text'
+                id='presentation'
+                name='presentation'
+                value={formData.ProfessionalInfo?.presentation}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='tag_id'> Nível Técnico:</label>
+
+              <select
+                name='tag_id'
+                value={formData.ProfessionalInfo?.tag_id}
+                onChange={handleSelectChange}
+                style={{ width: '300px' }}
+              >
+                <option value='1'>Principiante</option>
+                <option value='2'>Junior</option>
+                <option value='3'>Pleno</option>
+                <option value='4'>Senior</option>
+                <option value='5'>Especialista</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor='profile_linkedin'>Perfil do Linkedin:</label>
+              <input
+                type='text'
+                id='profile_linkedin'
+                name='profile_linkedin'
+                value={formData.ProfessionalInfo?.profile_linkedin}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='profile_github'>Perfil do Github:</label>
+              <input
+                type='text'
+                id='profile_github'
+                name='profile_github'
+                value={formData.ProfessionalInfo?.profile_github || ''}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='cv_link'>Link do Curriculo:</label>
+              <input
+                type='text'
+                id='cv_link'
+                name='cv_link'
+                value={formData.ProfessionalInfo?.cv_link}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='skills'>
+                Habilidades:{' '}
+                <Tooltip title='Informe as habilidades separadas por (,).'>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Informe as ferramentas separadas por (,).'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
+                </Tooltip>{' '}
+              </label>
+              <textarea
+                id='skills'
+                name='skills'
+                value={formData.ProfessionalInfo.skills}
+                onChange={handleInputChange}
+                required
+                rows={5}
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='tools'>
+                Ferramentas:
+                <Tooltip title='Informe as ferramentas separadas por (,).'>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Informe as ferramentas separadas por (,).'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
+                </Tooltip>{' '}
+              </label>
+              <textarea
+                id='tools'
+                name='tools'
+                value={formData.ProfessionalInfo.tools}
+                onChange={handleInputChange}
+                required
+                rows={5}
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='url'>Site:</label>
+              <input
+                type='text'
+                id='url'
+                name='url'
+                value={formData.ProfessionalInfo.url}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='experience_years'>Anos de Experiência:</label>
+              <input
+                type='number'
+                id='experience_years'
+                name='experience_years'
+                value={formData.ProfessionalInfo.experience_years}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+            </div>
+            <div>
+              <label htmlFor='password'>Senha:</label>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id='password'
+                name='password'
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              />
+              <button type='button' onClick={togglePasswordVisibility}>
+                {showPassword ? 'Ocultar' : 'Mostrar'}
+              </button>
+            </div>
+            <div>
+              <label htmlFor='type'>Tipo de Cadastro:</label>
+              <select
+                id='type'
+                name='type'
+                value={formData.type}
+                onChange={handleInputChange}
+                required
+                style={{ width: '300px' }}
+              >
+                <option value=''>Selecione o Tipo de Cadastro</option>
+                <option value='openToWork'>Open To Work</option>
+              </select>
+            </div>
+            <div>
+              <label>
+                <input
+                  type='checkbox'
+                  name='agreeTerms'
+                  checked={formData.agreeTerms}
+                  onChange={handleInputChange}
+                  required
+                  style={{ width: '300px' }}
+                />{' '}
+                Concordo com os termos de uso
+                <div>
+                  <a href='#' onClick={handleButtonClick}>
+                    Ver Termos de Uso
+                  </a>
+                </div>
+              </label>
+            </div>
+            <div>
+              <button
+                type='button'
+                className='modal-button'
+                onClick={() => handleButtonClickDetails()}
+              >
+                Mais Detalhes
+              </button>
+            </div>
+            <button type='button' onClick={goToPreviousStep}>
+              Voltar
             </button>
-          </div>
-        </form>
+            <div>
+              <button type='submit'>
+                Adquirir Plano Mensal por apenas R$19,99/mes
+              </button>
+            </div>
+          </form>
+        )}
+        {!isMobile && (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor='fullname'>Nome Completo:</label>
+              <input
+                type='text'
+                id='fullname'
+                name='fullname'
+                value={formData.fullname}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor='email'>Email:</label>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor='phone'>Telefone Celular (WhatsApp):</label>
+              <InputMask
+                mask='(99)99999-9999'
+                maskChar=''
+                type='tel'
+                id='phone'
+                name='phone'
+                placeholder='XX-XXXXX-XXXX'
+                value={formData.phone}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor='document_number'>CPF/CNPJ:</label>
+              <input
+                type='text'
+                id='document_number'
+                name='document_number'
+                value={formData.document_number}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div>
+              <label>Endereço</label>
+              <label htmlFor='cep'>CEP:</label>
+              <input
+                type='text'
+                id='cep'
+                name='cep'
+                value={formData.cep}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='job_title'>Cargo:</label>
+              <input
+                type='text'
+                id='job_title'
+                name='job_title'
+                value={formData.ProfessionalInfo?.job_title}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='presentation'>Apresentação:</label>
+              <input
+                type='text'
+                id='presentation'
+                name='presentation'
+                value={formData.ProfessionalInfo?.presentation}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='tag_id'> Nível Técnico:</label>
+
+              <select
+                name='tag_id'
+                value={formData.ProfessionalInfo?.tag_id}
+                onChange={handleSelectChange}
+              >
+                <option value='1'>Principiante</option>
+                <option value='2'>Junior</option>
+                <option value='3'>Pleno</option>
+                <option value='4'>Senior</option>
+                <option value='5'>Especialista</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor='profile_linkedin'>Perfil do Linkedin:</label>
+              <input
+                type='text'
+                id='profile_linkedin'
+                name='profile_linkedin'
+                value={formData.ProfessionalInfo?.profile_linkedin}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='profile_github'>Perfil do Github:</label>
+              <input
+                type='text'
+                id='profile_github'
+                name='profile_github'
+                value={formData.ProfessionalInfo?.profile_github || ''}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='cv_link'>Link do Curriculo:</label>
+              <input
+                type='text'
+                id='cv_link'
+                name='cv_link'
+                value={formData.ProfessionalInfo?.cv_link}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='skills'>
+                Habilidades:{' '}
+                <Tooltip title='Informe as habilidades separadas por (,).'>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Informe as ferramentas separadas por (,).'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
+                </Tooltip>{' '}
+              </label>
+              <input
+                type='text'
+                id='skills'
+                name='skills'
+                value={formData.ProfessionalInfo.skills}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='tools'>
+                Ferramentas:
+                <Tooltip title='Informe as ferramentas separadas por (,).'>
+                  <span
+                    onClick={handleTooltipClick(
+                      'Informe as ferramentas separadas por (,).'
+                    )}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    (?)
+                  </span>
+                </Tooltip>{' '}
+              </label>
+              <input
+                type='text'
+                id='tools'
+                name='tools'
+                value={formData.ProfessionalInfo.tools}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='url'>Site:</label>
+              <input
+                type='text'
+                id='url'
+                name='url'
+                value={formData.ProfessionalInfo.url}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='experience_years'>Anos de Experiência:</label>
+              <input
+                type='number'
+                id='experience_years'
+                name='experience_years'
+                value={formData.ProfessionalInfo.experience_years}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='password'>Senha:</label>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id='password'
+                name='password'
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+              />
+              <button type='button' onClick={togglePasswordVisibility}>
+                {showPassword ? 'Ocultar' : 'Mostrar'}
+              </button>
+            </div>
+            <div>
+              <label htmlFor='type'>Tipo de Cadastro:</label>
+              <select
+                id='type'
+                name='type'
+                value={formData.type}
+                onChange={handleInputChange}
+                required
+              >
+                <option value=''>Selecione o Tipo de Cadastro</option>
+                <option value='openToWork'>Open To Work</option>
+              </select>
+            </div>
+            <div>
+              <label>
+                <input
+                  type='checkbox'
+                  name='agreeTerms'
+                  checked={formData.agreeTerms}
+                  onChange={handleInputChange}
+                  required
+                />{' '}
+                Concordo com os termos de uso
+                <div>
+                  <a href='#' onClick={handleButtonClick}>
+                    Ver Termos de Uso
+                  </a>
+                </div>
+              </label>
+            </div>
+            <div>
+              <button
+                type='button'
+                className='modal-button'
+                onClick={() => handleButtonClickDetails()}
+              >
+                Mais Detalhes
+              </button>
+            </div>
+            <div>
+              <button type='submit'>
+                Adquirir Plano Mensal por apenas R$19,99/mes
+              </button>
+            </div>
+          </form>
+        )}
         <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
           <div className='modal-content'>
             <span className='close' onClick={closeModal}>
