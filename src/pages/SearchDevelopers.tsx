@@ -20,7 +20,7 @@ interface Professional {
   imageSrc: string
 }
 interface NivelTexts {
-  [key: number]: string;
+  [key: number]: string
 }
 const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -43,9 +43,8 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
     3: 'Pleno',
     4: 'Senior',
     5: 'Especialista'
-  };
+  }
 
-  
   return (
     <div className='dev-card'>
       <img
@@ -89,9 +88,16 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
               &times;
             </span>
             <h2>Detalhes do Desenvolvedor</h2>
-            <p>Nome: {fullname}</p>
-            <p>Cargo: {ProfessionalInfo.job_title}</p>
-            <p>Nivel: {nivelTexts[ProfessionalInfo.tag_id] || 'Nível não especificado'}</p>
+            <p>
+              <strong>Nome:</strong> {fullname}
+            </p>
+            <p>
+              <strong>Cargo:</strong> {ProfessionalInfo.job_title}
+            </p>
+            <p>
+              <strong>Nivel:</strong>{' '}
+              {nivelTexts[ProfessionalInfo.tag_id] || 'Nível não especificado'}
+            </p>
             {ProfessionalInfo.cv_link ? (
               <p>
                 <a
@@ -99,19 +105,25 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Link do Curriculo
+                  <strong>Link do Curriculo</strong>
                 </a>
               </p>
             ) : (
               ''
             )}{' '}
-            <p>Habilidades: {ProfessionalInfo.skills.join(', ')}</p>
-            <p>Ferramentas: {ProfessionalInfo.tools.join(', ')}</p>
-            <p>Apresentação: {ProfessionalInfo.presentation}</p>
+            <p>
+              <strong>Habilidades:</strong> {ProfessionalInfo.skills.join(', ')}
+            </p>
+            <p>
+              <strong>Ferramentas:</strong> {ProfessionalInfo.tools.join(', ')}
+            </p>
+            <p>
+              <strong>Apresentação:</strong> {ProfessionalInfo.presentation}
+            </p>
             {ProfessionalInfo.url ? (
               <p>
                 <a href={ProfessionalInfo.url} target='_blank' rel='noreferrer'>
-                  Site
+                  <strong>Site</strong>
                 </a>
               </p>
             ) : (
@@ -124,7 +136,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Perfil GitHub
+                  <strong>Perfil GitHub</strong>
                 </a>
               </p>
             ) : (
@@ -137,7 +149,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Perfil Linkedin
+                  <strong>Perfil Linkedin</strong>
                 </a>
               </p>
             ) : (
@@ -207,7 +219,7 @@ const SearchDevelopers: React.FC = () => {
   }
   return (
     <div>
-      <HeaderPrincipal/>
+      <HeaderPrincipal />
       <div className='login'>
         <div className='container-search'>
           <h2>Desenvolvedores &gt;&gt;Open to Work&lt;&lt;</h2>
