@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../assets/styles/Services.css'
 import axios from 'axios'
 import { BackendStatus, mapBackendToFrontendStatus } from '../utils/statusType'
+import Pagination from './PaginationProps'
 
 interface Service {
   id: number
@@ -96,7 +97,12 @@ const Services: React.FC = () => {
     try {
       await axios.put(
         `${process.env.REACT_APP_API_URL}/api/request-devs-records/${serviceId}`,
-        { status: newStatus, value: receivedValueNumber, date: new Date(), accomplished:true },
+        {
+          status: newStatus,
+          value: receivedValueNumber,
+          date: new Date(),
+          accomplished: true
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -144,14 +150,19 @@ const Services: React.FC = () => {
                 <p>Comentario:{service.request_comment}</p>
                 <button
                   onClick={() =>
-                    handleServiceStatusChange(service.id, BackendStatus.CANCELED)
+                    handleServiceStatusChange(
+                      service.id,
+                      BackendStatus.CANCELED
+                    )
                   }
                   disabled={
-                    service.status === BackendStatus.CANCELED || service.status === BackendStatus.PAID
+                    service.status === BackendStatus.CANCELED ||
+                    service.status === BackendStatus.PAID
                   }
                   style={{
                     backgroundColor:
-                      service.status === BackendStatus.CANCELED || service.status === BackendStatus.PAID
+                      service.status === BackendStatus.CANCELED ||
+                      service.status === BackendStatus.PAID
                         ? 'gray'
                         : ''
                   }}
@@ -159,13 +170,17 @@ const Services: React.FC = () => {
                   Marcar como Não Realizado
                 </button>
                 <button
-                  onClick={() => handleServiceStatusChange(service.id, BackendStatus.PAID)}
+                  onClick={() =>
+                    handleServiceStatusChange(service.id, BackendStatus.PAID)
+                  }
                   disabled={
-                    service.status === BackendStatus.CANCELED || service.status === BackendStatus.PAID
+                    service.status === BackendStatus.CANCELED ||
+                    service.status === BackendStatus.PAID
                   }
                   style={{
                     backgroundColor:
-                      service.status === BackendStatus.CANCELED || service.status === BackendStatus.PAID
+                      service.status === BackendStatus.CANCELED ||
+                      service.status === BackendStatus.PAID
                         ? 'gray'
                         : ''
                   }}
@@ -179,23 +194,11 @@ const Services: React.FC = () => {
           )}
         </div>
         <br />
-        <div className='pagination'>
-          <button
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Anterior
-          </button>
-          <span>
-            Página {currentPage} de {totalPages}
-          </span>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Próxima
-          </button>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          paginate={paginate}
+        />
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Review.css'
 import axios from 'axios'
+import Pagination from './PaginationProps'
 interface Review {
   name: string
   user_id: string
@@ -112,23 +113,11 @@ const Reviews: React.FC = () => {
           )}
         </div>
         <br/>
-        <div className='pagination'>
-          <button
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Anterior
-          </button>
-          <span>
-            Página {currentPage} de {totalPages}
-          </span>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Próxima
-          </button>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          paginate={paginate}
+        />
       </div>
     </div>
   )
