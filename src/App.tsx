@@ -44,7 +44,9 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
   const handleCardClick = () => {
     openModal()
   }
-
+  const fullNameArray = fullname.split(' ');
+  const firstName = fullNameArray[0];
+  const lastName = fullNameArray.length > 1 ? fullNameArray[fullNameArray.length - 1] : "";
   return (
     <div className='dev-card'>
       <img
@@ -57,7 +59,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
         style={{ width: '60%', height: '40%' }}
         title='Clique aqui para mais detalhes do desenvolvedor!'
       />
-      <h3>{fullname}</h3>
+      <h3>{firstName} {lastName}</h3>
       <p>{ProfessionalInfo.job_title}</p>
       {ProfessionalInfo.profile_linkedin ? (
         <p>

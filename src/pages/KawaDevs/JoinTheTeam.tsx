@@ -96,7 +96,7 @@ const JoinTheTeam: React.FC = () => {
         '<br>'
       )}</p>
     <p><strong>Pontos:</strong> ${plan.points}</p>
-    <p><strong>Preço:</strong> ${plan.amount}</p>
+    <p><strong>Preço:</strong> R$${plan.amount}</p>
     <!-- Adicione mais campos conforme necessário -->`
     }
   }

@@ -9,8 +9,6 @@ import RightContainer from './RightContainer'
 import { useNavigate } from 'react-router-dom'
 
 const AppSolutions = () => {
-  
-
   const navigate = useNavigate()
 
   const handleCadastroClick = () => {
@@ -21,10 +19,12 @@ const AppSolutions = () => {
     <div className='App'>
       <Header />
       <ServicesSection />
-      <button onClick={handleCadastroClick}>
-        Prestador, realize seu cadastro.
-        Clique aqui
-      </button>
+      <p style={{ textAlign: 'center' }}>
+        <button onClick={handleCadastroClick} style={{ alignItems: 'center' }}>
+          Prestador, realize seu cadastro. Clique aqui
+        </button>
+      </p>
+
       <section className='section-box'>
         <div className='container-wrapper'>
           <div className='right-container-request-dev'>
