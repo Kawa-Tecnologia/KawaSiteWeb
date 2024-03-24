@@ -48,21 +48,54 @@ input[type='checkbox']:focus {
 }
 
 button {
-  width: 90%;
-  padding: 15px;
+  width: 100%;
+  padding: 12px 20px;
   border: none;
-  border-radius: 10px;
-  background-color: #00adb5;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #00adb5, #2ec4b6);
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: width 0.3s ease, height 0.3s ease;
+  border-radius: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+button:hover::before {
+  width: 0;
+  height: 0;
 }
 
 button:hover {
-  background-color: #393e46;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+button span {
+  position: relative;
+  z-index: 1;
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
 
 .close {
   position: absolute;

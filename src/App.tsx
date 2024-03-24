@@ -44,9 +44,18 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
   const handleCardClick = () => {
     openModal()
   }
-  const fullNameArray = fullname.split(' ');
-  const firstName = fullNameArray[0];
-  const lastName = fullNameArray.length > 1 ? fullNameArray[fullNameArray.length - 1] : "";
+  const fullNameArray = fullname.split(' ')
+  const firstName = fullNameArray[0]
+  const lastName =
+    fullNameArray.length > 1 ? fullNameArray[fullNameArray.length - 1] : ''
+
+  const ensureHttps = (url: string) => {
+    if (!url.startsWith('https://')) {
+      return 'https://' + url
+    }
+    return url
+  }
+
   return (
     <div className='dev-card'>
       <img
@@ -59,12 +68,14 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
         style={{ width: '60%', height: '40%' }}
         title='Clique aqui para mais detalhes do desenvolvedor!'
       />
-      <h3>{firstName} {lastName}</h3>
+      <h3>
+        {firstName} {lastName}
+      </h3>
       <p>{ProfessionalInfo.job_title}</p>
       {ProfessionalInfo.profile_linkedin ? (
         <p>
           <a
-            href={ProfessionalInfo.profile_linkedin}
+            href={ensureHttps(ProfessionalInfo.profile_linkedin)}
             target='_blank'
             rel='noreferrer'
           >
@@ -73,7 +84,11 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
         </p>
       ) : ProfessionalInfo.cv_link ? (
         <p>
-          <a href={ProfessionalInfo.cv_link} target='_blank' rel='noreferrer'>
+          <a
+            href={ensureHttps(ProfessionalInfo.cv_link)}
+            target='_blank'
+            rel='noreferrer'
+          >
             Link do Curriculo
           </a>
         </p>
@@ -112,7 +127,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
             {ProfessionalInfo.cv_link ? (
               <p>
                 <a
-                  href={ProfessionalInfo.cv_link}
+                  href={ensureHttps(ProfessionalInfo.cv_link)}
                   target='_blank'
                   rel='noreferrer'
                 >
@@ -133,7 +148,11 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
             </p>
             {ProfessionalInfo.url ? (
               <p>
-                <a href={ProfessionalInfo.url} target='_blank' rel='noreferrer'>
+                <a
+                  href={ensureHttps(ProfessionalInfo.url)}
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   <strong>Site</strong>
                 </a>
               </p>
@@ -143,7 +162,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
             {ProfessionalInfo.profile_github ? (
               <p>
                 <a
-                  href={ProfessionalInfo.profile_github}
+                  href={ensureHttps(ProfessionalInfo.profile_github)}
                   target='_blank'
                   rel='noreferrer'
                 >
@@ -156,7 +175,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
             {ProfessionalInfo.profile_linkedin ? (
               <p>
                 <a
-                  href={ProfessionalInfo.profile_linkedin}
+                  href={ensureHttps(ProfessionalInfo.profile_linkedin)}
                   target='_blank'
                   rel='noreferrer'
                 >
