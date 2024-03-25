@@ -9,6 +9,8 @@ import { BackendStatus } from '../../utils/statusType'
 import { useMediaQuery } from 'react-responsive'
 import TermUseDev from '../../contexts/TermUseDev'
 import PlanOpenToWork from '../../contexts/PlanOpenToWork'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 interface Plan {
   id: number
@@ -81,12 +83,9 @@ const RegisterDev: React.FC = () => {
 
   const modalRef = useRef<HTMLDivElement>(null)
 
-
   useEffect(() => {
-   
-    window.scrollTo(0, 0);
-
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -545,18 +544,20 @@ const RegisterDev: React.FC = () => {
             </div>
             <div>
               <label htmlFor='password'>Senha:</label>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                id='password'
-                name='password'
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-                style={{ width: '300px' }}
-              />
-              <button type='button' onClick={togglePasswordVisibility}>
-                {showPassword ? 'Ocultar' : 'Mostrar'}
-              </button>
+              <div className='password-input'>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id='password'
+                  name='password'
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                  style={{ width: '300px' }}
+                />
+                <button type='button' onClick={togglePasswordVisibility}>
+                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                </button>
+              </div>
             </div>
             <div>
               <label htmlFor='type'>Tipo de Cadastro:</label>
@@ -814,17 +815,19 @@ const RegisterDev: React.FC = () => {
             </div>
             <div>
               <label htmlFor='password'>Senha:</label>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                id='password'
-                name='password'
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-              />
-              <button type='button' onClick={togglePasswordVisibility}>
-                {showPassword ? 'Ocultar' : 'Mostrar'}
-              </button>
+              <div className='password-input'>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id='password'
+                  name='password'
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                />
+                <button type='button' onClick={togglePasswordVisibility}>
+                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                </button>
+              </div>
             </div>
             <div>
               <label htmlFor='type'>Tipo de Cadastro:</label>

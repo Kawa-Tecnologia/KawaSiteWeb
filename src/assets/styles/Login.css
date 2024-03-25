@@ -74,11 +74,31 @@
 @media only screen and (max-width: 767px) {
   .login-container {
     width: 90%;
-  }
+  }  
 }
 
 @media only screen and (min-width: 768px) {
   .login-container {
     width: 50%
   }
+}
+
+.password-input input[type="password"],
+.password-input input[type="text"] {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+}
+
+.password-input button {
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  left: 80%;
+  width: 10%;
 }

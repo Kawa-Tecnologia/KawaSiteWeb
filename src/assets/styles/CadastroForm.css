@@ -131,7 +131,7 @@ label {
   text-decoration: underline;
 }
 
-.password-input {
+ .password-input {
   position: relative;
 }
 
@@ -141,9 +141,9 @@ label {
 
 .password-input button {
   position: absolute;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
-  right: 5px; 
+  right: 10px; 
   width: auto;
   height: auto; 
   background: transparent;
@@ -154,7 +154,7 @@ label {
 
 .password-input button svg {
   font-size: 16px; 
-}
+} 
 
 @media only screen and (max-width: 1000px) {
   button {
@@ -172,4 +172,28 @@ label {
     position: relative;
     overflow: hidden;
   }
+  .password-input button:focus {
+    outline: none;
+  }
+}
+
+.password-input input[type="password"],
+.password-input input[type="text"] {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+}
+
+.password-input button {
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  left: 80%;
+  width: 10%;
+
 }

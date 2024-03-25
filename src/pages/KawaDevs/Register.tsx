@@ -259,6 +259,7 @@ const Register: React.FC = () => {
             </div>
             <div>
               <label htmlFor='password'>Senha:</label>
+              <div className='password-input'>
               <input
                 type={showPassword ? 'text' : 'password'}
                 id='password'
@@ -271,6 +272,7 @@ const Register: React.FC = () => {
               <button type='button' onClick={togglePasswordVisibility}>
                 <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </button>
+              </div>
             </div>
             <div>
               <label htmlFor='type'>Tipo de Cadastro:</label>
@@ -383,6 +385,7 @@ const Register: React.FC = () => {
             </div>
             <div>
               <label htmlFor='password'>Senha:</label>
+              <div className='password-input'>
               <input
                 type={showPassword ? 'text' : 'password'}
                 id='password'
@@ -394,6 +397,7 @@ const Register: React.FC = () => {
               <button type='button' onClick={togglePasswordVisibility}>
                 <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </button>
+              </div>
             </div>
             <div>
               <label htmlFor='type'>Tipo de Cadastro:</label>

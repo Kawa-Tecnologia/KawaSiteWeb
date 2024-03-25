@@ -148,7 +148,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     loginAttempts > 0 ? `Tentativas restantes: ${3 - loginAttempts}` : ''
   return (
     <div>
-      <HeaderDevs/>
+      <HeaderDevs />
       <div className='login'>
         <div className='login-container' style={{ textAlign: 'center' }}>
           <h1>Kawa Devs</h1>
@@ -179,13 +179,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                     onChange={e => setPassword(e.target.value)}
                     required
                   />
+                  <button type='button' onClick={togglePasswordVisibility}>
+                    <FontAwesomeIcon
+                      icon={showPassword ? faEyeSlash : faEye}
+                      style={{ fontSize: '16px' }}
+                    />
+                  </button>
                 </div>
-                <button type='button' onClick={togglePasswordVisibility}>
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    style={{ fontSize: '16px' }}
-                  />
-                </button>
               </>
             ) : (
               <>
