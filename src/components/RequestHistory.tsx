@@ -270,7 +270,7 @@ const RequestHistory: React.FC = () => {
             {requestDevs.value}
           </div>
         )}
-        <div>Pontos Necessários: {requestDevs.points_required}</div>
+        <div><strong>Pontos Necessários: </strong> {requestDevs.points_required}</div>
       </div>
     )
   }
