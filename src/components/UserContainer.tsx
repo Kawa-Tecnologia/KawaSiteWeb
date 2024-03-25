@@ -24,11 +24,11 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [user, setUser] = useState<UserData | null>(null)
   const [rating, setRating] = useState<number>(0) 
-
+  
   const navigate = useNavigate()
   const userName = localStorage.getItem('userName') || ''
   const devTag = localStorage.getItem('tagName') || ''
-  const points = localStorage.getItem('userPoints') || ''
+  const points = localStorage.getItem('userPoints') || 0
   useEffect(() => {
     const pointsElement = document.getElementById('user-points')
     if (pointsElement) {
