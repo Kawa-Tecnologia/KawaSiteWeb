@@ -6,15 +6,23 @@
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
   }
   
   .thank-you-container h1 {
     color: #333;
-    font-size: 36px;
+    font-size: large;
+  }
+  .thank-you-container h3 {
+    color: #333;
+    font-size: medium;
   }
   
   .thank-you-container p {
     color: #666;
-    font-size: 18px;
+    font-size: small;
     margin-top: 10px;
+  }
+  .thank-you-container img {
+    width: 70%;
   }

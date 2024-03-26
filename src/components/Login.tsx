@@ -14,6 +14,7 @@ import UserProfile from './UserProfile'
 import ServicesHistoryPage from '../pages/KawaDevs/HistoryServices'
 import TrainingPage from '../pages/KawaDevs/TrainingDevs'
 import LeftContainer from './LeftContainer'
+import ThankYouPage from '../pages/KawaDevs/ThankyouPage'
 
 const LoginRoutes = () => {
   const [authenticated, setAuthenticated] = useState(false)
@@ -110,6 +111,8 @@ const LoginRoutes = () => {
         <Route path='/services' element={authenticated && <Services />} />
         <Route path='/projects' element={authenticated && <ProjectsPage />} />
         <Route path='/reviews' element={authenticated && <Reviews />} />
+        <Route path='/thankyou' element={<ThankYouPage />} />
+
         <Route
           path='/message-for-forum'
           element={authenticated && <MessageForForum />}
