@@ -482,3 +482,10 @@ footer {
     margin: 10px 0;
   }
 }
+
+.icon {
+  font-size: 15px; 
+  margin-right: 10px; 
+  color: #0066CC; 
+
+}

@@ -6,9 +6,18 @@ import './assets/styles/App.css'
 import axios from 'axios'
 import ErrorNotification from './components/Error'
 import HeaderPrincipal from './components/HeaderPrincipal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faLinkedin,
+  faGithub,
+  faWhatsapp
+} from '@fortawesome/free-brands-svg-icons'
+import { faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 interface Dev {
   fullname: string
+  email: string
+  phone: string
   ProfessionalInfo: Professional
 }
 
@@ -30,7 +39,12 @@ interface Tag {
   tag: string
 }
 
-const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
+const DevCard: React.FC<Dev> = ({
+  ProfessionalInfo,
+  fullname,
+  email,
+  phone
+}) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const openModal = () => {
@@ -68,35 +82,63 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
         style={{ width: '60%', height: '40%' }}
         title='Clique aqui para mais detalhes do desenvolvedor!'
       />
-      <h3>
+      <h4>
         {firstName} {lastName}
-      </h3>
+      </h4>
       <p>{ProfessionalInfo.job_title}</p>
-      {ProfessionalInfo.profile_linkedin ? (
-        <p>
+      <p>{ProfessionalInfo.Tag.tag}</p>
+      <div className='icons-container'>
+        {ProfessionalInfo.profile_linkedin && (
           <a
             href={ensureHttps(ProfessionalInfo.profile_linkedin)}
             target='_blank'
             rel='noreferrer'
+            title='Link do Linkedin'
           >
-            Perfil Linkedin
+            <FontAwesomeIcon icon={faLinkedin} className='icon' />
           </a>
-        </p>
-      ) : ProfessionalInfo.cv_link ? (
-        <p>
+        )}
+        {ProfessionalInfo.profile_github && (
+          <a
+            href={ensureHttps(ProfessionalInfo.profile_github)}
+            target='_blank'
+            rel='noreferrer'
+            title='Link do Github'
+          >
+            <FontAwesomeIcon icon={faGithub} className='icon' />
+          </a>
+        )}
+        {ProfessionalInfo.cv_link && (
           <a
             href={ensureHttps(ProfessionalInfo.cv_link)}
             target='_blank'
             rel='noreferrer'
+            title='Link do Curriculo'
           >
-            Link do Curriculo
+            <FontAwesomeIcon icon={faFileAlt} className='icon' />
           </a>
-        </p>
-      ) : (
-        ''
-      )}
-      <p>{ProfessionalInfo.Tag.tag}</p>
-
+        )}
+        {email && (
+          <a
+            href={`mailto:${email}`}
+            target='_blank'
+            rel='noreferrer'
+            title='Email'
+          >
+            <FontAwesomeIcon icon={faEnvelope} className='icon' />
+          </a>
+        )}
+        {phone && (
+          <a
+            href={ensureHttps(`https://web.whatsapp.com/send?phone=${phone}`)}
+            target='_blank'
+            rel='noreferrer'
+            title='Telefone'
+          >
+            <FontAwesomeIcon icon={faWhatsapp} className='icon' />
+          </a>
+        )}
+      </div>
       {showModal && (
         <div id='myModal' className={`modal ${showModal ? 'show' : ''}`}>
           <div className='modal-content'>
@@ -212,6 +254,8 @@ const App: React.FC = () => {
             }
           }
         )
+        // eslint-disable-next-line no-debugger
+        debugger
         setDevelopers(data.users)
       } catch (error) {
         setError('Ocorreu um erro ao buscar os desenvolvedores.')
@@ -280,6 +324,8 @@ const App: React.FC = () => {
                         key={index}
                         ProfessionalInfo={dev.ProfessionalInfo}
                         fullname={dev.fullname}
+                        email={dev.email}
+                        phone={dev.phone}
                       />
                     ))}
                   </div>
