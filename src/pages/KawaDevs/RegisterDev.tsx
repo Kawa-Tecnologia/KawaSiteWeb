@@ -91,7 +91,7 @@ const RegisterDev: React.FC = () => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
         modalRef.current &&
-        !modalRef.current.contains(event.target as Node) // Verificando se event.target é do tipo Node
+        !modalRef.current.contains(event.target as Node) 
       ) {
         closeModal()
       }
