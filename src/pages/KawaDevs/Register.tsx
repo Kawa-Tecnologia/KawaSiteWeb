@@ -319,7 +319,9 @@ const Register: React.FC = () => {
             <button type='button' onClick={goToPreviousStep}>
               Voltar
             </button>
-            <button type='submit'>Enviar</button>
+            <div className='button-container'>
+            <button type='submit'>Cadastrar</button>
+            </div>
           </form>
         )}
         {!isMobile && (
@@ -439,7 +441,9 @@ const Register: React.FC = () => {
                 </div>
               </label>
             </div>
+            <div className='button-container'>
             <button type='submit'>Enviar</button>
+            </div>
           </form>
         )}
         <div

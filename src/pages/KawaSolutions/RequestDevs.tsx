@@ -438,8 +438,8 @@ const RequestDevs = () => {
             </div>
             <button type='button' onClick={goToPreviousStep}>
               Voltar
-            </button>
-            <button type='submit'>Enviar</button>
+            </button>            
+            <button type='submit'>Solicitar</button>
             <div style={{ color: 'black' }}>
               {' '}
               * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
@@ -620,11 +620,12 @@ const RequestDevs = () => {
                   </a>
                 </div>
               </label>
+            </div>            
+            <div className='button-container'>              
+            <button type='submit'>Solicitar</button>
+            <div style={{ color: 'black', fontSize:"small" }}>
+            * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
             </div>
-            <button type='submit'>Enviar</button>
-            <div style={{ color: 'black' }}>
-              {' '}
-              * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
             </div>
           </form>
         )}

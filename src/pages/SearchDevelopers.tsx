@@ -302,8 +302,10 @@ const SearchDevelopers: React.FC = () => {
               <option value='2'>2 - Intermediario</option>
               <option value='3'>3 - Menos preciso</option>
             </select>
-          </div>
+          <div className='button-container'>
           <button onClick={handleSearch}>Buscar</button>
+          </div>
+        </div>
         </div>
       </div>
       <div className='result-container'>

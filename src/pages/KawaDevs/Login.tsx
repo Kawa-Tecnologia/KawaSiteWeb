@@ -203,28 +203,34 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             {loginAttempts > 0 && loginAttempts <= 3 && (
               <p>{remainingAttemptsMessage}</p>
             )}
-            <button type='submit' disabled={isLoading}>
-              {isLoading
-                ? 'Entrando...'
-                : loginForm
-                ? 'Entrar'
-                : 'Recuperar Senha'}
-            </button>
+            <div className='button-container'>
+              <button type='submit' disabled={isLoading}>
+                {isLoading
+                  ? 'Entrando...'
+                  : loginForm
+                  ? 'Entrar'
+                  : 'Recuperar Senha'}
+              </button>
+            </div>
             {loginForm ? (
-              <p>
-                <button type='button' onClick={showRecoveryForm}>
-                  Esqueci minha senha
-                </button>
-                <button id='modal-pay-button' onClick={goToCadastro}>
-                  Cadastrar
-                </button>
-              </p>
+              <div className='button-container'>
+                <p>
+                  <button type='button' onClick={showRecoveryForm}>
+                    Esqueci minha senha
+                  </button>
+                  <button id='modal-pay-button' onClick={goToCadastro}>
+                    Cadastrar
+                  </button>
+                </p>
+              </div>
             ) : (
-              <p>
-                <button type='button' onClick={showLoginForm}>
-                  Voltar para o login
-                </button>
-              </p>
+              <div className='button-container'>
+                <p>
+                  <button type='button' onClick={showLoginForm}>
+                    Voltar para o login
+                  </button>
+                </p>
+              </div>
             )}
           </form>
           {error && <ErrorNotification message={error} severity='error' />}

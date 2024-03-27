@@ -386,9 +386,7 @@ const RequestHistory: React.FC = () => {
             <div className='button-container'>
               <button onClick={() => handleDetailsClick(training)}>
                 Detalhes
-              </button>
-            </div>
-            <div className='button-container'>
+              </button>            
               {userPoints < training.points_required &&
               !participationsIds.includes(training.id) ? (
                 <>
@@ -402,13 +400,14 @@ const RequestHistory: React.FC = () => {
                 <button
                   onClick={() => {}}
                   disabled={true}
-                  className='disabled-button'
+                  className={participationsIds.includes(training.id) ? 'disabled-button' : ''}
+
                 >
                   Em atendimento
                 </button>
               ) : (
                 <button onClick={() => handleCheckout(training)}>
-                  Entrar em Contato
+                  Liberar
                 </button>
               )}
             </div>

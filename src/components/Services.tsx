@@ -148,6 +148,7 @@ const Services: React.FC = () => {
                 <p>Realizado:{service.accomplished}</p>
                 <p>Avaliação:{service.avaliation}</p>
                 <p>Comentario:{service.request_comment}</p>
+                <div className="button-container">
                 <button
                   onClick={() =>
                     handleServiceStatusChange(
@@ -167,7 +168,7 @@ const Services: React.FC = () => {
                         : ''
                   }}
                 >
-                  Marcar como Não Realizado
+                  Não Realizado
                 </button>
                 <button
                   onClick={() =>
@@ -185,8 +186,9 @@ const Services: React.FC = () => {
                         : ''
                   }}
                 >
-                  Marcar como Realizado
+                  Realizado
                 </button>
+                </div>
               </div>
             ))
           ) : (
