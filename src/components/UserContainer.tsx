@@ -5,7 +5,7 @@ import '../assets/styles/PointsModal.css'
 import '../assets/styles/UserContainer.css'
 import FuturisticModal from './FuturistModal'
 import { Star } from '@material-ui/icons'
-import { io } from 'socket.io-client'
+//import { io } from 'socket.io-client'
 interface UserData {
   id: number
   name: string
@@ -30,9 +30,12 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   const navigate = useNavigate()
   const userName = localStorage.getItem('userName') || ''
   const devTag = localStorage.getItem('tagName') || ''
-  const [points, setPoints] = useState<string>(
+  const points
+      //setPoints]
+     = 
+     //useState<string>(
     localStorage.getItem('userPoints') || '0'
-  )
+  //)
   useEffect(() => {
     const pointsElement = document.getElementById('user-points')
     if (pointsElement) {
@@ -53,14 +56,14 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
     }
   }, [])
 
-  useEffect(() => {
-    const socket = io(`${process.env.REACT_APP_API_URL}`)
-    socket.on('points', (user_id, points_acquired) => {
-      if(user_id === user?.id){
-      setPoints(points + points_acquired)
-      }
-    })
-  }, [])
+  // useEffect(() => {
+  //   const socket = io(`${process.env.REACT_APP_API_URL}`)
+  //   socket.on('points', (user_id, points_acquired) => {
+  //     if(user_id === user?.id){
+  //     setPoints(points + points_acquired)
+  //     }
+  //   })
+  // }, [])
   const handleAcquirePoints = () => {
     setModalIsOpen(true)
   }
