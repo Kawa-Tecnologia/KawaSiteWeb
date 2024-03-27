@@ -253,9 +253,7 @@ const App: React.FC = () => {
               Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
             }
           }
-        )
-        // eslint-disable-next-line no-debugger
-        debugger
+        )   
         setDevelopers(data.users)
       } catch (error) {
         setError('Ocorreu um erro ao buscar os desenvolvedores.')
