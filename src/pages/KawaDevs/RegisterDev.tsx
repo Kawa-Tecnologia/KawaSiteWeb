@@ -868,7 +868,7 @@ const RegisterDev: React.FC = () => {
                 Mais Detalhes
               </button>
             </div>
-            <div>
+            <div>              
               <button type='submit'>
                 Adquirir Plano Mensal por apenas R$19,99/mes
               </button>

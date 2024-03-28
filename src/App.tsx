@@ -150,6 +150,7 @@ const DevCard: React.FC<Dev> = ({
                 src='https://s2-techtudo.glbimg.com/4_tizBHk3h8ZgpqZXoRoF4XMJ30=/0x0:6000x4000/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2023/f/w/FQkUYHRJq3H1gscf2qrA/content-pixie-wnanpxm6bn8-unsplash.jpg'
                 alt='Imagem'
                 className='modal-image'
+                style={{ width: '60%', height: '40%' }}
               />
             </div>
             <h2>Detalhes do Desenvolvedor</h2>

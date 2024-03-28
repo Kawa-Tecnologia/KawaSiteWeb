@@ -30,7 +30,7 @@ header {
 
 .logo-container img {
   max-width: 20px;
-  width: 100px;
+  max-height: auto;
 }
 
 nav ul {
@@ -159,7 +159,7 @@ section.banner {
   }
 
   .logo-container img {
-    max-width: 80px;
+    max-width: 50px;
   }
 
   nav ul {
