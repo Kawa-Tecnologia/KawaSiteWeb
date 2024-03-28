@@ -293,7 +293,7 @@ const App: React.FC = () => {
                   Transformando Ideias Criativas em Negócios Rentáveis e
                   Lucrativos
                 </h3>
-                Tire seu projeto do papel, bora ver do que somos capazes juntos!
+                <h4>Tire seu projeto do papel, bora ver do que somos capazes juntos!</h4>
                 <p>
                   <a
                     href={`mailto:${process.env.REACT_APP_MAIL}`}
