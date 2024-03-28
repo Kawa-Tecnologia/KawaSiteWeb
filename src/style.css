@@ -373,6 +373,9 @@ footer {
     .navigation a {
         margin: 10px 0
     }
+    .icon {
+        margin: 5px;
+    }
 }
 
 .icon {

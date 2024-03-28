@@ -81,7 +81,7 @@ const DevCard: React.FC<Dev> = ({
         onClick={handleCardClick}
         style={{ width: '60%', height: '40%' }}
         title='Clique aqui para mais detalhes do desenvolvedor!'
-        loading="lazy" 
+        loading='lazy'
       />
       <h4>
         {firstName} {lastName}
@@ -126,7 +126,7 @@ const DevCard: React.FC<Dev> = ({
             rel='noreferrer'
             title='Email'
           >
-            <FontAwesomeIcon icon={faEnvelope} className='icon' />
+            <FontAwesomeIcon icon={faEnvelope} className='icon'/>
           </a>
         )}
         {phone && (
@@ -152,7 +152,7 @@ const DevCard: React.FC<Dev> = ({
                 alt='Imagem'
                 className='modal-image'
                 style={{ width: '60%', height: '40%' }}
-                loading="lazy" 
+                loading='lazy'
               />
             </div>
             <h2>Detalhes do Desenvolvedor</h2>
@@ -256,7 +256,7 @@ const App: React.FC = () => {
               Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
             }
           }
-        )   
+        )
         setDevelopers(data.users)
       } catch (error) {
         setError('Ocorreu um erro ao buscar os desenvolvedores.')
@@ -284,7 +284,7 @@ const App: React.FC = () => {
                 <img
                   src={require('./assets/images/kawa.jpg')}
                   alt='Kawa Tecnologia'
-                  loading="lazy" 
+                  loading='lazy'
                 />
               </div>
               <div className='banner-center'>
@@ -295,7 +295,10 @@ const App: React.FC = () => {
                 </h3>
                 Tire seu projeto do papel, bora ver do que somos capazes juntos!
                 <p>
-                  <a href='#contato' className='cta-button'>
+                  <a
+                    href={`mailto:${process.env.REACT_APP_MAIL}`}
+                    className='cta-button'
+                  >
                     Contate-nos
                   </a>
                 </p>
