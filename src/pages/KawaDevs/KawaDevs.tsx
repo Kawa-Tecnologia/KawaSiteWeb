@@ -2,19 +2,17 @@ import React from 'react'
 import '../../assets/styles/KawaDevs.css'
 import Plans from './Plans'
 import HeaderDevs from '../../components/HeaderDevs'
-import { Helmet } from 'react-helmet-async';
+import Layout from '../../components/Layout';
 
 const AreaDevs: React.FC = () => {
   return (
+    <Layout
+    pageTitle="Kawa Devs"
+    pageDescription="Plataforma para desenvolvedores, freelancers e empresas prestadoras de serviços de tecnologia.">
     <div>
       <HeaderDevs/>
-      <Helmet>
-        <title>Kawa Devs</title>
-        <meta
-          name="description"
-          content="Plataforma para desenvolvedores, freelancers e empresas prestadoras de serviços de tecnologia."
-        />
-      </Helmet>
+
+    
       <div className='container-devs'>
         <div className='left' style={{ textAlign: 'center' }}>
           <img src={require('../../assets/images/kawa.jpg')} alt='Kawa Devs' loading="lazy" />
@@ -57,6 +55,7 @@ const AreaDevs: React.FC = () => {
         <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
       </footer>
     </div>
+    </Layout>
   )
 }
 

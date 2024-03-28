@@ -7,7 +7,7 @@ import '../../assets/styles/AppSolutions.css'
 import LeftContainer from './LeftContainer'
 import RightContainer from './RightContainer'
 import { useNavigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import Layout from '../../components/Layout'
 
 const AppSolutions = () => {
   const navigate = useNavigate()
@@ -17,15 +17,13 @@ const AppSolutions = () => {
   }
 
   return (
+    <Layout
+    pageTitle="Kawa Devs"
+    pageDescription="Plataforma para solicitação de criação de lojas virtuais, sites institucionais, desenvolvimento de software e treinamentos para desenvolvedores.">
     <div className='App'>
       <Header />
-      <Helmet>
-        <title>Kawa Solutions</title>
-        <meta
-          name='description'
-          content='Plataforma para solicitação de criação de lojas virtuais, sites institucionais, desenvolvimento de software e treinamentos para desenvolvedores.'
-        />
-      </Helmet>
+
+    
       <ServicesSection />
       <p style={{ textAlign: 'center' }}>
         <button onClick={handleCadastroClick} style={{ alignItems: 'center' }}>
@@ -48,6 +46,7 @@ const AppSolutions = () => {
       </section>
       <Footer />
     </div>
+    </Layout>
   )
 }
 
