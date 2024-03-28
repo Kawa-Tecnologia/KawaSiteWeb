@@ -285,7 +285,8 @@ const App: React.FC = () => {
                   src={require('./assets/images/kawa.jpg')}
                   alt='Kawa Tecnologia'
                   loading='lazy'
-                />
+                  style={{ width: '60%', height: '40%' }}
+                  />
               </div>
               <div className='banner-center'>
                 <h1>Bem-vindo à Kawa Tecnologia</h1>
