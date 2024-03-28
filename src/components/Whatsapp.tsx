@@ -11,9 +11,9 @@ const ContactButton: React.FC = () => {
   return (
     <li className="nav-item">
       <a
+        href={`https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}`}
         className="nav-link"
         onClick={handleContactClick}
-        style={{ cursor: 'pointer' }}
       >
         Contato
       </a>
