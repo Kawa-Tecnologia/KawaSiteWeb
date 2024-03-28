@@ -9,6 +9,7 @@ const HeaderDevs = () => {
           className='logo'
           src={require('../assets/images/kawa1.png')}
           alt='Kawa Devs'
+          loading="lazy" 
         />
       </div>
       <NavigationDev />

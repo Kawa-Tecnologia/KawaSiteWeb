@@ -12,7 +12,7 @@ const CheckoutPage = () => {
 
   return (
     <div className='checkout-container'>
-      <img src={require('../../assets/images/kawa.jpg') } alt='Kawa Devs' />
+      <img src={require('../../assets/images/kawa.jpg') } alt='Kawa Devs' loading="lazy" />
       <h2 style={{ textAlign: "center" }}>Kawa Devs</h2><h2 className='checkout-title'style={{ textAlign: "center" }}>Finalizar Compra</h2><p className='checkout-info'>
         * Por favor, informe os mesmos dados do titular da conta da plataforma
       </p><p className='checkout-info'>

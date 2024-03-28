@@ -64,6 +64,7 @@ const DeveloperList: React.FC<DeveloperListProps> = ({ developers }) => {
             style={{ width: '60%', height: '40%' }}
             title='Clique aqui para mais detalhes do desenvolvedor!'
             className='developer-image'
+            loading="lazy" 
           />
 
           <h3>ID: {developer.id}</h3>
@@ -86,6 +87,7 @@ const DeveloperList: React.FC<DeveloperListProps> = ({ developers }) => {
           }
           style="width: 20%; height: 20%;"
           className='developer-image'
+          loading="lazy" 
         
           /> <br/><strong>Apresentação:</strong> ${
             selectedDeveloper.ProfessionalInfo.presentation

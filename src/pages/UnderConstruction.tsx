@@ -15,6 +15,7 @@ const UnderConstruction: React.FC = () => {
       <img
         src={require('../assets/images/underconstruction.png')}
         alt='Em Construção'
+        loading="lazy" 
       />
     </div></div>
   )

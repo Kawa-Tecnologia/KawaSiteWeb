@@ -9,6 +9,7 @@ const HeaderPrincipal = () => {
           className='logo'
           src={require('../assets/images/kawa1.png')}
           alt='Kawa Tecnologia'
+          loading="lazy" 
         />
       </div>
       <Navigation />

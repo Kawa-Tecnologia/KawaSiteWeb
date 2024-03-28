@@ -81,6 +81,7 @@ const DevCard: React.FC<Dev> = ({
         onClick={handleCardClick}
         style={{ width: '60%', height: '40%' }}
         title='Clique aqui para mais detalhes do desenvolvedor!'
+        loading="lazy" 
       />
       <h4>
         {firstName} {lastName}
@@ -151,6 +152,7 @@ const DevCard: React.FC<Dev> = ({
                 alt='Imagem'
                 className='modal-image'
                 style={{ width: '60%', height: '40%' }}
+                loading="lazy" 
               />
             </div>
             <h2>Detalhes do Desenvolvedor</h2>
@@ -282,6 +284,7 @@ const App: React.FC = () => {
                 <img
                   src={require('./assets/images/kawa.jpg')}
                   alt='Kawa Tecnologia'
+                  loading="lazy" 
                 />
               </div>
               <div className='banner-center'>

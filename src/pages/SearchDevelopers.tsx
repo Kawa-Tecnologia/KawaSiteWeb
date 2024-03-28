@@ -63,6 +63,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
         onClick={handleCardClick}
         style={{ width: '60%', height: '40%' }}
         title='Clique aqui para mais detalhes do desenvolvedor!'
+        loading="lazy" 
       />
       <h3>Nome: {fullname}</h3>
       <p>Cargo: {ProfessionalInfo.job_title}</p>
