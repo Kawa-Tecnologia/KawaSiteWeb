@@ -7,13 +7,13 @@ const EmailButton: React.FC = () => {
 
   return (
     <li className='nav-item'>
-      <span
+      <a
+        href={`mailto:${process.env.REACT_APP_MAIL}`}
         className='nav-link'
         onClick={handleEmailClick}
-        style={{ cursor: 'pointer' }}
       >
         Contato
-      </span>
+      </a>
     </li>
   )
 }
