@@ -14,6 +14,9 @@ const Pagination: React.FC<PaginationProps> = ({
       <button
         onClick={() => paginate(currentPage - 1)}
         disabled={currentPage === 1}
+        style={{
+          background: currentPage === 1 ? 'gray' : '#0066CC'
+        }}
       >
         Anterior
       </button>
@@ -22,7 +25,10 @@ const Pagination: React.FC<PaginationProps> = ({
       </span>
       <button
         onClick={() => paginate(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        disabled={(currentPage === totalPages) || totalPages === 0}
+        style={{
+          background: (currentPage === totalPages) || totalPages === 0 ? 'gray' : '#0066CC'
+        }}
       >
         Próxima
       </button>

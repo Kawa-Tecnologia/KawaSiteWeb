@@ -3,7 +3,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import axios from 'axios'
 import '../assets/styles/Agenda.css'
-import { BackendStatus,mapBackendToFrontendStatus } from '../utils/statusType'
+import { BackendStatus, mapBackendToFrontendStatus } from '../utils/statusType'
 
 interface Ticket {
   id: number
@@ -73,11 +73,14 @@ const Agenda: React.FC = () => {
               </div>
             ))}
           </div>
-          <br/>
+          <br />
           <div className='pagination'>
             <button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
+              style={{
+                background: currentPage === 1 ? 'gray' : '#0066CC'
+              }}
             >
               Anterior
             </button>
@@ -90,6 +93,12 @@ const Agenda: React.FC = () => {
               disabled={
                 currentPage === Math.ceil(tickets.length / projectsPerPage)
               }
+              style={{
+                background:
+                  currentPage === Math.ceil(tickets.length / projectsPerPage)
+                    ? 'gray'
+                    : '#0066CC'
+              }}
             >
               Próxima
             </button>

@@ -214,7 +214,7 @@ const TrainingPage = () => {
                 user?.points === 0
               }
               style={{
-                backgroundColor: user?.points === 0 ? 'gray' : '#0066CC'
+                background: user?.points === 0 ? 'gray' : '#0066CC'
               }}
             >
               Adicionar Curso
@@ -233,7 +233,7 @@ const TrainingPage = () => {
             onClick={handleSearch}
             disabled={user?.points === 0}
             style={{
-              backgroundColor: user?.points === 0 ? 'gray' : '#0066CC'
+              background: user?.points === 0 ? 'gray' : '#0066CC'
             }}
           >
             Buscar
