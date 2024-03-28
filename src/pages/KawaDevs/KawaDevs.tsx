@@ -2,12 +2,19 @@ import React from 'react'
 import '../../assets/styles/KawaDevs.css'
 import Plans from './Plans'
 import HeaderDevs from '../../components/HeaderDevs'
+import { Helmet } from 'react-helmet-async';
 
 const AreaDevs: React.FC = () => {
   return (
     <div>
       <HeaderDevs/>
-
+      <Helmet>
+        <title>Kawa Devs</title>
+        <meta
+          name="description"
+          content="Plataforma para desenvolvedores, freelancers e empresas prestadoras de serviços de tecnologia."
+        />
+      </Helmet>
       <div className='container-devs'>
         <div className='left' style={{ textAlign: 'center' }}>
           <img src={require('../../assets/images/kawa.jpg')} alt='Kawa Devs' loading="lazy" />
