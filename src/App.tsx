@@ -284,7 +284,7 @@ const App: React.FC = () => {
           <section className='banner'>
             <div className='banner-left'>
               <img
-                src={require('./assets/images/kawa.jpg')}
+                src={require('./assets/images/kawa.png')}
                 alt='Kawa Tecnologia'
                 style={{ width: '60%', height: '40%' }}
               />
@@ -292,8 +292,10 @@ const App: React.FC = () => {
             <div className='banner-center'>
               <h1>Bem-vindo à Kawa Tecnologia</h1>
               <h2>
-                Transformando Ideias Criativas em Negócios Rentáveis e
-                Lucrativos
+                <strong>
+                  Transformando Ideias Criativas em Negócios Rentáveis e
+                  Lucrativos
+                </strong>
               </h2>
               <h3>
                 Tire seu projeto do papel, bora ver do que somos capazes juntos!

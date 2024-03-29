@@ -369,7 +369,9 @@ footer {
         margin-top: 20px;
         color: #000;
     }
-   
+    .devs-content p {
+        font-size: small;
+    }
     header {
         flex-direction: column;
         padding: 10px

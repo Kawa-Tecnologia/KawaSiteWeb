@@ -36,7 +36,19 @@ nav ul li a {
     max-width: 100%;
     padding: 20px;
 }
+.banner-center h1 {
+    font-size: 2rem;
+}
+.banner-center h2 {
+    font-size: 1.5rem;
+}
+.banner-center h3 {
+    font-size: 1rem;
+}
 
+.banner-center h4 {
+    font-size: 14px;
+}
 @media only screen and (max-width:767px) {
     .container-home {
         padding: 20px;
@@ -45,21 +57,22 @@ nav ul li a {
     }
     .banner-center h1 {
         font-size: larger;
-    }
-
-    .banner-center h3 {
+    }   
+    .banner-center h2 {
         font-size: medium;
     }
-
-    .banner-center h4 {
+    .banner-center h3 {
         font-size: small;
+    }
+    .banner-center h4 {
+        font-size: smaller;
     }
 
     .banner-left img {
         width: 80%;
     }
 
-   
+
 
     .middle {
         order: 2

@@ -58,8 +58,7 @@
     .container-wrapper {
         flex-direction: column
     }
-
-    .,
+    
     .right-container-request-dev {
         display: none
     }

@@ -18,7 +18,7 @@ const AreaDevs: React.FC = () => {
           <section className='banner'>
               <div className='banner-left'>
             <img
-              src={require('../../assets/images/kawa.jpg')}
+              src={require('../../assets/images/kawa.png')}
               alt='Kawa Devs'
               style={{ width: '60%', height: '40%' }}
             />

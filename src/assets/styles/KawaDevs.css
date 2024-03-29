@@ -30,7 +30,18 @@
     color: #5274be;
     padding: '20px'
 }
-
+.container-devs h1 {
+    font-size: 2rem;
+}
+.container-devs h2 {
+    font-size: 1.5rem;
+}
+.container-devs h3 {
+    font-size: 1rem;
+}
+.container-devs p {
+    font-size: 1rem;
+}
 .container-devs h1,
 .container-devs h3,
 .container-devs img,
@@ -60,12 +71,14 @@
         font-size: larger;
     }
 
-    .container-devs h3 {
+    .container-devs h2 {
         font-size: medium;
     }
-
-    .container-devs p {
+    .container-devs h3 {
         font-size: small;
+    }
+    .container-devs p {
+        font-size: smaller;
     }
 
     .middle {

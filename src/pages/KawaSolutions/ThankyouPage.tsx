@@ -4,7 +4,7 @@ import '../../assets/styles/ThankyouPage.css'
 const ThankYouPage = () => {
   return (
     <div className='thank-you-container'>
-      <img src={require('../../assets/images/kawa.jpg')} alt='Kawa Devs' loading="lazy" />
+      <img src={require('../../assets/images/kawa.png')} alt='Kawa Devs' loading="lazy" />
       <h1>Kawa Solutions</h1>
       <h3>Transformando ideias em negócios lucrativos.</h3>
 
