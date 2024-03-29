@@ -276,7 +276,6 @@ const App: React.FC = () => {
   return (
     <div>
       <HeaderPrincipal />
-      <div className='container-geral'>
         <div className='container-home'>
           <div className='left'>
             <section className='banner'>
@@ -349,7 +348,6 @@ const App: React.FC = () => {
               </section>
             </div>
           </div>
-        </div>
       </div>
       <section id='sobre-nos'>
         <h2>Sobre Nós</h2>
