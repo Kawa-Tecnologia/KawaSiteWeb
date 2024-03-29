@@ -349,9 +349,15 @@ footer {
     padding: 20px
 }
 
+.devs-content h2 {
+    margin-top: 20px;
+    color: #000;
+}
 @media only screen and (max-width:767px) {
     .devs-content h2 {
-        font-size: large;
+        font-size: larger;
+        margin-top: 20px;
+        color: #000;
     }
    
     header {

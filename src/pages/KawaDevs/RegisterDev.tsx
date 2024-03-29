@@ -597,7 +597,7 @@ const RegisterDev: React.FC = () => {
                 className='modal-button'
                 onClick={() => handleButtonClickDetails()}
               >
-                Mais Detalhes
+                Detalhes
               </button>
             </div>
             <button type='button' onClick={goToPreviousStep}>
@@ -865,7 +865,7 @@ const RegisterDev: React.FC = () => {
                 className='modal-button'
                 onClick={() => handleButtonClickDetails()}
               >
-                Mais Detalhes
+                Detalhes
               </button>
             </div>
             <div>              

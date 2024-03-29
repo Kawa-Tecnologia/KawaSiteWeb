@@ -309,7 +309,7 @@ const App: React.FC = () => {
             <div className='banner-right'>
               <section id='devs' className='devs-section'>
                 <div className='devs-content'>
-                  <h2>Desenvolvedores &gt;&gt; Open to Work &lt;&lt;</h2>
+                  <h2>Desenvolvedores &gt; Open to Work &lt;</h2>
                   <p>
                     <button
                       className='find-dev-button'

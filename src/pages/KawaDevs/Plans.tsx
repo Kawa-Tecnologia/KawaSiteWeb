@@ -131,7 +131,7 @@ const Plans: React.FC = () => {
                     className='modal-button'
                     onClick={() => handleButtonClick(plan.name, plan)}
                   >
-                    Mais Detalhes
+                    Detalhes
                   </button>
                   <br />
                   <button id='modal-pay-button' onClick={goToCadastro}>
@@ -165,10 +165,10 @@ const Plans: React.FC = () => {
                     className='modal-button'
                     onClick={() => handleButtonClick(plan.name, plan)}
                   >
-                    Mais Detalhes
+                    Detalhes
                   </button>
                   <br />
-                  <button id='modal-pay-button' onClick={goToCadastro}>
+                  <button id='modal-button' onClick={goToCadastro}>
                     Cadastrar
                   </button>
                 </div>
