@@ -6,7 +6,6 @@ const EmailButton: React.FC = () => {
   }
 
   return (
-    <li className='nav-item'>
       <a
         href={`mailto:${process.env.REACT_APP_MAIL}`}
         className='nav-link'
@@ -14,7 +13,6 @@ const EmailButton: React.FC = () => {
       >
         Contato
       </a>
-    </li>
   )
 }
 

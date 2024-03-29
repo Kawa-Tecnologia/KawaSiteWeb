@@ -40,10 +40,10 @@ const NavigationDev: React.FC = () => {
             Sobre Nós Devs
           </a>
         </li>
-        <li className='nav-item'>
-          <EmailButton />
-        </li>
-      </ul>
+    <li className='nav-item'>
+      <EmailButton />
+    </li>
+  </ul>
     </nav>
   )
 }
