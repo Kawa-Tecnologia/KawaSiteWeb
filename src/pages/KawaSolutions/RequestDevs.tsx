@@ -228,7 +228,7 @@ const RequestDevs = () => {
   return (
     <div className='container-request'>
       <section id='services'>
-        <h3>Faça sua solicitação e aguarde contato.</h3>
+        <h1>Solicite um serviço</h1>
 
         {isMobile && formStep === 1 && (
           <form
