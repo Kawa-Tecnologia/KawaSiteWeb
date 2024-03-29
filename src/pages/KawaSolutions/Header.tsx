@@ -7,7 +7,7 @@ const Header = () => {
         <h1 style={styles.heading}>Kawa Solutions</h1>
         <p style={styles.paragraph}>
           Bem-vindo ao nosso site! Oferecemos uma variedade de serviços de
-          desenvolvimento para atender às suas necessidades.
+          desenvolvimento junto aos prestadores para atender às suas necessidades.
         </p>
       </div>
     </header>
