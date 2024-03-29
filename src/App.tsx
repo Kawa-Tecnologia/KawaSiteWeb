@@ -83,9 +83,12 @@ const DevCard: React.FC<Dev> = ({
         title='Clique aqui para mais detalhes do desenvolvedor!'
         loading='lazy'
       />
-      <h4>
-        {firstName} {lastName}
-      </h4>
+      <p>
+        <strong>
+          {' '}
+          {firstName} {lastName}
+        </strong>
+      </p>
       <p>{ProfessionalInfo.job_title}</p>
       <p>{ProfessionalInfo.Tag.tag}</p>
       <div className='icons-container'>
