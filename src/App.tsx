@@ -126,7 +126,7 @@ const DevCard: React.FC<Dev> = ({
             rel='noreferrer'
             title='Email'
           >
-            <FontAwesomeIcon icon={faEnvelope} className='icon'/>
+            <FontAwesomeIcon icon={faEnvelope} className='icon' />
           </a>
         )}
         {phone && (
@@ -276,77 +276,78 @@ const App: React.FC = () => {
   return (
     <div>
       <HeaderPrincipal />
-        <div className='container-home'>
-          <div className='left'>
-            <section className='banner'>
-              <div className='banner-left'>
-                <img
-                  src={require('./assets/images/kawa.jpg')}
-                  alt='Kawa Tecnologia'
-                  style={{ width: '60%', height: '40%' }}
-                  />
-              </div>
-              <div className='banner-center'>
-                <h1>Bem-vindo à Kawa Tecnologia</h1>
-                <h3>
-                  Transformando Ideias Criativas em Negócios Rentáveis e
-                  Lucrativos
-                </h3>
-                <h4>Tire seu projeto do papel, bora ver do que somos capazes juntos!</h4>
-                <p>
-                  <a
-                    href={`mailto:${process.env.REACT_APP_MAIL}`}
-                    className='cta-button'
-                  >
-                    Contate-nos
-                  </a>
-                </p>
-              </div>
-            </section>
-          </div>
+      <div className='container-home'>
+        <div className='left'>
+          <section className='banner'>
+            <div className='banner-left'>
+              <img
+                src={require('./assets/images/kawa.jpg')}
+                alt='Kawa Tecnologia'
+                style={{ width: '60%', height: '40%' }}
+              />
+            </div>
+            <div className='banner-center'>
+              <h1>Bem-vindo à Kawa Tecnologia</h1>
+              <h3>
+                Transformando Ideias Criativas em Negócios Rentáveis e
+                Lucrativos
+              </h3>
+              <h4>
+                Tire seu projeto do papel, bora ver do que somos capazes juntos!
+              </h4>
+              <p>
+                <a
+                  href={`mailto:${process.env.REACT_APP_MAIL}`}
+                  className='cta-button'
+                >
+                  Contate-nos
+                </a>
+              </p>
+            </div>
+          </section>
+        </div>
 
-          <div className='right'>
-            <div className='banner-right'>
-              <section id='devs' className='devs-section'>
-                <div className='devs-content'>
-                  <h2>Desenvolvedores &gt; Open to Work &lt;</h2>
-                  <p>
-                    <button
-                      className='find-dev-button'
-                      onClick={handleRegisterDevsClick}
-                    >
-                      Dev, quer aparecer na busca, cadastre seu perfil!
-                    </button>
-                  </p>
-                  <h5 style={{ color: 'black' }}>
-                    *Clique na imagem para mais detalhes do Desenvolvedor
-                  </h5>
-
-                  <div className='dev-cards-container'>
-                    {developers?.map((dev, index) => (
-                      <DevCard
-                        key={index}
-                        ProfessionalInfo={dev.ProfessionalInfo}
-                        fullname={dev.fullname}
-                        email={dev.email}
-                        phone={dev.phone}
-                      />
-                    ))}
-                  </div>
-                </div>
+        <div className='right'>
+          <div className='banner-right'>
+            <section id='devs' className='devs-section'>
+              <div className='devs-content'>
+                <h2>Desenvolvedores &gt; Open to Work &lt;</h2>
                 <p>
-                  <br />
                   <button
                     className='find-dev-button'
-                    onClick={handleFindDevsClick}
+                    onClick={handleRegisterDevsClick}
                   >
-                    Recrutador, não encontrou quem estava procurando? Clique
-                    aqui!
+                    Dev, quer aparecer na busca, cadastre seu perfil!
                   </button>
                 </p>
-              </section>
-            </div>
+                <h5 style={{ color: 'black' }}>
+                  *Clique na imagem para mais detalhes do Desenvolvedor
+                </h5>
+
+                <div className='dev-cards-container'>
+                  {developers?.map((dev, index) => (
+                    <DevCard
+                      key={index}
+                      ProfessionalInfo={dev.ProfessionalInfo}
+                      fullname={dev.fullname}
+                      email={dev.email}
+                      phone={dev.phone}
+                    />
+                  ))}
+                </div>
+              </div>
+              <p>
+                <br />
+                <button
+                  className='find-dev-button'
+                  onClick={handleFindDevsClick}
+                >
+                  Recrutador, não encontrou quem estava procurando? Clique aqui!
+                </button>
+              </p>
+            </section>
           </div>
+        </div>
       </div>
       <section id='sobre-nos'>
         <h2>Sobre Nós</h2>
@@ -358,8 +359,21 @@ const App: React.FC = () => {
         <h2>Projetos</h2>
         <p>Aqui estão alguns dos nossos projetos recentes:</p>
         <p>
-          <a href={process.env.REACT_APP_URL + '/devs'}>Kawa Devs</a> |{' '}
-          <a href={process.env.REACT_APP_URL + '/solutions'}>Kawa Solutions</a>
+          <a
+            href={process.env.REACT_APP_URL + '/devs'}
+            className='devs-link'
+            title='Entre na Kawa Devs'
+          >
+            Kawa Devs
+          </a>{' '}
+          |{' '}
+          <a
+            href={process.env.REACT_APP_URL + '/solutions'}
+            className='devs-link'
+            title='Entre na Kawa Solutions'
+          >
+            Kawa Solutions
+          </a>
         </p>
         <br />
         <h2>Contato</h2>

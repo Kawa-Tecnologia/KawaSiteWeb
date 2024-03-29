@@ -114,6 +114,16 @@ section {
     opacity: .9
 }
 
+.devs-link{
+    color: #ffffff; 
+    text-decoration: underline; 
+}
+
+.devs-link:hover{
+    color: #ffffff;
+    text-decoration: none; 
+}
+
 .logo-container {
     display: flex;
     justify-content: center
