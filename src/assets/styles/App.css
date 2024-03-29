@@ -27,12 +27,21 @@ nav ul li a {
     font-size: 1.2rem;
     margin-bottom: 20px
 }
+.container-home {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    display: flex;
+    background-image: url("../images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif");
+    background-color: transparent;
+    max-width: 100%
+}
 
 @media only screen and (max-width:767px) {
     .container-home {
         padding: 20px;
+        flex-direction: column;
+        overflow-x: hidden;
     }
-
     .banner-center h1 {
         font-size: larger;
     }

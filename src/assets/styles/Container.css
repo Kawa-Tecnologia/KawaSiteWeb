@@ -1,5 +1,4 @@
-.container,
-.container-home {
+.container {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     min-width: 80%
@@ -30,11 +29,6 @@
     font-size: 1.5rem
 }
 
-.container-home {
-    background-color: transparent;
-    display: flex;
-    max-width: 100%
-}
 
 @media only screen and (max-width:767px) {
     .container {
@@ -42,9 +36,5 @@
         width: 100%;
         padding: 10px
     }
-
-    .container-home {
-        flex-direction: column;
-        width: 100%
-    }
+    
 }

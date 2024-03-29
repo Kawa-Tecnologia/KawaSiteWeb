@@ -4,11 +4,6 @@
     text-align: center
 }
 
-.container-home {
-    display: flex;
-    background-image: url("../images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif")
-}
-
 .banner-center,
 .banner-left,
 .banner-right {
@@ -59,11 +54,6 @@
 }
 
 @media only screen and (max-width:767px) {
-    .container-home {
-        flex-direction: column;
-        overflow-x: hidden
-    }
-
     .banner {
         padding: 30px 20px;
         text-align: center;
