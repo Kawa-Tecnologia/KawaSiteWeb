@@ -1,11 +1,16 @@
 import React from 'react';
 
 const ContactButton: React.FC = () => {
-  const handleContactClick = () => {    
+  const handleContactClick = () => {
+         // eslint-disable-next-line no-debugger
+         debugger
     const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER;
+console.log(phoneNumber)
     if (phoneNumber) {
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const link = isMobile ? `tel:${phoneNumber}` : `https://wa.me/${phoneNumber}`;
+      console.log(isMobile)
+
+      const link = isMobile ? `whatsapp://send?phone=${phoneNumber}` : `https://wa.me/${phoneNumber}`;
       window.open(link, isMobile ? '_self' : '_blank');
     }
   };
@@ -14,7 +19,6 @@ const ContactButton: React.FC = () => {
     <a
       className="nav-link"
       onClick={handleContactClick}
-      style={{ cursor: 'pointer' }}
     >
       Contato
     </a>
