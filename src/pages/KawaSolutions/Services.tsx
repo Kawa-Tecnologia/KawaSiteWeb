@@ -1,37 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "../../assets/styles/Services.css"
-
+import '../../assets/styles/Services.css'
 const ServicesSection = () => {
   return (
     <section id='services-solutions'>
       <h2>Nossos Serviços</h2>
-      <div className="service-grid">
-        <Link to='/solutions/tips' className='black-button' title='Clique aqui para ver nossas dicas!'>
-          <span className='service-item'>Desenvolvimento de Websites</span>
-        </Link>
-        <Link to='/solutions/tips' className='black-button' title='Clique aqui para ver nossas dicas!'>
-          <span className='service-item'>Desenvolvimento de Softwares</span>
-        </Link>
-        <Link to='/solutions/tips' className='black-button' title='Clique aqui para ver nossas dicas!'>
-          <span className='service-item'>Desenvolvimento de Plataformas</span>
-        </Link>
-        <Link to='/solutions/tips' className='black-button' title='Clique aqui para ver nossas dicas!'>
-          <span className='service-item'>Desenvolvimento de Lojas Virtuais</span>
-        </Link>
-        <Link to='/solutions/tips' className='black-button' title='Clique aqui para ver nossas dicas!'>
-          <span className='service-item'>Integrações com Redes Sociais</span>
-        </Link>
-        <Link to='/solutions/tips' className='black-button' title='Clique aqui para ver nossas dicas!'>
-          <span className='service-item'>Suporte Técnico</span>
-        </Link>
-        <Link to='/solutions/tips' className='black-button' title='Clique aqui para ver nossas dicas!'>
-          <span className='service-item'>Suporte Operacional</span>
-        </Link>
-        <Link to='/solutions/tips' className='black-button' title='Clique aqui para ver nossas dicas!'>
-          <span className='service-item'>E muito mais...</span>
-        </Link>
-      </div>
+      <Link to='/solutions/tips'>
+        <button
+          className='black-button'
+          title='Clique aqui para ver nossas dicas!'
+        >
+          <ul>
+            <li>Desenvolvimento de Websites</li>
+            <li>Desenvolvimento de Softwares</li>
+            <li>Desenvolvimento de Plataformas</li>
+            <li>Desenvolvimento de Lojas Virtuais</li>
+            <li>Integrações com Redes Sociais</li>
+            <li>Suporte Tecnico</li>
+            <li>Suporte Operacional</li>
+            <li>E muito mais...</li>
+          </ul>
+        </button>
+      </Link>
     </section>
   )
 }

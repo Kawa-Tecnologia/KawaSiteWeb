@@ -65,19 +65,19 @@ const AppSolutions = () => {
 
           <section className='section-box'>
             <div className='container-wrapper'>
-              <div className='right-container-request-dev'>
-                <RightContainer />
-              </div>
               <div className='center-container-request-dev'>
                 <RequestDevs />
               </div>
+            </div>
+          </section>
+          <ServicesSection />
+          <section className='section-box'>
+            <div className='container-wrapper'>
               <div className='left-container-request-dev'>
                 <LeftContainer />
               </div>
             </div>
           </section>
-          <ServicesSection />
-
           <Footer />
         </div>
       )}
