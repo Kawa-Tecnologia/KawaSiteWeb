@@ -19,20 +19,20 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: '#333', 
-    color: '#fff', 
+    background: '#fff', 
+    color: '#000', 
   },
   content: {
     textAlign: 'center',
-  }as React.CSSProperties,
+  } as React.CSSProperties,
   heading: {
-    color: '#0066CC',
-    fontSize: '2rem', 
-    marginBottom: '0.5rem', 
+    color: '#007bff',
+    fontSize: '2rem',
+    marginBottom: '0.5rem',
   },
   paragraph: {
     fontSize: '1rem',
-    margin: '0', 
+    margin: '0',
   },
 };
 
