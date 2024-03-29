@@ -168,7 +168,7 @@ const Plans: React.FC = () => {
                     Detalhes
                   </button>
                   <br />
-                  <button id='modal-button' onClick={goToCadastro}>
+                  <button id={`modal-button ${index}`} onClick={goToCadastro}>
                     Cadastrar
                   </button>
                 </div>

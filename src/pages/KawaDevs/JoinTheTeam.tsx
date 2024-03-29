@@ -164,13 +164,13 @@ const JoinTheTeam: React.FC = () => {
                       <p>Preço: R${plan.amount}</p>
                       <div className='button-container'>
                       <button
-                        className='modal-button'
+                        className='modal-button'  
                         onClick={() => handleButtonClick(plan.name, plan)}
                       >
                         Detalhes
                       </button>
                       <br />
-                      <button id='modal-button' onClick={goToCadastro}>
+                      <button id={`modal-button ${index}`} onClick={goToCadastro}>
                         Cadastrar
                       </button>
                       </div>

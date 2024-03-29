@@ -23,7 +23,7 @@ const AreaDevs: React.FC = () => {
               style={{ width: '50%', height: '30%' }}
             />
             <h1>Bem-vindo à Kawa Devs</h1>
-            <h3>Transformando sua carreira através de pessoas.</h3>
+            <h2>Transformando sua carreira através de pessoas.</h2>
             <p>
               Venha participar da nossa equipe, bora ver do que somos capazes
               juntos!
