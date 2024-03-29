@@ -283,7 +283,6 @@ const App: React.FC = () => {
                 <img
                   src={require('./assets/images/kawa.jpg')}
                   alt='Kawa Tecnologia'
-                  loading='lazy'
                   style={{ width: '60%', height: '40%' }}
                   />
               </div>

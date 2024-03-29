@@ -20,7 +20,7 @@
 
 .left-container>*,
 .right-container>* {
-    padding: 10px;
+    padding: 50px;
     background-color: #0e0e0e
 }
 
@@ -34,7 +34,7 @@
     .container {
         flex-direction: column;
         width: 100%;
-        padding: 10px
+        padding: 50px
     }
     
 }
