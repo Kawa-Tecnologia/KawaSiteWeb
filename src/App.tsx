@@ -320,9 +320,9 @@ const App: React.FC = () => {
                     Dev, quer aparecer na busca, cadastre seu perfil!
                   </button>
                 </p>
-                <h5 style={{ color: 'black' }}>
+                <p style={{ color: 'black' }}>
                   *Clique na imagem para mais detalhes do Desenvolvedor
-                </h5>
+                </p>
 
                 <div className='dev-cards-container'>
                   {developers?.map((dev, index) => (

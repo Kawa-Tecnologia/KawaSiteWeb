@@ -1,24 +1,24 @@
-import React from 'react'
+import React from 'react';
 
 const ContactButton: React.FC = () => {
-  const handleContactClick = () => {
-    const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER
+  const handleContactClick = () => {    
+    const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER;
     if (phoneNumber) {
-      window.open(`https://wa.me/${phoneNumber}`, '_blank')
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      const link = isMobile ? `tel:${phoneNumber}` : `https://wa.me/${phoneNumber}`;
+      window.open(link, isMobile ? '_self' : '_blank');
     }
-  }
+  };
 
   return (
-    <li className="nav-item">
-      <a
-        href={`https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}`}
-        className="nav-link"
-        onClick={handleContactClick}
-      >
-        Contato
-      </a>
-    </li>
-  )
-}
+    <a
+      className="nav-link"
+      onClick={handleContactClick}
+      style={{ cursor: 'pointer' }}
+    >
+      Contato
+    </a>
+  );
+};
 
-export default ContactButton
+export default ContactButton;

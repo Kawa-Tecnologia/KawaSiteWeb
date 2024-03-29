@@ -10,7 +10,7 @@ const HeaderPrincipal = () => {
           src={require('../assets/images/kawa1.png')}
           alt='Kawa Tecnologia'
           loading='lazy'
-          style={{ width: '50%', height: '40%' }}
+          style={{ width: '60%', height: '40%' }}
         />
       </div>
       <Navigation />
