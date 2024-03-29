@@ -111,16 +111,6 @@
     }
 }
 
-.devs-section {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around
-}
 
 .devs-section h2 {
     font-size: 2rem
