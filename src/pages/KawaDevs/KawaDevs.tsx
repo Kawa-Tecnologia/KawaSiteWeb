@@ -15,10 +15,12 @@ const AreaDevs: React.FC = () => {
 
         <div className='container-devs'>
           <div className='left' style={{ textAlign: 'center' }}>
+          <section className='banner'>
+              <div className='banner-left'>
             <img
               src={require('../../assets/images/kawa.jpg')}
               alt='Kawa Devs'
-              loading='lazy'
+              style={{ width: '50%', height: '30%' }}
             />
             <h1>Bem-vindo à Kawa Devs</h1>
             <h3>Transformando sua carreira através de pessoas.</h3>
@@ -34,6 +36,8 @@ const AreaDevs: React.FC = () => {
                 Contate-nos
               </a>
             </p>
+            </div>
+            </section>
           </div>
         </div>
 
