@@ -2,7 +2,6 @@ User-agent: *
 Disallow: /admin/
 Disallow: /devs/login/
 Disallow: /devs/dashboard/
-Disallow: /devs/dashboard/
 Disallow: /devs/training-dev
 Disallow: /devs/training
 Disallow: /devs/agenda
@@ -14,4 +13,3 @@ Disallow: /devs/message-for-forum
 Disallow: /devs/financial
 Disallow: /devs/history-services
 Disallow: /devs/profile
-Disallow: /devs/join-the-team
