@@ -54,14 +54,14 @@
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Cria 4 colunas de largura igual */
-    grid-template-rows: repeat(2, auto); /* Cria 2 linhas de altura automática */
-    gap: 5px; /* Espaçamento entre os itens */
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(2, auto); 
+    gap: 5px; 
   }
   
   .service-item {
     display: block;
-    margin-bottom: 10px; /* ou a quantidade desejada de margem entre os itens */
+    margin-bottom: 10px; 
   }
 
 @media only screen and (max-width:768px) {
@@ -73,14 +73,14 @@
     }
     .service-grid {
         display: grid;
-        grid-template-columns: repeat(1, 1fr); /* Cria 4 colunas de largura igual */
-        grid-template-rows: repeat(1, auto); /* Cria 2 linhas de altura automática */
-        gap: 5px; /* Espaçamento entre os itens */
+        grid-template-columns: repeat(1, 1fr); 
+        grid-template-rows: repeat(1, auto); 
+        gap: 5px; 
       }
       
       .service-item {
         display: block;
-        margin-bottom: 10px; /* ou a quantidade desejada de margem entre os itens */
+        margin-bottom: 10px;
       }
 }
 
