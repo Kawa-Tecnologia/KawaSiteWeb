@@ -36,36 +36,27 @@ const AboutUsDevs: React.FC = () => {
                 fazemos, desde a qualidade do conteúdo até o suporte oferecido
                 aos nossos usuários.
               </li>
-              <br />
               <li>
                 <strong>Colaboração:</strong> Acreditamos no poder da
                 colaboração e do compartilhamento de conhecimento entre os
                 membros da nossa comunidade para alcançar objetivos comuns.
               </li>
-              <br />
-
               <li>
                 <strong>Integridade:</strong> Pautamos nossas ações na
                 transparência, ética e respeito mútuo, mantendo sempre a
                 honestidade em todas as nossas interações.
               </li>
-              <br />
-
               <li>
                 <strong>Empoderamento:</strong> Queremos capacitar os
                 desenvolvedores, oferecendo-lhes as ferramentas e recursos
                 necessários para que possam crescer e alcançar seus objetivos
                 profissionais.
               </li>
-              <br />
-
               <li>
                 <strong>Inovação:</strong> Estamos constantemente buscando novas
                 formas de agregar valor aos nossos usuários, seja por meio de
                 tecnologias inovadoras ou de novas abordagens educacionais.
               </li>
-              <br />
-
               <li>
                 <strong>Comunidade:</strong> Valorizamos a diversidade e
                 inclusão, promovendo um ambiente acolhedor e colaborativo onde
