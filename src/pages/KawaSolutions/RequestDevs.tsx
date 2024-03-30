@@ -338,6 +338,7 @@ const RequestDevs = () => {
                     backgroundColor: '#00adb5',
                     border: 'none'
                   }}
+                  aria-label='Iniciar reconhecimento de fala'
                 >
                   <MicIcon style={{ fontSize: 20 }} />{' '}
                 </button>
