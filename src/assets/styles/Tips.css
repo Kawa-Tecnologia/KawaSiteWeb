@@ -1,62 +1,34 @@
 .tips,
 .tips h1 {
-    background-color: #222;
-}
-
-.card h2,
-.tips h1,
-tips h1 {
-    color: #06c
-}
-
-.tips h1 {
-    font-size: 2rem;
-}
-
-.tips {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    text-align: center;  
-    padding: 20px;
-    margin-bottom: 20px;
-    color: #fff
+    background-color: #222; 
+    color: #fff; 
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    text-align: center;  
-    background-color: #333;
-    padding: 20px;
-    margin-bottom: 20px;
+    background-color: #333; 
+    color: #fff; 
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .5)
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
 }
 
 .card h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px
+    color: #06c; 
 }
 
 .card p {
-    font-size: 1.0em;
-    line-height: 1.6
+    color: #ddd; 
 }
 
 @media only screen and (max-width:767px) {
     .tips h1 {
-        font-size: large;
+        font-size: large; 
     }
     .card h2 {
         font-size: medium;
-        margin-bottom: 10px
+        margin-bottom: 10px;
     }
     .card p {
-        font-size: small;
-        line-height: 1.6
+        font-size: small; 
+        line-height: 1.6;
     }
 }
