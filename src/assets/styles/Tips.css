@@ -1,18 +1,24 @@
 .tips,
 .tips h1 {
-    background-color: #222; 
-    color: #fff; 
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;  
 }
 
 .card {
     background-color: #333; 
-    color: #fff; 
+    color: #ADD2FF; 
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+    margin-bottom: 20px;
 }
 
 .card h2 {
-    color: #0077ff;
+    color: #ADD2FF;
 }
 
 .card p {
