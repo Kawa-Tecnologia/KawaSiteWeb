@@ -179,7 +179,11 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                     onChange={e => setPassword(e.target.value)}
                     required
                   />
-                  <button type='button' onClick={togglePasswordVisibility}>
+                  <button
+                    type='button'
+                    onClick={togglePasswordVisibility}
+                    aria-label='Mostrar/Ocultar senha'
+                  >
                     <FontAwesomeIcon
                       icon={showPassword ? faEyeSlash : faEye}
                       style={{ fontSize: '16px' }}
@@ -215,10 +219,18 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             {loginForm ? (
               <div className='button-container'>
                 <p>
-                  <button type='button' onClick={showRecoveryForm}>
+                  <button
+                    type='button'
+                    onClick={showRecoveryForm}
+                    aria-label='Esqueci minha senha'
+                  >
                     Esqueci minha senha
                   </button>
-                  <button id='modal-pay-button' onClick={goToCadastro}>
+                  <button
+                    id='modal-pay-button'
+                    onClick={goToCadastro}
+                    aria-label='Cadastrar'
+                  >
                     Cadastrar
                   </button>
                 </p>
