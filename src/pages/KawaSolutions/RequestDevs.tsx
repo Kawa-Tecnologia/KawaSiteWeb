@@ -328,7 +328,6 @@ const RequestDevs = () => {
               <label htmlFor='description'>
                 Descrição da Solicitação:
                 <button
-                  name='speech'
                   type='button'
                   onClick={handleButtonClickSpeech}
                   style={{
@@ -520,7 +519,6 @@ const RequestDevs = () => {
               <label htmlFor='description'>
                 Descrição da Solicitação:
                 <button
-                  name='speech'
                   type='button'
                   onClick={handleButtonClickSpeech}
                   style={{
@@ -531,6 +529,8 @@ const RequestDevs = () => {
                     backgroundColor: '#00adb5',
                     border: 'none'
                   }}
+                  aria-label='Iniciar reconhecimento de fala'
+
                 >
                   <MicIcon style={{ fontSize: 20 }} />{' '}
                 </button>
