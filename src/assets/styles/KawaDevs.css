@@ -65,7 +65,7 @@
     height: auto;
 }
 
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:960px) {
     .plano-container {
         flex-direction: column;
         align-items: center;
@@ -74,7 +74,10 @@
 
     .container-devs {
         flex-direction: column;
-        width: 100%
+        width: 100%;
+        height: 80vh;
+        align-items: center;
+        justify-content: center;
     }
    
     .container-devs h1 {
@@ -98,5 +101,10 @@
     .left,
     .right {
         order: 3
+    }
+
+    .container-devs img {
+        width: 40%;
+        height: auto;
     }
 }

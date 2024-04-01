@@ -3,12 +3,6 @@ nav ul li a {
     color: #fff
 }
 
-.header {
-    position: fixed;
-    z-index: 3;
-    width: 100%;
-}
-
 .nav-link:hover,
 nav ul li:hover {
     transform: translateY(-3px)
@@ -120,14 +114,14 @@ section {
     opacity: .9
 }
 
-.devs-link{
-    color: #ffffff; 
-    text-decoration: underline; 
+.devs-link {
+    color: #ffffff;
+    text-decoration: underline;
 }
 
-.devs-link:hover{
+.devs-link:hover {
     color: #ffffff;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .logo-container {
@@ -139,52 +133,10 @@ section {
 .right {
     flex: 1;
     border: 0 solid #000;
-    margin-right: 10px
 }
 
 .middle {
     margin: 0 10px
-}
-
-@media only screen and (max-width:767px) {
-
-    section.banner {
-        padding: 0px 20px;
-        text-align: center
-    }
-
-    header {
-        flex-direction: column;
-        padding: 10px;
-        position: relative;
-    }
-
-    .logo-container {
-        margin-bottom: 20px
-    }
-
-    .logo-container img {
-        max-width: 50px
-    }
-
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center
-    }
-
-    nav ul li {
-        margin: 10px 0
-    }
-
-    .middle {
-        order: 2
-    }
-
-    .left .right {
-        order: 3
-    }
 }
 
 .star-container {
@@ -371,16 +323,37 @@ footer {
     margin-top: 20px;
     color: #000;
 }
-@media only screen and (max-width:767px) {
+
+.icon {
+    font-size: 15px;
+    margin-right: 10px;
+    color: #06c
+}
+
+@media only screen and (min-width: 961px) {
+
+    .header {
+        position: fixed;
+        z-index: 3;
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (max-width: 960px) {
+
     .devs-content h2 {
         font-size: larger;
         margin-top: 20px;
         color: #000;
     }
+
     .devs-content p {
         font-size: small;
     }
+
     header {
+        position: relative;
         flex-direction: column;
         padding: 10px
     }
@@ -402,13 +375,16 @@ footer {
     .navigation a {
         margin: 10px 0
     }
+
     .icon {
         margin: 10px;
     }
-}
 
-.icon {
-    font-size: 15px;
-    margin-right: 10px;
-    color: #06c
+    .left, .right {
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        justify-content: center;
+    }
+
 }

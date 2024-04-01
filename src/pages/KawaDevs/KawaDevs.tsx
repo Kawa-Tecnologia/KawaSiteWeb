@@ -20,7 +20,7 @@ const AreaDevs: React.FC = () => {
                 <img
                   src={require('../../assets/images/kawa.png')}
                   alt='Kawa Devs'
-                  style={{ width: '20%', height: '20%' }}
+                  
                 />
                 <div className='mainDevText'>
                   <h1>Bem-vindo à Kawa Devs</h1>
