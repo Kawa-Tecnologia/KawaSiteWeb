@@ -104,7 +104,7 @@ const Plans: React.FC = () => {
   }, [])
 
   return (
-    <div>
+    <div className='planos'>
       <section id='planos'>
         <h2>Pacotes</h2>
         <p>* Pontos nunca expiram.</p>

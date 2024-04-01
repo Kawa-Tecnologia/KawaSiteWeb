@@ -21,7 +21,7 @@
 .container-search input[type=text] {
     margin-bottom: 10px;
     border: 1px solid #000;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #0e0e0e;
     font-size: 1rem
 }
@@ -36,7 +36,7 @@
 .search-input {
     margin-bottom: 10px;
     border: 2px solid #4fb99f;
-    border-radius: 30px;
+    border-radius: 10px;
     color: #0e0e0e;
     font-size: 1rem
 }

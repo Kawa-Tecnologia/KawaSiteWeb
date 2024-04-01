@@ -78,8 +78,8 @@ nav ul li {
 }
 
 .cta-button {
-    background-color: #06c;
-    color: #f0f0f0;
+    background-color: var(--blue);
+    color: var(--softBlue)0f0;
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
@@ -90,7 +90,7 @@ nav ul li {
 }
 
 .cta-button:hover {
-    background-color: #06c;
+    background-color: var(--softBlue);
     color: #fff;
     cursor: pointer
 }
@@ -211,13 +211,13 @@ section {
     min-height: 100vh
 }
 
-.dark-theme .pagination,
+/* .dark-theme .pagination,
 .nav-link,
 .navigation a,
 footer,
 section {
     color: #fff
-}
+} */
 
 .white-theme .pagination,
 body {
@@ -247,7 +247,7 @@ body {
 }
 
 .nav-link:hover {
-    color: #f0f
+    color: var(--softBlue)
 }
 
 * {
@@ -278,7 +278,7 @@ body {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: var(--softBlue)0f0;
     line-height: 1.6
 }
 
@@ -323,7 +323,7 @@ header {
     background-color: #06c;
     color: #fff;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 9999
 }
 
@@ -354,12 +354,12 @@ section {
     flex-direction: column;
     align-items: center;
     padding: 50px;
-    background-color: #000
+    background-color: var(--darkGray);
 }
 
 section h2 {
     font-size: 2rem;
-    color: #06c
+    color: var(--blue);
 }
 
 footer {

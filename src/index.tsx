@@ -4,6 +4,7 @@ import RoutesApp from './Routes'
 import './style.css'
 import { ThemeProvider } from './components/ThemeProvider'
 import Modal from 'react-modal';
+import "./global.css"
 
 const rootElement: HTMLElement | null = document.getElementById('root')
 Modal.setAppElement('#root');

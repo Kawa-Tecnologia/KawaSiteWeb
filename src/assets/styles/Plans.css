@@ -4,11 +4,12 @@
     padding: 20px
 }
 
+.planos {
+    background-color: var(--darkGray);
+}
+
 .plano-container {
-    display: flex;
-    justify-content: space-around;
-    background: linear-gradient(135deg, #001f4d, #06c);
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1)
+    padding: 4rem;
 }
 
 .plano {
@@ -38,7 +39,7 @@
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color .3s
 }

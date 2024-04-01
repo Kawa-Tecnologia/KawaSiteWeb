@@ -1,6 +1,7 @@
 :root {
-    --softBlue: rgb(43, 152, 255);
-    --blue: rgb(0, 132, 255);
-    --navyBlue: rgb(0, 110, 212);
+    --softBlue: #0084ff;
+    --blue: #005db4;
+    --navyBlue: #00488a;
     --black: #000000;
+    --darkGray: #1b1b1b;
 }

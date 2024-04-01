@@ -11,18 +11,27 @@
     z-index: 2; 
 }
 
+.banner-inline {
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
 .banner {
     padding: 50px 20px;
     background-size: cover;
     background-position: center;
     background-color: transparent;
-    color: #06c;
     font-family: Arial, sans-serif
 }
 
 .banner h1 {
     font-size: 3rem;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    color: var(--black);
 }
 
 .banner h3 {
@@ -40,14 +49,14 @@
 .banner .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #06c;
+    background-color: var(--blue);
     color: #f0f0f0;
     text-decoration: none;
-    border-radius: 5px
+    border-radius: 10px
 }
 
 .banner .cta-button:hover {
-    background-color: #45a29e
+    background-color: var(--softBlue);
 }
 
 .banner-content {

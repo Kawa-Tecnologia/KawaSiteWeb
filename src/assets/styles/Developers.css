@@ -41,7 +41,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #06c, #0e0e0e);
+    background: linear-gradient(45deg, var(--blue), #0e0e0e);
     opacity: .7;
     z-index: -1;
     transition: opacity .3s

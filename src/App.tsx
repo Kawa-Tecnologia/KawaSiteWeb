@@ -279,6 +279,7 @@ const App: React.FC = () => {
   return (
     <div>
       <HeaderPrincipal />
+      <img src={require("./assets/images/grayWaves.jpg")} className='backgroundImage'/>
       <div className='container-home'>
         <div className='left'>
           <section className='banner'>
