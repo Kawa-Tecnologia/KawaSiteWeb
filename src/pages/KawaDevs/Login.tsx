@@ -83,8 +83,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       setLoading(false)
       navigate('/devs/dashboard')
     } catch (error) {
-      console.log(error)
-
       if (axios.isAxiosError(error)) {
         const errorMessage =
           error.response?.data.message ||
@@ -94,7 +92,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         if (loginAttempts >= 2) {
           setTimeout(() => setLoginAttempts(0), 3600000)
         }
-
         setLoading(false)
         setError(errorMessage)
       }
