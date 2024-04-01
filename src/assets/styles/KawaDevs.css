@@ -22,14 +22,24 @@
     }
 }
 
+.backgroundMain {
+    position: absolute;
+    height: 95vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
 .container-devs {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif') #f0f0f0;
     color: #5274be;
-    padding: '20px'
+    padding: '20px';
+    height: 100vh;
+    z-index: 1;
 }
+
 .container-devs h1 {
     font-size: 2rem;
 }
@@ -47,7 +57,7 @@
 .container-devs img,
 .container-devs p {
     margin: 0px 0;
-    color: #5274be
+    color: var(--black)
 }
 
 .container-devs img {

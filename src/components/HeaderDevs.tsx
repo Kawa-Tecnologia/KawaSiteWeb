@@ -13,6 +13,7 @@ const HeaderDevs = () => {
           style={{ width: '60%', height: '40%' }}
 
         />
+        KAWA
       </div>
       <NavigationDev />
     </header>

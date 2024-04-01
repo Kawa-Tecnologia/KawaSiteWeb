@@ -12,7 +12,7 @@ const AreaDevs: React.FC = () => {
     >
       <div>
         <HeaderDevs />
-
+        <img src={require("../../assets/images/grayWaves.jpg")} className='backgroundMain'/>
         <div className='container-devs'>
           <div className='left' style={{ textAlign: 'center' }}>
           <section className='banner'>

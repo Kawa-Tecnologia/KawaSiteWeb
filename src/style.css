@@ -3,6 +3,12 @@ nav ul li a {
     color: #fff
 }
 
+.header {
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+}
+
 .nav-link:hover,
 nav ul li:hover {
     transform: translateY(-3px)
@@ -141,6 +147,7 @@ section {
 }
 
 @media only screen and (max-width:767px) {
+
     section.banner {
         padding: 0px 20px;
         text-align: center
@@ -148,7 +155,8 @@ section {
 
     header {
         flex-direction: column;
-        padding: 10px
+        padding: 10px;
+        position: relative;
     }
 
     .logo-container {
@@ -300,7 +308,7 @@ header {
 .logo {
     width: 100px;
     height: auto;
-    margin-right: 20px
+    margin-right: 10px
 }
 
 .devs-section h2 {
