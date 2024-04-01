@@ -45,7 +45,6 @@ const ResetPasswordPage = () => {
         setError('Erro ao redefinir a senha');
       }
     } catch (error) {
-      console.log(error);
       setError('Erro ao se conectar ao servidor');
     }
   };

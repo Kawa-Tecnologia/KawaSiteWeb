@@ -139,7 +139,6 @@ const RequestDevs = () => {
       setError(
         'Verifique se todas as informações foram preenchidas corretamente'
       )
-      console.log(error)
     }
   }
 
