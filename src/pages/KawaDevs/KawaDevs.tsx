@@ -43,8 +43,6 @@ const AreaDevs: React.FC = () => {
           </div>
         </div>
 
-        <Plans />
-
         <section id='sobre-nos'>
           <h2>Sobre Nós</h2>
           <p>
@@ -66,9 +64,13 @@ const AreaDevs: React.FC = () => {
           <h2>Nossos Parceiros</h2>
           <p>Entre em contato conosco para tornar-se um parceiro.</p>
         </section>
+
+        <Plans />
+        
         <footer>
           <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
         </footer>
+      
       </div>
     </Layout>
   )

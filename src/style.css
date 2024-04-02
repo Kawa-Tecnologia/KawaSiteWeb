@@ -96,7 +96,12 @@ section {
 }
 
 #sobre-nos {
-    background-color: #0e0e0e
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: var(--offWhite);
+    background-color: var(--darkGray);
 }
 
 #devs {
@@ -315,8 +320,13 @@ section h2 {
 }
 
 footer {
-    background-color: rgba(0, 0, 0, .7);
-    padding: 20px
+    padding: 2rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    color: var(--offWhite);
+    justify-content: center;
+    background-color: var(--black);
 }
 
 .devs-content h2 {
