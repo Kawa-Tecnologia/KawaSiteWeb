@@ -62,6 +62,7 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       discounted_percentage: 0
     }
   ])
+  const [openingCheckout, setOpeningCheckout] = useState(false)
 
   const fetchRecommendation = async () => {
     const stringRecommendation = localStorage.getItem('recommendation')
@@ -121,6 +122,7 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     points: string,
     amount: number
   ) => {
+    setOpeningCheckout(true)
     const token = localStorage.getItem('token')
     const userId = localStorage.getItem('userId')
     if (userId) {
@@ -141,11 +143,14 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         if (recommendation) {
           const url = `/checkout/${preferenceId}`
           window.open(url, '_blank')
+          setOpeningCheckout(false)
+
           return
         }
       }
       const url = `/checkout/${preferenceIdWithoutDiscounted}`
       window.open(url, '_blank')
+      setOpeningCheckout(false)
     }
   }
 
@@ -206,6 +211,7 @@ const FuturisticModal: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           </div>
         ))}
       </div>
+      {openingCheckout && 'Aguarde, abrindo checkout...'}
       <button onClick={closeModal} className='close-button'>
         Fechar
       </button>
