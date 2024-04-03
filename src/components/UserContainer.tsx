@@ -26,6 +26,7 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [user, setUser] = useState<UserData | null>(null)
   const [rating, setRating] = useState<number>(0)
+  const [socketInitialize, setSocketInitialize] = useState<boolean>(false)
 
   const navigate = useNavigate()
   const userName = localStorage.getItem('userName') || ''
@@ -54,16 +55,20 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   }, [])
 
   useEffect(() => {
-    const socket = io(`${process.env.REACT_APP_API_URL}`)
-    socket.on('pointsUpdated', ({userId, pointsTotal}) => {
-      if (userId === user?.id) {
-        setPoints(pointsTotal.toString())
-        console.log('Pontos Atualizados')
-      }
-    })
-  }, [])
+    if (socketInitialize) {
+      const socket = io(`${process.env.REACT_APP_API_URL}`)
+      socket.on('pointsUpdated', ({ userId, pointsTotal }) => {
+        if (userId === user?.id) {
+          setPoints(pointsTotal.toString())
+          console.log('Pontos Atualizados')
+        }
+      })
+    }
+  }, [points])
+
   const handleAcquirePoints = () => {
     setModalIsOpen(true)
+    setSocketInitialize(true)
   }
 
   const handleProfile = () => {
