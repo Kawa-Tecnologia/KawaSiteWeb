@@ -376,7 +376,6 @@ const RegisterDev: React.FC = () => {
                 name='cep'
                 value={formData.cep}
                 onChange={handleInputChange}
-                required
                 style={{ width: '300px' }}
               />
             </div>
@@ -442,7 +441,6 @@ const RegisterDev: React.FC = () => {
                 name='profile_linkedin'
                 value={formData.ProfessionalInfo?.profile_linkedin}
                 onChange={handleInputChange}
-                required
                 style={{ width: '300px' }}
               />
             </div>
@@ -454,7 +452,6 @@ const RegisterDev: React.FC = () => {
                 name='profile_github'
                 value={formData.ProfessionalInfo?.profile_github || ''}
                 onChange={handleInputChange}
-                required
                 style={{ width: '300px' }}
               />
             </div>
@@ -466,7 +463,6 @@ const RegisterDev: React.FC = () => {
                 name='cv_link'
                 value={formData.ProfessionalInfo?.cv_link}
                 onChange={handleInputChange}
-                required
                 style={{ width: '300px' }}
               />
             </div>
@@ -526,7 +522,6 @@ const RegisterDev: React.FC = () => {
                 name='url'
                 value={formData.ProfessionalInfo.url}
                 onChange={handleInputChange}
-                required
                 style={{ width: '300px' }}
               />
             </div>
@@ -607,6 +602,7 @@ const RegisterDev: React.FC = () => {
               <button type='submit'>
                 Adquirir Plano Mensal por apenas R$19,99/mes
               </button>
+              * Teste por 7 dias gratis
             </div>
           </form>
         )}
@@ -672,7 +668,6 @@ const RegisterDev: React.FC = () => {
                 name='cep'
                 value={formData.cep}
                 onChange={handleInputChange}
-                required
               />
             </div>
             <div>
@@ -720,7 +715,6 @@ const RegisterDev: React.FC = () => {
                 name='profile_linkedin'
                 value={formData.ProfessionalInfo?.profile_linkedin}
                 onChange={handleInputChange}
-                required
               />
             </div>
             <div>
@@ -731,7 +725,6 @@ const RegisterDev: React.FC = () => {
                 name='profile_github'
                 value={formData.ProfessionalInfo?.profile_github || ''}
                 onChange={handleInputChange}
-                required
               />
             </div>
             <div>
@@ -742,7 +735,6 @@ const RegisterDev: React.FC = () => {
                 name='cv_link'
                 value={formData.ProfessionalInfo?.cv_link}
                 onChange={handleInputChange}
-                required
               />
             </div>
             <div>
@@ -799,7 +791,6 @@ const RegisterDev: React.FC = () => {
                 name='url'
                 value={formData.ProfessionalInfo.url}
                 onChange={handleInputChange}
-                required
               />
             </div>
             <div>
@@ -872,6 +863,7 @@ const RegisterDev: React.FC = () => {
               <button type='submit'>
                 Adquirir Plano Mensal por apenas R$19,99/mes
               </button>
+              * Teste por 7 dias gratis
             </div>
           </form>
         )}
