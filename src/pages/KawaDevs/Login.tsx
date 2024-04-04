@@ -163,6 +163,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   name='username'
                   value={username}
                   onChange={e => setUsername(e.target.value)}
+                  placeholder='user@email.com'
                   required
                 />
                 <br />
