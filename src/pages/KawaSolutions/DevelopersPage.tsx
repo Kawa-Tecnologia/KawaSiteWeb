@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Header from './Header'
 import ServicesSection from './Services'
-
+import "../../assets/styles/DevelopersSearch.css"
 interface ProfessionalData {
   presentation: string
   skills: string[]
@@ -93,7 +93,7 @@ function DevelopersPage () {
   }
 
   return (
-    <div className='App'>
+    <div className='developers-search'>
     <Header />
     <ServicesSection />
       <h1>Desenvolvedores da Plataforma</h1>
