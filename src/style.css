@@ -116,7 +116,6 @@ section {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: .9
 }
 
 .devs-link {
@@ -316,7 +315,7 @@ section {
 
 section h2 {
     font-size: 2rem;
-    color: var(--blue);
+    color: var(--softBlue);
 }
 
 footer {

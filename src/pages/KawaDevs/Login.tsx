@@ -180,6 +180,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                     type='button'
                     onClick={togglePasswordVisibility}
                     aria-label='Mostrar/Ocultar senha'
+                    className='eye'
+                    style={{width: '33%'}}
                   >
                     <FontAwesomeIcon
                       icon={showPassword ? faEyeSlash : faEye}
