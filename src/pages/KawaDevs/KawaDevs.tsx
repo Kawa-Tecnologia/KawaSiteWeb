@@ -12,36 +12,36 @@ const AreaDevs: React.FC = () => {
     >
       <div>
         <HeaderDevs />
-
+        <img src={require("../../assets/images/grayWaves.jpg")} className='backgroundMain' />
         <div className='container-devs'>
           <div className='left' style={{ textAlign: 'center' }}>
-          <section className='banner'>
-              <div className='banner-left'>
-            <img
-              src={require('../../assets/images/kawa.png')}
-              alt='Kawa Devs'
-              style={{ width: '60%', height: '40%' }}
-            />
-            <h1>Bem-vindo à Kawa Devs</h1>
-            <h2>Transformando sua carreira através de pessoas.</h2>
-            <p>
-              Venha participar da nossa equipe, bora ver do que somos capazes
-              juntos!
-            </p>
-            <p>
-              <a
-                href={`mailto:${process.env.REACT_APP_MAIL}`}
-                className='cta-button'
-              >
-                Contate-nos
-              </a>
-            </p>
-            </div>
+            <section className='banner'>
+              <div className='banner-inline'>
+                <img
+                  src={require('../../assets/images/kawa.png')}
+                  alt='Kawa Devs'
+                  
+                />
+                <div className='mainDevText'>
+                  <h1>Bem-vindo à Kawa Devs</h1>
+                  <h2>Transformando sua carreira através de pessoas.</h2>
+                  <p>
+                    Venha participar da nossa equipe, bora ver do que somos capazes
+                    juntos!
+                  </p>
+                  <p>
+                    <a
+                      href={`mailto:${process.env.REACT_APP_MAIL}`}
+                      className='cta-button'
+                    >
+                      Contate-nos
+                    </a>
+                  </p>
+                </div>
+              </div>
             </section>
           </div>
         </div>
-
-        <Plans />
 
         <section id='sobre-nos'>
           <h2>Sobre Nós</h2>
@@ -64,9 +64,13 @@ const AreaDevs: React.FC = () => {
           <h2>Nossos Parceiros</h2>
           <p>Entre em contato conosco para tornar-se um parceiro.</p>
         </section>
+
+        <Plans />
+        
         <footer>
           <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
         </footer>
+      
       </div>
     </Layout>
   )

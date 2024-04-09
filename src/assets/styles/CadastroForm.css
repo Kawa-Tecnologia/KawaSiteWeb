@@ -52,7 +52,7 @@ input[type=email]::placeholder,
 input[type=password]::placeholder,
 input[type=tel]::placeholder,
 input[type=text]::placeholder {
-    color: #555
+    color: #fff
 }
 
 input[type=checkbox]:focus,
@@ -68,11 +68,11 @@ button {
     width: 100%;
     padding: 12px 10px;
     border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #00adb5, #2ec4b6);
+    border-radius: 10px;
+    background: var(--softBlue);
     color: #fff;
     font-weight: 700;
-    transition: transform .3s, box-shadow .3s, background .3s;
+    /* transition: transform .3s, box-shadow .3s,  .3s; */
     outline: 0;
     position: relative;
     overflow: hidden
@@ -87,7 +87,7 @@ button::before {
     height: 300%;
     background-color: rgba(255, 255, 255, .1);
     transition: width .3s, height .3s;
-    border-radius: 50%;
+    border-radius: 10px;
     z-index: 0;
     transform: translate(-50%, -50%)
 }
@@ -165,8 +165,7 @@ label {
         width: 100%;
         padding: 5px;
         border: none;
-        border-radius: 20px;
-        background: linear-gradient(45deg, #00adb5, #2ec4b6);
+        border-radius: 10px;
         color: #fff;
         font-size: smaller;
         font-weight: 700;
@@ -184,7 +183,7 @@ label {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #000
 }
 

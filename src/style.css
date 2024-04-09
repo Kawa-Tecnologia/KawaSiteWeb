@@ -72,8 +72,8 @@ nav ul li {
 }
 
 .cta-button {
-    background-color: #06c;
-    color: #f0f0f0;
+    background-color: var(--blue);
+    color: var(--softBlue)0f0;
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
@@ -84,7 +84,7 @@ nav ul li {
 }
 
 .cta-button:hover {
-    background-color: #06c;
+    background-color: var(--softBlue);
     color: #fff;
     cursor: pointer
 }
@@ -96,7 +96,12 @@ section {
 }
 
 #sobre-nos {
-    background-color: #0e0e0e
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: var(--offWhite);
+    background-color: var(--darkGray);
 }
 
 #devs {
@@ -114,14 +119,14 @@ section {
     opacity: .9
 }
 
-.devs-link{
-    color: #ffffff; 
-    text-decoration: underline; 
+.devs-link {
+    color: #ffffff;
+    text-decoration: underline;
 }
 
-.devs-link:hover{
+.devs-link:hover {
     color: #ffffff;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .logo-container {
@@ -133,50 +138,10 @@ section {
 .right {
     flex: 1;
     border: 0 solid #000;
-    margin-right: 10px
 }
 
 .middle {
     margin: 0 10px
-}
-
-@media only screen and (max-width:767px) {
-    section.banner {
-        padding: 0px 20px;
-        text-align: center
-    }
-
-    header {
-        flex-direction: column;
-        padding: 10px
-    }
-
-    .logo-container {
-        margin-bottom: 20px
-    }
-
-    .logo-container img {
-        max-width: 50px
-    }
-
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center
-    }
-
-    nav ul li {
-        margin: 10px 0
-    }
-
-    .middle {
-        order: 2
-    }
-
-    .left .right {
-        order: 3
-    }
 }
 
 .star-container {
@@ -203,13 +168,13 @@ section {
     min-height: 100vh
 }
 
-.dark-theme .pagination,
+/* .dark-theme .pagination,
 .nav-link,
 .navigation a,
 footer,
 section {
     color: #fff
-}
+} */
 
 .white-theme .pagination,
 body {
@@ -239,7 +204,7 @@ body {
 }
 
 .nav-link:hover {
-    color: #f0f
+    color: var(--softBlue)
 }
 
 * {
@@ -270,7 +235,7 @@ body {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: var(--softBlue)0f0;
     line-height: 1.6
 }
 
@@ -300,7 +265,7 @@ header {
 .logo {
     width: 100px;
     height: auto;
-    margin-right: 20px
+    margin-right: 10px
 }
 
 .devs-section h2 {
@@ -315,7 +280,7 @@ header {
     background-color: #06c;
     color: #fff;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 9999
 }
 
@@ -346,33 +311,59 @@ section {
     flex-direction: column;
     align-items: center;
     padding: 50px;
-    background-color: #000
+    background-color: var(--darkGray);
 }
 
 section h2 {
     font-size: 2rem;
-    color: #06c
+    color: var(--blue);
 }
 
 footer {
-    background-color: rgba(0, 0, 0, .7);
-    padding: 20px
+    padding: 2rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    color: var(--offWhite);
+    justify-content: center;
+    background-color: var(--black);
 }
 
 .devs-content h2 {
     margin-top: 20px;
     color: #000;
 }
-@media only screen and (max-width:767px) {
+
+.icon {
+    font-size: 15px;
+    margin-right: 10px;
+    color: #06c
+}
+
+@media only screen and (min-width: 961px) {
+
+    .header {
+        position: fixed;
+        z-index: 3;
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (max-width: 960px) {
+
     .devs-content h2 {
         font-size: larger;
         margin-top: 20px;
         color: #000;
     }
+
     .devs-content p {
         font-size: small;
     }
+
     header {
+        position: relative;
         flex-direction: column;
         padding: 10px
     }
@@ -394,13 +385,16 @@ footer {
     .navigation a {
         margin: 10px 0
     }
+
     .icon {
         margin: 10px;
     }
-}
 
-.icon {
-    font-size: 15px;
-    margin-right: 10px;
-    color: #06c
+    .left, .right {
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        justify-content: center;
+    }
+
 }

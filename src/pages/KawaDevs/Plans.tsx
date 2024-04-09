@@ -104,10 +104,9 @@ const Plans: React.FC = () => {
   }, [])
 
   return (
-    <div>
+    <div className='planos'>
       <section id='planos'>
         <h2>Pacotes</h2>
-        <p>* Pontos nunca expiram.</p>
         <div className='plano-container'>
           {/* <div className='plano plataforma'>
             <h3>Pacotes de Plataforma</h3>
@@ -144,14 +143,14 @@ const Plans: React.FC = () => {
           </div> */}
           <div className='plano plataforma'>
             <h3>Pacotes de Serviço</h3>
-            * Cadastre-se com o Tipo Serviço e adquira pontos para prestar
-            serviços e conquistar clientes.
+            Cadastre-se com o Tipo Serviço e adquira pontos para prestar
+            serviços e conquistar clientes. *
             <br />
-            * Caso tenha prestado serviços em outras plataformas, poderá
-            exportar as avaliações.
+            Caso tenha prestado serviços em outras plataformas, poderá
+            exportar as avaliações. *
             <br />
-            * Com apenas poucos serviços, você ja recupera o valor investido e
-            consegue um ótimo lucro.
+            Com apenas poucos serviços, você ja recupera o valor investido e
+            consegue um ótimo lucro. *
             <br />
             <div className='plano-group'>
               {plansService.map((plan, index) => (
@@ -174,7 +173,8 @@ const Plans: React.FC = () => {
                 </div>
                 </div>
               ))}
-            </div>
+            </div><br/>
+            <small>* Pontos nunca expiram.</small>
           </div>
         </div>
       </section>

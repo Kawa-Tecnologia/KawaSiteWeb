@@ -279,6 +279,7 @@ const App: React.FC = () => {
   return (
     <div>
       <HeaderPrincipal />
+      <img src={require("./assets/images/grayWaves.jpg")} className='backgroundImage'/>
       <div className='container-home'>
         <div className='left'>
           <section className='banner'>
@@ -286,7 +287,6 @@ const App: React.FC = () => {
               <img
                 src={require('./assets/images/kawa.png')}
                 alt='Kawa Tecnologia'
-                style={{ width: '60%', height: '40%' }}
               />
             </div>
             <div className='banner-center'>
