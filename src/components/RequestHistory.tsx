@@ -241,7 +241,7 @@ const RequestHistory: React.FC = () => {
         {userPoints === 0 && (
           <div>
             <strong>Descrição:</strong>{' '}
-            {requestDevs.description.substring(0, 20)}
+            {requestDevs.description.substring(0, 30)}
             ...
           </div>
         )}
@@ -353,7 +353,7 @@ const RequestHistory: React.FC = () => {
               {userPoints === 0 && (
                 <div>
                   <strong>Descrição:</strong>{' '}
-                  {training.description.substring(0, 20)}
+                  {training.description.substring(0, 30)}
                   ...
                 </div>
               )}

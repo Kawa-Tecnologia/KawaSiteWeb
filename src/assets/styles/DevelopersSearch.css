@@ -1,0 +1,11 @@
+.developers-search {
+    overflow: hidden;
+}
+
+.developers-search h1 {
+    font-size: large;
+}
+
+.developers-search label {
+    font-size: medium;
+}
