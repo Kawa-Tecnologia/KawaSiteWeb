@@ -5,7 +5,7 @@
     background: var(--darkGray);
 }
 
-.section-box,
+.aboutUs-section-box,
 main {
     padding: 20px
 }
@@ -19,7 +19,7 @@ ul {
     padding: 0
 }
 
-.section-box {
+.aboutUs-section-box {
     border-radius: 10px;
     margin-bottom: 20px;
     display: flex;
@@ -27,19 +27,17 @@ ul {
     background-color: var(--gray);
 }
 
-.section-box p,
-.section-box ul li {
-    /* border: 2px solid #454545; */
+.aboutUs-section-box p,
+.aboutUs-section-box ul li {
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
     width: 90%;
     color: var(--offWhite);
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
 }
 
 @media screen and (max-width:1000px) {
-    .section-box {
+    .aboutUs-section-box {
         overflow: hidden
     }
 }

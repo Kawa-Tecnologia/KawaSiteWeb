@@ -5,7 +5,7 @@ import '../assets/styles/PointsModal.css'
 import '../assets/styles/UserContainer.css'
 import FuturisticModal from './FuturistModal'
 import { Star } from '@material-ui/icons'
-//import { io } from 'socket.io-client'
+
 interface UserData {
   id: number
   name: string
@@ -31,9 +31,9 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   const userName = localStorage.getItem('userName') || ''
   const devTag = localStorage.getItem('tagName') || ''
   const points
-      //setPoints]
-     = 
-     //useState<string>(
+    //setPoints]
+    =
+    //useState<string>(
     localStorage.getItem('userPoints') || '0'
   //)
   useEffect(() => {
@@ -77,10 +77,9 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   }
 
   return (
-    <div className='user-container'>
-      <h3>{userName}</h3>
-      <button onClick={handleProfile}>Perfil do Usuario</button>
-
+    <div className='user-container' style={{ margin: '2rem' }}>
+      <h3>{userName}</h3><br/>
+      <button onClick={handleProfile}>Perfil do Usuario</button><br/><br/>
       <p>
         Avaliação:{' '}
         {[...Array(5)].map((_, index) => (
@@ -94,8 +93,11 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
       <p>
         Pontos: <span id='user-points'>{points}</span>
       </p>
-      <button onClick={handleAcquirePoints}>Adquirir Pontos</button>
-      <button onClick={handleLogout}>Logout</button>
+      <br/>
+      <div className='buttons-dev-training'>
+        <button onClick={handleAcquirePoints}>Adquirir Pontos</button>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
 
       {user && [5, 6, 7, 8, null].includes(user.plan_id) ? (
         <FuturisticModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
@@ -110,19 +112,19 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
           <div className='pontos-options-container'>
             <div className='pontos-option'>
               <p>1000 Pontos por R$10,00</p>
-              <button onClick={() => {}}>Comprar</button>
+              <button onClick={() => { }}>Comprar</button>
             </div>
             <div className='pontos-option'>
               <p>2000 Pontos por R$20,00</p>
-              <button onClick={() => {}}>Comprar</button>
+              <button onClick={() => { }}>Comprar</button>
             </div>
             <div className='pontos-option'>
               <p>5000 Pontos por R$50,00</p>
-              <button onClick={() => {}}>Comprar</button>
+              <button onClick={() => { }}>Comprar</button>
             </div>
             <div className='pontos-option'>
               <p>10000 Pontos por R$98,00</p>
-              <button onClick={() => {}}>Comprar</button>
+              <button onClick={() => { }}>Comprar</button>
             </div>
           </div>
           <button onClick={closeModal}>Fechar</button>

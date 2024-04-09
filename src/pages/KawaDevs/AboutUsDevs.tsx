@@ -9,7 +9,7 @@ const AboutUsDevs: React.FC = () => {
       <div className='sobre-nos'>
         <header></header>
         <main>
-          <section className='section-box'>
+          <section className='aboutUs-section-box'>
             <h2>Missão</h2>
             <p>
               Auxiliar desenvolvedores a construirem uma carreira solida e
@@ -18,7 +18,7 @@ const AboutUsDevs: React.FC = () => {
               profissionais.
             </p>
           </section>
-          <section className='section-box'>
+          <section className='aboutUs-section-box'>
             <h2>Visão</h2>
             <p>
               Ser reconhecido como um ponto de referência para desenvolvedores
@@ -28,7 +28,7 @@ const AboutUsDevs: React.FC = () => {
               próximo nível.
             </p>
           </section>
-          <section className='section-box'>
+          <section className='aboutUs-section-box'>
             <h2>Valores</h2>
             <ul>
               <li>
