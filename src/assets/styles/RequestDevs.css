@@ -1,3 +1,11 @@
+.section-box {
+    border-radius: 0px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+}
+
 .container-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -8,7 +16,6 @@
 .left-container-client,
 .right-container-client {
     flex: 1;
-    padding: 20px;
     color: #0e0e0e;
 }
 
@@ -17,19 +24,25 @@
     font-size: 20px;
 }
 
+.left-container-client ul,
+.right-container-client ul {
+    width: 100%;
+}
+
 .left-container-client ul li,
 .right-container-client ul li {
     flex: 1;
     padding: 20px;
-    background-color: transparent;
+    background-color: white;
     color: #0e0e0e;
+    width: 100%;
 }
 
 .left-container-request-dev,
 .right-container-request-dev {
     flex: 1;
     padding: 20px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 8px;
     background-color: transparent;
     width: 25%;
@@ -39,7 +52,7 @@
 .center-container-request-dev {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 8px;
     background-color: transparent;
     width: 50%;
