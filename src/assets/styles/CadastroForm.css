@@ -154,28 +154,6 @@ label {
     font-size: 16px
 }
 
-@media only screen and (max-width:1000px) {
-
-    .password-input button:focus,
-    button {
-        outline: 0
-    }
-
-    button {
-        width: 100%;
-        padding: 5px;
-        border: none;
-        border-radius: 10px;
-        color: #fff;
-        font-size: smaller;
-        font-weight: 700;
-        cursor: pointer;
-        transition: transform .3s, box-shadow .3s, background .3s;
-        position: relative;
-        overflow: hidden
-    }
-}
-
 .password-input input[type=password],
 .password-input input[type=text] {
     display: flex;
@@ -196,4 +174,31 @@ label {
     border: none;
     left: 80%;
     width: 80%
+}
+
+@media only screen and (max-width:1000px) {
+
+    .password-input button:focus,
+    button {
+        outline: 0
+    }
+
+    button {
+        width: 100%;
+        padding: 5px;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: smaller;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform .3s, box-shadow .3s, background .3s;
+        position: relative;
+        overflow: hidden
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 }
