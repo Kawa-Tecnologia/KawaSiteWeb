@@ -8,7 +8,11 @@ const Footer = () => {
 
   return (
     <div>
-      <button className='back-to-top-button' onClick={scrollToTop}>
+      <button
+        className='back-to-top-button'
+        aria-label='Voltar ao Topo'
+        onClick={scrollToTop}
+      >
         <FaArrowUp />
       </button>
       <footer>
