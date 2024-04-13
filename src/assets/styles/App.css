@@ -50,12 +50,14 @@ nav ul li a {
 .banner-center h4 {
     font-size: 14px;
 }
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:800px) {
     .container-home {
         padding: 20px;
         flex-direction: column;
         overflow-x: hidden;
         background-image: url("../images/grayWaves_mobile.jpg");
+        max-width: 800px;
+        max-height: 400px;
     }
     .banner-center h1 {
         font-size: larger;
