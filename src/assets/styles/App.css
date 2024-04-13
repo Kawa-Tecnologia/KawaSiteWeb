@@ -31,8 +31,9 @@ nav ul li a {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     display: flex;
-    background-image: url("../images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif");
+    background-image: url("../images/grayWaves.jpg");
     background-color: transparent;
+    background-size: cover;
     max-width: 100%;
     padding: 20px;
 }

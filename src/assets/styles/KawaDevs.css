@@ -26,8 +26,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../images/modern-white-blue-abstract-technology-background-design-vector-illustration_29865-4715.avif') #f0f0f0;
+    background: url('../images/grayWaves.jpg') #f0f0f0;
     color: #5274be;
+    background-size: cover;
     padding: '20px'
 }
 .container-devs h1 {

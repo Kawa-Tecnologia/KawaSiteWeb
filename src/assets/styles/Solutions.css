@@ -1,1 +1,66 @@
-.button,.footer a{color:#fff;text-decoration:none}.header h1{margin:0;font-size:36px}.destaque{background-color:#4caf50;color:#fff;padding:50px 20px;text-align:center}.destaque h2,.servicos h2{font-size:24px}.destaque p,.servicos p{font-size:18px}.button{display:inline-block;background-color:#ff5722;padding:10px 20px;font-size:16px;border-radius:5px;margin-top:20px}.button:hover{background-color:#e64a19}.container-request{display:flex;justify-content:center;align-items:center;height:100vh}.servicos{background-color:#03a9f4;color:#fff;padding:50px 20px;text-align:center}.footer p{margin:0}.footer a{border-bottom:1px dashed #fff}.footer a:hover{border-bottom:1px solid #fff}
+.button,
+.footer a {
+    color: #fff;
+    text-decoration: none
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 36px
+}
+
+.destaque {
+    background-color: #06c;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center
+}
+
+.destaque h2,
+.servicos h2 {
+    font-size: 24px
+}
+
+.destaque p,
+.servicos p {
+    font-size: 18px
+}
+
+.button {
+    display: inline-block;
+    background-color: #ff5722;
+    padding: 10px 20px;
+    font-size: medium;
+    border-radius: 5px;
+    margin-top: 20px
+}
+
+.button:hover {
+    background-color: #e64a19
+}
+
+.container-request {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+}
+
+.servicos {
+    background-color: #03a9f4;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center
+}
+
+.footer p {
+    margin: 0
+}
+
+.footer a {
+    border-bottom: 1px dashed #fff
+}
+
+.footer a:hover {
+    border-bottom: 1px solid #fff
+}

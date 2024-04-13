@@ -51,19 +51,19 @@
 }
 
 .search-button {
-    background-color: #4fb99f;
+    background-color: #06c;
     color: #fff;
     padding: 15px 30px;
     border: none;
     border-radius: 30px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 70;
     cursor: pointer;
     transition: background-color .3s
 }
 
 .search-button:hover {
-    background-color: #3e8b7d
+    background-color: #06c
 }
 
 .dev-cards-container {

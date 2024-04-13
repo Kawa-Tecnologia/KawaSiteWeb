@@ -19,7 +19,7 @@ ul {
 }
 
 .section-box {
-    border: 1px solid #ccc;
+    border: 1px solid transparent;
     border-radius: 5px;
     margin-bottom: 20px;
     display: flex;
@@ -30,7 +30,7 @@ ul {
 
 .section-box p,
 .section-box ul li {
-    border: 1px solid #ccc;
+    border: 1px solid transparent;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;

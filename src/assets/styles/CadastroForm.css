@@ -69,9 +69,10 @@ button {
     padding: 12px 10px;
     border: none;
     border-radius: 30px;
-    background: linear-gradient(45deg, #00adb5, #2ec4b6);
+    background: linear-gradient(45deg, #06c, #0056b3);
     color: #fff;
-    font-weight: 700;
+    font-size: medium;
+    font-weight: 70;
     transition: transform .3s, box-shadow .3s, background .3s;
     outline: 0;
     position: relative;
@@ -166,10 +167,10 @@ label {
         padding: 5px;
         border: none;
         border-radius: 20px;
-        background: linear-gradient(45deg, #00adb5, #2ec4b6);
+        background: linear-gradient(45deg, #06c, #0056b3);
         color: #fff;
         font-size: smaller;
-        font-weight: 700;
+        font-weight: 70;
         cursor: pointer;
         transition: transform .3s, box-shadow .3s, background .3s;
         position: relative;
