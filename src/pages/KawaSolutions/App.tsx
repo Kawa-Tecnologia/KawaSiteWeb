@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import ServicesSection from './Services'
-import Footer from './Footer'
+import Footer from '../../components/Footer'
 import RequestDevs from './RequestDevs'
 import '../../assets/styles/AppSolutions.css'
 import LeftContainer from './LeftContainer'

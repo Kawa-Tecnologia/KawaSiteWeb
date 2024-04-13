@@ -13,6 +13,7 @@ import {
   faWhatsapp
 } from '@fortawesome/free-brands-svg-icons'
 import { faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import Footer from './components/Footer'
 
 interface Dev {
   fullname: string
@@ -388,9 +389,7 @@ const App: React.FC = () => {
         <p>Entre em contato conosco para tornar-se um parceiro.</p>
       </section>
 
-      <footer>
-        <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
-      </footer>
+      <Footer/>
       {error && <ErrorNotification message={error} severity='error' />}
     </div>
   )

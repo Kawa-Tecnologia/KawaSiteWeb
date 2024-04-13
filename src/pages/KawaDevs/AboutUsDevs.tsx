@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../assets/styles/AboutUs.css'
 import HeaderDevs from '../../components/HeaderDevs'
+import Footer from '../../components/Footer'
 
 const AboutUsDevs: React.FC = () => {
   return (
@@ -65,9 +66,7 @@ const AboutUsDevs: React.FC = () => {
             </ul>
           </section>
         </main>
-        <footer>
-          <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
-        </footer>
+        <Footer/>
       </div>
     </div>
   )

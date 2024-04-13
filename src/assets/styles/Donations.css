@@ -1,1 +1,50 @@
-.bank-details-section,.content-container,.donations-cards-section,.image-section,.intro-section{margin-bottom:20px}.donations-container{padding:20px}.content-container{background-color:#fff;padding:20px;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.1);color:#000}.intro-section h1{color:#06c}.bank-details-section p,.intro-section p{color:#666}.bank-details-section ul{margin-top:10px}.image-custom{width:100%;height:20vh;object-fit:cover}.donations-cards-section .row{margin-left:-10px;margin-right:-10px;background-color:#000;color:#fff}.donations-cards-section .col{padding-left:10px;padding-right:10px}
+.bank-details-section,
+.content-container,
+.donations-cards-section,
+.image-section,
+.intro-section {
+    margin-bottom: 20px
+}
+
+.donations-container {
+    padding: 20px
+}
+
+.content-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    color: #000
+}
+
+.intro-section h1 {
+    color: #06c
+}
+
+.bank-details-section p,
+.intro-section p {
+    color: #666
+}
+
+.bank-details-section ul {
+    margin-top: 10px
+}
+
+.image-custom {
+    width: 100%;
+    height: 20vh;
+    object-fit: cover
+}
+
+.donations-cards-section .row {
+    margin-left: -10px;
+    margin-right: -10px;
+    background-color: #000;
+    color: #fff
+}
+
+.donations-cards-section .col {
+    padding-left: 10px;
+    padding-right: 10px
+}

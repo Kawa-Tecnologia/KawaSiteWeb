@@ -4,6 +4,7 @@ import RightContainer from './RightContainer'
 import LeftContainer from './LeftContainer'
 import '../../assets/styles/RequestDevs.css'
 import HeaderPrincipal from '../../components/HeaderPrincipal'
+import Footer from '../../components/Footer'
 
 const RequestDevsPage: React.FC = () => {
   return (
@@ -26,9 +27,7 @@ const RequestDevsPage: React.FC = () => {
           </section>
 
 
-        <footer>
-          <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
-        </footer>
+        <Footer/>
       </div>
     </div>
   )

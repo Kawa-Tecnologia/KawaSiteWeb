@@ -3,6 +3,7 @@ import '../../assets/styles/KawaDevs.css'
 import Plans from './Plans'
 import HeaderDevs from '../../components/HeaderDevs'
 import Layout from '../../components/Layout'
+import Footer from '../../components/Footer'
 
 const AreaDevs: React.FC = () => {
   return (
@@ -64,9 +65,7 @@ const AreaDevs: React.FC = () => {
           <h2>Nossos Parceiros</h2>
           <p>Entre em contato conosco para tornar-se um parceiro.</p>
         </section>
-        <footer>
-          <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
-        </footer>
+        <Footer/>
       </div>
     </Layout>
   )

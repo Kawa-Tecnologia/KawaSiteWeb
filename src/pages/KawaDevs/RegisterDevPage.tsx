@@ -5,6 +5,7 @@ import RegisterDev from './RegisterDev'
 import RightContainerDevsOpen from '../../components/RightContainerDevsOpen'
 import LeftContainerDevsOpen from '../../components/LeftContainerDevsOpen'
 import HeaderDevs from '../../components/HeaderDevs'
+import Footer from '../../components/Footer'
 
 
 
@@ -31,9 +32,7 @@ const RegisterDevPage: React.FC = () => {
           </section>
 
 
-        <footer>
-          <p>&copy; 2024 Kawa Tecnologia. Todos os direitos reservados.</p>
-        </footer>
+        <Footer/>
       </div>
     </div>
   )
