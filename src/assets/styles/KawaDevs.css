@@ -65,7 +65,9 @@
 
     .container-devs {
         flex-direction: column;
-        width: 100%
+        width: 100%;
+        background-image: url("../images/grayWaves_mobile.jpg");
+
     }
    
     .container-devs h1 {

@@ -55,6 +55,7 @@ nav ul li a {
         padding: 20px;
         flex-direction: column;
         overflow-x: hidden;
+        background-image: url("../images/grayWaves_mobile.jpg");
     }
     .banner-center h1 {
         font-size: larger;
