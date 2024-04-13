@@ -25,3 +25,28 @@
     color: #06c;
     font-size: 24px;
 }
+
+.section-box-solutions {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #0e0e0e;
+    opacity: .9
+}
+
+.section-box-solutions p,
+.section-box-solutions ul li {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #f0f0f0
+}
+
+@media screen and (max-width:1000px) {
+    .section-box-solutions {
+        overflow: hidden
+    }
+}

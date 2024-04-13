@@ -36,7 +36,7 @@ const AppSolutions = () => {
             </button>
           </p>
 
-          <section className='section-box'>
+          <section className='section-box-solutions'>
             <div className='container-wrapper'>
               <div className='right-container-request-dev'>
                 <RightContainer />

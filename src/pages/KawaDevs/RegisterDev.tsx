@@ -91,7 +91,7 @@ const RegisterDev: React.FC = () => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
         modalRef.current &&
-        !modalRef.current.contains(event.target as Node) 
+        !modalRef.current.contains(event.target as Node)
       ) {
         closeModal()
       }
@@ -170,16 +170,20 @@ const RegisterDev: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/plans?type=open`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/plans?type=open`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_TOKEN_DEV}`
+            }
           }
+        )
+        if (data.plans) {
+          setPlanSubscriptions(data.plans)
         }
-      )
-      if (data.plans) {
-        setPlanSubscriptions(data.plans)
+      } catch (error) {
+        setError('Não encontrado o plano')
       }
     }
     fetchData()
@@ -859,7 +863,7 @@ const RegisterDev: React.FC = () => {
                 Detalhes
               </button>
             </div>
-            <div>              
+            <div>
               <button type='submit'>
                 Adquirir Plano Mensal por apenas R$19,99/mes
               </button>

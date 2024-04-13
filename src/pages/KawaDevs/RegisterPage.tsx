@@ -22,8 +22,8 @@ const RegisterPage: React.FC = () => {
   return (
     <div>
       <HeaderDevs/>
-      <div className='sobre-nos'>
-          <section className='section-box'>
+      <div className='register'>
+          <section className='section-box-register'>
             <div className='container-wrapper'>
               <div className='right-container-request-dev'>
                 <RightContainerDevs />
