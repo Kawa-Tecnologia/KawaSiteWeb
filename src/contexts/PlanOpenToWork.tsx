@@ -1,6 +1,6 @@
 const PlanOpenToWork = () => {
   return `
-    <div style="font-family: Arial, sans-serif; color: #fff; background-color: #2c3e50; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+    <div style="font-family: 'Roboto', sans-serif; color: #fff; background-color: #2c3e50; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
     <h3> Plano Open to Work</h3>
   
     <style="font-size: 18px;">Com o Plano Open to Work, você terá direito a:</style>

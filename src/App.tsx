@@ -152,17 +152,13 @@ const DevCard: React.FC<Dev> = ({
             </span>         
             <h2>Detalhes do Desenvolvedor</h2>
             <p>
-              <strong>Nome:</strong> {fullname}
+              {fullname}
             </p>
             <p>
-              <strong>Cargo:</strong> {ProfessionalInfo.job_title}
+              {ProfessionalInfo.job_title}
             </p>
             <p>
-              <strong>Nivel:</strong> {ProfessionalInfo.Tag.tag}
-            </p>
-            <p>
-              <strong>Experiência:</strong> {ProfessionalInfo.experience_years}{' '}
-              anos
+              {ProfessionalInfo.Tag.tag}
             </p>
             {ProfessionalInfo.cv_link ? (
               <p>
@@ -184,7 +180,7 @@ const DevCard: React.FC<Dev> = ({
               <strong>Ferramentas:</strong> {ProfessionalInfo.tools.join(', ')}
             </p>
             <p>
-              <strong>Apresentação:</strong> {ProfessionalInfo.presentation}
+             {ProfessionalInfo.presentation}
             </p>
             {ProfessionalInfo.url ? (
               <p>

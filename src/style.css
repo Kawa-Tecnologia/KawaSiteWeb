@@ -1,6 +1,7 @@
 .header,
 nav ul li a {
-    color: #fff
+    color: #fff;
+    font-family:'Roboto', sans-serif;
 }
 
 .nav-link:hover,
@@ -12,7 +13,8 @@ nav ul li:hover {
 body,
 nav ul {
     margin: 0;
-    padding: 0
+    padding: 0;
+    font-family:'Roboto', sans-serif;
 }
 
 #devs,
@@ -268,7 +270,7 @@ body {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
     line-height: 1.6
 }
@@ -299,7 +301,7 @@ header {
 .logo {
     width: 100px;
     height: auto;
-    margin-right: 20px
+    margin-right: 1px;
 }
 
 .devs-section h2 {
@@ -381,7 +383,8 @@ footer {
     }
 
     .logo {
-        max-width: 80px
+        max-width: 80px;
+        max-height: 25px;
     }
 
     .navigation {

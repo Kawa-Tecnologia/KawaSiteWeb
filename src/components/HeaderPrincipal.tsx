@@ -12,6 +12,7 @@ const HeaderPrincipal = () => {
           loading='lazy'
           style={{ width: '60%', height: '40%' }}
         />
+        KAWA
       </div>
       <Navigation />
     </header>

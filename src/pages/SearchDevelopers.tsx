@@ -65,8 +65,8 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
         title='Clique aqui para mais detalhes do desenvolvedor!'
         loading="lazy" 
       />
-      <h3>Nome: {fullname}</h3>
-      <p>Cargo: {ProfessionalInfo.job_title}</p>
+      <h3>{fullname}</h3>
+      <p>{ProfessionalInfo.job_title}</p>
       {ProfessionalInfo.profile_linkedin ? (
         <p>
           <a
@@ -101,13 +101,13 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
             </span>
             <h2>Detalhes do Desenvolvedor</h2>
             <p>
-              <strong>Nome:</strong> {fullname}
+              {fullname}
             </p>
             <p>
-              <strong>Cargo:</strong> {ProfessionalInfo.job_title}
+              {ProfessionalInfo.job_title}
             </p>
             <p>
-              <strong>Nivel:</strong>{' '}
+              
               {nivelTexts[ProfessionalInfo.tag_id] || 'Nível não especificado'}
             </p>
             {ProfessionalInfo.cv_link ? (
@@ -130,7 +130,7 @@ const DevCard: React.FC<Dev> = ({ ProfessionalInfo, fullname }) => {
               <strong>Ferramentas:</strong> {ProfessionalInfo.tools.join(', ')}
             </p>
             <p>
-              <strong>Apresentação:</strong> {ProfessionalInfo.presentation}
+              {ProfessionalInfo.presentation}
             </p>
             {ProfessionalInfo.url ? (
               <p>
