@@ -26,16 +26,6 @@ const Navigation: React.FC = () => {
           </a>
         </li>
         <li className='nav-item'>
-          <a href='/request-devs' className='nav-link'>
-            Solicite um Serviço
-          </a>
-        </li>
-        <li className='nav-item'>
-          <a href='/devs' className='nav-link'>
-            Area Devs
-          </a>
-        </li>
-        <li className='nav-item'>
           <a href='/about-us' className='nav-link'>
             Sobre Nós
           </a>

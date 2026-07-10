@@ -7,7 +7,7 @@ const Footer = () => {
   }
 
   return (
-    <div>
+    <div className='site-footer'>
       <button
         className='back-to-top-button'
         aria-label='Voltar ao Topo'

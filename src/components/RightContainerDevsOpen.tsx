@@ -39,7 +39,7 @@ function RightContainerDevsOpen () {
               nome: 'Dev 1',
               avaliacao: 4,
               content:
-                'Consegui meu primeiro emprego, graças a Kawa Devs'
+                'Consegui meu primeiro emprego, graças à Kawa Tecnologia'
             },
             {
               id: 2,

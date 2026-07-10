@@ -3,72 +3,74 @@ import '../assets/styles/AboutUs.css'
 import HeaderPrincipal from '../components/HeaderPrincipal'
 import Footer from '../components/Footer'
 
+const pillars = [
+  {
+    title: 'Missão',
+    text:
+      'Ajudar pessoas e empresas a transformar ideias em soluções digitais com ética, clareza e impacto real.'
+  },
+  {
+    title: 'Visão',
+    text:
+      'Ser referência em tecnologia aplicada ao crescimento profissional e empresarial, criando experiências que geram resultado.'
+  },
+  {
+    title: 'Valores',
+    text:
+      'Excelência, colaboração, integridade, inovação e comunidade orientam cada projeto e cada relacionamento.'
+  }
+]
+
+const values = [
+  'Excelência em execução e atendimento',
+  'Colaboração como forma de construir melhor',
+  'Integridade em cada decisão e comunicação',
+  'Empoderamento para crescer com autonomia',
+  'Inovação como combustível para evoluir',
+  'Comunidade como base de conexão e respeito'
+]
+
 const AboutUs: React.FC = () => {
   return (
     <div>
-      <HeaderPrincipal/>
+      <HeaderPrincipal />
       <div className='sobre-nos'>
-        <header></header>
-        <main>
-          <section className='section-box'>
-            <h2>Missão</h2>
+        <section className='about-hero'>
+          <div className='about-hero-content'>
+            <p className='about-eyebrow'>Quem somos</p>
+            <h1>Construímos soluções digitais com propósito, estratégia e visão de futuro.</h1>
             <p>
-              Auxiliar pessoas criativas a utilizarem a tecnologia de maneira
-              etica e eficiente, proporcionando experiências, agilidade em
-              projetos e apoio para alcançarem seus objetivos profissionais.
+              A Kawa é uma empresa que une tecnologia, criatividade e entendimento de negócio para transformar desafios em oportunidades.
             </p>
-          </section>
-          <section className='section-box'>
-            <h2>Visão</h2>
+          </div>
+          <div className='about-hero-card'>
+            <h3>Por que a Kawa existe?</h3>
             <p>
-              Ser reconhecido como um ponto de referência para qualquer pessoa
-              que queira desenvolver seu negocio em busca de crescimento
-              profissional, oferecendo serviços e produtos de qualidade
-              exemplar, experiências e oportunidades, impulsionando seu negocio
-              para o próximo nível.
+              Para tornar a tecnologia acessível, inteligente e útil para quem quer crescer com mais autonomia e presença digital.
             </p>
-          </section>
-          <section className='section-box'>
-            <h2>Valores</h2>
+          </div>
+        </section>
+
+        <main className='about-main'>
+          <div className='about-grid'>
+            {pillars.map(item => (
+              <section className='section-box' key={item.title}>
+                <h2>{item.title}</h2>
+                <p>{item.text}</p>
+              </section>
+            ))}
+          </div>
+
+          <section className='section-box section-box-wide'>
+            <h2>Valores que guiam a nossa forma de trabalhar</h2>
             <ul>
-              <li>
-                <strong>Excelência:</strong> Buscamos a excelência em tudo o que
-                fazemos, desde a qualidade do conteúdo até o suporte oferecido
-                aos nossos clientes.
-              </li>
-              <li>
-                <strong>Colaboração:</strong> Acreditamos no poder da
-                colaboração e do compartilhamento de conhecimento entre os
-                membros da nossa comunidade para alcançar objetivos comuns.
-              </li>
-
-              <li>
-                <strong>Integridade:</strong> Pautamos nossas ações na
-                transparência, ética e respeito mútuo, mantendo sempre a
-                honestidade em todas as nossas interações.
-              </li>
-
-              <li>
-                <strong>Empoderamento:</strong> Queremos capacitar as pessoas,
-                oferecendo-lhes as ferramentas e recursos necessários para que
-                possam crescer e alcançar seus objetivos profissionais.
-              </li>
-
-              <li>
-                <strong>Inovação:</strong> Estamos constantemente buscando novas
-                formas de agregar valor aos nossos clientes, seja por meio de
-                tecnologias inovadoras ou de novas abordagens educacionais.
-              </li>
-
-              <li>
-                <strong>Comunidade:</strong> Valorizamos a diversidade e
-                inclusão, promovendo um ambiente acolhedor e colaborativo onde
-                todos se sintam bem-vindos e respeitados.
-              </li>
+              {values.map(value => (
+                <li key={value}>{value}</li>
+              ))}
             </ul>
           </section>
         </main>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   )

@@ -1,74 +1,89 @@
-import React from 'react';
-import '../assets/styles/Tips.css'; 
-import HeaderPrincipal from '../components/HeaderPrincipal';
+import React from 'react'
+import '../assets/styles/Tips.css'
+import HeaderPrincipal from '../components/HeaderPrincipal'
+
+const tipGroups = [
+  {
+    title: 'Sites institucionais e landing pages',
+    description:
+      'Estruture a mensagem certa desde o primeiro contato e defina metas claras para o projeto.',
+    bullets: ['Objetivo do site', 'Público-alvo', 'Estrutura de navegação', 'CTA claro']
+  },
+  {
+    title: 'Lojas virtuais',
+    description:
+      'Organize produtos, pagamentos e entrega para oferecer uma experiência de compra segura e fluida.',
+    bullets: ['Catálogo bem organizado', 'Pagamentos confiáveis', 'Entrega e pós-venda', 'Marketing digital']
+  },
+  {
+    title: 'Sistemas e automações',
+    description:
+      'Antes de desenvolver, identifique os processos que precisam de escala, rastreio e eficiência.',
+    bullets: ['Necessidades reais', 'Integrações', 'Usabilidade', 'Suporte contínuo']
+  }
+]
 
 function TipsPage() {
   return (
-    <div className="App">
-      <HeaderPrincipal/>
-      <div className='tips'>
-        <h1>Antes de solicitar o serviço, saiba disso:</h1>
-        <div className='card'>
-          <h2>Planejamento de Website</h2>
-          <p>
-            <strong>- Defina o Propósito do Site:</strong> Antes de começar a construir, determine claramente o objetivo do seu site. Ele será um blog, um portfólio, um site institucional, uma loja virtual, ou algo mais?
-            <br /><br />
-            <strong>- Identifique seu Público-Alvo:</strong> Conheça o seu público-alvo e suas necessidades. Isso ajudará a criar conteúdo e funcionalidades relevantes para eles.
-            <br /><br />
-            <strong>- Escolha a Plataforma Certa:</strong> Decida qual plataforma atenderá melhor às suas necessidades. Opções populares incluem WordPress, Wix, Shopify (para lojas virtuais) e Squarespace.
-            <br /><br />
-            <strong>- Design Responsivo:</strong> Certifique-se de que o design do seu site seja responsivo, ou seja, que seja adaptável a diferentes dispositivos (desktops, tablets, smartphones).
-            <br /><br />
-            <strong>- SEO Amigável:</strong> Integre técnicas de SEO desde o início para garantir que seu site seja facilmente encontrado nos motores de busca.
-            <br /><br />
-            <strong>- Facilidade de Navegação:</strong> Planeje uma estrutura de navegação intuitiva para que os visitantes encontrem facilmente o que estão procurando.
-            <br /><br />
-            <strong>- Chamada para Ação (CTA):</strong> Inclua chamadas para ação claras em seu site para incentivar os visitantes a realizar ações específicas, como fazer uma compra, entrar em contato ou se inscrever em uma newsletter.
-          </p>
-        </div>
-        <div className='card'>
-          <h2>Planejamento de Loja Virtual</h2>
-          <p>
-            <strong>- Identifique seu Nicho de Mercado:</strong> Escolha um nicho específico para sua loja virtual e pesquise a concorrência para identificar oportunidades únicas.
-            <br /><br />
-            <strong>- Escolha a Plataforma de E-Commerce:</strong> Existem várias plataformas de e-commerce disponíveis, como Shopify, WooCommerce (para WordPress) e Magento. Escolha aquela que melhor atenda às suas necessidades e orçamento.
-            <br /><br />
-            <strong>- Organize seu Catálogo de Produtos:</strong> Categorize seus produtos de forma lógica e intuitiva para facilitar a navegação dos clientes.
-            <br /><br />
-            <strong>- Configure Métodos de Pagamento e Entrega:</strong> Ofereça várias opções de pagamento e configure métodos de entrega eficientes para garantir uma boa experiência de compra.
-            <br /><br />
-            <strong>- Invista em Fotografia de Produtos:</strong> Fotos de alta qualidade são essenciais para destacar seus produtos e atrair clientes.
-            <br /><br />
-            <strong>- Atendimento ao Cliente:</strong> Planeje como será o atendimento ao cliente, seja por meio de chat online, e-mail ou telefone, e garanta que seja eficiente e responsivo.
-            <br /><br />
-            <strong>- Promoção e Marketing:</strong> Desenvolva estratégias de marketing digital para promover sua loja virtual e atrair tráfego qualificado.
-          </p>
-        </div>
-        <div className='card'>
-          <h2>Planejamento de Software</h2>
-          <p>
-            <strong>- Identifique suas Necessidades:</strong> Liste as necessidades específicas da sua empresa que podem ser atendidas por software, como gestão de estoque, finanças, CRM (Customer Relationship Management) etc.
-            <br /><br />
-            <strong>- Pesquise Soluções Disponíveis:</strong> Pesquise as opções disponíveis no mercado e compare suas características, custos e avaliações de usuários.
-            <br /><br />
-            <strong>- Analise o Custo-Benefício:</strong> Considere não apenas o custo inicial do software, mas também os custos de implementação, treinamento e manutenção a longo prazo.
-            <br /><br />
-            <strong>- Teste a Usabilidade:</strong> Antes de tomar uma decisão final, teste a usabilidade do software para garantir que seja intuitivo e fácil de usar para os funcionários da sua empresa.
-            <br /><br />
-            <strong>- Integração com Sistemas Existentes:</strong> Verifique se o software pode ser integrado com os sistemas existentes da sua empresa para garantir uma transição suave e eficiente.
-            <br /><br />
-            <strong>- Suporte e Atualizações:</strong> Certifique-se de que o fornecedor ofereça suporte técnico confiável e atualizações regulares do software para manter a segurança e a funcionalidade.
-          </p>
-        </div>
-        <div className='card'>
-          <h2>Planejamento de Robô para Tarefas Rotineiras</h2>
-          <p>
-            Veja como utilizar robôs para automatizar tarefas repetitivas e melhorar a eficiência do seu negócio.
-          </p>
-        </div>
+    <div className='App'>
+      <HeaderPrincipal />
+      <div className='tips-page'>
+        <section className='tips-hero'>
+          <div className='tips-hero-content'>
+            <p className='tips-eyebrow'>Guia de decisão</p>
+            <h1>Antes de começar, transforme dúvida em estratégia.</h1>
+            <p>
+              A Kawa ajuda empresas a definir o caminho certo para websites, lojas e sistemas com mais clareza, velocidade e resultado.
+            </p>
+            <div className='tips-actions'>
+              <a href='/request-devs' className='tips-primary'>Solicitar projeto</a>
+              <a href='/about-us' className='tips-secondary'>Conhecer a Kawa</a>
+            </div>
+          </div>
+
+          <div className='tips-hero-card'>
+            <h3>Checklist rápido</h3>
+            <ul>
+              <li>Defina o objetivo do projeto</li>
+              <li>Liste os públicos e necessidades</li>
+              <li>Escolha a solução certa para escalar</li>
+              <li>Prepare uma comunicação clara</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className='tips-section'>
+          <div className='tips-section-header'>
+            <p className='tips-eyebrow'>O que merece atenção</p>
+            <h2>Os pilares que fazem um projeto crescer com mais segurança</h2>
+          </div>
+
+          <div className='tips-grid'>
+            {tipGroups.map(item => (
+              <article className='tips-card' key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <ul>
+                  {item.bullets.map(bullet => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className='tips-section tips-section-alt'>
+          <div className='tips-highlight'>
+            <h3>Mais do que entregar tecnologia, construímos clareza para a decisão certa.</h3>
+            <p>
+              Com uma abordagem estratégica, a Kawa conecta planejamento, experiência e execução para transformar ideias em presença digital forte.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
-  );
+  )
 }
 
-export default TipsPage;
+export default TipsPage

@@ -14,13 +14,13 @@ const AppSolutions = () => {
   const navigate = useNavigate()
 
   const handleCadastroClick = () => {
-    navigate('/devs/register')
+    navigate('/request-devs')
   }
   const isMobile = useMediaQuery({ maxWidth: 768 })
 
   return (
     <Layout
-      pageTitle='Kawa Devs'
+      pageTitle='Kawa Tecnologia'
       pageDescription='Plataforma para solicitação de criação de lojas virtuais, sites institucionais, desenvolvimento de software e treinamentos para desenvolvedores.'
     >
       {!isMobile ? (

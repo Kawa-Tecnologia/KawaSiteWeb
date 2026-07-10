@@ -226,8 +226,30 @@ const RequestDevs = () => {
 
   return (
     <div className='container-request'>
-      <section id='services'>
-        <h1>Solicite um serviço</h1>
+      <section id='services' className='services-request-shell'>
+        <div className='services-request-hero'>
+          <div>
+            <span className='services-request-badge'>Atendimento especializado</span>
+            <h1>Solicite um serviço</h1>
+            <p>
+              Conte o que você precisa e conecte-se com especialistas da Kawa Tecnologia de forma rápida e segura.
+            </p>
+          </div>
+          <div className='services-request-highlights'>
+            <div>
+              <strong>7 dias</strong>
+              <span>suporte gratuito</span>
+            </div>
+            <div>
+              <strong>Rápido</strong>
+              <span>resposta prática</span>
+            </div>
+            <div>
+              <strong>Seguro</strong>
+              <span>processo transparente</span>
+            </div>
+          </div>
+        </div>
 
         {isMobile && formStep === 1 && (
           <form
@@ -284,350 +306,209 @@ const RequestDevs = () => {
           </form>
         )}
         {isMobile && formStep === 2 && (
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
-              alignItems: 'center'
-            }}
-          >
-            <div>
-              <label htmlFor='type'>
-                Tipo de Serviço:
-                <Tooltip title='Selecione o tipo de serviço que vai solicitar.'>
-                  <span
-                    onClick={handleTooltipClick(
-                      'Selecione o tipo de serviço que vai solicitar.'
-                    )}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    (?)
-                  </span>
-                </Tooltip>{' '}
-              </label>
-              <select
-                id='type'
-                name='type'
-                value={formData.type}
-                onChange={handleChange}
-                required
-                style={{ width: '300px' }}
-              >
-                <option value='training'>Treinamento</option>
-                <option value='implementation'>Implementação</option>
-                <option value='course'>Curso</option>
-                <option value='technical_support'>Suporte Técnico</option>
-                <option value='operational_support'>Suporte Operacional</option>
-                <option value='maintenance'>Manutenção</option>
-                <option value='other'>Outro</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor='description'>
-                Descrição da Solicitação:
-                <button
-                  type='button'
-                  onClick={handleButtonClickSpeech}
-                  style={{
-                    width: 20,
-                    height: 20,
-                    borderRadius: '30%',
-                    padding: 0,
-                    backgroundColor: '#00adb5',
-                    border: 'none'
-                  }}
-                  aria-label='Iniciar reconhecimento de fala'
-                >
-                  <MicIcon style={{ fontSize: 20 }} />{' '}
-                </button>
-              </label>
-              <textarea
-                id='description'
-                name='description'
-                value={formData.description}
-                onChange={handleChange}
-                required
-                rows={5}
-                style={{ width: '300px' }}
-              />
-            </div>{' '}
-            <div>
-              <label htmlFor='value'>
-                Valor Disponivel:
-                <Tooltip title='Valor aproximado que está disposto a pagar pelo serviço'>
-                  <span
-                    onClick={handleTooltipClick(
-                      'Valor aproximado que está disposto a pagar pelo serviço'
-                    )}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    (?)
-                  </span>
-                </Tooltip>{' '}
-              </label>
-              <select
-                id='value'
-                name='value'
-                value={formData.value}
-                onChange={handleChange}
-                required
-                style={{ width: '300px' }}
-              >
-                <option value='0'>Selecione um valor</option>
-                <option value='50'>Até R$ 50,00</option>
-                <option value='100'>Até R$ 100,00</option>
-                <option value='150'>Até R$ 150,00</option>
-                <option value='200'>Até R$ 200,00</option>
-                <option value='0.0'>Não Definido</option>
-              </select>
-              <input
-                type='number'
-                id='value-customized'
-                name='value'
-                value={formData.value}
-                onChange={handleChange}
-                placeholder='ou informe um valor personalizado'
-                required
-                style={{ width: '300px' }}
-              />
-            </div>
-            <div>
-              <label htmlFor='term'>Prazo em dias:</label>
-              <input
-                type='number'
-                id='term'
-                name='term'
-                value={formData.term}
-                onChange={handleChange}
-                required
-                style={{ width: '300px' }}
-              />
-            </div>
-            <div>
-              <label htmlFor='local'>Local:</label>
-              <select
-                id='local'
-                name='local'
-                value={formData.local}
-                onChange={handleChange}
-                required
-                style={{ width: '300px' }}
-              >
-                <option value='online'>Remoto/Online</option>
-                <option value='in person'>Presencial</option>
-              </select>
-            </div>
-            {renderCepField()}
-            <div>
-              <label>
+          <form onSubmit={handleSubmit} className='services-request-form services-request-form--stacked'>
+            <div className='services-request-grid'>
+              <div className='services-request-field'>
+                <label htmlFor='type'>
+                  Tipo de serviço
+                  <Tooltip title='Selecione o tipo de serviço que você deseja solicitar.'>
+                    <span
+                      onClick={handleTooltipClick('Selecione o tipo de serviço que você deseja solicitar.')}
+                      className='services-request-help'
+                    >
+                      ?
+                    </span>
+                  </Tooltip>
+                </label>
+                <select id='type' name='type' value={formData.type} onChange={handleChange} required>
+                  <option value='training'>Treinamento</option>
+                  <option value='implementation'>Implementação</option>
+                  <option value='course'>Curso</option>
+                  <option value='technical_support'>Suporte Técnico</option>
+                  <option value='operational_support'>Suporte Operacional</option>
+                  <option value='maintenance'>Manutenção</option>
+                  <option value='other'>Outro</option>
+                </select>
+              </div>
+
+              <div className='services-request-field'>
+                <label htmlFor='value'>
+                  Valor disponível
+                  <Tooltip title='Valor aproximado que você está disposto a pagar pelo serviço.'>
+                    <span
+                      onClick={handleTooltipClick('Valor aproximado que você está disposto a pagar pelo serviço.')}
+                      className='services-request-help'
+                    >
+                      ?
+                    </span>
+                  </Tooltip>
+                </label>
+                <select id='value' name='value' value={formData.value} onChange={handleChange} required>
+                  <option value='0'>Selecione um valor</option>
+                  <option value='50'>Até R$ 50,00</option>
+                  <option value='100'>Até R$ 100,00</option>
+                  <option value='150'>Até R$ 150,00</option>
+                  <option value='200'>Até R$ 200,00</option>
+                  <option value='0.0'>Não Definido</option>
+                </select>
                 <input
-                  type='checkbox'
-                  name='agreeTerms'
-                  checked={formData.agreeTerms}
+                  type='number'
+                  id='value-customized'
+                  name='value'
+                  value={formData.value}
                   onChange={handleChange}
+                  placeholder='Ou informe um valor personalizado'
                   required
-                />{' '}
-                Concordo com os termos de uso
-                <div>
-                  <a href='#' onClick={handleButtonClick}>
-                    Ver Termos de Uso
-                  </a>
-                </div>
-              </label>
+                />
+              </div>
+
+              <div className='services-request-field services-request-field--full'>
+                <label htmlFor='description'>
+                  Descrição da solicitação
+                  <button
+                    type='button'
+                    onClick={handleButtonClickSpeech}
+                    className='services-request-mic'
+                    aria-label='Iniciar reconhecimento de fala'
+                  >
+                    <MicIcon />
+                  </button>
+                </label>
+                <textarea id='description' name='description' value={formData.description} onChange={handleChange} required rows={5} />
+              </div>
+
+              <div className='services-request-field'>
+                <label htmlFor='term'>Prazo em dias</label>
+                <input type='number' id='term' name='term' value={formData.term} onChange={handleChange} required />
+              </div>
+
+              <div className='services-request-field'>
+                <label htmlFor='local'>Local</label>
+                <select id='local' name='local' value={formData.local} onChange={handleChange} required>
+                  <option value='online'>Remoto/Online</option>
+                  <option value='in person'>Presencial</option>
+                </select>
+              </div>
+
+              {renderCepField()}
             </div>
-            <button type='button' onClick={goToPreviousStep}>
-              Voltar
-            </button>            
-            <button type='submit'>Solicitar</button>
-            <div style={{ color: 'black' }}>
-              {' '}
+
+            <div className='services-request-terms'>
+              <label>
+                <input type='checkbox' name='agreeTerms' checked={formData.agreeTerms} onChange={handleChange} required />
+                <span>Concordo com os termos de uso</span>
+              </label>
+              <a href='#' onClick={handleButtonClick}>Ver Termos de Uso</a>
+            </div>
+
+            <div className='services-request-actions'>
+              <button type='button' onClick={goToPreviousStep} className='services-request-secondary'>
+                Voltar
+              </button>
+              <button type='submit' className='services-request-submit'>
+                Solicitar
+              </button>
+            </div>
+            <div className='services-request-note'>
               * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
             </div>
           </form>
         )}
         {!isMobile && (
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor='name'>Nome:</label>
-              <input
-                type='text'
-                id='name'
-                name='name'
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor='email'>Email:</label>
-              <input
-                type='email'
-                id='email'
-                name='email'
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor='phone'>Telefone Celular:</label>
-              <InputMask
-                mask='(99)99999-9999'
-                maskChar='-'
-                type='tel'
-                id='phone'
-                name='phone'
-                placeholder='XX-XXXXX-XXXX'
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor='type'>
-                Tipo de Serviço:
-                <Tooltip title='Selecione o tipo de serviço que vai solicitar.'>
-                  <span
-                    onClick={handleTooltipClick(
-                      'Selecione o tipo de serviço que vai solicitar.'
-                    )}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    (?)
-                  </span>
-                </Tooltip>{' '}
-              </label>
-              <select
-                id='type'
-                name='type'
-                value={formData.type}
-                onChange={handleChange}
-                required
-              >
-                <option value='training'>Treinamento</option>
-                <option value='implementation'>Implementação</option>
-                <option value='course'>Curso</option>
-                <option value='technical_support'>Suporte Técnico</option>
-                <option value='operational_support'>Suporte Operacional</option>
-                <option value='maintenance'>Manutenção</option>
-                <option value='other'>Outro</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor='description'>
-                Descrição da Solicitação:
-                <button
-                  type='button'
-                  onClick={handleButtonClickSpeech}
-                  style={{
-                    width: 20,
-                    height: 20,
-                    borderRadius: '30%',
-                    padding: 0,
-                    backgroundColor: '#00adb5',
-                    border: 'none'
-                  }}
-                  aria-label='Iniciar reconhecimento de fala'
+          <form onSubmit={handleSubmit} className='services-request-form'>
+            <div className='services-request-grid'>
+              <div className='services-request-field'>
+                <label htmlFor='name'>Nome</label>
+                <input type='text' id='name' name='name' value={formData.name} onChange={handleChange} required placeholder='Seu nome completo' />
+              </div>
 
-                >
-                  <MicIcon style={{ fontSize: 20 }} />{' '}
-                </button>
-              </label>
-              <textarea
-                id='description'
-                name='description'
-                value={formData.description}
-                onChange={handleChange}
-                required
-                rows={5}
-              />
-            </div>{' '}
-            <div>
-              <label htmlFor='value'>
-                Valor Disponivel:
-                <Tooltip title='Valor aproximado que está disposto a pagar pelo serviço'>
-                  <span
-                    onClick={handleTooltipClick(
-                      'Valor aproximado que está disposto a pagar pelo serviço'
-                    )}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    (?)
-                  </span>
-                </Tooltip>{' '}
-              </label>
-              <select
-                id='value'
-                name='value'
-                value={formData.value}
-                onChange={handleChange}
-                required
-              >
-                <option value='0'>Selecione um valor</option>
-                <option value='50'>Até R$ 50,00</option>
-                <option value='100'>Até R$ 100,00</option>
-                <option value='150'>Até R$ 150,00</option>
-                <option value='200'>Até R$ 200,00</option>
-                <option value='0.0'>Não Definido</option>
-              </select>
-              <input
-                type='number'
-                id='value-customized'
-                name='value'
-                value={formData.value}
-                onChange={handleChange}
-                placeholder='ou informe um valor personalizado'
-                required
-              />
+              <div className='services-request-field'>
+                <label htmlFor='email'>E-mail</label>
+                <input type='email' id='email' name='email' value={formData.email} onChange={handleChange} required placeholder='seu@email.com' />
+              </div>
+
+              <div className='services-request-field'>
+                <label htmlFor='phone'>Telefone</label>
+                <InputMask mask='(99)99999-9999' maskChar='-' type='tel' id='phone' name='phone' placeholder='(11) 99999-9999' value={formData.phone} onChange={handleChange} required />
+              </div>
+
+              <div className='services-request-field'>
+                <label htmlFor='type'>
+                  Tipo de serviço
+                  <Tooltip title='Selecione o tipo de serviço que você deseja solicitar.'>
+                    <span onClick={handleTooltipClick('Selecione o tipo de serviço que você deseja solicitar.')} className='services-request-help'>?</span>
+                  </Tooltip>
+                </label>
+                <select id='type' name='type' value={formData.type} onChange={handleChange} required>
+                  <option value='training'>Treinamento</option>
+                  <option value='implementation'>Implementação</option>
+                  <option value='course'>Curso</option>
+                  <option value='technical_support'>Suporte Técnico</option>
+                  <option value='operational_support'>Suporte Operacional</option>
+                  <option value='maintenance'>Manutenção</option>
+                  <option value='other'>Outro</option>
+                </select>
+              </div>
+
+              <div className='services-request-field'>
+                <label htmlFor='value'>
+                  Valor disponível
+                  <Tooltip title='Valor aproximado que você está disposto a pagar pelo serviço.'>
+                    <span onClick={handleTooltipClick('Valor aproximado que você está disposto a pagar pelo serviço.')} className='services-request-help'>?</span>
+                  </Tooltip>
+                </label>
+                <select id='value' name='value' value={formData.value} onChange={handleChange} required>
+                  <option value='0'>Selecione um valor</option>
+                  <option value='50'>Até R$ 50,00</option>
+                  <option value='100'>Até R$ 100,00</option>
+                  <option value='150'>Até R$ 150,00</option>
+                  <option value='200'>Até R$ 200,00</option>
+                  <option value='0.0'>Não Definido</option>
+                </select>
+                <input type='number' id='value-customized' name='value' value={formData.value} onChange={handleChange} placeholder='Ou informe um valor personalizado' required />
+              </div>
+
+              <div className='services-request-field services-request-field--full'>
+                <label htmlFor='description'>
+                  Descrição da solicitação
+                  <button type='button' onClick={handleButtonClickSpeech} className='services-request-mic' aria-label='Iniciar reconhecimento de fala'>
+                    <MicIcon />
+                  </button>
+                </label>
+                <textarea id='description' name='description' value={formData.description} onChange={handleChange} required rows={5} />
+              </div>
+
+              <div className='services-request-field'>
+                <label htmlFor='term'>Prazo em dias</label>
+                <input type='number' id='term' name='term' value={formData.term} onChange={handleChange} required />
+              </div>
+
+              <div className='services-request-field'>
+                <label htmlFor='local'>Local</label>
+                <select id='local' name='local' value={formData.local} onChange={handleChange} required>
+                  <option value='online'>Remoto/Online</option>
+                  <option value='in person'>Presencial</option>
+                </select>
+              </div>
+
+              {renderCepField()}
             </div>
-            <div>
-              <label htmlFor='term'>Prazo em dias:</label>
-              <input
-                type='number'
-                id='term'
-                name='term'
-                value={formData.term}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor='local'>Local:</label>
-              <select
-                id='local'
-                name='local'
-                value={formData.local}
-                onChange={handleChange}
-                required
-              >
-                <option value='online'>Remoto/Online</option>
-                <option value='in person'>Presencial</option>
-              </select>
-            </div>
-            {renderCepField()}
-            <div>
+
+            <div className='services-request-terms'>
               <label>
-                <input
-                  type='checkbox'
-                  name='agreeTerms'
-                  checked={formData.agreeTerms}
-                  onChange={handleChange}
-                  required
-                />{' '}
-                Concordo com os termos de uso
-                <div>
-                  <a href='#' onClick={handleButtonClick}>
-                    Ver Termos de Uso
-                  </a>
-                </div>
+                <input type='checkbox' name='agreeTerms' checked={formData.agreeTerms} onChange={handleChange} required />
+                <span>Concordo com os termos de uso</span>
               </label>
-            </div>            
-            <div className='button-container'>              
-            <button type='submit'>Solicitar</button>
-            <div style={{ color: 'black', fontSize:"small" }}>
-            * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
+              <a href='#' onClick={handleButtonClick}>Ver Termos de Uso</a>
             </div>
+
+            <div className='services-request-actions'>
+              <button type='submit' className='services-request-submit'>
+                Solicitar
+              </button>
+            </div>
+            <div className='services-request-note'>
+              * Serviço prestado pela plataforma tem 7 dias de suporte grátis.
             </div>
           </form>
         )}

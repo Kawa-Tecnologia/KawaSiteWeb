@@ -8,7 +8,7 @@ const HeaderDevs = () => {
         <img
           className='logo'
           src={require('../assets/images/kawa1.png')}
-          alt='Kawa Devs'
+          alt='Kawa Tecnologia'
           loading='lazy'
           style={{ width: '60%', height: '40%' }}
         />

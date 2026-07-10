@@ -72,7 +72,7 @@ const UserContainer: React.FC<UserContainerProps> = ({ handleLogout }) => {
   }
 
   const handleProfile = () => {
-    navigate('/devs/profile')
+    navigate('/about-us')
   }
 
   const closeModal = () => {

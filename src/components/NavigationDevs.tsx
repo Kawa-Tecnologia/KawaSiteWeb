@@ -16,29 +16,19 @@ const NavigationDev: React.FC = () => {
       </div>
       <ul className={`nav-list ${isMenuOpen ? 'open' : ''}`}>
         <li className='nav-item'>
-          <a href='/devs' className='nav-link'>
-            Area Devs
+          <a href='/' className='nav-link'>
+            Página inicial
           </a>
         </li>
         <li className='nav-item'>
-          <a href='/devs/login' className='nav-link'>
-            Login
+          <a href='/about-us' className='nav-link'>
+            Sobre Nós
           </a>
         </li>
         <li className='nav-item'>
-          <a href='/devs/join-the-team' className='nav-link'>
-            Entre na Equipe
-          </a>
+          <EmailButton />
         </li>
-        <li className='nav-item'>
-          <a href='/devs/about-us' className='nav-link'>
-            Sobre Nós Devs
-          </a>
-        </li>
-    <li className='nav-item'>
-      <EmailButton />
-    </li>
-  </ul>
+      </ul>
     </nav>
   )
 }

@@ -1,40 +1,187 @@
-.tips,
-.tips h1 {
-    background-color: #222;
-    color: #fff;
-    display: flex;
+.tips-page {
+  min-height: 100vh;
+  padding: 3rem 1.5rem 4rem;
+  background:
+    radial-gradient(circle at top left, rgba(47, 128, 237, 0.16), transparent 24%),
+    linear-gradient(135deg, #07111f 0%, #0e1b2d 45%, #111827 100%);
+  color: #f7f8fc;
+}
+
+.tips-hero {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: rgba(9, 16, 29, 0.75);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(18px);
+}
+
+.tips-hero-content h1 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.15;
+  margin: 0.4rem 0 1rem;
+}
+
+.tips-hero-content p {
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.tips-eyebrow {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(31, 120, 255, 0.16);
+  color: #8ec5ff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tips-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.tips-primary,
+.tips-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tips-primary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25);
+}
+
+.tips-secondary {
+  color: #e2e8f0;
+  border: 1px solid rgba(226, 232, 240, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tips-primary:hover,
+.tips-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.tips-hero-card {
+  padding: 1.2rem;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tips-hero-card h3,
+.tips-section-header h2,
+.tips-highlight h3 {
+  margin: 0 0 0.8rem;
+}
+
+.tips-hero-card ul,
+.tips-card ul {
+  padding-left: 1rem;
+  color: #dbeafe;
+}
+
+.tips-hero-card li,
+.tips-card li {
+  margin-bottom: 0.45rem;
+}
+
+.tips-section {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.tips-section-header {
+  margin-bottom: 1rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tips-card {
+  padding: 1.25rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+}
+
+.tips-card h3 {
+  margin-top: 0;
+  color: #8ec5ff;
+}
+
+.tips-card p {
+  color: #dbeafe;
+  line-height: 1.7;
+}
+
+.tips-section-alt {
+  margin-top: 1.2rem;
+}
+
+.tips-highlight {
+  padding: 1.4rem 1.6rem;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(31, 41, 55, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tips-highlight p {
+  color: #dbeafe;
+  line-height: 1.8;
+}
+
+@media only screen and (max-width: 900px) {
+  .tips-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .tips-page {
+    padding: 1.3rem 0.9rem 2rem;
+  }
+
+  .tips-hero,
+  .tips-card,
+  .tips-highlight {
+    padding: 1rem;
+  }
+
+  .tips-hero-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .tips-actions {
     flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    text-align: center;  
-}
-
-.card {
-    background-color: #333; 
-    color: #ADD2FF; 
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
-    margin-bottom: 20px;
-}
-
-.card h2 {
-    color: #ADD2FF;
-}
-
-.card p {
-    color: #ddd; 
-}
-
-@media only screen and (max-width:767px) {
-    .tips h1 {
-        font-size: large; 
-    }
-    .card h2 {
-        font-size: medium;
-        margin-bottom: 10px;
-    }
-    .card p {
-        font-size: small; 
-        line-height: 1.6;
-    }
+    align-items: stretch;
+  }
 }

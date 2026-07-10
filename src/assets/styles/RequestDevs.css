@@ -1,8 +1,233 @@
 .container-wrapper {
     display: flex;
     flex-wrap: wrap;
-    background-color: #f0f0f0;
-    color: #0e0e0e
+    background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+    color: #0e0e0e;
+    align-items: flex-start;
+}
+
+.services-request-shell {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.services-request-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0 18px 45px rgba(37, 99, 235, 0.22);
+}
+
+.services-request-hero h1 {
+    margin: 8px 0 10px;
+    font-size: 2rem;
+}
+
+.services-request-hero p {
+    margin: 0;
+    max-width: 600px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+}
+
+.services-request-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.16);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.services-request-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    gap: 12px;
+    min-width: 320px;
+}
+
+.services-request-highlights div {
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+}
+
+.services-request-highlights strong {
+    font-size: 1rem;
+}
+
+.services-request-highlights span {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.85);
+}
+
+.services-request-form {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+}
+
+.services-request-form--stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.services-request-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.services-request-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.services-request-field--full {
+    grid-column: 1 / -1;
+}
+
+.services-request-field label {
+    font-weight: 600;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.services-request-help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.services-request-field input,
+.services-request-field select,
+.services-request-field textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    color: #0f172a;
+    box-sizing: border-box;
+}
+
+.services-request-field textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.services-request-field input:focus,
+.services-request-field select:focus,
+.services-request-field textarea:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.services-request-mic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.services-request-terms {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.services-request-terms label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #334155;
+    font-weight: 500;
+}
+
+.services-request-terms a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.services-request-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.services-request-submit,
+.services-request-secondary {
+    border: none;
+    border-radius: 999px;
+    padding: 12px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.services-request-submit {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+}
+
+.services-request-secondary {
+    background: #f1f5f9;
+    color: #334155;
+}
+
+.services-request-submit:hover,
+.services-request-secondary:hover {
+    transform: translateY(-1px);
+}
+
+.services-request-note {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 4px;
 }
 
 .left-container-client,
@@ -56,26 +281,56 @@
 
 @media screen and (max-width:1000px) {
     .container-wrapper {
-        flex-direction: column
+        flex-direction: column;
     }
-    
+
     .right-container-request-dev {
-        display: none
+        display: none;
     }
 
     .center-container-request-dev,
     .left-container-request-dev,
     .right-container-request-dev {
         width: 100%;
-        max-width: 100%
+        max-width: 100%;
     }
 
     .left-container-request-dev {
-        order: 2
+        order: 2;
     }
 
     .center-container-request-dev {
-        order: 1
+        order: 1;
+    }
+
+    .services-request-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .services-request-highlights {
+        min-width: 0;
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .services-request-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-request-terms {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .services-request-actions {
+        justify-content: stretch;
+        flex-direction: column;
+    }
+
+    .services-request-submit,
+    .services-request-secondary {
+        width: 100%;
     }
 }
 

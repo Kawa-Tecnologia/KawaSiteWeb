@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Snackbar from '@material-ui/core/Snackbar'
-import MuiAlert,{ Color } from '@material-ui/lab/Alert'
+import Snackbar from '@mui/material/Snackbar'
+import MuiAlert, { AlertColor } from '@mui/material/Alert'
 
 interface ErrorNotificationProps {
   message: string
-  severity: Color
+  severity: AlertColor
 }
 
 const ErrorNotification: React.FC<ErrorNotificationProps> = ({

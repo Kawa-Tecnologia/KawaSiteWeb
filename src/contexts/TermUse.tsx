@@ -1,53 +1,60 @@
 const TermUse = () => {
-    return `
-      <div className="term-use">
+  return `
+    <div class="term-use">
+      <div class="term-use__header">
+        <span class="term-use__eyebrow">Política e condições</span>
         <h3>Termos de Uso</h3>
-        <ul>
-          <li>
-            Para problemas e dúvidas sobre a utilização da plataforma, como realizar a solicitação do serviço, treinamento, entre outros e suporte em geral, por favor, envie email para <a href="mailto:suporte@kawatecnologia.com.br">suporte@kawatecnologia.com.br</a> ou whatsapp <a href="tel:+5511914287025">(11)914287025</a>.
-          </li>
-          <li>
-            O solicitante está ciente de que podem haver custos adicionais para que o prestador de serviço consiga finalizar o atendimento à solicitação, como custos operacionais, custos para terceiros.
-          </li>
-          <li>
-            A Kawa Tecnologia não se responsabiliza por eventuais problemas que podem ocorrer durante o processo da prestação de serviço, tendo como responsáveis, o solicitante e o próprio prestador, que como cientes, deverão firmar um contrato ou termo da prestação, garantindo a integridade e acordos que deverão ser firmados antes da realização do mesmo.
-          </li>
-          <li>
-            A Kawa Tecnologia se reserva no direito de prestar suporte aos envolvidos, buscando a melhor solução para o caso, tendo em vista, a boa relação entre as partes e disponibilizando o canal de suporte para esclarecimentos e intermediar o acordo.
-          </li>
-          <li>
-            A Kawa Tecnologia irá oferecer suporte técnico de até 7 dias para o solicitante caso o prestador de serviço não o faça, após a finalização do serviço.
-          </li>
-          <li>
-            Todas as relações são documentadas e guardadas para fins de esclarecimentos e uma forma de qualificar tanto o serviço prestado pelo prestador, quanto a fidelidade do cliente para com seus compromissos profissionais e financeiros, honrar com o pagamento é um dever do cliente.
-          </li>
-          <li>
-            O prestador é único e exclusivamente responsável pelo serviço/produto, em todos os aspectos legais e financeiros. Qualquer questão administrativa ou judicial quanto ao conteúdo do serviço ou produto adquirido, suas características, qualidade, funcionalidades, oferta e publicidade, deve ser feita diretamente ao(à) Prestador(a) através do email ou telefone fornecido logo no início do processo.
-          </li>
-          <li>
-            Ao concretizar a solicitação, você concorda e aceita de forma integral e irrestrita os Termos de Uso Kawa Solutions recomenda-se a leitura atenta do referido documento.
-          </li>
-          <li>
-            Você deverá verificar com o prestador do produto/serviço o prazo para solicitar o cancelamento do mesmo em caso de alguma inconsistência no processo.
-          </li>
-          <li>
-            O prazo de cancelamento passará a valer a partir do acordo entre as partes. Assim, você, solicitante, é responsável por verificar, imediatamente, se o produto/serviço adquirido foi efetivado.
-          </li>
-          <li>
-            Kawa Solutions é uma plataforma de serviços de tecnologia e não possui vínculo empregatício/trabalhista ou de qualquer outra natureza com os prestadores de serviço. Dessa forma, reitera-se que a Kawa Solutions não responde legal e/ou financeiramente pelo serviço/produto ora adquirido, posto que seu conteúdo, funcionalidade, qualidade, oferta e publicidade, são de inteira responsabilidade do Prestador que o criou e disponibilizou através da plataforma.
-          </li>
-          <li>
-            Qualquer informação adicional sobre o serviço/produto deve ser levantada pelo solicitante diretamente com o prestador após a finalização do compromisso firmado. O solicitante receberá o e-mail e telefone para contatar o prestador.
-          </li>
-          <li>
-            Seus dados de contato, como e-mail, telefone, etc., podem ser fornecidos ao prestador.
-          </li>
-          <li>
-            A conclusão da solicitação confirma a ciência e concordância do solicitante quanto aos Termos de Uso.
-          </li>
-        </ul>
+        <p>Ao utilizar a plataforma, você concorda com as condições abaixo para manter um processo transparente, seguro e profissional.</p>
       </div>
-    `;
-  }
-  
-  export default TermUse;
+      <ul class="term-use__list">
+        <li class="term-use__item">
+          Para problemas e dúvidas sobre a utilização da plataforma, como realizar a solicitação do serviço, treinamento, entre outros e suporte em geral, por favor, envie email para <a href="mailto:suporte@kawatecnologia.com.br">suporte@kawatecnologia.com.br</a> ou whatsapp <a href="tel:+5511914287025">(11) 91428-7025</a>.
+        </li>
+        <li class="term-use__item">
+          O solicitante está ciente de que podem haver custos adicionais para que o prestador de serviço consiga finalizar o atendimento à solicitação, como custos operacionais e custos para terceiros.
+        </li>
+        <li class="term-use__item">
+          A Kawa Tecnologia não se responsabiliza por eventuais problemas que podem ocorrer durante o processo da prestação de serviço. O solicitante e o prestador são os responsáveis por firmar contratos ou termos de prestação, garantindo a integridade e acordos prévios antes da realização do serviço.
+        </li>
+        <li class="term-use__item">
+          A Kawa Tecnologia se reserva no direito de prestar suporte aos envolvidos, buscando a melhor solução para o caso, com foco na boa relação entre as partes e no esclarecimento de eventuais divergências.
+        </li>
+        <li class="term-use__item">
+          A Kawa Tecnologia oferece suporte técnico de até 7 dias para o solicitante, caso o prestador de serviço não o faça, após a finalização do atendimento.
+        </li>
+        <li class="term-use__item">
+          Todas as relações são documentadas e guardadas para fins de esclarecimentos, bem como para qualificar tanto o serviço prestado pelo prestador quanto a fidelidade do cliente em relação aos compromissos profissionais e financeiros.
+        </li>
+        <li class="term-use__item">
+          O prestador é único e exclusivamente responsável pelo serviço ou produto, em todos os aspectos legais e financeiros. Qualquer questão administrativa ou judicial sobre o conteúdo, características, qualidade, funcionalidades, oferta e publicidade deve ser tratada diretamente com o prestador por meio do e-mail ou telefone fornecido no início do processo.
+        </li>
+        <li class="term-use__item">
+          Ao concretizar a solicitação, você concorda e aceita de forma integral e irrestrita os Termos de Uso da Kawa Solutions. Recomendamos a leitura atenta do documento antes de prosseguir.
+        </li>
+        <li class="term-use__item">
+          Você deverá verificar com o prestador do produto ou serviço o prazo para solicitar cancelamento em caso de inconsistência no processo.
+        </li>
+        <li class="term-use__item">
+          O prazo de cancelamento passa a valer a partir do acordo entre as partes. Assim, o solicitante é responsável por verificar, imediatamente, se o produto ou serviço adquirido foi efetivado.
+        </li>
+        <li class="term-use__item">
+          A Kawa Solutions é uma plataforma de serviços de tecnologia e não possui vínculo empregatício, trabalhista ou de qualquer outra natureza com os prestadores. Dessa forma, a Kawa Solutions não responde legal ou financeiramente pelo serviço ou produto adquirido, cujo conteúdo, funcionalidade, qualidade, oferta e publicidade são de inteira responsabilidade do prestador.
+        </li>
+        <li class="term-use__item">
+          Qualquer informação adicional sobre o serviço ou produto deve ser levantada pelo solicitante diretamente com o prestador após a finalização do compromisso firmado. O solicitante receberá o e-mail e telefone para contatar o prestador.
+        </li>
+        <li class="term-use__item">
+          Seus dados de contato, como e-mail e telefone, podem ser fornecidos ao prestador.
+        </li>
+        <li class="term-use__item">
+          A conclusão da solicitação confirma a ciência e concordância do solicitante quanto aos Termos de Uso.
+        </li>
+      </ul>
+      <div class="term-use__footer">
+        <p>Obrigado por escolher a Kawa Tecnologia.</p>
+      </div>
+    </div>
+  `
+}
+
+export default TermUse
