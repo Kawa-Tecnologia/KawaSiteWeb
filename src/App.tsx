@@ -147,7 +147,7 @@ const App: React.FC = () => {
                 produto e execução.
               </p>
               <p>
-                <a href={process.env.REACT_APP_URL + '/solutions'} className='devs-link' title='Entre na Kawa Solutions'>
+                <a href='/solutions' className='devs-link' title='Entre na Kawa Solutions'>
                   Kawa Solutions
                 </a>
               </p>

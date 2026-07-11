@@ -1,39 +1,21 @@
-import React from 'react';
+import React from 'react'
 
 const Header = () => {
   return (
-    <header style={styles.header}>
-      <div style={styles.content}>
-        <h1 style={styles.heading}>Kawa Solutions</h1>
-        <p style={styles.paragraph}>
-          Bem-vindo ao nosso site! Oferecemos uma variedade de serviços de
-          desenvolvimento junto aos prestadores para atender às suas necessidades.
+    <header className='solutions-hero'>
+      <div className='solutions-hero__content'>
+        <span className='solutions-hero__badge'>Kawa Solutions</span>
+        <h1>Transforme ideias em produtos digitais com excelência.</h1>
+        <p>
+          Criamos websites, lojas virtuais, plataformas e soluções sob medida para impulsionar resultados reais.
         </p>
+        <div className='solutions-hero__actions'>
+          <a href='#services-solutions' className='solutions-hero__primary'>Conhecer serviços</a>
+          <a href='/request-devs' className='solutions-hero__secondary'>Solicitar atendimento</a>
+        </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-const styles = {
-  header: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: '#fff', 
-    color: '#000', 
-  },
-  content: {
-    textAlign: 'center',
-  } as React.CSSProperties,
-  heading: {
-    color: '#007bff',
-    fontSize: '2rem',
-    marginBottom: '0.5rem',
-  },
-  paragraph: {
-    fontSize: '1rem',
-    margin: '0',
-  },
-};
-
-export default Header;
+export default Header

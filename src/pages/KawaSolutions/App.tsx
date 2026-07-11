@@ -32,7 +32,7 @@ const AppSolutions = () => {
               onClick={handleCadastroClick}
               style={{ alignItems: 'center' }}
             >
-              Prestador, realize seu cadastro. Clique aqui
+              Solicitar atendimento
             </button>
           </p>
 
@@ -59,7 +59,7 @@ const AppSolutions = () => {
               onClick={handleCadastroClick}
               style={{ alignItems: 'center' }}
             >
-              Prestador, realize seu cadastro. Clique aqui
+              Solicitar atendimento
             </button>
           </p>
 

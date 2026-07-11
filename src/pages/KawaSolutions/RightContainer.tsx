@@ -60,7 +60,7 @@ function RightContainer () {
               nome: 'Cliente 2',
               avaliacao: 5,
               content:
-                'Muito boa plataforma, me ajudou a encontrar prestadores de serviços'
+                'Muito boa plataforma, me ajudou a criar uma experiência digital mais forte'
             },
             {
               id: 1,
