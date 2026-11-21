@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Sitemap: https://kawa-site-web-ten.vercel.app/sitemap.xml
+Sitemap: https://www.kawatecnologia.com.br/sitemap.xml
