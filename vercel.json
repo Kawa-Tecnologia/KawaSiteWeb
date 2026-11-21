@@ -1,7 +1,14 @@
 {
-  "build": {
-    "env": {
-      "NODE_VERSION": "24"
-    }
-  }
+  "rewrites": [
+    { "source": "/tips", "destination": "/index.html" },
+    { "source": "/about-us", "destination": "/index.html" },
+    { "source": "/solutions", "destination": "/index.html" },
+    { "source": "/solutions/tips", "destination": "/index.html" },
+    { "source": "/solutions/doubts", "destination": "/index.html" },
+    { "source": "/solutions/thankyou", "destination": "/index.html" },
+    { "source": "/request-devs", "destination": "/index.html" },
+    { "source": "/request-devs/:path*", "destination": "/index.html" },
+    { "source": "/survey-devs", "destination": "/index.html" },
+    { "source": "/under-construction", "destination": "/index.html" }
+  ]
 }

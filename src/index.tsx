@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom' 
+import ReactDOM from 'react-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import RoutesApp from './Routes'
 import './style.css'
 import { ThemeProvider } from './components/ThemeProvider'
@@ -11,11 +12,13 @@ Modal.setAppElement('#root');
 // eslint-disable-next-line react/no-deprecated
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <div>
-        <RoutesApp />
-      </div>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <div>
+          <RoutesApp />
+        </div>
+      </ThemeProvider>
+    </HelmetProvider>
   </React.StrictMode>,
   rootElement,
 )

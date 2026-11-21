@@ -7,7 +7,7 @@ import '../../assets/styles/AppSolutions.css'
 import LeftContainer from './LeftContainer'
 import RightContainer from './RightContainer'
 import { useNavigate } from 'react-router-dom'
-import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 import { useMediaQuery } from 'react-responsive'
 
 const AppSolutions = () => {
@@ -19,10 +19,12 @@ const AppSolutions = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 })
 
   return (
-    <Layout
-      pageTitle='Kawa Tecnologia'
-      pageDescription='Plataforma para solicitação de criação de lojas virtuais, sites institucionais, desenvolvimento de software e treinamentos para desenvolvedores.'
-    >
+    <>
+      <Seo
+        title='Kawa Solutions | Sites, lojas e software sob medida'
+        description='Peça sites, lojas virtuais, software e treinamentos. A Kawa une design, engenharia e estratégia, da ideia ao lançamento do seu projeto. Conte o seu projeto.'
+        path='/solutions'
+      />
       {!isMobile ? (
         <div className='App'>
           <Header />
@@ -42,7 +44,7 @@ const AppSolutions = () => {
                 <RightContainer />
               </div>
               <div className='center-container-request-dev'>
-                <RequestDevs />
+                <RequestDevs heading='h2' />
               </div>
               <div className='left-container-request-dev'>
                 <LeftContainer />
@@ -66,7 +68,7 @@ const AppSolutions = () => {
           <section className='section-box'>
             <div className='container-wrapper'>
               <div className='center-container-request-dev'>
-                <RequestDevs />
+                <RequestDevs heading='h2' />
               </div>
             </div>
           </section>
@@ -81,7 +83,7 @@ const AppSolutions = () => {
           <Footer />
         </div>
       )}
-    </Layout>
+    </>
   )
 }
 

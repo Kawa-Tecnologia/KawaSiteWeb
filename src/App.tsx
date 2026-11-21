@@ -4,6 +4,7 @@ import './assets/styles/Banner.css'
 import './assets/styles/App.css'
 import HeaderPrincipal from './components/HeaderPrincipal'
 import Footer from './components/Footer'
+import Seo from './components/Seo'
 
 const App: React.FC = () => {
   const navigate = useNavigate()
@@ -31,6 +32,11 @@ const App: React.FC = () => {
 
   return (
     <div className='home-shell'>
+      <Seo
+        title='Kawa Tecnologia | Sites, lojas e software sob medida'
+        description='Criamos sites, lojas virtuais e sistemas sob medida, unindo design, engenharia e estratégia para converter visitas em negócio. Fale com a Kawa.'
+        path='/'
+      />
       <HeaderPrincipal />
 
       <main className='home-main'>
@@ -103,7 +109,7 @@ const App: React.FC = () => {
                 />
               </div>
               <div className='banner-center'>
-                <h1>Bem-vindo à Kawa Tecnologia</h1>
+                <h2 className='banner-title'>Bem-vindo à Kawa Tecnologia</h2>
                 <h2>
                   Transformando ideias criativas em negócios rentáveis e lucrativos.
                 </h2>

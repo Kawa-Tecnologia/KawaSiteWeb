@@ -12,13 +12,9 @@ import Doubts from './pages/Doubts'
 // import DonationsForm from './components/DonationsForm'
 import TipsPage from './pages/TipsPage'
 import TipsPageSolutions from './pages/KawaSolutions/TipsPageSolutions'
-import { CSSTransition } from 'react-transition-group'
 import DevelopersPage from './pages/KawaSolutions/DevelopersPage'
 import ThankYouPage from './pages/KawaSolutions/ThankyouPage'
-
-interface LocationState {
-  key: string
-}
+import NotFound from './pages/NotFound'
 
 const RoutesApp: React.FC = () => {
   return (
@@ -40,14 +36,7 @@ const RoutesApp: React.FC = () => {
         <Route path='/about-us' element={<AboutUs />} />
         <Route path='/solutions' element={<AppSolutions />} />
         <Route path='/solutions/thankyou' element={<ThankYouPage />} />
-
-        <Route path='/*'>
-          {(location: LocationState) => (
-            <CSSTransition key={location.key} classNames='fade' timeout={300}>
-              <Routes location={location} />
-            </CSSTransition>
-          )}
-        </Route>
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
   )

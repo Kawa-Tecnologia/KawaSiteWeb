@@ -2,6 +2,7 @@ import React, {  useState } from 'react'
 import { Link } from 'react-router-dom' 
 import '../assets/styles/Doubts.css'
 import Header from './KawaSolutions/Header'
+import Seo from '../components/Seo'
 
 const Doubts: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -34,6 +35,11 @@ const Doubts: React.FC = () => {
   
   return (
     <div className='doubts-container'>
+      <Seo
+        title='Perguntas frequentes da Kawa | Lojas, sites e software'
+        description='Respostas sobre custos, prazos e processos para criar uma loja virtual, um site ou um sistema com a equipe da Kawa Tecnologia. Veja antes de começar.'
+        path='/solutions/doubts'
+      />
              <Header/>
       <h1>Perguntas Frequentes</h1>
       <div className='question'>

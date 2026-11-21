@@ -2,6 +2,7 @@ import React from 'react';
 import '../../assets/styles/Tips.css';
 import Header from './Header';
 import { Link } from 'react-router-dom';
+import Seo from '../../components/Seo';
 
 const tipGroups = [
   {
@@ -27,6 +28,11 @@ const tipGroups = [
 function TipsPageSolutions() {
   return (
     <div className='App'>
+      <Seo
+        title='Como planejar seu projeto digital | Kawa Tecnologia'
+        description='Orientações para planejar sites, lojas virtuais e sistemas antes de desenvolver, com foco em clareza, escala e resultado. Um guia da Kawa Tecnologia.'
+        path='/solutions/tips'
+      />
       <Header />
       <div className='tips-page'>
         <section className='tips-hero'>

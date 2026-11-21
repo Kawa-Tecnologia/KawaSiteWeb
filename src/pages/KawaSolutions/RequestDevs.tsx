@@ -11,7 +11,12 @@ import { useMediaQuery } from 'react-responsive'
 import ErrorNotification from '../../components/Error'
 import TermUse from '../../contexts/TermUse'
 
-const RequestDevs = () => {
+type RequestDevsProps = {
+  heading?: 'h1' | 'h2'
+}
+
+const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
+  const Title = heading
   const { transcript } = useSpeechRecognition()
   const [showTooltipModal, setShowTooltipModal] = useState(false)
   const [tooltipMessage, setTooltipMessage] = useState('')
@@ -167,8 +172,8 @@ const RequestDevs = () => {
     }
 
     if (
-      location.pathname === '/request-devs' ||
-      location.pathname === '/solutions'
+      window.location.pathname === '/request-devs' ||
+      window.location.pathname === '/solutions'
     ) {
       setTimer(setTimeout(handleFormAbandoned, 60000))
     }
@@ -230,7 +235,7 @@ const RequestDevs = () => {
         <div className='services-request-hero'>
           <div>
             <span className='services-request-badge'>Atendimento especializado</span>
-            <h1>Solicite um serviço</h1>
+            <Title>Solicite um serviço</Title>
             <p>
               Conte o que você precisa e conecte-se com especialistas da Kawa Tecnologia de forma rápida e segura.
             </p>

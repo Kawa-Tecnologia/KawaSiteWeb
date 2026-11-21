@@ -21,7 +21,8 @@
     background-color: #f0f0f0;
 }
 
-#services h1 {
+#services h1,
+#services h2 {
     color: #06c;
     font-size: 24px;
 }

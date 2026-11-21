@@ -2,6 +2,7 @@ import React from 'react'
 import '../assets/styles/AboutUs.css'
 import HeaderPrincipal from '../components/HeaderPrincipal'
 import Footer from '../components/Footer'
+import Seo from '../components/Seo'
 
 const pillars = [
   {
@@ -33,6 +34,11 @@ const values = [
 const AboutUs: React.FC = () => {
   return (
     <div>
+      <Seo
+        title='Sobre a Kawa Tecnologia | Propósito, visão e valores'
+        description='Conheça a missão, a visão e os valores da Kawa e como unimos tecnologia e estratégia para transformar ideias em presença digital. Fale com a equipe.'
+        path='/about-us'
+      />
       <HeaderPrincipal />
       <div className='sobre-nos'>
         <section className='about-hero'>

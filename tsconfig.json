@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "target": "es2016",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
     "skipLibCheck": true,
-    "outDir": "dist"
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react"
   },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
-, "src/pages/KawaSolutions/RequestDevsPage.tsz", "src/pages/KawaSolutions/RequestDevsPage.tsz"  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src"]
 }

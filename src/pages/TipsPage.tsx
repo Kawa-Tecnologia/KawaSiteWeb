@@ -1,6 +1,7 @@
 import React from 'react'
 import '../assets/styles/Tips.css'
 import HeaderPrincipal from '../components/HeaderPrincipal'
+import Seo from '../components/Seo'
 
 const tipGroups = [
   {
@@ -26,6 +27,11 @@ const tipGroups = [
 function TipsPage() {
   return (
     <div className='App'>
+      <Seo
+        title='Dicas para sites, lojas e sistemas | Kawa Tecnologia'
+        description='Guias práticos para decidir o próximo website, loja virtual ou sistema da sua empresa, com metas claras e um caminho objetivo. Fale com a Kawa.'
+        path='/tips'
+      />
       <HeaderPrincipal />
       <div className='tips-page'>
         <section className='tips-hero'>

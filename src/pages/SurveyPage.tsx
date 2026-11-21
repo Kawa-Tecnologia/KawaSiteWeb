@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import SurveyForm from '../components/Survey'
+import Seo from '../components/Seo'
 
 const SurveyPage: React.FC = () => {
   const location = useLocation()
@@ -12,12 +13,20 @@ const SurveyPage: React.FC = () => {
 
 
   return (
-    <SurveyForm
-      email={email}
-      name={name}
-      providerName={providerName}
-      serviceId={serviceId}
-    />
+    <>
+      <Seo
+        title='Pesquisa de avaliação | Kawa Tecnologia'
+        description='Formulário interno para avaliar o atendimento de um prestador da Kawa Tecnologia.'
+        path='/survey-devs'
+        noindex
+      />
+      <SurveyForm
+        email={email}
+        name={name}
+        providerName={providerName}
+        serviceId={serviceId}
+      />
+    </>
   )
 }
 
