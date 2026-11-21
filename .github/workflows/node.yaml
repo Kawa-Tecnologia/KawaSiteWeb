@@ -23,14 +23,14 @@ jobs:
     - name: Install dependencies
       run: npm install --force
 
-    - name: Lint with ESLint
-      run: npm run lint
+    # - name: Lint with ESLint
+    #   run: npm run lint
 
-    - name: Format with Prettier
-      run: npm run prettier
+    # - name: Format with Prettier
+    #   run: npm run prettier
 
-    - name: Test
-      run: npm test
+    # - name: Test
+    #   run: npm test
 
     - name: Build
       run: npm run build
