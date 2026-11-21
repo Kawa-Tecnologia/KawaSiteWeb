@@ -1,8 +1,9 @@
+/* Formulário de solicitação de serviço — padrão visual da página principal */
+
 .container-wrapper {
     display: flex;
     flex-wrap: wrap;
-    background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
-    color: #0e0e0e;
+    gap: 16px;
     align-items: flex-start;
 }
 
@@ -14,9 +15,10 @@
 }
 
 .services-request-hero {
-    background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(37, 99, 235, 0.5) 100%);
     color: #fff;
-    border-radius: 24px;
+    border: 1px solid var(--kawa-border-accent);
+    border-radius: var(--kawa-radius-panel);
     padding: 28px;
     display: flex;
     justify-content: space-between;
@@ -25,16 +27,24 @@
     box-shadow: 0 18px 45px rgba(37, 99, 235, 0.22);
 }
 
+/* Coluna de texto do hero não pode ser espremida pelas destacas */
+.services-request-hero > div:first-child {
+    flex: 1;
+    min-width: 220px;
+}
+
 .services-request-hero h1,
 .services-request-hero h2 {
     margin: 8px 0 10px;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.2;
+    color: #fff;
 }
 
 .services-request-hero p {
     margin: 0;
     max-width: 600px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
 }
 
@@ -43,7 +53,7 @@
     align-items: center;
     padding: 6px 12px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.16);
+    background: rgba(255, 255, 255, 0.16);
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -58,8 +68,8 @@
 }
 
 .services-request-highlights div {
-    background: rgba(255,255,255,0.14);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     padding: 12px;
     display: flex;
@@ -74,15 +84,17 @@
 
 .services-request-highlights span {
     font-size: 0.8rem;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
 }
 
+/* Formulário — painel translúcido em vez do card branco */
 .services-request-form {
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 24px;
+    background: var(--kawa-surface);
+    border: 1px solid var(--kawa-border-accent);
+    border-radius: var(--kawa-radius-panel);
     padding: 24px;
-    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+    box-shadow: var(--kawa-shadow-panel);
+    backdrop-filter: blur(14px);
 }
 
 .services-request-form--stacked {
@@ -109,7 +121,7 @@
 
 .services-request-field label {
     font-weight: 600;
-    color: #0f172a;
+    color: var(--kawa-text);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -122,24 +134,40 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #dbeafe;
-    color: #1d4ed8;
+    background: rgba(59, 130, 246, 0.25);
+    color: var(--kawa-accent-text);
     font-size: 0.8rem;
     font-weight: 700;
     cursor: pointer;
 }
 
+/* Campos escuros — mesmo padrão do .glass-input do theme.css */
 .services-request-field input,
 .services-request-field select,
 .services-request-field textarea {
     width: 100%;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: var(--kawa-radius-input);
     padding: 12px 14px;
     font-size: 0.95rem;
-    background-color: #f8fafc;
-    color: #0f172a;
+    background-color: rgba(2, 6, 23, 0.55);
+    color: var(--kawa-text);
     box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.services-request-field input::placeholder,
+.services-request-field textarea::placeholder {
+    color: var(--kawa-text-dim);
+}
+
+.services-request-field select {
+    color: var(--kawa-text);
+}
+
+.services-request-field select option {
+    background-color: var(--kawa-bg-soft);
+    color: var(--kawa-text);
 }
 
 .services-request-field textarea {
@@ -150,9 +178,9 @@
 .services-request-field input:focus,
 .services-request-field select:focus,
 .services-request-field textarea:focus {
-    border-color: #2563eb;
+    border-color: var(--kawa-accent-sky);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
 }
 
 .services-request-mic {
@@ -160,7 +188,7 @@
     height: 30px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    background: var(--kawa-gradient-cta);
     color: #fff;
     display: inline-flex;
     align-items: center;
@@ -174,22 +202,26 @@
     align-items: center;
     gap: 10px;
     padding: 14px 0;
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
+    border-top: 1px solid var(--kawa-border-soft);
+    border-bottom: 1px solid var(--kawa-border-soft);
 }
 
 .services-request-terms label {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #334155;
+    color: var(--kawa-text-muted);
     font-weight: 500;
 }
 
 .services-request-terms a {
-    color: #2563eb;
+    color: var(--kawa-accent-light);
     font-weight: 600;
     text-decoration: none;
+}
+
+.services-request-terms a:hover {
+    text-decoration: underline;
 }
 
 .services-request-actions {
@@ -199,6 +231,7 @@
     margin-top: 6px;
 }
 
+/* Botões — mesmos gradientes dos CTAs da home */
 .services-request-submit,
 .services-request-secondary {
     border: none;
@@ -210,66 +243,85 @@
 }
 
 .services-request-submit {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: var(--kawa-gradient-cta);
     color: #fff;
-    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
 }
 
 .services-request-secondary {
-    background: #f1f5f9;
-    color: #334155;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--kawa-text);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .services-request-submit:hover,
 .services-request-secondary:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(59, 130, 246, 0.2);
 }
 
 .services-request-note {
-    color: #64748b;
+    color: var(--kawa-text-dim);
     font-size: 0.9rem;
     margin-top: 4px;
 }
 
+/* Cartões de avaliação de clientes — glass escuro */
 .left-container-client,
 .right-container-client {
     flex: 1;
     padding: 20px;
-    color: #0e0e0e;
+    border-radius: var(--kawa-radius-card);
+    background: var(--kawa-surface-soft);
+    border: 1px solid var(--kawa-border-soft);
+    color: var(--kawa-text-muted);
 }
 
 .left-container-client h2,
 .right-container-client h2 {
-    font-size: 20px;
+    font-size: 1.15rem;
+    margin-top: 0;
+    color: var(--kawa-accent-text);
+}
+
+.left-container-client ul,
+.right-container-client ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .left-container-client ul li,
 .right-container-client ul li {
-    flex: 1;
-    padding: 20px;
-    background-color: transparent;
-    color: #0e0e0e;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(2, 6, 23, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--kawa-text-muted);
+    line-height: 1.7;
 }
 
+/* Colunas laterais do formulário */
 .left-container-request-dev,
 .right-container-request-dev {
     flex: 1;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: transparent;
+    padding: 16px;
+    border: 1px solid var(--kawa-border-soft);
+    border-radius: var(--kawa-radius-card);
+    background: var(--kawa-surface-soft);
     width: 25%;
-    max-width: 25%
+    max-width: 25%;
 }
 
 .center-container-request-dev {
-    flex: 1;
+    flex: 2;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: transparent;
+    background: transparent;
     width: 50%;
-    max-width: 50%
+    max-width: 50%;
 }
 
 .gold-medal,
@@ -278,6 +330,23 @@
     top: 10px;
     right: 10px;
     font-size: 24px
+}
+
+.section-box-register {
+    border: 1px solid var(--kawa-border-soft);
+    border-radius: var(--kawa-radius-card);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    background: var(--kawa-surface);
+}
+
+.section-box-register p,
+.section-box-register ul li {
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: var(--kawa-text-muted)
 }
 
 @media screen and (max-width:1000px) {
@@ -332,32 +401,5 @@
     .services-request-submit,
     .services-request-secondary {
         width: 100%;
-    }
-}
-
-
-.section-box-register {
-    border: 1px solid transparent;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #0e0e0e;
-    opacity: .9;
-    color: #0e0e0e;
-}
-
-.section-box-register p,
-.section-box-register ul li {
-    border: 1px solid transparent;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-    color: #0e0e0e
-}
-
-@media screen and (max-width:1000px) {
-    .section-box-register {
-        overflow: hidden
     }
 }

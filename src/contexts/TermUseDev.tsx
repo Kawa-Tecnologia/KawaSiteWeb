@@ -5,7 +5,7 @@ const TermUseDev = () => {
             <li>
               Para problemas e dúvidas sobre a utilização da plataforma, como realizar a solicitação do serviço,
               treinamento, entre outros e suporte em geral, por favor, envie
-              email para suporte@kawatecnologia.com.br ou whatsapp (11)914287025;
+              email para admin@kawatecnologia.com.br ou whatsapp (11)914287025;
             </li>
             <li>
               O prestador esta ciente de que a negociação será diretamente com o solicitante, valores a receber,

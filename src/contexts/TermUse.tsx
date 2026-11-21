@@ -8,7 +8,7 @@ const TermUse = () => {
       </div>
       <ul class="term-use__list">
         <li class="term-use__item">
-          Para problemas e dúvidas sobre a utilização da plataforma, como realizar a solicitação do serviço, treinamento, entre outros e suporte em geral, por favor, envie email para <a href="mailto:suporte@kawatecnologia.com.br">suporte@kawatecnologia.com.br</a> ou whatsapp <a href="tel:+5511914287025">(11) 91428-7025</a>.
+          Para problemas e dúvidas sobre a utilização da plataforma, como realizar a solicitação do serviço, treinamento, entre outros e suporte em geral, por favor, envie email para <a href="mailto:admin@kawatecnologia.com.br">admin@kawatecnologia.com.br</a> ou whatsapp <a href="tel:+5511914287025">(11) 91428-7025</a>.
         </li>
         <li class="term-use__item">
           O solicitante está ciente de que podem haver custos adicionais para que o prestador de serviço consiga finalizar o atendimento à solicitação, como custos operacionais e custos para terceiros.

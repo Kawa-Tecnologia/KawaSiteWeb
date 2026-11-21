@@ -1,10 +1,5 @@
 .tips-page {
-  min-height: 100vh;
   padding: 3rem 1.5rem 4rem;
-  background:
-    radial-gradient(circle at top left, rgba(47, 128, 237, 0.16), transparent 24%),
-    linear-gradient(135deg, #07111f 0%, #0e1b2d 45%, #111827 100%);
-  color: #f7f8fc;
 }
 
 .tips-hero {
@@ -14,10 +9,10 @@
   max-width: 1200px;
   margin: 0 auto 2rem;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--kawa-border-accent);
   border-radius: 28px;
-  background: rgba(9, 16, 29, 0.75);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  background: var(--kawa-surface);
+  box-shadow: var(--kawa-shadow-panel);
   backdrop-filter: blur(18px);
 }
 
@@ -38,8 +33,8 @@
   display: inline-block;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(31, 120, 255, 0.16);
-  color: #8ec5ff;
+  background: rgba(59, 130, 246, 0.18);
+  color: var(--kawa-accent-text);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -66,15 +61,15 @@
 }
 
 .tips-primary {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: var(--kawa-gradient-cta);
   color: #fff;
   box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25);
 }
 
 .tips-secondary {
-  color: #e2e8f0;
-  border: 1px solid rgba(226, 232, 240, 0.18);
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--kawa-text);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .tips-primary:hover,
@@ -85,8 +80,8 @@
 .tips-hero-card {
   padding: 1.2rem;
   border-radius: 22px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--kawa-surface-soft);
+  border: 1px solid var(--kawa-border-soft);
 }
 
 .tips-hero-card h3,
@@ -124,18 +119,18 @@
 .tips-card {
   padding: 1.25rem;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+  background: var(--kawa-surface-soft);
+  border: 1px solid var(--kawa-border-soft);
+  box-shadow: var(--kawa-shadow-card);
 }
 
 .tips-card h3 {
   margin-top: 0;
-  color: #8ec5ff;
+  color: var(--kawa-accent-text);
 }
 
 .tips-card p {
-  color: #dbeafe;
+  color: var(--kawa-text-muted);
   line-height: 1.7;
 }
 
@@ -146,12 +141,12 @@
 .tips-highlight {
   padding: 1.4rem 1.6rem;
   border-radius: 22px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(31, 41, 55, 0.7));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.28), rgba(15, 23, 42, 0.72));
+  border: 1px solid var(--kawa-border-accent);
 }
 
 .tips-highlight p {
-  color: #dbeafe;
+  color: var(--kawa-text-muted);
   line-height: 1.8;
 }
 

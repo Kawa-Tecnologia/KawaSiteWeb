@@ -1,10 +1,62 @@
+/* Pesquisa de avaliação — painel translúcido no padrão da página principal */
+
 .container-survey {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1)
+    max-width: 720px;
+    margin: 32px auto 40px;
+    padding: 28px;
+    background: var(--kawa-surface);
+    border: 1px solid var(--kawa-border-accent);
+    border-radius: var(--kawa-radius-panel);
+    box-shadow: var(--kawa-shadow-panel);
+    backdrop-filter: blur(14px);
+}
+
+.container-survey h1 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: #fff;
+    margin: 0 0 20px;
+}
+
+.container-survey form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container-survey label {
+    font-weight: 600;
+    color: var(--kawa-text);
+    margin-top: 6px;
+}
+
+.container-survey input,
+.container-survey textarea {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: var(--kawa-radius-input);
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    background-color: rgba(2, 6, 23, 0.55);
+    color: var(--kawa-text);
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container-survey input::placeholder,
+.container-survey textarea::placeholder {
+    color: var(--kawa-text-dim);
+}
+
+.container-survey input:focus,
+.container-survey textarea:focus {
+    border-color: var(--kawa-accent-sky);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+}
+
+.container-survey h3 {
+    color: var(--kawa-accent-text);
+    margin: 14px 0 4px;
 }
 
 .star-rating.horizontal {
@@ -13,9 +65,53 @@
 }
 
 .star-rating.horizontal label {
-    margin-right: 10px
+    margin-right: 10px;
+    margin-top: 0;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .star {
     cursor: pointer
+}
+
+/* Estrelas visíveis no tema escuro: cinza claro quando vazias,
+   azul claro quando selecionadas */
+.container-survey .star.MuiSvgIcon-colorAction,
+.container-survey .star.MuiSvgIcon-root {
+    color: var(--kawa-text-dim) !important;
+}
+
+.container-survey .star.MuiSvgIcon-colorPrimary {
+    color: var(--kawa-accent-sky) !important;
+}
+
+/* Rádio invisível: a estrela é o alvo do clique */
+.star-rating.horizontal input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+/* Botão de envio — mesmo gradiente dos CTAs da home */
+#submit-btn {
+    margin-top: 20px;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    background: var(--kawa-gradient-cta);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    align-self: flex-start;
+}
+
+#submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(59, 130, 246, 0.2);
 }

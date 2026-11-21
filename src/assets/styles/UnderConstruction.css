@@ -1,1 +1,31 @@
-.under-container{text-align:center}.under-container h1{font-size:36px;color:#fff;margin-bottom:20px}.under-container p{font-size:18px;color:#fff;margin-bottom:40px}.under-container img{max-width:100%;height:auto}
+/* Página Em Construção — painel central no padrão da página principal */
+
+.under-container {
+    max-width: 720px;
+    margin: 48px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.under-container h1 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: #fff;
+    margin: 6px 0 0;
+}
+
+.under-container p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--kawa-text-muted);
+    margin: 0 0 10px;
+    max-width: 520px;
+}
+
+.under-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--kawa-radius-card);
+}

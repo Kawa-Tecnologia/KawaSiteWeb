@@ -1,0 +1,360 @@
+/* ==========================================================================
+   KAWA TECNOLOGIA — Design tokens e componentes compartilhados
+   Padrão extraído da página principal (/). Este arquivo é carregado
+   globalmente (index.tsx) DEPOIS de style.css, garantindo que todas as
+   páginas herdem o mesmo tema escuro, header e footer da home.
+   ========================================================================== */
+
+:root {
+    /* Paleta */
+    --kawa-bg-deep: #050816;
+    --kawa-bg-mid: #101939;
+    --kawa-bg-soft: #0f172a;
+    --kawa-surface: rgba(15, 23, 42, 0.72);
+    --kawa-surface-soft: rgba(255, 255, 255, 0.06);
+    --kawa-border-soft: rgba(255, 255, 255, 0.1);
+    --kawa-border-accent: rgba(125, 211, 252, 0.2);
+    --kawa-accent: #2563eb;
+    --kawa-accent-sky: #38bdf8;
+    --kawa-accent-text: #93c5fd;
+    --kawa-accent-light: #7dd3fc;
+    --kawa-text: #f8fafc;
+    --kawa-text-muted: #cbd5e1;
+    --kawa-text-dim: #94a3b8;
+
+    /* Formas e sombras */
+    --kawa-radius-panel: 24px;
+    --kawa-radius-card: 18px;
+    --kawa-radius-input: 14px;
+    --kawa-shadow-panel: 0 20px 60px rgba(2, 8, 23, 0.35);
+    --kawa-shadow-card: 0 12px 28px rgba(2, 8, 23, 0.28);
+    --kawa-gradient-bg: linear-gradient(
+        135deg,
+        var(--kawa-bg-deep) 0%,
+        var(--kawa-bg-mid) 45%,
+        var(--kawa-bg-soft) 100%
+    );
+    --kawa-gradient-cta: linear-gradient(135deg, var(--kawa-accent-sky), var(--kawa-accent));
+}
+
+/* --------------------------------------------------------------------------
+   Base global — o site inteiro usa o fundo escuro da página principal
+   -------------------------------------------------------------------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--kawa-gradient-bg) fixed;
+    background-color: var(--kawa-bg-deep);
+    color: var(--kawa-text);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Neutraliza estilos legados do style.css que pintavam seções de
+   preto/azul por baixo do tema atual */
+header,
+section,
+footer {
+    background: transparent;
+}
+
+::selection {
+    background: rgba(56, 189, 248, 0.35);
+    color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Estrutura de página — toda rota usa o mesmo casulo da home
+   -------------------------------------------------------------------------- */
+
+.page-shell {
+    min-height: 100vh;
+    background: var(--kawa-gradient-bg);
+    color: var(--kawa-text);
+    display: flex;
+    flex-direction: column;
+}
+
+.page-main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+    flex: 1;
+}
+
+/* Painel de seção — equivale ao .section-panel da home */
+.panel {
+    padding: 26px;
+    border-radius: var(--kawa-radius-panel);
+    background: var(--kawa-surface);
+    border: 1px solid var(--kawa-border-accent);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--kawa-shadow-panel);
+}
+
+/* Card translúcido — equivale ao .feature-card/.info-card da home */
+.glass-card {
+    padding: 18px;
+    border-radius: var(--kawa-radius-card);
+    background: var(--kawa-surface-soft);
+    border: 1px solid var(--kawa-border-soft);
+    box-shadow: var(--kawa-shadow-card);
+}
+
+.glass-card h2,
+.glass-card h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.glass-card p,
+.glass-card li {
+    color: var(--kawa-text-muted);
+    line-height: 1.7;
+}
+
+.section-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Badge em pílula — igual ao .pill/.hero-badge da home */
+.pill,
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.18);
+    color: var(--kawa-accent-text);
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Botões — mesmos estilos de .cta-button/.secondary-button da home
+   -------------------------------------------------------------------------- */
+
+.cta-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.cta-button {
+    background: var(--kawa-gradient-cta);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+}
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--kawa-text);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.cta-button:hover,
+.secondary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(59, 130, 246, 0.2);
+}
+
+/* Link discreto para voltar/navegar entre páginas */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: var(--kawa-accent-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.devs-link {
+    color: var(--kawa-accent-light);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.devs-link:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Formulários — campos escuros translúcidos consistentes em todo o site
+   -------------------------------------------------------------------------- */
+
+.glass-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.glass-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.glass-form label {
+    font-weight: 600;
+    color: var(--kawa-text);
+}
+
+.glass-input {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: var(--kawa-radius-input);
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    background: rgba(2, 6, 23, 0.55);
+    color: var(--kawa-text);
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-input::placeholder {
+    color: var(--kawa-text-dim);
+}
+
+.glass-input:focus {
+    border-color: var(--kawa-accent-sky);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+}
+
+textarea.glass-input {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* --------------------------------------------------------------------------
+   Header — réplica exata do header da página principal
+   (App.css também define; valores idênticos evitam qualquer diferença)
+   -------------------------------------------------------------------------- */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: rgba(2, 6, 23, 0.72);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo-container img {
+    width: 56px;
+    height: 56px;
+    max-width: none;
+    object-fit: contain;
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+}
+
+.brand-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+
+.brand-subtitle {
+    font-size: 0.8rem;
+    color: var(--kawa-accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+/* --------------------------------------------------------------------------
+   Footer — réplica exata do footer da página principal
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+    padding: 0 24px 24px;
+    text-align: center;
+}
+
+.site-footer footer {
+    color: var(--kawa-text-muted);
+    font-size: 0.95rem;
+}
+
+.back-to-top-button {
+    margin-bottom: 14px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 14px;
+    background: rgba(37, 99, 235, 0.16);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-top-button:hover {
+    background: rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Acessibilidade: foco visível em elementos interativos
+   -------------------------------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--kawa-accent-sky);
+    outline-offset: 2px;
+}
+
+@media only screen and (max-width: 800px) {
+    .page-main {
+        padding: 0 16px 32px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+}

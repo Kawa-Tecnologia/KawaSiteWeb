@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import DeveloperList from '../../components/Developers'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import Header from './Header'
-import ServicesSection from './Services'
+import HeaderPrincipal from '../../components/HeaderPrincipal'
+import Footer from '../../components/Footer'
+import Seo from '../../components/Seo'
 import "../../assets/styles/DevelopersSearch.css"
 interface ProfessionalData {
   presentation: string
@@ -93,16 +94,36 @@ function DevelopersPage () {
   }
 
   return (
-    <div className='developers-search'>
-    <Header />
-    <ServicesSection />
-      <h1>Desenvolvedores da Plataforma</h1>
-      <form onSubmit={handleSearch}>
-        <label htmlFor='search'>Informe o ID do desenvolvedor:</label>
-        <input type='text' id='search' name='search' required />
-        <button type='submit'>Enviar</button>
-      </form>
-      <DeveloperList developers={developers} />
+    <div className='page-shell'>
+      <Seo
+        title='Escolha um desenvolvedor para o seu serviço | Kawa Tecnologia'
+        description='Informe o ID do desenvolvedor para atribuir o seu serviço na plataforma da Kawa Tecnologia.'
+        path={`/request-devs/${id ?? ''}`}
+        noindex
+      />
+      <HeaderPrincipal />
+      <main className='page-main developers-search'>
+        <section className='panel developers-search-panel'>
+          <span className='pill'>Atribuir serviço</span>
+          <h1>Desenvolvedores da Plataforma</h1>
+          <form onSubmit={handleSearch} className='developers-search-form'>
+            <div className='form-group'>
+              <label htmlFor='search'>Informe o ID do desenvolvedor:</label>
+              <input
+                className='glass-input'
+                type='text'
+                id='search'
+                name='search'
+                placeholder='Ex.: 1'
+                required
+              />
+            </div>
+            <button type='submit' className='cta-button'>Enviar</button>
+          </form>
+        </section>
+        <DeveloperList developers={developers} />
+      </main>
+      <Footer />
     </div>
   )
 }

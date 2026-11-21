@@ -222,3 +222,236 @@
         color: #0e0e0e;
     }
 }
+
+
+/* ==========================================================================
+   Caixa de Termos de Uso — expande na própria página, logo abaixo do link
+   "Ver Termos de Uso", com o conteúdo rolável até o final (não é modal)
+   ========================================================================== */
+
+.terms-inline {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* a rolagem fica no corpo; cabeçalho e rodapé ficam fixos */
+    /* Altura FIXA e compacta: a caixa nasce do tamanho certo e nunca cresce,
+       nunca empurra o formulário para fora da tela e nunca força o usuário a
+       arrastar a barra de rolagem da página principal — todo o excesso de
+       conteúdo rola apenas na barra interna da própria caixa */
+    height: min(400px, 52vh);
+    max-height: min(400px, 52vh);
+    margin: 2px 0 10px;
+    padding: 18px 24px 20px;
+    background: #ffffff;
+    border: 1px solid rgba(37, 99, 235, 0.35);
+    border-radius: 18px;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
+    text-align: left;
+    animation: .35s ease termsInlineIn;
+}
+
+@keyframes termsInlineIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cabeçalho fixo: título e descrição permanecem visíveis durante toda a rolagem */
+.terms-inline__header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.terms-inline__heading {
+    min-width: 0;
+}
+
+.terms-inline__eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 6px;
+}
+
+.terms-inline__heading h2 {
+    margin: 0 0 4px;
+    color: #0f172a;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.terms-inline__heading p {
+    margin: 0;
+    color: #475569;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* O conteúdo injetado já tem um título próprio; dentro da caixa ele é redundante */
+.terms-inline .term-use__header {
+    display: none;
+}
+
+/* Botão de fechar no cabeçalho (fora da área rolável) */
+.terms-inline__close {
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.08);
+    color: #0f172a;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.terms-inline__close:hover {
+    background: rgba(15, 23, 42, 0.16);
+    color: #0f172a;
+}
+
+/* Corpo rolável: todo o conteúdo dos termos pode ser lido até o final */
+.terms-inline__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    /* "scroll" em vez de "auto": a barra de rolagem da caixa fica sempre
+       visível, deixando claro que é ali que o conteúdo rola */
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 10px;
+    overscroll-behavior: contain;
+    /* IMPORTANTE: sem scrollbar-width/scrollbar-color — essas propriedades
+       desativam o estilo ::-webkit-scrollbar no Chromium e a barra vira
+       "overlay" (invisível). O estilo customizado abaixo garante a barra
+       sempre visível dentro da caixa. */
+}
+
+.terms-inline__body::-webkit-scrollbar {
+    width: 12px;
+}
+
+.terms-inline__body::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.12);
+    border-radius: 8px;
+}
+
+.terms-inline__body::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 8px;
+}
+
+.terms-inline__body::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+}
+
+/* Rodapé fixo com ações principais */
+.terms-inline__footer {
+    flex: 0 0 auto;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+.terms-inline__cancel {
+    background: transparent;
+    color: #2563eb;
+    border: 1px solid rgba(37, 99, 235, 0.35);
+    border-radius: 999px;
+    padding: 9px 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.terms-inline__cancel:hover {
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.terms-inline__confirm {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 24px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.terms-inline__confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(59, 130, 246, 0.3);
+}
+
+/* Reforço de legibilidade do conteúdo dentro da caixa */
+.terms-inline .term-use {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.terms-inline .term-use__item {
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+@media screen and (max-width: 768px) {
+    .terms-inline {
+        height: min(340px, 55vh);
+        max-height: min(340px, 55vh);
+        padding: 14px 16px 16px;
+    }
+
+    .terms-inline__header {
+        gap: 10px;
+    }
+
+    .terms-inline__heading h2 {
+        font-size: 1.2rem;
+    }
+
+    .terms-inline__heading p {
+        font-size: 0.88rem;
+    }
+
+    .terms-inline__body {
+        padding-right: 6px;
+    }
+
+    .terms-inline__footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .terms-inline__cancel,
+    .terms-inline__confirm {
+        width: 100%;
+        text-align: center;
+    }
+}

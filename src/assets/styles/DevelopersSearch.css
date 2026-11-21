@@ -1,11 +1,43 @@
+/* Busca de desenvolvedores — painel translúcido no padrão da página principal */
+
 .developers-search {
-    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.developers-search-panel {
+    margin: 32px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .developers-search h1 {
-    font-size: large;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: #fff;
+    margin: 0;
 }
 
-.developers-search label {
-    font-size: medium;
+.developers-search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 14px;
+    margin-top: 6px;
+}
+
+.developers-search-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 260px;
+}
+
+.developers-search-form label {
+    font-weight: 600;
+    color: var(--kawa-text);
+}
+
+.developers-search-form .glass-input {
+    max-width: 320px;
 }

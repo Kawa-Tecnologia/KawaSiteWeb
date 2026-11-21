@@ -1,58 +1,31 @@
-.sobre-nos {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 24%),
-    linear-gradient(135deg, #07111f 0%, #0e1b2d 45%, #111827 100%);
-  color: #f8fafc;
-  font-family: 'Roboto', sans-serif;
-}
+/* Página Sobre Nós — alinhada ao padrão visual da página principal */
 
 .about-hero {
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;
   gap: 1.2rem;
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 1.5rem;
+  padding: 3rem 0 1.5rem;
 }
 
 .about-hero-content h1 {
   font-size: clamp(2rem, 3vw, 2.8rem);
   line-height: 1.1;
   margin: 0.4rem 0 1rem;
+  color: #fff;
 }
 
 .about-hero-content p {
-  color: #cbd5e1;
+  color: var(--kawa-text-muted);
   font-size: 1rem;
   line-height: 1.8;
   max-width: 700px;
 }
 
-.about-eyebrow {
-  display: inline-block;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  background: rgba(59, 130, 246, 0.16);
-  color: #8ec5ff;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.about-hero-card {
-  padding: 1.3rem;
-  border-radius: 24px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.18);
-}
-
 .about-main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem 3rem;
+  padding: 0 24px 3rem;
 }
 
 .about-grid {
@@ -62,26 +35,14 @@
   margin-bottom: 1rem;
 }
 
-.section-box {
-  padding: 1.3rem;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-}
-
-.section-box-wide {
-  margin-top: 0.5rem;
-}
-
 .section-box h2 {
   margin-top: 0;
-  color: #8ec5ff;
+  color: var(--kawa-accent-text);
 }
 
 .section-box p,
 .section-box li {
-  color: #e2e8f0;
+  color: var(--kawa-text-muted);
   line-height: 1.8;
 }
 
@@ -96,7 +57,11 @@
 .section-box li {
   padding: 0.7rem 0.9rem;
   border-radius: 12px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.section-box-wide {
+  margin-top: 0.5rem;
 }
 
 @media screen and (max-width: 900px) {
@@ -111,14 +76,10 @@
 
 @media screen and (max-width: 767px) {
   .about-hero {
-    padding: 2rem 1rem 1rem;
+    padding: 2rem 0 1rem;
   }
 
   .about-main {
-    padding: 0 1rem 2rem;
-  }
-
-  .section-box {
-    padding: 1rem;
+    padding: 0 16px 2rem;
   }
 }

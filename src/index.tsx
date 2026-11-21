@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import RoutesApp from './Routes'
 import './style.css'
+import './assets/styles/theme.css'
 import { ThemeProvider } from './components/ThemeProvider'
 import Modal from 'react-modal';
 

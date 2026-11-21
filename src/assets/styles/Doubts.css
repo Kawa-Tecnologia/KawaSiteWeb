@@ -1,77 +1,67 @@
-.doubts-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    color: #333
+/* Página de Dúvidas — segue o padrão visual da página principal (theme.css) */
+
+.doubts-hero {
+    padding: 48px 0 28px;
+    max-width: 780px;
 }
 
-.branding {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px
-}
-
-.question,
-h1 {
-    margin-bottom: 40px
-}
-
-.logo {
-    max-width: 100px;
-    margin-right: 10px
-}
-
-h1 {
-    font-size: 3rem;
-    color: #06c
-}
-
-.form-group,
-.question h2 {
-    margin-bottom: 20px
-}
-
-.question h2 {
-    font-size: 2rem;
-    color: #06c
-}
-
-.question p {
-    font-size: 1.2rem;
-    line-height: 1.5
-}
-
-.contact-form {
-    margin-top: 40px
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px
-}
-
-button {
-    background-color: #06c;
+.doubts-hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+    margin: 14px 0 12px;
     color: #fff;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer
 }
 
-.back-button {
-    display: block;
-    margin-top: 20px;
-    color: #06c;
-    text-decoration: none;
-    font-size: 1rem
+.doubts-hero p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--kawa-text-muted);
 }
 
-.back-button:hover {
-    text-decoration: underline
+.faq-section {
+    margin-bottom: 28px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.faq-card h2 {
+    font-size: 1.15rem;
+    margin: 0 0 8px;
+    color: var(--kawa-accent-text);
+}
+
+.faq-card p {
+    margin: 0;
+    font-size: 0.97rem;
+}
+
+.doubts-form-panel {
+    margin-bottom: 8px;
+}
+
+.doubts-form-panel .glass-form {
+    max-width: 640px;
+}
+
+.doubts-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+@media only screen and (max-width: 900px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .doubts-hero {
+        padding: 32px 0 20px;
+    }
 }

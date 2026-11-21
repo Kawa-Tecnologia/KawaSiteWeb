@@ -1,3 +1,94 @@
+/* Serviços — usado pela seção pública (services-solutions-*) e pelo
+   painel interno legado (service-*). Tema alinhado ao padrão da home. */
+
+/* ---------- Seção pública de serviços (Kawa Solutions) ---------- */
+
+.services-solutions-section {
+    padding: 24px 0 10px;
+}
+
+.services-solutions-section__header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.services-solutions-section__eyebrow {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.18);
+    color: var(--kawa-accent-text);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.services-solutions-section h2 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 1.8rem;
+}
+
+.services-solutions-section p {
+    color: var(--kawa-text-muted);
+    margin: 0 auto;
+    max-width: 700px;
+    line-height: 1.7;
+}
+
+.services-solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 24px 0;
+}
+
+.services-solutions-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--kawa-surface-soft);
+    border: 1px solid var(--kawa-border-soft);
+    box-shadow: var(--kawa-shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.services-solutions-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(125, 211, 252, 0.35);
+}
+
+.services-solutions-card span {
+    color: var(--kawa-accent-sky);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.services-solutions-card p {
+    margin: 0;
+    color: var(--kawa-text-muted);
+}
+
+.services-solutions-link {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 8px;
+    color: var(--kawa-accent-light);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.services-solutions-link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Painel interno legado (dashboard de devs) ---------- */
+
 .services-page {
     padding: 20px
 }
@@ -5,7 +96,7 @@
 .services-page h1 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #f0f0f0
+    color: #f8fafc
 }
 
 .service-cards {
@@ -15,7 +106,8 @@
 }
 
 .service-card {
-    background-color: #f9f9f9;
+    background-color: var(--kawa-surface-soft);
+    border: 1px solid var(--kawa-border-soft);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1)
@@ -28,25 +120,26 @@
 
 .service-card p {
     font-size: 16px;
-    color: #666
+    color: var(--kawa-text-muted)
 }
 
 .page-link {
     padding: 8px 16px;
     margin: 0 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--kawa-border-soft);
     border-radius: 5px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #f8fafc;
     cursor: pointer;
     transition: background-color .3s
 }
 
 .page-link:hover {
-    background-color: #f0f0f0
+    background-color: rgba(255, 255, 255, 0.12)
 }
 
 .black-button {
-    background-color: #000;
+    background-color: #050816;
     text-decoration: none;
     display: inline-block;
     color: #fff
@@ -54,38 +147,46 @@
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    grid-template-rows: repeat(2, auto); 
-    gap: 5px; 
-  }
-  
-  .service-item {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 5px;
+}
+
+.service-item {
     display: block;
-    margin-bottom: 10px; 
-  }
+    margin-bottom: 10px;
+}
 
 @media only screen and (max-width:768px) {
     .service-cards {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
     }
+
     #services h1 {
         font-size: larger;
     }
+
     .service-grid {
         display: grid;
-        grid-template-columns: repeat(1, 1fr); 
-        grid-template-rows: repeat(1, auto); 
-        gap: 5px; 
-      }
-      
-      .service-item {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, auto);
+        gap: 5px;
+    }
+
+    .service-item {
         display: block;
         margin-bottom: 10px;
-      }
+    }
 }
 
 @media only screen and (max-width:576px) {
     .service-cards {
         grid-template-columns: 1fr
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .services-solutions-grid {
+        grid-template-columns: 1fr;
     }
 }

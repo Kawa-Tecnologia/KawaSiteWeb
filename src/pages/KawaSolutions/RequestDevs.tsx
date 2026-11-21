@@ -41,37 +41,51 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
         }
   })
 
-  const [showModal, setShowModal] = useState<boolean>(false)
-  const modalRef = useRef<HTMLDivElement>(null)
+  const [showTerms, setShowTerms] = useState<boolean>(false)
+  const termsBoxRef = useRef<HTMLDivElement>(null)
+  const termsBodyRef = useRef<HTMLDivElement>(null)
 
+  // Ao abrir (ou reabrir) a caixa, a leitura sempre começa do topo do conteúdo
   useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node) // Verificando se event.target é do tipo Node
-      ) {
-        closeModal()
-      }
+    if (showTerms && termsBodyRef.current) {
+      termsBodyRef.current.scrollTop = 0
     }
+  }, [showTerms])
 
-    document.addEventListener('mousedown', handleOutsideClick)
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick)
+  // Quando a caixa abre, centraliza-a na tela para que apareça bem visível
+  // (com a altura compacta, o link e o formulário continuam à vista)
+  useEffect(() => {
+    if (!showTerms) {
+      return
     }
-  }, [showModal])
+    const raf = requestAnimationFrame(() => {
+      termsBoxRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [showTerms])
 
-  const openModal = () => {
-    setShowModal(true)
+  // Clicar em "Ver Termos de Uso" alterna a caixa, sem alterar a URL (o link usa href="#")
+  const handleButtonClick = (event: React.MouseEvent) => {
+    event.preventDefault()
+    setShowTerms(prev => !prev)
   }
 
-  const closeModal = () => {
-    setShowModal(false)
+  const closeTerms = () => {
+    setShowTerms(false)
   }
 
-  const handleButtonClick = () => {
-    openModal()
+  // "Li e aceito os termos": marca o checkbox do formulário e recolhe a caixa
+  const acceptTerms = () => {
+    setFormData({
+      ...formData,
+      agreeTerms: true
+    })
+    closeTerms()
   }
+
   useEffect(() => {
     setFormData((prevFormData: FormData) => ({
       ...prevFormData,
@@ -229,6 +243,58 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
   }
   const isMobile = useMediaQuery({ maxWidth: 768 })
 
+  // Caixa de Termos de Uso: expande na própria página, logo abaixo do link
+  // "Ver Termos de Uso" (não é modal — o formulário e o scroll continuam livres
+  // durante a leitura). O corpo da caixa rola até o fim do conteúdo.
+  const termsBox = showTerms && (
+    <div
+      className='terms-inline'
+      ref={termsBoxRef}
+      role='region'
+      aria-label='Termos de uso'
+    >
+      <div className='terms-inline__header'>
+        <div className='terms-inline__heading'>
+          <span className='terms-inline__eyebrow'>Política e condições</span>
+          <h2>Termos de Uso</h2>
+          <p>
+            Ao utilizar a plataforma, você concorda com as condições abaixo
+            para manter um processo transparente, seguro e profissional.
+          </p>
+        </div>
+        <button
+          type='button'
+          className='terms-inline__close'
+          aria-label='Fechar caixa de termos'
+          onClick={closeTerms}
+        >
+          &times;
+        </button>
+      </div>
+      <div
+        ref={termsBodyRef}
+        className='terms-inline__body'
+        dangerouslySetInnerHTML={{ __html: TermUse() }}
+      ></div>
+      <div className='terms-inline__footer'>
+        <button
+          type='button'
+          className='terms-inline__cancel'
+          onClick={closeTerms}
+        >
+          Fechar
+        </button>
+        <button
+          type='button'
+          className='terms-inline__confirm'
+          onClick={acceptTerms}
+        >
+          Li e aceito os termos
+        </button>
+      </div>
+    </div>
+  )
+
   return (
     <div className='container-request'>
       <section id='services' className='services-request-shell'>
@@ -259,13 +325,9 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
         {isMobile && formStep === 1 && (
           <form
             onSubmit={handleSubmit}
-            style={{
-              display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
-              alignItems: 'center'
-            }}
+            className='services-request-form services-request-form--stacked services-request-quick-form'
           >
-            <div>
+            <div className='services-request-field'>
               <label htmlFor='name'>Nome:</label>
               <input
                 type='text'
@@ -274,10 +336,9 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                style={{ width: '300px' }}
               />
             </div>
-            <div>
+            <div className='services-request-field'>
               <label htmlFor='email'>Email:</label>
               <input
                 type='email'
@@ -286,11 +347,10 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                style={{ width: '300px' }}
               />
             </div>
 
-            <div>
+            <div className='services-request-field'>
               <label htmlFor='phone'>Telefone Celular:</label>
               <InputMask
                 mask='(99)99999-9999'
@@ -298,14 +358,13 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
                 type='tel'
                 id='phone'
                 name='phone'
-                placeholder='XX-XXXXX-XXXX'
+                placeholder='(11) 99999-9999'
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                style={{ width: '300px' }}
               />
             </div>
-            <button type='button' onClick={goToNextStep}>
+            <button type='button' onClick={goToNextStep} className='services-request-submit'>
               Continuar
             </button>
           </form>
@@ -405,6 +464,8 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
               </label>
               <a href='#' onClick={handleButtonClick}>Ver Termos de Uso</a>
             </div>
+
+            {termsBox}
 
             <div className='services-request-actions'>
               <button type='button' onClick={goToPreviousStep} className='services-request-secondary'>
@@ -507,6 +568,8 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
               <a href='#' onClick={handleButtonClick}>Ver Termos de Uso</a>
             </div>
 
+            {termsBox}
+
             <div className='services-request-actions'>
               <button type='submit' className='services-request-submit'>
                 Solicitar
@@ -520,22 +583,6 @@ const RequestDevs = ({ heading = 'h1' }: RequestDevsProps) => {
 
         <div
           id='myModal'
-          ref={modalRef}
-          className={`modal ${showModal ? 'show' : ''}`}
-        >
-          <div className='modal-content'>
-            <span className='close' onClick={closeModal}>
-              &times;
-            </span>
-            <div
-              className='modal-content-wrapper'
-              dangerouslySetInnerHTML={{ __html: TermUse() }}
-            ></div>
-          </div>
-        </div>
-        <div
-          id='myModal'
-          ref={modalRef}
           className={`modal ${showTooltipModal ? 'show' : ''}`}
         >
           <div className='modal-content'>

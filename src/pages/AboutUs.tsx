@@ -33,23 +33,23 @@ const values = [
 
 const AboutUs: React.FC = () => {
   return (
-    <div>
+    <div className='page-shell'>
       <Seo
         title='Sobre a Kawa Tecnologia | Propósito, visão e valores'
         description='Conheça a missão, a visão e os valores da Kawa e como unimos tecnologia e estratégia para transformar ideias em presença digital. Fale com a equipe.'
         path='/about-us'
       />
       <HeaderPrincipal />
-      <div className='sobre-nos'>
+      <main className='about-main'>
         <section className='about-hero'>
           <div className='about-hero-content'>
-            <p className='about-eyebrow'>Quem somos</p>
+            <p className='pill'>Quem somos</p>
             <h1>Construímos soluções digitais com propósito, estratégia e visão de futuro.</h1>
             <p>
               A Kawa é uma empresa que une tecnologia, criatividade e entendimento de negócio para transformar desafios em oportunidades.
             </p>
           </div>
-          <div className='about-hero-card'>
+          <div className='about-hero-card glass-card'>
             <h3>Por que a Kawa existe?</h3>
             <p>
               Para tornar a tecnologia acessível, inteligente e útil para quem quer crescer com mais autonomia e presença digital.
@@ -57,27 +57,25 @@ const AboutUs: React.FC = () => {
           </div>
         </section>
 
-        <main className='about-main'>
-          <div className='about-grid'>
-            {pillars.map(item => (
-              <section className='section-box' key={item.title}>
-                <h2>{item.title}</h2>
-                <p>{item.text}</p>
-              </section>
-            ))}
-          </div>
+        <div className='about-grid'>
+          {pillars.map(item => (
+            <section className='section-box glass-card' key={item.title}>
+              <h2>{item.title}</h2>
+              <p>{item.text}</p>
+            </section>
+          ))}
+        </div>
 
-          <section className='section-box section-box-wide'>
-            <h2>Valores que guiam a nossa forma de trabalhar</h2>
-            <ul>
-              {values.map(value => (
-                <li key={value}>{value}</li>
-              ))}
-            </ul>
-          </section>
-        </main>
-        <Footer />
-      </div>
+        <section className='section-box section-box-wide glass-card'>
+          <h2>Valores que guiam a nossa forma de trabalhar</h2>
+          <ul>
+            {values.map(value => (
+              <li key={value}>{value}</li>
+            ))}
+          </ul>
+        </section>
+      </main>
+      <Footer />
     </div>
   )
 }
