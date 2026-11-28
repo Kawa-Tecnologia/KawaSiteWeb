@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import ContactButton from './Whatsapp'
 import '../assets/styles/Navigation.css' 
+
+// Links internos usam <Link> do react-router para navegação SPA
+// (sem recarregar a página inteira a cada clique no menu).
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -16,19 +20,19 @@ const Navigation: React.FC = () => {
       </div>
       <ul className='nav-list'>
         <li className='nav-item'>
-          <a href='/tips' className='nav-link'>
+          <Link to='/tips' className='nav-link'>
             Dicas
-          </a>
+          </Link>
         </li>
         <li className='nav-item'>
-          <a href='/' className='nav-link'>
+          <Link to='/' className='nav-link'>
             Pagina Principal
-          </a>
+          </Link>
         </li>
         <li className='nav-item'>
-          <a href='/about-us' className='nav-link'>
+          <Link to='/about-us' className='nav-link'>
             Sobre Nós
-          </a>
+          </Link>
         </li>
         <li className='nav-item'>
           <ContactButton />

@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Navigation from './Navigation'
 
 const HeaderPrincipal = () => {
   return (
     <header className='header'>
-      <a href='/' className='logo-container'>
+      <Link to='/' className='logo-container'>
         <img
           className='logo'
           src={require('../assets/images/kawa1.png')}
@@ -15,7 +16,7 @@ const HeaderPrincipal = () => {
           <span className='brand-name'>KAWA</span>
           <span className='brand-subtitle'>Tecnologia</span>
         </div>
-      </a>
+      </Link>
       <Navigation />
     </header>
   )

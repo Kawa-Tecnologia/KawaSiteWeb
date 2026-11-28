@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './assets/styles/Banner.css'
 import './assets/styles/App.css'
 import HeaderPrincipal from './components/HeaderPrincipal'
@@ -153,9 +153,9 @@ const App: React.FC = () => {
                 produto e execução.
               </p>
               <p>
-                <a href='/solutions' className='devs-link' title='Entre na Kawa Solutions'>
+                <Link to='/solutions' className='devs-link' title='Entre na Kawa Solutions'>
                   Kawa Solutions
-                </a>
+                </Link>
               </p>
             </article>
             <article className='about-card'>

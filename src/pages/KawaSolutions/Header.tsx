@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../../assets/styles/AppSolutions.css'
 
 const Header = () => {
@@ -12,7 +13,7 @@ const Header = () => {
         </p>
         <div className='solutions-hero__actions'>
           <a href='#services-solutions' className='solutions-hero__primary'>Conhecer serviços</a>
-          <a href='/request-devs' className='solutions-hero__secondary'>Solicitar atendimento</a>
+          <Link to='/request-devs' className='solutions-hero__secondary'>Solicitar atendimento</Link>
         </div>
       </div>
     </header>

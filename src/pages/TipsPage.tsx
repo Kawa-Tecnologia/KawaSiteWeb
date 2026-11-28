@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../assets/styles/Tips.css'
 import HeaderPrincipal from '../components/HeaderPrincipal'
 import Footer from '../components/Footer'
@@ -43,8 +44,8 @@ function TipsPage() {
               A Kawa ajuda empresas a definir o caminho certo para websites, lojas e sistemas com mais clareza, velocidade e resultado.
             </p>
             <div className='tips-actions'>
-              <a href='/request-devs' className='tips-primary'>Solicitar projeto</a>
-              <a href='/about-us' className='tips-secondary'>Conhecer a Kawa</a>
+              <Link to='/request-devs' className='tips-primary'>Solicitar projeto</Link>
+              <Link to='/about-us' className='tips-secondary'>Conhecer a Kawa</Link>
             </div>
           </div>
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import EmailButton from './Mail'
 import '../assets/styles/NavigationDevs.css'
 
@@ -16,14 +17,14 @@ const NavigationDev: React.FC = () => {
       </div>
       <ul className={`nav-list ${isMenuOpen ? 'open' : ''}`}>
         <li className='nav-item'>
-          <a href='/' className='nav-link'>
+          <Link to='/' className='nav-link'>
             Página inicial
-          </a>
+          </Link>
         </li>
         <li className='nav-item'>
-          <a href='/about-us' className='nav-link'>
+          <Link to='/about-us' className='nav-link'>
             Sobre Nós
-          </a>
+          </Link>
         </li>
         <li className='nav-item'>
           <EmailButton />
